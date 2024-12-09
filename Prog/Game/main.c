@@ -86,10 +86,11 @@ void Load(MainData* const _data, GameData* const _game)
 	LoadScreen(_data);
 	LoadClock(_data);
 
-	SetGameState(GAME);
+	SetGameState(MENU);
 
 	LoadTextManager();
 	LoadGame();
+	LoadMenu();
 }
 
 // Fonction qui crée la fenêtre et l'affiche
@@ -168,6 +169,7 @@ void Draw(sfRenderWindow* const _render, GameData* const _game)
 	switch (state)
 	{
 	case MENU:
+		DrawMenu(_render);
 		break;
 	case GAME:
 		DrawGame(_render);
@@ -195,6 +197,7 @@ void OnKeyPressed(sfKeyEvent _key, sfRenderWindow* const _render, GameData* cons
 	switch (state)
 	{
 	case MENU:
+		OnKeyPressedMenu(_key, _render);
 		break;
 	case GAME:
 		OnKeyPressedGame(_key, _render);

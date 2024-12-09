@@ -8,13 +8,12 @@
 
 typedef struct Button
 {
-	sfRectangleShape* rectangle;
+	sfRectangleShape* rect;
 	sfText* text;
 }Button;
 
 typedef struct Menu
 {
-	sfFont* font;
 	Images background;
 	Button buttons[MAX_BUTTONS];
 	int currentButton;
