@@ -17,7 +17,7 @@
 #define SCREEN_W 1024
 #define SCREEN_H 768
 
-#define GAME_NAME "Operation Wolf "
+#define GAME_NAME "Operation Wolf"
 #define GAME_VERSION "0.0.1"
 
 #define MAX_FPS 120
