@@ -1,8 +1,4 @@
 #include "Menu.h"
-#include "../Libs/Collision.h"
-#include "../Libs/Text.h"
-#include "../Libs/Utilities.h"
-#include "../GameState.h"
 Menu menu = { 0 };
 
 void LoadMenuBackground(void);

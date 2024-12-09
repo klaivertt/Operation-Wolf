@@ -3,6 +3,10 @@
 
 #include "../Libs/Common.h"
 #include "../Libs/Animations.h"
+#include "../Libs/Collision.h"
+#include "../Libs/Text.h"
+#include "../Libs/Utilities.h"
+#include "../GameState.h"
 
 #define MAX_BUTTONS 2
 

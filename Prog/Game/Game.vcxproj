@@ -138,6 +138,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Debug.c" />
     <ClCompile Include="GameState.c" />
     <ClCompile Include="Game\Ennemy.c" />
     <ClCompile Include="Game\Game.c" />
@@ -150,6 +151,7 @@
     <ClCompile Include="Menu\Menu.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Debug.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="Game\Ennemy.h" />
     <ClInclude Include="Game\Game.h" />

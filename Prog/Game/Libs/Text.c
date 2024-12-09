@@ -26,3 +26,10 @@ void UpdateText(sfText** _text, const char* _string, int _value)
     sprintf_s(string, sizeof(string), _string, _value);
     sfText_setString(*_text, string);
 }
+
+void UpdateTextF(sfText** _text, const char* _string, float _value)
+{
+    char string[50];
+    sprintf_s(string, sizeof(string), _string, _value);
+    sfText_setString(*_text, string);
+}

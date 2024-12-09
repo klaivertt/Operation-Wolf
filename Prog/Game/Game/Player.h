@@ -13,7 +13,7 @@ typedef struct PlayerAnim
 
 typedef struct Player
 {
-	sfSprite* mouse;
+	sfSprite* aim;
 	sfSprite* gun;
 }Player;
 

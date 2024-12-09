@@ -13,4 +13,6 @@ void LoadTextManager(void);
 void InitText(sfText** _text, const char* _string, unsigned int _fontSize, sfVector2f _position);
 
 void UpdateText(sfText** _text, const char* _string, int _value);
+
+void UpdateTextF(sfText** _text, const char* _string, float _value);
 #endif

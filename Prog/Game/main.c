@@ -5,6 +5,7 @@
 #include "../Game/Menu/Menu.h"
 #include "../Game/Game/Game.h"
 #include "../Game/Libs/Text.h"
+#include "Debug.h"
 
 #pragma region Enumérations
 
@@ -23,7 +24,7 @@ typedef struct MainData
 
 typedef struct GameData
 {
-	int null;
+	sfBool isDebug;
 }GameData;
 
 #pragma endregion
@@ -85,12 +86,14 @@ void Load(MainData* const _data, GameData* const _game)
 {
 	LoadScreen(_data);
 	LoadClock(_data);
-
 	SetGameState(MENU);
+
+	_game->isDebug = sfFalse;
 
 	LoadTextManager();
 	LoadGame();
 	LoadMenu();
+	LoadDebug();
 }
 
 // Fonction qui crée la fenêtre et l'affiche
@@ -147,6 +150,12 @@ void UpdateDeltaTime(MainData* const _mainData)
 
 void Update(float _dt, MainData* const _data, GameData* const _game)
 {
+
+	if (_game->isDebug)
+	{
+		UpdateDebug(_dt, _data->renderWindow);
+	}
+
 	enum GameState state = GetGameState();
 
 	switch (state)
@@ -159,7 +168,6 @@ void Update(float _dt, MainData* const _data, GameData* const _game)
 	default:
 		break;
 	}
-
 }
 
 void Draw(sfRenderWindow* const _render, GameData* const _game)
@@ -177,6 +185,11 @@ void Draw(sfRenderWindow* const _render, GameData* const _game)
 	default:
 		break;
 	}
+
+	if (_game->isDebug)
+	{
+		DrawDebug(_render);
+	}
 }
 
 void Cleanup(MainData* const _data, GameData* const _game)
@@ -193,6 +206,15 @@ void Cleanup(MainData* const _data, GameData* const _game)
 void OnKeyPressed(sfKeyEvent _key, sfRenderWindow* const _render, GameData* const _game)
 {
 	enum GameState state = GetGameState();
+
+	switch (_key.code)
+	{
+	case sfKeyA:
+		_game->isDebug = !_game->isDebug;
+		break;
+	default:
+		break;
+	}
 
 	switch (state)
 	{
