@@ -52,6 +52,11 @@ void LoadBackground()
 	sfSprite_setTexture(game.background.sprite, game.background.texture, sfTrue);
 }
 
+void LoadUpdateBackground(float _dt)
+{
+
+}
+
 void DrawBackground(sfRenderWindow* _render)
 {
 	sfRenderWindow_drawSprite(_render, game.background.sprite, NULL);

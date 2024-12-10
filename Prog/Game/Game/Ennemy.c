@@ -7,7 +7,6 @@ Ennemy ennemy = { 0 };
 
 void EnnemySetState(EnnemyState const _state);
 void UpdateEnnemyAnimation();
-void HeathUpdate();
 void CollideMouseEnnemy(sfRenderWindow* _render);
 void RespawnEnnemy(void);
 
@@ -21,7 +20,9 @@ void UpdateEnnemy(float _dt)
 	
 }
 
-
+void EnnemyShoot(void)
+{
+}
 
 void DrawEnnemy(sfRenderWindow* _render)
 {
