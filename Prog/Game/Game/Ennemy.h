@@ -5,6 +5,9 @@
 #include "../Libs/Animations.h"
 #include "../Libs/Collision.h"
 
+#define SHOOT_COOLDOWN 2.5f
+#define SOLDIERS_HEALTH 1
+#define BASE_VELOCITY 200
 // État des ennemis
 typedef enum EnnemyState
 {
@@ -44,8 +47,7 @@ typedef struct Ennemy
     float health;              
     float shootCooldown;       
     int scoreValue;            
-    DropType drop;            
-    sfBool isActive;          
+    DropType drop;             
 } Ennemy;
 
 

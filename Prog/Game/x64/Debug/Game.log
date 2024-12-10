@@ -1,12 +1,9 @@
 ﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(531,5): warning MSB8028: Le répertoire intermédiaire (x64\Debug\) contient des fichiers partagés provenant d'un autre projet (DOOM.vcxproj). Cela peut entraîner un comportement de nettoyage et de regénération incorrect.
-  Debug.c
   Ennemy.c
-C:\Users\Etudiant1\Desktop\abosio\Prog1\Csfml\Operation Wolf\Prog\Game\Game\Ennemy.c(64,13): warning C4101: 'mouse' : variable locale non référencée
-  Text.c
-C:\Users\Etudiant1\Desktop\abosio\Prog1\Csfml\Operation Wolf\Prog\Game\Libs\Text.c(18,5): warning C4013: 'sprintf_s' non défini(e) ; extern retournant int pris par défaut
-  Menu.c
-C:\Users\Etudiant1\Desktop\abosio\Prog1\Csfml\Operation Wolf\Prog\Game\Menu\Menu.c(100,84): warning C4305: 'initialisation' : troncation de 'double' à 'float'
-C:\Users\Etudiant1\Desktop\abosio\Prog1\Csfml\Operation Wolf\Prog\Game\Menu\Menu.c(104,84): warning C4305: 'initialisation' : troncation de 'double' à 'float'
-  main.c
-  Génération de code en cours...
+C:\Users\Etudiant1\Desktop\abosio\Prog1\Csfml\Operation Wolf\Prog\Game\Game\Ennemy.c(87,18): warning C4047: 'fonction' : les niveaux d'indirection de 'Animation *' et de 'Animation **' sont différents
+C:\Users\Etudiant1\Desktop\abosio\Prog1\Csfml\Operation Wolf\Prog\Game\Game\Ennemy.c(87,18): warning C4024: 'UpdateAnimation' : types différents pour le paramètre formel et réel 1
+C:\Users\Etudiant1\Desktop\abosio\Prog1\Csfml\Operation Wolf\Prog\Game\Game\Ennemy.c(96,86): warning C4244: 'fonction' : conversion de 'int' en 'float', perte possible de données
+C:\Users\Etudiant1\Desktop\abosio\Prog1\Csfml\Operation Wolf\Prog\Game\Game\Ennemy.c(96,95): warning C4244: 'fonction' : conversion de 'int' en 'float', perte possible de données
+C:\Users\Etudiant1\Desktop\abosio\Prog1\Csfml\Operation Wolf\Prog\Game\Game\Ennemy.c(110,43): warning C4244: 'initialisation' : conversion de 'int' en 'float', perte possible de données
+C:\Users\Etudiant1\Desktop\abosio\Prog1\Csfml\Operation Wolf\Prog\Game\Game\Ennemy.c(111,48): warning C4244: 'initialisation' : conversion de 'int' en 'float', perte possible de données
   Game.vcxproj -> C:\Users\Etudiant1\Desktop\abosio\Prog1\Csfml\Operation Wolf\Prog\x64\Debug\Operation Wolf.exe
