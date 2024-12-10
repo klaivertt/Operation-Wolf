@@ -10,7 +10,6 @@
 #pragma region Enumérations
 
 
-
 #pragma endregion
 
 #pragma region Structures
