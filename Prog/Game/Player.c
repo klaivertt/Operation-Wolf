@@ -25,8 +25,8 @@ void UpdatePlayer()
 
 void GetMousePositionPlayer(sfMouseMoveEvent _mouseMoved)
 {
-	player.mousePosition.x = _mouseMoved.x;
-	player.mousePosition.y = _mouseMoved.y;
+	player.mousePosition.x = (float) _mouseMoved.x;
+	player.mousePosition.y = (float) _mouseMoved.y;
 }
 
 void CleanupPlayer()

@@ -40,7 +40,7 @@ sfBool MouseClickOnSpritePixel(sfMouseButtonEvent _mouseButton, sfSprite* _sprit
 	if (sfFloatRect_contains(&globalBounds, (float)_mouseButton.x, (float)_mouseButton.y))
 	{
 		sfFloatRect globalBounds = sfSprite_getGlobalBounds(_sprite);
-		sfTexture* texture = sfSprite_getTexture(_sprite);
+		const sfTexture* texture = sfSprite_getTexture(_sprite);
 		sfImage* image = sfTexture_copyToImage(texture);
 
 		sfVector2i PosPixel = { (unsigned int)(_mouseButton.x - globalBounds.left),(unsigned int)(_mouseButton.y - globalBounds.top) };
@@ -64,7 +64,7 @@ sfBool MouseMoveOnSpritePixel(sfMouseMoveEvent _mouseMove, sfSprite* _sprite)
 
 	if (sfFloatRect_contains(&globalBounds, (float)_mouseMove.x, (float)_mouseMove.y))
 	{
-		sfTexture* texture = sfSprite_getTexture(_sprite);
+		const sfTexture* texture = sfSprite_getTexture(_sprite);
 		sfImage* image = sfTexture_copyToImage(texture);
 
 		sfVector2u PixelPos = { (unsigned int)(_mouseMove.x - globalBounds.left),(unsigned int)(_mouseMove.y - globalBounds.top) };
