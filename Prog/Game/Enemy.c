@@ -9,7 +9,7 @@ void LoadEnemy(void)
 {
 	if (enemyData.spriteSheet == NULL)
 	{
-		enemyData.spriteSheet = sfTexture_createFromFile("Assets/Sprites/Spritesheet",NULL);
+		enemyData.spriteSheet = sfTexture_createFromFile("Assets/Sprites/Spritesheet.png",NULL);
 	}
 
 	if (enemyData.enemy[0].sprite == NULL)
