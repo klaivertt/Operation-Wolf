@@ -25,11 +25,17 @@
     <Filter Include="Fichiers sources\States">
       <UniqueIdentifier>{e436b0e6-9339-4525-86e6-926ffb3c1e60}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Fichiers sources\Characters">
-      <UniqueIdentifier>{fd57e698-f349-4e47-8a33-ee8131fb8ff6}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Fichiers d%27en-tête\Characters">
       <UniqueIdentifier>{f3ca5748-730d-48de-a6e1-ed9f3f308144}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\States\Game">
+      <UniqueIdentifier>{2664b8cf-4d09-4095-8afe-f717310e78cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\States\Game\Characters">
+      <UniqueIdentifier>{fd57e698-f349-4e47-8a33-ee8131fb8ff6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\States\Game\Map">
+      <UniqueIdentifier>{850e843b-0c34-4b7b-9d3e-1978177e5992}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -42,9 +48,6 @@
     <ClCompile Include="State.c">
       <Filter>Fichiers sources\States</Filter>
     </ClCompile>
-    <ClCompile Include="Game.c">
-      <Filter>Fichiers sources\States</Filter>
-    </ClCompile>
     <ClCompile Include="Menu.c">
       <Filter>Fichiers sources\States</Filter>
     </ClCompile>
@@ -52,16 +55,16 @@
       <Filter>Fichiers sources\Utilitaires</Filter>
     </ClCompile>
     <ClCompile Include="Enemy.c">
-      <Filter>Fichiers sources\Characters</Filter>
+      <Filter>Fichiers sources\States\Game\Characters</Filter>
     </ClCompile>
     <ClCompile Include="Player.c">
-      <Filter>Fichiers sources\Characters</Filter>
+      <Filter>Fichiers sources\States\Game\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.c">
+      <Filter>Fichiers sources\States\Game</Filter>
     </ClCompile>
     <ClCompile Include="Map.c">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="test.c">
-      <Filter>Fichiers sources</Filter>
+      <Filter>Fichiers sources\States\Game\Map</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
