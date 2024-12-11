@@ -4,13 +4,12 @@ Image bullet;
 
 void LoadBullet()
 {
-	sfIntRect rect = { 40, 728, 8 , 16 };
+	sfIntRect rect = { 120, 2184, 24 , 48 };
 	sfVector2f position = { SCREEN_WIDTH / 2 , SCREEN_HEIGHT / 2 };
 	sfVector2f origin = { 0.5 , 1 };
 	bullet.texture = sfTexture_createFromFile("Assets/Sprites/SpriteSheet.png", NULL);
 
 	CreateSprite(&bullet.sprite, bullet.texture, position, rect, origin);
-	sfSprite_setScale(bullet.sprite, (sfVector2f) { 3, 3 });
 }
 
 void UpdateBullet()
