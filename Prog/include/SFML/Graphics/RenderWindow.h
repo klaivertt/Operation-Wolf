@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////
 //
 // SFML - Simple and Fast Multimedia Library
-// Copyright (C) 2007-2024 Laurent Gomila (laurent@sfml-dev.org)
+// Copyright (C) 2007-2018 Laurent Gomila (laurent@sfml-dev.org)
 //
 // This software is provided 'as-is', without any express or implied warranty.
 // In no event will the authors be held liable for any damages arising from the use of this software.
@@ -160,16 +160,6 @@ CSFML_GRAPHICS_API void sfRenderWindow_setPosition(sfRenderWindow* renderWindow,
 ///
 ////////////////////////////////////////////////////////////
 CSFML_GRAPHICS_API sfVector2u sfRenderWindow_getSize(const sfRenderWindow* renderWindow);
-
-////////////////////////////////////////////////////////////
-/// \brief Tell if the render window will use sRGB encoding when drawing on it
-///
-/// \param renderWindow Render window object
-///
-/// \return sfTrue if the render window use sRGB encoding, sfFalse otherwise
-///
-////////////////////////////////////////////////////////////
-CSFML_GRAPHICS_API sfBool sfRenderWindow_isSrgb(const sfRenderWindow* renderWindow);
 
 ////////////////////////////////////////////////////////////
 /// \brief Change the size of the rendering region of a render window
@@ -477,20 +467,6 @@ CSFML_GRAPHICS_API void sfRenderWindow_drawVertexArray(sfRenderWindow* renderWin
 CSFML_GRAPHICS_API void sfRenderWindow_drawVertexBuffer(sfRenderWindow* renderWindow, const sfVertexBuffer* object, const sfRenderStates* states);
 
 ////////////////////////////////////////////////////////////
-/// \brief Draw primitives defined by a vertex buffer.
-///
-/// \param renderWindow Render window object
-/// \param object       Vertex buffer object to draw
-/// \param firstVertex  Index of the first vertex to render
-/// \param vertexCount  Number of vertices to render
-/// \param states       Render states to use for drawing
-///
-////////////////////////////////////////////////////////////
-CSFML_GRAPHICS_API void sfRenderWindow_drawVertexBufferRange(sfRenderWindow* renderWindow,
-                                                             const sfVertexBuffer* object, size_t firstVertex,
-                                                             size_t vertexCount, const sfRenderStates* states);
-
-////////////////////////////////////////////////////////////
 /// \brief Draw primitives defined by an array of vertices to a render window
 ///
 /// \param renderWindow render window object
@@ -617,19 +593,6 @@ CSFML_GRAPHICS_API void sfMouse_setPositionRenderWindow(sfVector2i position, con
 ///
 ////////////////////////////////////////////////////////////
 CSFML_GRAPHICS_API sfVector2i sfTouch_getPositionRenderWindow(unsigned int finger, const sfRenderWindow* relativeTo);
-
-////////////////////////////////////////////////////////////
-/// \brief Create a Vulkan rendering surface
-///
-/// \param renderWindow RenderWindow object
-/// \param instance     Vulkan instance
-/// \param surface      Created surface
-/// \param allocator    Allocator to use
-///
-/// \return True if surface creation was successful, false otherwise
-///
-////////////////////////////////////////////////////////////
-CSFML_GRAPHICS_API sfBool sfRenderWindow_createVulkanSurface(sfRenderWindow* renderWindow, const VkInstance* instance, VkSurfaceKHR* surface, const VkAllocationCallbacks* allocator);
 
 
 #endif // SFML_RENDERWINDOW_H

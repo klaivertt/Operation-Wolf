@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////
 //
 // SFML - Simple and Fast Multimedia Library
-// Copyright (C) 2007-2024 Laurent Gomila (laurent@sfml-dev.org)
+// Copyright (C) 2007-2018 Laurent Gomila (laurent@sfml-dev.org)
 //
 // This software is provided 'as-is', without any express or implied warranty.
 // In no event will the authors be held liable for any damages arising from the use of this software.
@@ -93,31 +93,6 @@ CSFML_WINDOW_API sfVector2i sfMouse_getPosition(const sfWindow* relativeTo);
 ///
 ////////////////////////////////////////////////////////////
 CSFML_WINDOW_API void sfMouse_setPosition(sfVector2i position, const sfWindow* relativeTo);
-
-////////////////////////////////////////////////////////////
-/// \brief Get the current position of the mouse relative to a window base
-///
-/// This function returns the current position of the mouse
-/// cursor relative to the given window base, or desktop if NULL is passed.
-///
-/// \param relativeTo Reference window
-///
-/// \return Position of the mouse cursor, relative to the given window base
-///
-////////////////////////////////////////////////////////////
-CSFML_WINDOW_API sfVector2i sfMouse_getPositionWindowBase(const sfWindowBase* relativeTo);
-
-////////////////////////////////////////////////////////////
-/// \brief Set the current position of the mouse relative to a window base
-///
-/// This function sets the current position of the mouse
-/// cursor relative to the given window base, or desktop if NULL is passed.
-///
-/// \param position   New position of the mouse
-/// \param relativeTo Reference window
-///
-////////////////////////////////////////////////////////////
-CSFML_WINDOW_API void sfMouse_setPositionWindowBase(sfVector2i position, const sfWindowBase* relativeTo);
 
 
 #endif // SFML_MOUSE_H

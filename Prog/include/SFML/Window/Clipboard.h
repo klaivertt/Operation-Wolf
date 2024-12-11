@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////
 //
 // SFML - Simple and Fast Multimedia Library
-// Copyright (C) 2007-2024 Laurent Gomila (laurent@sfml-dev.org)
+// Copyright (C) 2007-2018 Laurent Gomila (laurent@sfml-dev.org)
 //
 // This software is provided 'as-is', without any express or implied warranty.
 // In no event will the authors be held liable for any damages arising from the use of this software.
@@ -42,7 +42,7 @@
 /// \return Clipboard contents as a locale-dependent ANSI string
 ///
 ////////////////////////////////////////////////////////////
-CSFML_WINDOW_API const char* sfClipboard_getString(void);
+CSFML_WINDOW_API const char* sfClipboard_getString();
 
 
 ////////////////////////////////////////////////////////////
@@ -55,7 +55,7 @@ CSFML_WINDOW_API const char* sfClipboard_getString(void);
 /// \return Clipboard contents as UTF-32
 ///
 ////////////////////////////////////////////////////////////
-CSFML_WINDOW_API const sfUint32* sfClipboard_getUnicodeString(void);
+CSFML_WINDOW_API const sfUint32* sfClipboard_getUnicodeString();
 
 ////////////////////////////////////////////////////////////
 /// \brief Set the content of the clipboard as ANSI string data

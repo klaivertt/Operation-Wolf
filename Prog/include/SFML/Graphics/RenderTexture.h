@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////
 //
 // SFML - Simple and Fast Multimedia Library
-// Copyright (C) 2007-2024 Laurent Gomila (laurent@sfml-dev.org)
+// Copyright (C) 2007-2018 Laurent Gomila (laurent@sfml-dev.org)
 //
 // This software is provided 'as-is', without any express or implied warranty.
 // In no event will the authors be held liable for any damages arising from the use of this software.
@@ -84,16 +84,6 @@ CSFML_GRAPHICS_API void sfRenderTexture_destroy(sfRenderTexture* renderTexture);
 ///
 ////////////////////////////////////////////////////////////
 CSFML_GRAPHICS_API sfVector2u sfRenderTexture_getSize(const sfRenderTexture* renderTexture);
-
-////////////////////////////////////////////////////////////
-/// \brief Tell if the render texture will use sRGB encoding when drawing on it
-///
-/// \param renderTexture Render texture object
-///
-/// \return sfTrue if the render texture use sRGB encoding, sfFalse otherwise
-///
-////////////////////////////////////////////////////////////
-CSFML_GRAPHICS_API sfBool sfRenderTexture_isSrgb(const sfRenderTexture* renderTexture);
 
 ////////////////////////////////////////////////////////////
 /// \brief Activate or deactivate a render texture as the current target for rendering
@@ -234,20 +224,6 @@ CSFML_GRAPHICS_API void sfRenderTexture_drawVertexArray(sfRenderTexture* renderT
 CSFML_GRAPHICS_API void sfRenderTexture_drawVertexBuffer(sfRenderTexture* renderTexture, const sfVertexBuffer* object, const sfRenderStates* states);
 
 ////////////////////////////////////////////////////////////
-/// \brief Draw primitives defined by a vertex buffer.
-///
-/// \param renderTexture render texture object
-/// \param object        Vertex buffer object to draw
-/// \param firstVertex   Index of the first vertex to render
-/// \param vertexCount   Number of vertices to render
-/// \param states        Render states to use for drawing
-///
-////////////////////////////////////////////////////////////
-CSFML_GRAPHICS_API void sfRenderTexture_drawVertexBufferRange(sfRenderTexture* renderTexture,
-                                                              const sfVertexBuffer* object, size_t firstVertex,
-                                                              size_t vertexCount, const sfRenderStates* states);
-
-////////////////////////////////////////////////////////////
 /// \brief Draw primitives defined by an array of vertices to a render texture
 ///
 /// \param renderTexture Render texture object
@@ -326,7 +302,7 @@ CSFML_GRAPHICS_API const sfTexture* sfRenderTexture_getTexture(const sfRenderTex
 /// \return The maximum anti-aliasing level supported by the system
 ///
 ////////////////////////////////////////////////////////////
-CSFML_GRAPHICS_API unsigned int sfRenderTexture_getMaximumAntialiasingLevel(void);
+CSFML_GRAPHICS_API unsigned int sfRenderTexture_getMaximumAntialiasingLevel();
 
 ////////////////////////////////////////////////////////////
 /// \brief Enable or disable the smooth filter on a render texture

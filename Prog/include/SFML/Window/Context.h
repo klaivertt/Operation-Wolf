@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////
 //
 // SFML - Simple and Fast Multimedia Library
-// Copyright (C) 2007-2024 Laurent Gomila (laurent@sfml-dev.org)
+// Copyright (C) 2007-2018 Laurent Gomila (laurent@sfml-dev.org)
 //
 // This software is provided 'as-is', without any express or implied warranty.
 // In no event will the authors be held liable for any damages arising from the use of this software.
@@ -32,8 +32,6 @@
 #include <SFML/Window/Types.h>
 #include <SFML/Window/Window.h>
 
-typedef void (*GlFunctionPointer)(void);
-
 ////////////////////////////////////////////////////////////
 /// \brief Create a new context
 ///
@@ -53,16 +51,6 @@ CSFML_WINDOW_API sfContext* sfContext_create(void);
 CSFML_WINDOW_API void sfContext_destroy(sfContext* context);
 
 ////////////////////////////////////////////////////////////
-/// \brief Check whether a given OpenGL extension is available.
-///
-/// \param name Name of the extension to check for
-///
-/// \return True if available, false if unavailable
-///
-////////////////////////////////////////////////////////////
-CSFML_WINDOW_API sfBool sfContext_isExtensionAvailable(const char* name);
-
-////////////////////////////////////////////////////////////
 /// \brief Activate or deactivate explicitely a context
 ///
 /// \param context Context object
@@ -74,19 +62,7 @@ CSFML_WINDOW_API sfBool sfContext_isExtensionAvailable(const char* name);
 CSFML_WINDOW_API sfBool sfContext_setActive(sfContext* context, sfBool active);
 
 ////////////////////////////////////////////////////////////
-/// \brief Get the address of an OpenGL function.
-///
-/// \param name Name of the function to get the address of
-///
-/// \return Address of the OpenGL function, 0 on failure
-///
-////////////////////////////////////////////////////////////
-CSFML_WINDOW_API GlFunctionPointer sfContext_getFunction(const char* name);
-
-////////////////////////////////////////////////////////////
 /// \brief Get the settings of the context.
-///
-/// \param context Context object
 ///
 /// Note that these settings may be different than the ones passed to the
 /// constructor; they are indeed adjusted if the original settings are not
@@ -106,6 +82,6 @@ CSFML_WINDOW_API sfContextSettings sfContext_getSettings(const sfContext* contex
 /// \return The active context's ID or 0 if no context is currently active
 ///
 ////////////////////////////////////////////////////////////
-CSFML_WINDOW_API sfUint64 sfContext_getActiveContextId(void);
+CSFML_WINDOW_API sfUint64 sfContext_getActiveContextId();
 
 #endif // SFML_CONTEXT_H

@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////
 //
 // SFML - Simple and Fast Multimedia Library
-// Copyright (C) 2007-2024 Laurent Gomila (laurent@sfml-dev.org)
+// Copyright (C) 2007-2018 Laurent Gomila (laurent@sfml-dev.org)
 //
 // This software is provided 'as-is', without any express or implied warranty.
 // In no event will the authors be held liable for any damages arising from the use of this software.
@@ -135,11 +135,11 @@ CSFML_AUDIO_API sfBool sfSoundRecorder_isAvailable(void);
 CSFML_AUDIO_API void sfSoundRecorder_setProcessingInterval(sfSoundRecorder* soundRecorder, sfTime interval);
 
 ////////////////////////////////////////////////////////////
-/// \brief Get a list of the names of all available audio capture devices
+/// \brief Get a list of the names of all availabe audio capture devices
 ///
 /// This function returns an array of strings (null terminated),
-/// containing the names of all available audio capture devices.
-/// If no devices are available, then NULL is returned.
+/// containing the names of all availabe audio capture devices.
+/// If no devices are available then NULL is returned.
 ///
 /// \param count Pointer to a variable that will be filled with the number of modes in the array
 ///
@@ -157,7 +157,7 @@ CSFML_AUDIO_API const char** sfSoundRecorder_getAvailableDevices(size_t* count);
 /// \return The name of the default audio capture device (null terminated)
 ///
 ////////////////////////////////////////////////////////////
-CSFML_AUDIO_API const char* sfSoundRecorder_getDefaultDevice(void);
+CSFML_AUDIO_API const char* sfSoundRecorder_getDefaultDevice();
 
 ////////////////////////////////////////////////////////////
 /// \brief Set the audio capture device

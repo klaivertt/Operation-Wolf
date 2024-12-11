@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////
 //
 // SFML - Simple and Fast Multimedia Library
-// Copyright (C) 2007-2024 Laurent Gomila (laurent@sfml-dev.org)
+// Copyright (C) 2007-2018 Laurent Gomila (laurent@sfml-dev.org)
 //
 // This software is provided 'as-is', without any express or implied warranty.
 // In no event will the authors be held liable for any damages arising from the use of this software.
@@ -100,25 +100,6 @@ CSFML_GRAPHICS_API void sfFont_destroy(sfFont* font);
 CSFML_GRAPHICS_API sfGlyph sfFont_getGlyph(const sfFont* font, sfUint32 codePoint, unsigned int characterSize, sfBool bold, float outlineThickness);
 
 ////////////////////////////////////////////////////////////
-/// \brief Determine if this font has a glyph representing the requested code point
-///
-/// Most fonts only include a very limited selection of glyphs from
-/// specific Unicode subsets, like Latin, Cyrillic, or Asian characters.
-///
-/// While code points without representation will return a font specific
-/// default character, it might be useful to verify whether specific
-/// code points are included to determine whether a font is suited
-/// to display text in a specific language.
-///
-/// \param font      Source font
-/// \param codePoint Unicode code point to check
-///
-/// \return sfTrue if the codepoint has a glyph representation, sfFalse otherwise
-///
-////////////////////////////////////////////////////////////
-CSFML_GRAPHICS_API sfBool sfFont_hasGlyph(const sfFont* font, sfUint32 codePoint);
-
-////////////////////////////////////////////////////////////
 /// \brief Get the kerning value corresponding to a given pair of characters in a font
 ///
 /// \param font          Source font
@@ -130,19 +111,6 @@ CSFML_GRAPHICS_API sfBool sfFont_hasGlyph(const sfFont* font, sfUint32 codePoint
 ///
 ////////////////////////////////////////////////////////////
 CSFML_GRAPHICS_API float sfFont_getKerning(const sfFont* font, sfUint32 first, sfUint32 second, unsigned int characterSize);
-
-////////////////////////////////////////////////////////////
-/// \brief Get the bold kerning value corresponding to a given pair of characters in a font
-///
-/// \param font          Source font
-/// \param first         Unicode code point of the first character
-/// \param second        Unicode code point of the second character
-/// \param characterSize Character size, in pixels
-///
-/// \return Kerning offset, in pixels
-///
-////////////////////////////////////////////////////////////
-CSFML_GRAPHICS_API float sfFont_getBoldKerning(const sfFont* font, sfUint32 first, sfUint32 second, unsigned int characterSize);
 
 ////////////////////////////////////////////////////////////
 /// \brief Get the line spacing value
@@ -192,35 +160,6 @@ CSFML_GRAPHICS_API float sfFont_getUnderlineThickness(const sfFont* font, unsign
 ///
 ////////////////////////////////////////////////////////////
 CSFML_GRAPHICS_API const sfTexture* sfFont_getTexture(sfFont* font, unsigned int characterSize);
-
-////////////////////////////////////////////////////////////
-/// \brief Enable or disable the smooth filter
-///
-/// When the filter is activated, the font appears smoother
-/// so that pixels are less noticeable. However if you want
-/// the font to look exactly the same as its source file,
-/// you should disable it.
-/// The smooth filter is enabled by default.
-///
-/// \param font          Source font
-/// \param smooth        sfTrue to enable smoothing, sfFalse to disable it
-///
-/// \see isSmooth
-///
-////////////////////////////////////////////////////////////
-CSFML_GRAPHICS_API void sfFont_setSmooth(sfFont* font, sfBool smooth);
-
-////////////////////////////////////////////////////////////
-/// \brief Tell whether the smooth filter is enabled or disabled
-///
-/// \param font          Source font
-///
-/// \return sfTrue if smoothing is enabled, sfFalse if it is disabled
-///
-/// \see setSmooth
-///
-////////////////////////////////////////////////////////////
-CSFML_GRAPHICS_API sfBool sfFont_isSmooth(const sfFont* font);
 
 ////////////////////////////////////////////////////////////
 /// \brief Get the font information

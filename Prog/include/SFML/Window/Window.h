@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////
 //
 // SFML - Simple and Fast Multimedia Library
-// Copyright (C) 2007-2024 Laurent Gomila (laurent@sfml-dev.org)
+// Copyright (C) 2007-2018 Laurent Gomila (laurent@sfml-dev.org)
 //
 // This software is provided 'as-is', without any express or implied warranty.
 // In no event will the authors be held liable for any damages arising from the use of this software.
@@ -31,10 +31,24 @@
 #include <SFML/Window/Export.h>
 #include <SFML/Window/Event.h>
 #include <SFML/Window/VideoMode.h>
-#include <SFML/Window/WindowBase.h>
 #include <SFML/Window/WindowHandle.h>
 #include <SFML/Window/Types.h>
 #include <SFML/System/Vector2.h>
+
+
+////////////////////////////////////////////////////////////
+/// \brief Enumeration of window creation styles
+///
+////////////////////////////////////////////////////////////
+typedef enum
+{
+    sfNone         = 0,      ///< No border / title bar (this flag and all others are mutually exclusive)
+    sfTitlebar     = 1 << 0, ///< Title bar + fixed border
+    sfResize       = 1 << 1, ///< Titlebar + resizable border + maximize button
+    sfClose        = 1 << 2, ///< Titlebar + close button
+    sfFullscreen   = 1 << 3, ///< Fullscreen mode (this flag and all others are mutually exclusive)
+    sfDefaultStyle = sfTitlebar | sfResize | sfClose ///< Default window style
+} sfWindowStyle;
 
 
 ////////////////////////////////////////////////////////////
@@ -392,7 +406,7 @@ CSFML_WINDOW_API void sfWindow_setFramerateLimit(sfWindow* window, unsigned int 
 /// \brief Change the joystick threshold
 ///
 /// The joystick threshold is the value below which
-/// no JoystickMoved event will be generated.
+/// no JoyMoved event will be generated.
 ///
 /// \param window    Window object
 /// \param threshold New threshold, in the range [0, 100]
@@ -473,19 +487,6 @@ CSFML_WINDOW_API void sfWindow_display(sfWindow* window);
 ///
 ////////////////////////////////////////////////////////////
 CSFML_WINDOW_API sfWindowHandle sfWindow_getSystemHandle(const sfWindow* window);
-
-////////////////////////////////////////////////////////////
-/// \brief Create a Vulkan rendering surface
-///
-/// \param window    Window object
-/// \param instance  Vulkan instance
-/// \param surface   Created surface
-/// \param allocator Allocator to use
-///
-/// \return True if surface creation was successful, false otherwise
-///
-////////////////////////////////////////////////////////////
-CSFML_WINDOW_API sfBool sfWindow_createVulkanSurface(sfWindow* window, const VkInstance* instance, VkSurfaceKHR* surface, const VkAllocationCallbacks* allocator);
 
 
 #endif // SFML_WINDOW_H

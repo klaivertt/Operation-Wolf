@@ -19,12 +19,11 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <VCProjectVersion>17.0</VCProjectVersion>
+    <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{dd11dd36-7a37-46f4-a165-d02d2b64873a}</ProjectGuid>
+    <ProjectGuid>{1a590e2d-7a67-4e88-816f-e7c5ae766404}</ProjectGuid>
     <RootNamespace>Game</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>Operation Wolf</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -72,12 +71,12 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(SolutionDir)\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)\lib\msvc;$(LibraryPath)</LibraryPath>
+    <IncludePath>..\include;$(IncludePath)</IncludePath>
+    <LibraryPath>..\lib\msvc;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>$(SolutionDir)\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)\lib\msvc;$(LibraryPath)</LibraryPath>
+    <IncludePath>..\include;$(IncludePath)</IncludePath>
+    <LibraryPath>..\lib\msvc;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -117,7 +116,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>csfml-audio.lib;csfml-graphics.lib;csfml-network.lib;csfml-system.lib;csfml-window.lib;csfml-main.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>csfml-audio.lib;csfml-graphics.lib;csfml-main.lib;csfml-network.lib;csfml-system.lib;csfml-window.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -130,41 +129,30 @@
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>csfml-audio.lib;csfml-graphics.lib;csfml-network.lib;csfml-system.lib;csfml-window.lib;csfml-main.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>csfml-audio.lib;csfml-graphics.lib;csfml-main.lib;csfml-network.lib;csfml-system.lib;csfml-window.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Debug.c" />
-    <ClCompile Include="GameState.c" />
-    <ClCompile Include="Game\Ennemy.c" />
-    <ClCompile Include="Game\Game.c" />
-    <ClCompile Include="Game\Player.c" />
-    <ClCompile Include="Libs\Animation.c" />
-    <ClCompile Include="Libs\Collision.c" />
-    <ClCompile Include="Libs\Text.c" />
-    <ClCompile Include="Libs\Utilities.c" />
+    <ClCompile Include="Enemy.c" />
+    <ClCompile Include="Game.c" />
+    <ClCompile Include="GameOver.c" />
+    <ClCompile Include="Sprite.c" />
+    <ClCompile Include="State.c" />
     <ClCompile Include="main.c" />
-    <ClCompile Include="Menu\Menu.c" />
+    <ClCompile Include="Menu.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Debug.h" />
-    <ClInclude Include="GameState.h" />
-    <ClInclude Include="Game\Ennemy.h" />
-    <ClInclude Include="Game\Game.h" />
-    <ClInclude Include="Game\Player.h" />
-    <ClInclude Include="Libs\Animations.h" />
-    <ClInclude Include="Libs\Collision.h" />
-    <ClInclude Include="Libs\Common.h" />
-    <ClInclude Include="Libs\Text.h" />
-    <ClInclude Include="Libs\Utilities.h" />
-    <ClInclude Include="Menu\Menu.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="..\resources.rc" />
+    <ClInclude Include="Common.h" />
+    <ClInclude Include="Enemy.h" />
+    <ClInclude Include="Game.h" />
+    <ClInclude Include="GameOver.h" />
+    <ClInclude Include="Sprite.h" />
+    <ClInclude Include="State.h" />
+    <ClInclude Include="Menu.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

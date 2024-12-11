@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////
 //
 // SFML - Simple and Fast Multimedia Library
-// Copyright (C) 2007-2024 Laurent Gomila (laurent@sfml-dev.org)
+// Copyright (C) 2007-2018 Laurent Gomila (laurent@sfml-dev.org)
 //
 // This software is provided 'as-is', without any express or implied warranty.
 // In no event will the authors be held liable for any damages arising from the use of this software.
@@ -65,7 +65,7 @@ typedef enum
     sfEvtTouchEnded,             ///< A touch event ended (data in event.touch)
     sfEvtSensorChanged,          ///< A sensor value changed (data in event.sensor)
 
-    sfEvtCount                   ///< Keep last -- the total number of event types
+    sfEvtCount,                  ///< Keep last -- the total number of event types
 } sfEventType;
 
 
@@ -77,7 +77,6 @@ typedef struct
 {
     sfEventType type;
     sfKeyCode   code;
-    sfScancode  scancode;
     sfBool      alt;
     sfBool      control;
     sfBool      shift;

@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////
 //
 // SFML - Simple and Fast Multimedia Library
-// Copyright (C) 2007-2024 Laurent Gomila (laurent@sfml-dev.org)
+// Copyright (C) 2007-2018 Laurent Gomila (laurent@sfml-dev.org)
 //
 // This software is provided 'as-is', without any express or implied warranty.
 // In no event will the authors be held liable for any damages arising from the use of this software.
@@ -203,7 +203,7 @@ CSFML_NETWORK_API sfSocketStatus sfUdpSocket_receivePacket(sfUdpSocket* socket, 
 /// \return The maximum size of a UDP datagram (message)
 ///
 ////////////////////////////////////////////////////////////
-CSFML_NETWORK_API unsigned int sfUdpSocket_maxDatagramSize(void);
+CSFML_NETWORK_API unsigned int sfUdpSocket_maxDatagramSize();
 
 
 #endif // SFML_UDPSOCKET_H

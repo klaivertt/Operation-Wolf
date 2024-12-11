@@ -1,140 +1,80 @@
-#include "../Game/Libs/Common.h"
+#include "Common.h"
+#include "State.h"
+#include "Menu.h"
+#include "Game.h"
+#include "GameOver.h"
 
-#include "GameState.h"
-
-#include "../Game/Menu/Menu.h"
-#include "../Game/Game/Game.h"
-#include "../Game/Libs/Text.h"
-#include "Debug.h"
-
-#pragma region Enumérations
-
-
-#pragma endregion
-
-#pragma region Structures
-
+#pragma region Struct
 typedef struct MainData
 {
 	sfRenderWindow* renderWindow;
 	sfClock* clock;
-	float deltaTime;
+
 }MainData;
-
-typedef struct GameData
-{
-	sfBool isDebug;
-}GameData;
-
-#pragma endregion
-
-#pragma region Déclaration GameLoop
-void Load(MainData* const, GameData* const _data);
-void LoadScreen(MainData* const _data);
-void LoadClock(MainData* const _data);
-
-void PollEvent(sfRenderWindow* const _render, GameData* const _gameData);
-
-void UpdateDeltaTime(MainData* const _data);
-
-void Update(float _dt, MainData* const _data, GameData* const _gameData);
-
-void Draw(sfRenderWindow* const _render, GameData* const _gameData);
-
-void Cleanup(MainData* const _data, GameData* const _gameData);
-
-void OnKeyPressed(sfKeyEvent _key, sfRenderWindow* const _render, GameData* const _gameData);
-
-void OnMousePressed(sfMouseButtonEvent _button, sfRenderWindow* const _render, GameData* const _gameData);
-
-void OnMouseMoved(sfMouseMoveEvent _mouse, GameData* const _gameData);
 #pragma endregion
 
 #pragma region GameLoop
+void Load(MainData* const _mainData);
+void PollEvent(MainData* const _mainData);
+void KeyPressed(sfRenderWindow* const _renderWindow, sfKeyEvent _key);
+void MouseButtonPressed(sfRenderWindow* const _renderWindow, sfMouseButtonEvent _mouseButtonEvent);
+void MouseMoved(sfRenderWindow* const _renderWindow, sfMouseMoveEvent _mouseMove);
+void Update(MainData* const _mainData);
+void Draw(MainData* const _mainData);
+void Cleanup(MainData* const _mainData);
+#pragma endregion
+
+#pragma region Functions
+void LoadMainData(MainData* const _mainData);
+void CleanupMainData(MainData* const _mainData);
+#pragma endregion
+
 
 int main(void)
 {
 	MainData mainData = { 0 };
-	GameData gameData = { 0 };
 
-	Load(&mainData, &gameData);
-
-	// Game loop
+	Load(&mainData);
 	while (sfRenderWindow_isOpen(mainData.renderWindow))
 	{
-		// Gestion des évènements
-		PollEvent(mainData.renderWindow, &gameData);
-
-		// Appelle de la fonction Update, toutes les frames
-		UpdateDeltaTime(&mainData);
-		Update(mainData.deltaTime, &mainData, &gameData);
-
-		// Appelle de la fonction Draw, toutes les frames
-		sfRenderWindow_clear(mainData.renderWindow, sfColor_fromRGB(0, 0, 0));
-		Draw(mainData.renderWindow, &gameData);
-		sfRenderWindow_display(mainData.renderWindow);
+		PollEvent(&mainData);
+		Update(&mainData);
+		Draw(&mainData);
 	}
+	Cleanup(&mainData);
 
-	// Cleanup
-	Cleanup(&mainData, &gameData);
-
+	system("pause");
 	return EXIT_SUCCESS;
 }
 
-void Load(MainData* const _data, GameData* const _game)
+void Load(MainData* const _mainData)
 {
-	LoadScreen(_data);
-	LoadClock(_data);
+	srand(_getpid());
+
+	LoadMainData(_mainData);
+
 	SetGameState(MENU);
-
-	_game->isDebug = sfFalse;
-
-	LoadTextManager();
-	LoadGame();
-	LoadMenu();
-	LoadDebug();
 }
 
-// Fonction qui crée la fenêtre et l'affiche
-void LoadScreen(MainData* const _data)
-{
-	sfVideoMode mode = { SCREEN_W, SCREEN_H, 32 };
-	_data->renderWindow = sfRenderWindow_create(mode, GAME_NAME, sfClose, NULL);
-	sfRenderWindow_setFramerateLimit(_data->renderWindow, MAX_FPS);
-	sfRenderWindow_setVerticalSyncEnabled(_data->renderWindow, VSYNC);
-	sfRenderWindow_setKeyRepeatEnabled(_data->renderWindow, sfFalse);
-
-	sfImage* image = sfImage_createFromFile("Assets/Icon.png");
-	sfVector2u size = sfImage_getSize(image);
-	sfRenderWindow_setIcon(_data->renderWindow, size.x, size.y, sfImage_getPixelsPtr(image));
-
-	sfRenderWindow_setMouseCursorVisible(_data->renderWindow, sfFalse);
-}
-
-// Fonction qui charge la clock pour le DeltaTime
-void LoadClock(MainData* const _data)
-{
-	_data->clock = sfClock_create();
-}
-
-void PollEvent(sfRenderWindow* const _render, GameData* const _game)
+void PollEvent(MainData* const _mainData)
 {
 	sfEvent event;
-	while (sfRenderWindow_pollEvent(_render, &event))
+	while (sfRenderWindow_pollEvent(_mainData->renderWindow, &event))
 	{
 		switch (event.type)
 		{
 		case sfEvtClosed:
-			sfRenderWindow_close(_render);
+			sfRenderWindow_close(_mainData->renderWindow);
 			break;
 		case sfEvtKeyPressed:
-			OnKeyPressed(event.key, _render, _game);
+			
+			KeyPressed(_mainData->renderWindow, event.key);
 			break;
 		case sfEvtMouseButtonPressed:
-			OnMousePressed(event.mouseButton, _render ,_game);
+			MouseButtonPressed(_mainData->renderWindow, event.mouseButton);
 			break;
 		case sfEvtMouseMoved:
-			OnMouseMoved(event.mouseMove, _game);
+			MouseMoved(_mainData->renderWindow, event.mouseMove);
 			break;
 		default:
 			break;
@@ -142,121 +82,136 @@ void PollEvent(sfRenderWindow* const _render, GameData* const _game)
 	}
 }
 
-void UpdateDeltaTime(MainData* const _mainData)
+void KeyPressed(sfRenderWindow* const _renderWindow, sfKeyEvent _key)
 {
-	_mainData->deltaTime = sfTime_asSeconds(sfClock_restart(_mainData->clock));
-}
-
-void Update(float _dt, MainData* const _data, GameData* const _game)
-{
-
-	if (_game->isDebug)
-	{
-		UpdateDebug(_dt, _data->renderWindow);
-	}
-
-	enum GameState state = GetGameState();
-
-	switch (state)
+	switch (GetGameState())
 	{
 	case MENU:
+		KeyPressedMenu(_renderWindow, _key);
 		break;
 	case GAME:
-		UpdateGame(_dt, _data->renderWindow);
+		KeyPressedGame(_renderWindow, _key);
+		break;
+	case GAME_OVER:
+		KeyPressedGameOver(_renderWindow, _key);
 		break;
 	default:
 		break;
 	}
 }
 
-void Draw(sfRenderWindow* const _render, GameData* const _game)
+void MouseButtonPressed(sfRenderWindow* const _renderWindow, sfMouseButtonEvent _mouseButton)
 {
-	enum GameState state = GetGameState();
-
-	switch (state)
+	switch (GetGameState())
 	{
 	case MENU:
-		DrawMenu(_render);
+		MouseButtonPressedMenu(_renderWindow, _mouseButton);
 		break;
 	case GAME:
-		DrawGame(_render);
+		MouseButtonPressedGame(_renderWindow, _mouseButton);
+		break;
+	case GAME_OVER:
+		MouseButtonPressedGameOver(_renderWindow, _mouseButton);
 		break;
 	default:
 		break;
 	}
 
-	if (_game->isDebug)
-	{
-		DrawDebug(_render);
-	}
 }
 
-void Cleanup(MainData* const _data, GameData* const _game)
+void MouseMoved(sfRenderWindow* const _renderWindow, sfMouseMoveEvent _mouseMove)
 {
-	sfRenderWindow_destroy(_data->renderWindow);
-	sfClock_destroy(_data->clock);
-
-	_data->renderWindow = NULL;
-	_data->clock = NULL;
-
-	CleanMenu();
-}
-
-void OnKeyPressed(sfKeyEvent _key, sfRenderWindow* const _render, GameData* const _game)
-{
-	enum GameState state = GetGameState();
-
-	switch (_key.code)
-	{
-	case sfKeyA:
-		_game->isDebug = !_game->isDebug;
-		break;
-	default:
-		break;
-	}
-
-	switch (state)
+	switch (GetGameState())
 	{
 	case MENU:
-		OnKeyPressedMenu(_key, _render);
+		MouseMovedMenu(_renderWindow, _mouseMove);
 		break;
 	case GAME:
-		OnKeyPressedGame(_key, _render);
+		MouseMovedGame(_renderWindow, _mouseMove);
+		break;
+	case GAME_OVER:
+		MouseMovedGameOver(_renderWindow, _mouseMove);
 		break;
 	default:
 		break;
 	}
 }
 
-void OnMousePressed(sfMouseButtonEvent _mouse, sfRenderWindow* const _render, GameData* const _game)
+void Update(MainData* const _mainData)
 {
-	enum GameState state = GetGameState();
+	float dt = sfTime_asSeconds(sfClock_restart(_mainData->clock));
 
-	switch (state)
+	switch (GetGameState())
 	{
 	case MENU:
+		UpdateMenu(dt);
 		break;
 	case GAME:
-		OnMousePressedGame(_mouse, _render);
+		UpdateGame(dt);
+		break;
+	case GAME_OVER:
+		UpdateGameOver(dt);
 		break;
 	default:
 		break;
 	}
 }
 
-void OnMouseMoved(sfMouseMoveEvent _mouse, GameData* const _game)
+void Draw(MainData* const _mainData)
 {
-	enum GameState state = GetGameState();
+	sfRenderWindow_clear(_mainData->renderWindow, sfBlack);
 
-	switch (state)
+	switch (GetGameState())
 	{
 	case MENU:
+		DrawMenu(_mainData->renderWindow);
 		break;
 	case GAME:
+		DrawGame(_mainData->renderWindow);
+		break;
+	case GAME_OVER:
+		DrawGameOver(_mainData->renderWindow);
+		break;
+	default:
+		break;
+	}
+
+	sfRenderWindow_display(_mainData->renderWindow);
+}
+
+void Cleanup(MainData* const _mainData)
+{
+	CleanupMainData(_mainData);
+
+	switch (GetGameState())
+	{
+	case MENU:
+		CleanupMenu();
+		break;
+	case GAME:
+		CleanupGame();
+		break;
+	case GAME_OVER:
+		CleanupGameOver();
 		break;
 	default:
 		break;
 	}
 }
 
-#pragma endregion
+void LoadMainData(MainData* const _mainData)
+{
+	_mainData->clock = sfClock_create();
+	sfVideoMode videoMode = { SCREEN_WIDTH, SCREEN_HEIGHT, BPP };
+	_mainData->renderWindow = sfRenderWindow_create(videoMode, "Game", sfDefaultStyle, NULL);
+	sfRenderWindow_setFramerateLimit(_mainData->renderWindow, 60);
+	sfRenderWindow_setKeyRepeatEnabled(_mainData->renderWindow, sfFalse);
+}
+
+void CleanupMainData(MainData* const _mainData)
+{
+	sfClock_destroy(_mainData->clock);
+	_mainData->clock = NULL;
+	sfRenderWindow_destroy(_mainData->renderWindow);
+	_mainData->renderWindow = NULL;
+}

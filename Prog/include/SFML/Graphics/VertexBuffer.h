@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////
 //
 // SFML - Simple and Fast Multimedia Library
-// Copyright (C) 2007-2024 Laurent Gomila (laurent@sfml-dev.org)
+// Copyright (C) 2007-2018 Laurent Gomila (laurent@sfml-dev.org)
 //
 // This software is provided 'as-is', without any express or implied warranty.
 // In no event will the authors be held liable for any damages arising from the use of this software.
@@ -248,7 +248,7 @@ CSFML_GRAPHICS_API void sfVertexBuffer_bind(const sfVertexBuffer* vertexBuffer);
 /// \return True if vertex buffers are supported, false otherwise
 ///
 ////////////////////////////////////////////////////////////
-CSFML_GRAPHICS_API sfBool sfVertexBuffer_isAvailable(void);
+CSFML_GRAPHICS_API sfBool sfVertexBuffer_isAvailable();
 
 
 #endif // SFML_VERTEXBUFFER_H

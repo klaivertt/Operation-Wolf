@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////
 //
 // SFML - Simple and Fast Multimedia Library
-// Copyright (C) 2007-2024 Laurent Gomila (laurent@sfml-dev.org)
+// Copyright (C) 2007-2018 Laurent Gomila (laurent@sfml-dev.org)
 //
 // This software is provided 'as-is', without any express or implied warranty.
 // In no event will the authors be held liable for any damages arising from the use of this software.
@@ -32,7 +32,6 @@
 #include <SFML/Graphics/Color.h>
 #include <SFML/Graphics/Rect.h>
 #include <SFML/Graphics/Types.h>
-#include <SFML/System/Buffer.h>
 #include <SFML/System/InputStream.h>
 #include <SFML/System/Vector2.h>
 #include <stddef.h>
@@ -157,29 +156,8 @@ CSFML_GRAPHICS_API void sfImage_destroy(sfImage* image);
 ///
 /// \return sfTrue if saving was successful
 ///
-/// \see sfImage_saveToMemory
-///
 ////////////////////////////////////////////////////////////
 CSFML_GRAPHICS_API sfBool sfImage_saveToFile(const sfImage* image, const char* filename);
-
-////////////////////////////////////////////////////////////
-/// \brief Save the image to a buffer in memory
-///
-/// The format of the image must be specified.
-/// The supported image formats are bmp, png, tga and jpg.
-/// This function fails if the image is empty, or if
-/// the format was invalid.
-///
-/// \param image  Image object
-/// \param output Buffer to fill with encoded data
-/// \param format Encoding format to use
-///
-/// \return sfTrue if saving was successful
-///
-/// \see sfImage_saveToFile
-///
-////////////////////////////////////////////////////////////
-CSFML_GRAPHICS_API sfBool sfImage_saveToMemory(const sfImage* image, sfBuffer* output, const char* format);
 
 ////////////////////////////////////////////////////////////
 /// \brief Return the size of an image

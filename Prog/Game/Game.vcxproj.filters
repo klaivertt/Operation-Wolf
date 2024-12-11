@@ -13,98 +13,69 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Fichiers d%27en-tête\Menu">
-      <UniqueIdentifier>{f8a38a28-16e1-4c13-8957-f185160396f6}</UniqueIdentifier>
+    <Filter Include="Fichiers d%27en-tête\Utilitaires">
+      <UniqueIdentifier>{0ac5b026-68fb-4e6e-a19d-eb0798529bd6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Fichiers sources\Menu">
-      <UniqueIdentifier>{1fe2bf8f-a828-4388-b673-28320f4600a8}</UniqueIdentifier>
+    <Filter Include="Fichiers sources\Utilitaires">
+      <UniqueIdentifier>{cefb5449-e3f7-495c-a504-dae049c1f127}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Fichiers sources\Libs">
-      <UniqueIdentifier>{ece83321-5ad1-4d20-b342-9e72ce82cd4f}</UniqueIdentifier>
+    <Filter Include="Fichiers d%27en-tête\States">
+      <UniqueIdentifier>{07a2f4be-de71-4009-a60c-16bfab538fbe}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Fichiers d%27en-tête\Libs">
-      <UniqueIdentifier>{edf14d4e-6134-48e1-8021-d820f40c14f7}</UniqueIdentifier>
+    <Filter Include="Fichiers sources\States">
+      <UniqueIdentifier>{e436b0e6-9339-4525-86e6-926ffb3c1e60}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Fichiers d%27en-tête\Game">
-      <UniqueIdentifier>{91b95bd7-615e-4e4f-b9a4-89a853b220ee}</UniqueIdentifier>
+    <Filter Include="Fichiers sources\Characters">
+      <UniqueIdentifier>{fd57e698-f349-4e47-8a33-ee8131fb8ff6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Fichiers sources\Game">
-      <UniqueIdentifier>{d98029f1-eebe-4265-9657-f03da61b5c64}</UniqueIdentifier>
+    <Filter Include="Fichiers d%27en-tête\Characters">
+      <UniqueIdentifier>{f3ca5748-730d-48de-a6e1-ed9f3f308144}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="GameState.c">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="Menu\Menu.c">
-      <Filter>Fichiers sources\Menu</Filter>
-    </ClCompile>
-    <ClCompile Include="Libs\Collision.c">
-      <Filter>Fichiers sources\Libs</Filter>
-    </ClCompile>
-    <ClCompile Include="Libs\Animation.c">
-      <Filter>Fichiers sources\Libs</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\Game.c">
-      <Filter>Fichiers sources\Game</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\Player.c">
-      <Filter>Fichiers sources\Game</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\Ennemy.c">
-      <Filter>Fichiers sources\Game</Filter>
-    </ClCompile>
-    <ClCompile Include="Libs\Utilities.c">
-      <Filter>Fichiers sources\Libs</Filter>
-    </ClCompile>
     <ClCompile Include="main.c">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="Libs\Text.c">
-      <Filter>Fichiers sources\Libs</Filter>
+    <ClCompile Include="GameOver.c">
+      <Filter>Fichiers sources\States</Filter>
     </ClCompile>
-    <ClCompile Include="Debug.c">
+    <ClCompile Include="State.c">
+      <Filter>Fichiers sources\States</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.c">
+      <Filter>Fichiers sources\States</Filter>
+    </ClCompile>
+    <ClCompile Include="Menu.c">
+      <Filter>Fichiers sources\States</Filter>
+    </ClCompile>
+    <ClCompile Include="Sprite.c">
+      <Filter>Fichiers sources\Utilitaires</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.c">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="GameState.h">
+    <ClInclude Include="Common.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="Menu\Menu.h">
-      <Filter>Fichiers d%27en-tête\Menu</Filter>
+    <ClInclude Include="Game.h">
+      <Filter>Fichiers d%27en-tête\States</Filter>
     </ClInclude>
-    <ClInclude Include="Libs\Collision.h">
-      <Filter>Fichiers d%27en-tête\Libs</Filter>
+    <ClInclude Include="Menu.h">
+      <Filter>Fichiers d%27en-tête\States</Filter>
     </ClInclude>
-    <ClInclude Include="Libs\Common.h">
-      <Filter>Fichiers d%27en-tête\Libs</Filter>
+    <ClInclude Include="State.h">
+      <Filter>Fichiers d%27en-tête\States</Filter>
     </ClInclude>
-    <ClInclude Include="Libs\Animations.h">
-      <Filter>Fichiers d%27en-tête\Libs</Filter>
+    <ClInclude Include="GameOver.h">
+      <Filter>Fichiers d%27en-tête\States</Filter>
     </ClInclude>
-    <ClInclude Include="Game\Game.h">
-      <Filter>Fichiers d%27en-tête\Game</Filter>
+    <ClInclude Include="Sprite.h">
+      <Filter>Fichiers d%27en-tête\Utilitaires</Filter>
     </ClInclude>
-    <ClInclude Include="Game\Player.h">
-      <Filter>Fichiers d%27en-tête\Game</Filter>
+    <ClInclude Include="Enemy.h">
+      <Filter>Fichiers d%27en-tête\Characters</Filter>
     </ClInclude>
-    <ClInclude Include="Game\Ennemy.h">
-      <Filter>Fichiers d%27en-tête\Game</Filter>
-    </ClInclude>
-    <ClInclude Include="Libs\Utilities.h">
-      <Filter>Fichiers d%27en-tête\Libs</Filter>
-    </ClInclude>
-    <ClInclude Include="Libs\Text.h">
-      <Filter>Fichiers d%27en-tête\Libs</Filter>
-    </ClInclude>
-    <ClInclude Include="Debug.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="..\resources.rc">
-      <Filter>Fichiers de ressources</Filter>
-    </ResourceCompile>
   </ItemGroup>
 </Project>

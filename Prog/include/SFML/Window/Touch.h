@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////
 //
 // SFML - Simple and Fast Multimedia Library
-// Copyright (C) 2007-2024 Laurent Gomila (laurent@sfml-dev.org)
+// Copyright (C) 2007-2018 Laurent Gomila (laurent@sfml-dev.org)
 //
 // This software is provided 'as-is', without any express or implied warranty.
 // In no event will the authors be held liable for any damages arising from the use of this software.
@@ -56,20 +56,6 @@ CSFML_WINDOW_API sfBool sfTouch_isDown(unsigned int finger);
 ///
 ////////////////////////////////////////////////////////////
 CSFML_WINDOW_API sfVector2i sfTouch_getPosition(unsigned int finger, const sfWindow* relativeTo);
-
-////////////////////////////////////////////////////////////
-/// \brief Get the current position of a touch in window coordinates
-///
-/// This function returns the current touch position
-/// relative to the given window base, or desktop if NULL is passed.
-///
-/// \param finger Finger index
-/// \param relativeTo Reference window
-///
-/// \return Current position of \a finger, or undefined if it's not down
-///
-////////////////////////////////////////////////////////////
-CSFML_WINDOW_API sfVector2i sfTouch_getPositionWindowBase(unsigned int finger, const sfWindowBase* relativeTo);
 
 
 #endif // SFML_TOUCH_H

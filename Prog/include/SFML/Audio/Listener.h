@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////
 //
 // SFML - Simple and Fast Multimedia Library
-// Copyright (C) 2007-2024 Laurent Gomila (laurent@sfml-dev.org)
+// Copyright (C) 2007-2018 Laurent Gomila (laurent@sfml-dev.org)
 //
 // This software is provided 'as-is', without any express or implied warranty.
 // In no event will the authors be held liable for any damages arising from the use of this software.
@@ -68,7 +68,7 @@ CSFML_AUDIO_API void sfListener_setPosition(sfVector3f position);
 /// \return The listener's position
 ///
 ////////////////////////////////////////////////////////////
-CSFML_AUDIO_API sfVector3f sfListener_getPosition(void);
+CSFML_AUDIO_API sfVector3f sfListener_getPosition();
 
 ////////////////////////////////////////////////////////////
 /// \brief Set the orientation of the forward vector in the scene
@@ -91,7 +91,7 @@ CSFML_AUDIO_API void sfListener_setDirection(sfVector3f direction);
 /// \return Listener's forward vector (not normalized)
 ///
 ////////////////////////////////////////////////////////////
-CSFML_AUDIO_API sfVector3f sfListener_getDirection(void);
+CSFML_AUDIO_API sfVector3f sfListener_getDirection();
 
 ////////////////////////////////////////////////////////////
 /// \brief Set the upward vector of the listener in the scene
@@ -114,7 +114,7 @@ CSFML_AUDIO_API void sfListener_setUpVector(sfVector3f upVector);
 /// \return Listener's upward vector (not normalized)
 ///
 ////////////////////////////////////////////////////////////
-CSFML_AUDIO_API sfVector3f sfListener_getUpVector(void);
+CSFML_AUDIO_API sfVector3f sfListener_getUpVector();
 
 
 #endif // SFML_LISTENER_H

@@ -1,9 +1,4 @@
-﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(531,5): warning MSB8028: Le répertoire intermédiaire (x64\Debug\) contient des fichiers partagés provenant d'un autre projet (DOOM.vcxproj). Cela peut entraîner un comportement de nettoyage et de regénération incorrect.
-  Ennemy.c
-C:\Users\Etudiant1\Desktop\abosio\Prog1\Csfml\Operation Wolf\Prog\Game\Game\Ennemy.c(87,18): warning C4047: 'fonction' : les niveaux d'indirection de 'Animation *' et de 'Animation **' sont différents
-C:\Users\Etudiant1\Desktop\abosio\Prog1\Csfml\Operation Wolf\Prog\Game\Game\Ennemy.c(87,18): warning C4024: 'UpdateAnimation' : types différents pour le paramètre formel et réel 1
-C:\Users\Etudiant1\Desktop\abosio\Prog1\Csfml\Operation Wolf\Prog\Game\Game\Ennemy.c(96,86): warning C4244: 'fonction' : conversion de 'int' en 'float', perte possible de données
-C:\Users\Etudiant1\Desktop\abosio\Prog1\Csfml\Operation Wolf\Prog\Game\Game\Ennemy.c(96,95): warning C4244: 'fonction' : conversion de 'int' en 'float', perte possible de données
-C:\Users\Etudiant1\Desktop\abosio\Prog1\Csfml\Operation Wolf\Prog\Game\Game\Ennemy.c(110,43): warning C4244: 'initialisation' : conversion de 'int' en 'float', perte possible de données
-C:\Users\Etudiant1\Desktop\abosio\Prog1\Csfml\Operation Wolf\Prog\Game\Game\Ennemy.c(111,48): warning C4244: 'initialisation' : conversion de 'int' en 'float', perte possible de données
-  Game.vcxproj -> C:\Users\Etudiant1\Desktop\abosio\Prog1\Csfml\Operation Wolf\Prog\x64\Debug\Operation Wolf.exe
+﻿  Enemy.c
+D:\SVN\Eleves\mrobles\Année 1\Projets\Creajeux\Operation Wolf\Game\Enemy.h(14,16): error C2016: En C, un struct ou un union doit avoir au moins un membre
+  (compiler le fichier source 'Enemy.c')
+  

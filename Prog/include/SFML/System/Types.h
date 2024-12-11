@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////
 //
 // SFML - Simple and Fast Multimedia Library
-// Copyright (C) 2007-2024 Laurent Gomila (laurent@sfml-dev.org)
+// Copyright (C) 2007-2018 Laurent Gomila (laurent@sfml-dev.org)
 //
 // This software is provided 'as-is', without any express or implied warranty.
 // In no event will the authors be held liable for any damages arising from the use of this software.
@@ -26,7 +26,6 @@
 #define SFML_SYSTEM_TYPES_H
 
 
-typedef struct sfBuffer sfBuffer;
 typedef struct sfClock sfClock;
 typedef struct sfMutex sfMutex;
 typedef struct sfThread sfThread;
