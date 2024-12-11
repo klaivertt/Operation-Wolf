@@ -24,6 +24,7 @@ typedef struct Enemy
 	EnemyState state;
 
 	
+	
 	int life;
 	float waitTime;
 	
@@ -34,7 +35,7 @@ typedef struct EnemyData
 {
 	Enemy enemy[5];
 
-	sfIntRect anim[1][9];
+	sfIntRect animSoldier[9];
 
 	sfTexture* spriteSheet;
 

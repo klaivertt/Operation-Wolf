@@ -4,8 +4,15 @@ EnemyData enemyData;
 
 void LoadEnemy(void)
 {
-	for (short i=0, i < 9, i++ )
-	enemyData.anim[]
+	//enemyData.animSoldier[0] = (sfIntRect){};
+	//enemyData.animSoldier[1] = (sfIntRect){};
+	//enemyData.animSoldier[2] = (sfIntRect){};
+	//enemyData.animSoldier[3] = (sfIntRect){};
+	//enemyData.animSoldier[4] = (sfIntRect){};
+	//enemyData.animSoldier[5] = (sfIntRect){};
+	//enemyData.animSoldier[6] = (sfIntRect){};
+	//enemyData.animSoldier[7] = (sfIntRect){};
+	//enemyData.animSoldier[8] = (sfIntRect){};
 }
 
 void KeyPressedEnemy(sfRenderWindow* _renderWindow, sfKeyEvent _key)
