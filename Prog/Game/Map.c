@@ -2,6 +2,7 @@
 
 void LoadMap(void)
 {
+
 }
 
 void UpdateMap(float _dt)
