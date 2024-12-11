@@ -6,18 +6,6 @@ void LoadGame(void)
 {
 	printf("LOAD GAME\n");
 
-	//Background
-	gameData.background.sprite = sfSprite_create();
-	gameData.background.texture = sfTexture_createFromFile("Assets/Sprites/Backgrounds/Game.png", NULL);
-
-	sfSprite_setTexture(gameData.background.sprite, gameData.background.texture, sfTrue);
-
-	sfVector2f position = { 0,SCREEN_HEIGHT };
-	sfFloatRect globalBounds = sfSprite_getGlobalBounds(gameData.background.sprite);
-
-	sfSprite_setOrigin(gameData.background.sprite, (sfVector2f) { 0, globalBounds.height });
-	sfSprite_setPosition(gameData.background.sprite, position);
-
 	LoadMap();
 	LoadEnemy();
 	LoadHUD();
