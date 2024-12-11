@@ -18,15 +18,24 @@ typedef enum EnemyType
 	SOLDIER,
 }EnemyType;
 
+
+typedef enum Drop
+{
+	HEALTH,
+	AMMO,
+	NONE
+}Drop;
+
 typedef struct Enemy
 {
 	EnemyType type;
 	EnemyState state;
+	Drop drop;
 	
 	int life;
 	int damage;
 	float waitTime;
-	
+	sfSprite* sprite;
 
 }Enemy;
 

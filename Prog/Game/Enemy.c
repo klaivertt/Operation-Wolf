@@ -13,7 +13,6 @@ void LoadEnemy(void)
 	//enemyData.animSoldier[6] = (sfIntRect){};
 	//enemyData.animSoldier[7] = (sfIntRect){};
 	//enemyData.animSoldier[8] = (sfIntRect){};
-
 	enemyData.nbSoldierSprite = sizeof(enemyData.animSoldier) / sizeof(enemyData.animSoldier[0]);
 
 	for (short i = 0; i < enemyData.nbSoldierSprite; i++)
