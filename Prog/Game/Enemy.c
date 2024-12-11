@@ -9,12 +9,15 @@ void LoadEnemy(void)
 {
 	if (enemyData.spriteSheet == NULL)
 	{
-		enemyData.spriteSheet = sfTexture_createFromFile("Assets/Sprites/Spritesheet",NULL);
+		enemyData.spriteSheet = sfTexture_createFromFile("Assets/Sprites/Spritesheet.png",NULL);
 	}
 
 	if (enemyData.enemy[0].sprite == NULL)
 	{
-		//CreateSprite(&enemyData.enemy[0].sprite,);
+		sfVector2f pos = { 1 + rand() % 2, 1 + rand() % 3};
+		sfIntRect rect = ;
+		sfVector2f origin = { 0.5,1 };
+		CreateSprite(&enemyData.enemy[0].sprite,);
 	}
 	
 }
@@ -58,7 +61,7 @@ void ScreenCollisionX(Enemy* _enemy)
 	{
 		_enemy->speedMultiplicator = BASE_SPEED * _enemy->speedMultiplicator;
 	}
-	if (GB.left < 0)
+	else if (GB.left < 0)
 	{
 		_enemy->speedMultiplicator = -BASE_SPEED * _enemy->speedMultiplicator;
 	}
