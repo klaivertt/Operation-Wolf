@@ -25,9 +25,6 @@
     <Filter Include="Fichiers sources\States">
       <UniqueIdentifier>{e436b0e6-9339-4525-86e6-926ffb3c1e60}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Fichiers d%27en-tête\Characters">
-      <UniqueIdentifier>{f3ca5748-730d-48de-a6e1-ed9f3f308144}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Fichiers sources\States\Game">
       <UniqueIdentifier>{2664b8cf-4d09-4095-8afe-f717310e78cb}</UniqueIdentifier>
     </Filter>
@@ -36,6 +33,15 @@
     </Filter>
     <Filter Include="Fichiers sources\States\Game\Map">
       <UniqueIdentifier>{850e843b-0c34-4b7b-9d3e-1978177e5992}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\States\Game">
+      <UniqueIdentifier>{8fb0422a-1bbe-408f-ae28-a1f00badcc71}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\States\Game\Characters">
+      <UniqueIdentifier>{f3ca5748-730d-48de-a6e1-ed9f3f308144}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\States\Game\Map">
+      <UniqueIdentifier>{5c3f5a3f-5946-4838-9d02-3e3e7d6005df}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -71,9 +77,6 @@
     <ClInclude Include="Common.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="Game.h">
-      <Filter>Fichiers d%27en-tête\States</Filter>
-    </ClInclude>
     <ClInclude Include="Menu.h">
       <Filter>Fichiers d%27en-tête\States</Filter>
     </ClInclude>
@@ -87,13 +90,16 @@
       <Filter>Fichiers d%27en-tête\Utilitaires</Filter>
     </ClInclude>
     <ClInclude Include="Enemy.h">
-      <Filter>Fichiers d%27en-tête\Characters</Filter>
+      <Filter>Fichiers d%27en-tête\States\Game\Characters</Filter>
     </ClInclude>
     <ClInclude Include="Player.h">
-      <Filter>Fichiers d%27en-tête\Characters</Filter>
+      <Filter>Fichiers d%27en-tête\States\Game\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Fichiers d%27en-tête\States\Game</Filter>
     </ClInclude>
     <ClInclude Include="Map.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+      <Filter>Fichiers d%27en-tête\States\Game\Map</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
