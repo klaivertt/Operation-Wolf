@@ -1,5 +1,4 @@
 
 *.vsidx
-*.filters
-*.user
+/Prog/.vs
 /Prog/Game/x64
