@@ -5,6 +5,8 @@
 #include "Common.h"
 #include "Sprite.h"
 
+#define BASE_SPEED 300
+
 typedef enum EnemyState
 {
 	WALK,
@@ -34,6 +36,7 @@ typedef struct Enemy
 	
 	int life;
 	int damage;
+	int speedMultiplicator;
 	float waitTime;
 	sfSprite* sprite;
 
