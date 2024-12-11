@@ -41,8 +41,6 @@ typedef struct Enemy
 
 typedef struct EnemyData
 {
-	Enemy enemy[5];
-
 	sfIntRect animSoldier[9];
 	int nbSoldierSprite;
 
@@ -55,7 +53,5 @@ void LoadMap(void);
 void UpdateMap(float _dt);
 void DrawMap(sfRenderWindow* _renderWindow);
 void CleanupMap(void);
-
-
 
 #endif
