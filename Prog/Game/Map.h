@@ -6,10 +6,12 @@
 
 
 #define BACKGROUND_SPEED 200.f
-
+#define MAX_PROPS 10
+#define PROP_HEIGHT_STEP 192
 typedef struct Map
 {
 	sfSprite* background;
+	sfSprite* props[MAX_PROPS];
 }Map;
 void LoadMap(void);
 void UpdateMap(float _dt);
