@@ -7,7 +7,16 @@ void ScreenCollisionX(Enemy* _enemy);
 
 void LoadEnemy(void)
 {
+	if (enemyData.spriteSheet == NULL)
+	{
+		enemyData.spriteSheet = sfTexture_createFromFile("Assets/Sprites/Spritesheet",NULL);
+	}
 
+	if (enemyData.enemy[0].sprite == NULL)
+	{
+		//CreateSprite(&enemyData.enemy[0].sprite,);
+	}
+	
 }
 
 void KeyPressedEnemy(sfRenderWindow* _renderWindow, sfKeyEvent _key)
@@ -39,6 +48,7 @@ void CleanupEnemy(void)
 {
 
 }
+
 
 void ScreenCollisionX(Enemy* _enemy)
 {
