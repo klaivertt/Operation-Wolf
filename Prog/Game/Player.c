@@ -4,13 +4,12 @@ PlayerData player;
 
 void LoadPlayer()
 {
-	sfIntRect rect = { 1121, 1944, 51 , 51 };
+	sfIntRect rect = { 1223, 1946, 47 , 47 };
 	sfVector2f position = { SCREEN_WIDTH / 2 , SCREEN_HEIGHT / 2 };
 	sfVector2f origin = { 0.5 , 0.5 };
 	player.cursor.texture = sfTexture_createFromFile("Assets/Sprites/SpriteSheet.png", NULL);
 
 	CreateSprite(&player.cursor.sprite, player.cursor.texture, position, rect, origin);
-	sfSprite_setScale(player.cursor.sprite, (sfVector2f) { 3, 3 });
 }
 
 void DrawPlayer(sfRenderWindow* _renderWindow)
