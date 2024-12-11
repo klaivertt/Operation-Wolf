@@ -6,7 +6,13 @@
 #include "Sprite.h"
 
 #define BASE_SPEED 300
-#
+
+#define POS_RIGHT_X -100
+#define POS_LEFT_X 1124
+
+#define POS_HIGHT_Y 300
+#define POS_MIDDLE_Y 600
+#define POS_DOWN_Y 900
 
 typedef enum EnemyState
 {
@@ -34,7 +40,7 @@ typedef struct Enemy
 	EnemyType type;
 	EnemyState state;
 	Drop drop;
-	
+
 	int life;
 	int damage;
 	int speedMultiplicator;

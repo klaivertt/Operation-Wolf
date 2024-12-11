@@ -4,14 +4,8 @@
 #include "Common.h"
 #include "State.h"
 #include "Player.h"
+#include "Enemy.h"
 #include "Map.h"
-
-typedef struct Enemy
-{
-	sfSprite* anim[];
-
-
-}Enemy;
 
 
 typedef struct GameData

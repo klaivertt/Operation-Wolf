@@ -40,12 +40,14 @@ void MouseMovedGame(sfRenderWindow* const _renderWindow, sfMouseMoveEvent _mouse
 void UpdateGame(float _dt)
 {
 	UpdatePlayer(_dt);
+	UpdateEnemy(_dt);
 	UpdateMap(_dt);
 }
 
 void DrawGame(sfRenderWindow* _renderWindow)
 {
 	DrawMap(_renderWindow);
+	DrawEnemy(_renderWindow);
 	DrawHUD(_renderWindow);
 	DrawPlayer(_renderWindow);
 }
