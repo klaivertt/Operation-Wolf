@@ -10,7 +10,6 @@ void LoadMagazine()
 	magazine.texture = sfTexture_createFromFile("Assets/Sprites/SpriteSheet.png", NULL);
 
 	CreateSprite(&magazine.sprite, magazine.texture, position, rect, origin);
-	sfSprite_setScale(magazine.sprite, (sfVector2f) { 3, 3 });
 }
 
 void UpdateMagazine()
