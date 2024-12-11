@@ -24,6 +24,7 @@ typedef struct Enemy
 	EnemyState state;
 	
 	int life;
+	int damage;
 	float waitTime;
 	
 

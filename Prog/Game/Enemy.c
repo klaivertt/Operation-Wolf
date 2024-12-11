@@ -21,7 +21,10 @@ void LoadEnemy(void)
 		switch (enemyData.enemy[i].type)
 		{
 		case SOLDIER:
-			
+			enemyData.enemy->life = 1;
+			enemyData.enemy->damage = 1;
+			enemyData.enemy->attackPosition;
+
 			break;
 		}
 	}
