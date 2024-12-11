@@ -14,7 +14,7 @@ typedef struct PlayerData
 
 void LoadPlayer();
 void DrawPlayer(sfRenderWindow* _renderWindow);
-void UpdatePlayer();
+void UpdatePlayer(float _dt);
 void GetMousePositionPlayer(sfMouseMoveEvent _mouseMoved);
 void CleanupPlayer();
 void LoadCursor();

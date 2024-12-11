@@ -13,7 +13,7 @@ void DrawPlayer(sfRenderWindow* _renderWindow)
 	sfRenderWindow_drawSprite(_renderWindow, player.cursor.sprite, NULL);
 }
 
-void UpdatePlayer()
+void UpdatePlayer(float _dt)
 {
 	sfFloatRect hitbox = sfSprite_getGlobalBounds(player.cursor.sprite);
 
