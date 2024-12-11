@@ -15,9 +15,9 @@ void LoadEnemy(void)
 	if (enemyData.enemy[0].sprite == NULL)
 	{
 		sfVector2f pos = { 1 + rand() % 2, 1 + rand() % 3};
-		sfIntRect rect = ;
+		//sfIntRect rect = ;
 		sfVector2f origin = { 0.5,1 };
-		CreateSprite(&enemyData.enemy[0].sprite,);
+		//CreateSprite(&enemyData.enemy[0].sprite,);
 	}
 	
 }

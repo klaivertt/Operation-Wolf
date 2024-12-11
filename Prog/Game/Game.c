@@ -57,7 +57,6 @@ void UpdateGame(float _dt)
 
 void DrawGame(sfRenderWindow* _renderWindow)
 {
-	sfRenderWindow_drawSprite(_renderWindow, gameData.background.sprite, NULL);
 	DrawMap(_renderWindow);
 	DrawHUD(_renderWindow);
 	DrawPlayer(_renderWindow);
