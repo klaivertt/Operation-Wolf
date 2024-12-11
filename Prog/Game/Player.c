@@ -4,7 +4,7 @@ PlayerData player;
 
 void LoadPlayer()
 {
-	sfIntRect rect = { 407, 648, 17 , 17 };
+	sfIntRect rect = { 1121, 1944, 51 , 51 };
 	sfVector2f position = { SCREEN_WIDTH / 2 , SCREEN_HEIGHT / 2 };
 	sfVector2f origin = { 0.5 , 0.5 };
 	player.cursor.texture = sfTexture_createFromFile("Assets/Sprites/SpriteSheet.png", NULL);
