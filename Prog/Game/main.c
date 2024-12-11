@@ -43,7 +43,7 @@ int main(void)
 	}
 	Cleanup(&mainData);
 
-	system("pause");
+	//system("pause");
 	return EXIT_SUCCESS;
 }
 
