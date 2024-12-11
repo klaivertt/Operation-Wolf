@@ -18,9 +18,10 @@ void LoadGame(void)
 	sfSprite_setOrigin(gameData.background.sprite, (sfVector2f) { 0, globalBounds.height });
 	sfSprite_setPosition(gameData.background.sprite, position);
 
-	LoadPlayer();
-	LoadEnemy();
 	LoadMap();
+	LoadEnemy();
+	LoadHUD();
+	LoadPlayer();
 }
 
 void KeyPressedGame(sfRenderWindow* _renderWindow, sfKeyEvent _key)
@@ -57,14 +58,16 @@ void UpdateGame(float _dt)
 void DrawGame(sfRenderWindow* _renderWindow)
 {
 	sfRenderWindow_drawSprite(_renderWindow, gameData.background.sprite, NULL);
-	DrawPlayer(_renderWindow);
 	DrawMap(_renderWindow);
+	DrawHUD(_renderWindow);
+	DrawPlayer(_renderWindow);
 }
 
 void CleanupGame(void)
 {
 	CleanupPlayer();
 	CleanupMap();
+	CleanupHUD();
 	printf("CLEANUP GAME\n");
 }
 

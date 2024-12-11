@@ -43,6 +43,18 @@
     <Filter Include="Fichiers d%27en-tête\States\Game\Map">
       <UniqueIdentifier>{5c3f5a3f-5946-4838-9d02-3e3e7d6005df}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fichiers d%27en-tête\States\Game\Characters\Player">
+      <UniqueIdentifier>{fea292d7-1dc7-41f8-877a-a0ca163bb368}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\States\Game\Characters\Player">
+      <UniqueIdentifier>{564a8d39-1fc7-4297-a78c-f3dde7a6a2c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\States\Game\Characters\Player\HUD">
+      <UniqueIdentifier>{94b25208-bcff-4384-9e39-6de3b2f8bc15}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\States\Game\Characters\Player\HUD">
+      <UniqueIdentifier>{a837bdff-7c7f-471b-995e-0457b884183f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.c">
@@ -63,14 +75,23 @@
     <ClCompile Include="Enemy.c">
       <Filter>Fichiers sources\States\Game\Characters</Filter>
     </ClCompile>
-    <ClCompile Include="Player.c">
-      <Filter>Fichiers sources\States\Game\Characters</Filter>
-    </ClCompile>
     <ClCompile Include="Game.c">
       <Filter>Fichiers sources\States\Game</Filter>
     </ClCompile>
     <ClCompile Include="Map.c">
       <Filter>Fichiers sources\States\Game\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.c">
+      <Filter>Fichiers sources\States\Game\Characters\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="HUD.c">
+      <Filter>Fichiers sources\States\Game\Characters\Player\HUD</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet.c">
+      <Filter>Fichiers sources\States\Game\Characters\Player\HUD</Filter>
+    </ClCompile>
+    <ClCompile Include="Magazine.c">
+      <Filter>Fichiers sources\States\Game\Characters\Player\HUD</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -92,14 +113,23 @@
     <ClInclude Include="Enemy.h">
       <Filter>Fichiers d%27en-tête\States\Game\Characters</Filter>
     </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>Fichiers d%27en-tête\States\Game\Characters</Filter>
-    </ClInclude>
     <ClInclude Include="Game.h">
       <Filter>Fichiers d%27en-tête\States\Game</Filter>
     </ClInclude>
     <ClInclude Include="Map.h">
       <Filter>Fichiers d%27en-tête\States\Game\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Fichiers d%27en-tête\States\Game\Characters\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="HUD.h">
+      <Filter>Fichiers d%27en-tête\States\Game\Characters\Player\HUD</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet.h">
+      <Filter>Fichiers d%27en-tête\States\Game\Characters\Player\HUD</Filter>
+    </ClInclude>
+    <ClInclude Include="Magazine.h">
+      <Filter>Fichiers d%27en-tête\States\Game\Characters\Player\HUD</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -4,6 +4,8 @@
 
 #include "Common.h"
 #include "Sprite.h"
+#include "HUD.h"
+
 
 typedef struct PlayerData
 {
@@ -17,7 +19,5 @@ void DrawPlayer(sfRenderWindow* _renderWindow);
 void UpdatePlayer(float _dt);
 void GetMousePositionPlayer(sfMouseMoveEvent _mouseMoved);
 void CleanupPlayer();
-void LoadCursor();
-void LoadAmmo();
 
 #endif // !PLAYER_H
