@@ -4,6 +4,7 @@
 #include "Common.h"
 #include "State.h"
 #include "Player.h"
+#include "Map.h"
 
 typedef struct Enemy
 {

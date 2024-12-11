@@ -20,6 +20,7 @@ void LoadGame(void)
 
 	LoadPlayer();
 	LoadEnemy();
+	LoadMap();
 }
 
 void KeyPressedGame(sfRenderWindow* _renderWindow, sfKeyEvent _key)
@@ -49,18 +50,21 @@ void MouseMovedGame(sfRenderWindow* const _renderWindow, sfMouseMoveEvent _mouse
 
 void UpdateGame(float _dt)
 {
-	UpdatePlayer();
+	UpdatePlayer(_dt);
+	UpdateMap(_dt);
 }
 
 void DrawGame(sfRenderWindow* _renderWindow)
 {
 	sfRenderWindow_drawSprite(_renderWindow, gameData.background.sprite, NULL);
 	DrawPlayer(_renderWindow);
+	DrawMap(_renderWindow);
 }
 
 void CleanupGame(void)
 {
 	CleanupPlayer();
+	CleanupMap();
 	printf("CLEANUP GAME\n");
 }
 
