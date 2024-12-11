@@ -3,6 +3,7 @@
 
 #include "Common.h"
 #include "State.h"
+#include "Player.h"
 
 typedef struct Enemy
 {

@@ -18,6 +18,7 @@ void LoadGame(void)
 	sfSprite_setOrigin(gameData.background.sprite, (sfVector2f) { 0, globalBounds.height });
 	sfSprite_setPosition(gameData.background.sprite, position);
 
+	LoadPlayer();
 }
 
 void KeyPressedGame(sfRenderWindow* _renderWindow, sfKeyEvent _key)
@@ -42,21 +43,23 @@ void MouseButtonPressedGame(sfRenderWindow* const _renderWindow, sfMouseButtonEv
 
 void MouseMovedGame(sfRenderWindow* const _renderWindow, sfMouseMoveEvent _mouseMove)
 {
-
+	GetMousePositionPlayer(_mouseMove);
 }
 
 void UpdateGame(float _dt)
 {
-
+	UpdatePlayer();
 }
 
 void DrawGame(sfRenderWindow* _renderWindow)
 {
 	sfRenderWindow_drawSprite(_renderWindow, gameData.background.sprite, NULL);
+	DrawPlayer(_renderWindow);
 }
 
 void CleanupGame(void)
 {
+	CleanupPlayer();
 	printf("CLEANUP GAME\n");
 }
 

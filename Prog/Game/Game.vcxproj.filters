@@ -52,7 +52,10 @@
       <Filter>Fichiers sources\Utilitaires</Filter>
     </ClCompile>
     <ClCompile Include="Enemy.c">
-      <Filter>Fichiers sources</Filter>
+      <Filter>Fichiers sources\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.c">
+      <Filter>Fichiers sources\Characters</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -75,6 +78,9 @@
       <Filter>Fichiers d%27en-tête\Utilitaires</Filter>
     </ClInclude>
     <ClInclude Include="Enemy.h">
+      <Filter>Fichiers d%27en-tête\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
       <Filter>Fichiers d%27en-tête\Characters</Filter>
     </ClInclude>
   </ItemGroup>
