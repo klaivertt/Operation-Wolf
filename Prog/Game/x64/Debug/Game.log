@@ -1,6 +1,2 @@
-﻿  Game.c
-MSVCRTD.lib(commit_mode.obj) : warning LNK4020: un enregistrement de type dans '' est endommagé ; certains symboles et types ne sont peut-être pas accessibles à partir du débogueur
-MSVCRTD.lib(default_local_stdio_options.obj) : warning LNK4020: un enregistrement de type dans '' est endommagé ; certains symboles et types ne sont peut-être pas accessibles à partir du débogueur
-MSVCRTD.lib(env_mode.obj) : warning LNK4020: un enregistrement de type dans '' est endommagé ; certains symboles et types ne sont peut-être pas accessibles à partir du débogueur
-MSVCRTD.lib(ucrt_stubs.obj) : warning LNK4020: un enregistrement de type dans '' est endommagé ; certains symboles et types ne sont peut-être pas accessibles à partir du débogueur
-  Game.vcxproj -> D:\SVN\Eleves\knuritbeasse\autre\Controles\Projet OperationWolf\Operation-Wolf\Prog\x64\Debug\Game.exe
+﻿  Enemy.c
+  Game.vcxproj -> D:\SVN\Eleves\mrobles\Année 1\Projets\Creajeux\Operation-Wolf\Prog\x64\Debug\Game.exe

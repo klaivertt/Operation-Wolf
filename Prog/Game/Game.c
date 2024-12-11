@@ -19,6 +19,7 @@ void LoadGame(void)
 	sfSprite_setPosition(gameData.background.sprite, position);
 
 	LoadPlayer();
+	LoadEnemy();
 }
 
 void KeyPressedGame(sfRenderWindow* _renderWindow, sfKeyEvent _key)
