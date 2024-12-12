@@ -62,7 +62,6 @@ void CleanupEnemy(void)
 
 void ScreenCollisionX(Enemy* _enemy)
 {
-	printf("ok");
 	sfFloatRect GB = sfSprite_getGlobalBounds(_enemy->sprite);
 
 	if (GB.left + GB.width > SCREEN_WIDTH)

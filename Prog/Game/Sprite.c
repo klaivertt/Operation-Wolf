@@ -98,33 +98,68 @@ void CreateSprite(sfSprite** _sprite, sfTexture* _texture, sfVector2f _position,
 	sfSprite_setPosition(*_sprite, _position);
 }
 
-sfBool MoveSpriteToTarget(sfSprite** _sprite, sfVector2f _targetedPosition, float _speed)
+sfBool MoveSpriteToTarget(sfSprite** _sprite, sfVector2f _targetedPosition, float _speed, sfBool _TargetToSameTime)
 {
 	sfVector2f actualPosition = sfSprite_getPosition(*_sprite);
 
-	float distanceX = _targetedPosition.x - actualPosition.x;
-	float distanceY = _targetedPosition.y - actualPosition.y;
+	if (_TargetToSameTime)
+	{
+
+		float distanceX = _targetedPosition.x - actualPosition.x;
+		float distanceY = _targetedPosition.y - actualPosition.y;
 
 
-	float totalDistance = (float)sqrt(distanceX * distanceX + distanceY * distanceY);
+		float totalDistance = (float)sqrt(distanceX * distanceX + distanceY * distanceY);
 
-	if (totalDistance < _speed) {
-		actualPosition.x = _targetedPosition.x;
-		actualPosition.y = _targetedPosition.y;
-		return sfTrue;
+		if (totalDistance < _speed) {
+			actualPosition.x = _targetedPosition.x;
+			actualPosition.y = _targetedPosition.y;
+			return sfTrue;
+		}
+		else
+		{
+
+			float ratioX = distanceX / totalDistance;
+			float ratioY = distanceY / totalDistance;
+
+			actualPosition.x += ratioX * _speed;
+			actualPosition.y += ratioY * _speed;
+
+		}
 	}
 	else
 	{
+		
+		if (actualPosition.x > _targetedPosition.x - _speed && actualPosition.x < _targetedPosition.x + _speed)
+		{
+			actualPosition.x = _targetedPosition.x;
+		}
+		else if (actualPosition.x < _targetedPosition.x)
+		{
+			actualPosition.x += _speed;
+		}
+		else if (actualPosition.x > _targetedPosition.x)
+		{
+			actualPosition.x -= _speed;
+		}
+		
 
-		float ratioX = distanceX / totalDistance;
-		float ratioY = distanceY / totalDistance;
-
-		actualPosition.x += ratioX * _speed;
-		actualPosition.y += ratioY * _speed;
-
+		if (actualPosition.y > _targetedPosition.y - _speed && actualPosition.y < _targetedPosition.y + _speed)
+		{
+			actualPosition.y = _targetedPosition.y;
+		}
+		else if (actualPosition.y < _targetedPosition.y)
+		{
+			actualPosition.y += _speed;
+		}
+		else if (actualPosition.y > _targetedPosition.y)
+		{
+			actualPosition.y -= _speed;
+		}
 	}
 
 	sfSprite_setPosition(*_sprite, actualPosition);
+	
 	return sfFalse;
 }
 

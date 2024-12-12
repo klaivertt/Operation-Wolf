@@ -9,7 +9,7 @@
 void CreateSprite(sfSprite** _sprite, sfTexture* _texture, sfVector2f _position, sfIntRect _rect, sfVector2f _origin);
 
 
-sfBool MoveSpriteToTarget(sfSprite** _sprite, sfVector2f _targetedPosition, float _speed);
+sfBool MoveSpriteToTarget(sfSprite** _sprite, sfVector2f _targetedPosition, float _speed, sfBool _TargetToSameTime);
 
 //Return [True] if mouse click position is on sprite
 sfBool MouseClickOnSprite(sfMouseButtonEvent _mouseButton, sfSprite* _sprite);
