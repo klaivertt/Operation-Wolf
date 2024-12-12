@@ -11,8 +11,6 @@ void LoadBullet()
 	sfVector2f origin = { 0.5 , 1 };
 	bullet.texture = sfTexture_createFromFile("Assets/Sprites/SpriteSheet.png", NULL);
 
-
-
 	for (int i = 0; i < BULLET_NUMBER_MAX; i++)
 	{
 		if (i == 5 || i == 10 || i==15)
