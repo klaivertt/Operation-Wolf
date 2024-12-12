@@ -94,7 +94,6 @@ int GetMagazine()
 
 void ShootBullet()
 {
-	printf("piou\n");
 	player.bulletNumber--;
 }
 
