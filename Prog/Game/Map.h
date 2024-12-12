@@ -7,7 +7,7 @@
 
 #define BACKGROUND_SPEED 200.f
 
-typedef struct Mapvoid SetSpriteOrigin(sfSprite** _sprite, sfVector2f divide)void SetSpriteOrigin(sfSprite** _sprite, sfVector2f divide)
+typedef struct Map
 {
 	sfSprite* background;
 }Map;
