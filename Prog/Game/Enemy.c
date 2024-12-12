@@ -57,7 +57,7 @@ void ReloadEnemy(Enemy* _enemy)
 	_enemy->state = WALK;
 	_enemy->life = 1;
 	_enemy->damage = 1;
-	_enemy->speed = 10;
+	_enemy->speed = 5;
 
 	_enemy->targetedPositon = RandomShootPos();
 
