@@ -1,15 +1,16 @@
 #include "Props.h"
 
-Props props[MAX_PROPS];
-
+Props props[MAX_PROPS] = { 0 };
+sfTexture* texture[MAX_PROPS_TEXTURE] = { 0 };
 void LoadProps(void)
 {
-	sfTexture* propsText = sfTexture_createFromFile("Assets/Sprites/Map/props.png", NULL);
+	texture[0] = sfTexture_createFromFile("Assets/Sprites/Map/props.png", NULL);
+	texture[1] = sfTexture_createFromFile("Assets/Sprites/Map/props2.png", NULL);
 
 	for (size_t i = 0; i < MAX_PROPS; i++)
 	{
 		props[i].sprite = sfSprite_create();
-		sfSprite_setTexture(props[i].sprite, propsText, sfTrue);
+		sfSprite_setTexture(props[i].sprite, texture[rand()% MAX_PROPS_TEXTURE], sfTrue);
 
 		// Randomize x position and choose one of 3 fixed y positions
 		props[i].layerY = (rand() % 3) + 1;
@@ -25,6 +26,7 @@ void NewProps(Props* _props)
 {
 	if (_props == NULL) return;
 
+	sfSprite_setTexture(_props->sprite, texture[rand() % MAX_PROPS_TEXTURE], sfTrue);
 	_props->layerY = (rand() % 3) + 1;
 	int randomX = (rand() % SCREEN_WIDTH) + (SCREEN_WIDTH * 1.5f);
 	int randomY = PROP_HEIGHT_STEP * _props->layerY;

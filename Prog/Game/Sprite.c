@@ -194,3 +194,10 @@ sfBool MouseClickOnImagePixel(sfMouseButtonEvent _mouseButton,sfSprite* _sprite,
 //	printf("headshot\n");
 //	return sfTrue;
 //}
+
+
+void SetSpriteOrigin(sfSprite** _sprite, sfVector2f divide)
+{
+	sfVector2u size = sfTexture_getSize(sfSprite_getTexture(*_sprite));
+	sfSprite_setOrigin(*_sprite, (sfVector2f) { size.x / divide.x, size.y / divide.y });
+}
