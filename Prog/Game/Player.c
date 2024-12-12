@@ -59,9 +59,12 @@ void MouseButtonPressedPlayer(sfRenderWindow* const _renderWindow, sfMouseButton
 	switch (_mouseButton.button)
 	{
 	case sfMouseLeft:
-		ShootBullet();
-		AddScore(5);
-		UpdateScore();
+		if (player.bulletNumber != 0)
+		{
+			AddScore(1);
+			UpdateScore();
+			ShootBullet();
+		}
 		break;
 	case sfMouseRight:
 		ReloadMagazine();
@@ -91,14 +94,8 @@ int GetMagazine()
 
 void ShootBullet()
 {
-	if (player.bulletNumber > 0)
-	{
-		player.bulletNumber--;
-	}
-	else
-	{
-		printf("plus de balles");
-	}
+	printf("piou\n");
+	player.bulletNumber--;
 }
 
 void ReloadBullet()

@@ -9,7 +9,7 @@ void LoadScore()
 
 	sfText_setFont(score.score, score.font);;
 
-	sfText_setString(score.score, "00000");
+	sfText_setString(score.score, "0");
 
 	sfText_setOutlineThickness(score.score, 2);
 
