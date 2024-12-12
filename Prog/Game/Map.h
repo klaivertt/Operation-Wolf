@@ -18,4 +18,9 @@ void UpdateMap(float _dt);
 void DrawMap(sfRenderWindow* _renderWindow);
 void CleanupMap(void);
 
+void DrawThirdPlan(sfRenderWindow* _renderWindow);
+
+void DrawSecondPlan(sfRenderWindow* _renderWindow);
+
+void DrawFistPlan(sfRenderWindow* _renderWindow);
 #endif
