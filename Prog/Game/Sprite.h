@@ -25,5 +25,9 @@ sfBool MouseMoveOnSpritePixel(sfMouseMoveEvent _mouseMove, sfSprite* _sprite);
 //Return [True] if mouse click position is on one pixel on Image
 sfBool MouseClickOnImagePixel(sfMouseButtonEvent _mouseButton, sfSprite* _sprite, sfImage* _image, sfColor* _pixelColor);
 
+
+//@brief Sets the origin of a sprite based on its texture size divided by a factor.
+//@param _sprite Pointer to the sprite (must have a valid texture).
+//@param divide  Division factors for the texture's width (x) and height (y).
 void SetSpriteOrigin(sfSprite** _sprite, sfVector2f divide);
 #endif
