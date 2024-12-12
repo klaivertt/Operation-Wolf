@@ -30,7 +30,7 @@ void LoadEnemy(void)
 	if (enemyData.enemy[temporaire].sprite == NULL)
 	{
 		sfVector2f pos = RandomSpawn();
-		sfIntRect rect = { 21,21,54,102 };
+		sfIntRect rect = { 23,23,50,98 };
 		sfVector2f origin = { 0.5,1 };
 		//pos = (sfVector2f){ SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 };
 		CreateSprite(&enemyData.enemy[temporaire].sprite, enemyData.spriteSheet, pos, rect, origin);
@@ -43,8 +43,7 @@ void LoadEnemy(void)
 
 		enemyData.enemy[temporaire].goExitPosition = sfFalse;
 
-		sfVector2f ok = sfSprite_getPosition(enemyData.enemy[temporaire].sprite);
-		printf("\npos origin : %f %f\n", ok.x, ok.y);
+		
 	}
 }
 
@@ -67,6 +66,8 @@ void UpdateEnemy(float _dt)
 {
 	enemyData.enemy[temporaire].goExitPosition = Move(&enemyData.enemy[temporaire], enemyData.enemy[temporaire].shootPosition);
 
+
+
 	//if (!enemyData.enemy[temporaire].goExitPosition)
 	//{
 	//	printf("ok");
@@ -85,12 +86,14 @@ void UpdateEnemy(float _dt)
 
 void DrawEnemy(sfRenderWindow* _renderWindow)
 {
+	sfRenderWindow_drawSprite(_renderWindow, enemyData.enemy[temporaire].sprite, NULL);
 }
 
 void CleanupEnemy(void)
 {
 
 }
+
 //Fonction Local
 sfVector2f RandomSpawn(void)
 {
@@ -154,3 +157,9 @@ sfBool Move(Enemy* _enemy, int _targetedPosition)
 	pos.x = _targetedPosition;
 	return MoveSpriteToTarget(&enemyData.enemy[temporaire].sprite, pos, enemyData.enemy[temporaire].speed, sfFalse);
 }
+
+
+
+////Verifer position
+//sfVector2f ok = sfSprite_getPosition(enemyData.enemy[temporaire].sprite);
+//printf("\npos origin : %f %f\n", ok.x, ok.y);
