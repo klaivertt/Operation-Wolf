@@ -11,7 +11,7 @@ void LoadHUD()
 
 void UpdateHUD(float _dt)
 {
-	UpdateScore(data.score.text, 10);
+	
 }
 
 void MouseButtonPressedHUD(sfRenderWindow* const _renderWindow, sfMouseButtonEvent _mouseButton)
@@ -20,6 +20,8 @@ void MouseButtonPressedHUD(sfRenderWindow* const _renderWindow, sfMouseButtonEve
 	{
 	case sfMouseLeft:
 		ShootBullet();
+		AddScore(1);
+		UpdateScore();
 		break;
 	case sfMouseRight:
 		ReloadMagazine();

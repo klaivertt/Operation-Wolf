@@ -8,14 +8,14 @@
 typedef struct Score
 {
 	sfFont* font;
-	sfText* text;
+	sfText* score;
 
-	int score;
+	int actualScore;
 	int highScore;
 }Score;
 
 void LoadScore();
-void UpdateScore(sfText* const _text, int _value);
+void UpdateScore();
 void AddScore(int _score);
 void DrawScore(sfRenderWindow* _renderWindow);
 void CleanupScore();

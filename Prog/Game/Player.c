@@ -8,6 +8,7 @@ void LoadPlayer()
 	sfVector2f position = { SCREEN_WIDTH / 2 , SCREEN_HEIGHT / 2 };
 	sfVector2f origin = { 0.5 , 0.5 };
 	player.cursor.texture = sfTexture_createFromFile("Assets/Sprites/SpriteSheet.png", NULL);
+	player.HP = 20;
 
 	CreateSprite(&player.cursor.sprite, player.cursor.texture, position, rect, origin);
 }
@@ -25,6 +26,11 @@ void UpdatePlayer(float _dt)
 	{
 		sfSprite_setPosition(player.cursor.sprite, (sfVector2f) { player.mousePosition.x, player.mousePosition.y });
 	}
+}
+
+void GetDamage(int _damage)
+{
+	player.HP -= _damage;
 }
 
 void GetMousePositionPlayer(sfMouseMoveEvent _mouseMoved)
