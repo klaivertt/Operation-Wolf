@@ -11,11 +11,18 @@ void UpdateHUD(float _dt)
 
 }
 
-void MouseButtonPressedHUD(sfRenderWindow* const _renderWindow, sfMouseButtonEvent* _mouseButton)
+void MouseButtonPressedHUD(sfRenderWindow* const _renderWindow, sfMouseButtonEvent _mouseButton)
 {
-	if (_mouseButton == sfMouseLeft)
+	switch (_mouseButton.button)
 	{
+	case sfMouseLeft:
 		ShootBullet();
+		break;
+	case sfMouseRight:
+		ReloadMagazine();
+		break;
+	default:
+		break;
 	}
 }
 

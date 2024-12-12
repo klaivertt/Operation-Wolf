@@ -43,6 +43,11 @@ void ShootBullet()
 	}
 }
 
+void ReloadBullet()
+{
+	bullet.bulletNumber = BULLET_NUMBER_MAX;
+}
+
 void DrawBullet(sfRenderWindow* _renderWindow)
 {
 	for (int i = 0; i < bullet.bulletNumber; i++)
