@@ -10,7 +10,8 @@ Bienvenue sur le remake d'**Operation Wolf**, un jeu de tir classique en scrolli
 - **Système d'exploitation** : Windows 10+.
 
 ## Contributions
-Ce projet a été réalisé par un groupe d'étudiants de l'école **Creajeux**. Voici la liste des contributeurs :
+Ce projet a été réalisé par un groupe d'étudiants de l'école **Creajeux**. 
+Voici la liste des contributeurs :
 
 - [BOSIO Alexandre] - Rôle : Programmation
 - [NURIT-BEASSE Kyllian] - Rôle : Programmation
