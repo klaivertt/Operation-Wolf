@@ -129,3 +129,17 @@ void NewProps(Props* _props)
 	sfSprite_setPosition(_props->sprite, position);
 	SetSpriteOrigin(&_props->sprite, (sfVector2f) { 2, 1 });
 }
+
+Props* GetAllProps(void)
+{
+	return props;
+}
+
+Props* GetProps(size_t _index)
+{
+	if (_index >= MAX_PROPS)
+	{
+		return NULL;
+	}
+	return &props[_index];
+}
