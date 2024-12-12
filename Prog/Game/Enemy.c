@@ -2,10 +2,24 @@
 
 EnemyData enemyData;
 
+int temporaire = 0;
 
+sfVector2f RandomSpawn(void);
+int RandomExitPos(void);
+int RandomShootPos(void);
 
-void ScreenCollisionX(Enemy* _enemy);
+//Return True if is on targeted Position
+sfBool Move(Enemy* _enemy, int _position);
 
+EnemyState GetEnemyState(Enemy* _enemy)
+{
+	return _enemy->state;
+}
+
+void SetEnemyState(Enemy* _enemy, EnemyState _state)
+{
+	_enemy->state = _state;
+}
 
 void LoadEnemy(void)
 {
@@ -13,18 +27,25 @@ void LoadEnemy(void)
 	{
 		enemyData.spriteSheet = sfTexture_createFromFile("Assets/Sprites/Spritesheet.png", NULL);
 	}
-
-	if (enemyData.enemy[0].sprite == NULL)
+	if (enemyData.enemy[temporaire].sprite == NULL)
 	{
-		sfVector2f pos = { (float)1 + rand() % 2, (float)1 + rand() % 3 };
+		sfVector2f pos = RandomSpawn();
 		sfIntRect rect = { 21,21,54,102 };
 		sfVector2f origin = { 0.5,1 };
-		pos = (sfVector2f){ SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 };
-		CreateSprite(&enemyData.enemy[0].sprite, enemyData.spriteSheet, pos, rect, origin);
-		
-		enemyData.enemy[0].speedMultiplicator = 1;
-	}
+		//pos = (sfVector2f){ SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 };
+		CreateSprite(&enemyData.enemy[temporaire].sprite, enemyData.spriteSheet, pos, rect, origin);
+		enemyData.enemy[temporaire].life = 1;
+		enemyData.enemy[temporaire].damage = 1;
+		enemyData.enemy[temporaire].speed = 10;
 
+		enemyData.enemy[temporaire].exitPosition = RandomExitPos();
+		enemyData.enemy[temporaire].shootPosition = RandomShootPos();
+
+		enemyData.enemy[temporaire].goExitPosition = sfFalse;
+
+		sfVector2f ok = sfSprite_getPosition(enemyData.enemy[temporaire].sprite);
+		printf("\npos origin : %f %f\n", ok.x, ok.y);
+	}
 }
 
 void KeyPressedEnemy(sfRenderWindow* _renderWindow, sfKeyEvent _key)
@@ -44,37 +65,34 @@ void MouseMovedEnemy(sfRenderWindow* const _renderWindow, sfMouseMoveEvent _mous
 
 void UpdateEnemy(float _dt)
 {
-	ScreenCollisionX(&enemyData.enemy[0]);
+	enemyData.enemy[temporaire].goExitPosition = Move(&enemyData.enemy[temporaire], enemyData.enemy[temporaire].shootPosition);
+
+	//if (!enemyData.enemy[temporaire].goExitPosition)
+	//{
+	//	printf("ok");
+	//	enemyData.enemy[temporaire].goExitPosition = Move(&enemyData.enemy[temporaire], enemyData.enemy[temporaire].shootPosition);
+	//}
+	//else
+	//{
+	//	sfBool exit = Move(&enemyData.enemy[temporaire], enemyData.enemy[temporaire].exitPosition);
+	//}
+	//if (exit)
+	//{
+	//	//sfSprite_destroy(enemyData.enemy[temporaire].sprite);
+	//	//LoadEnemy();
+	//}
 }
 
 void DrawEnemy(sfRenderWindow* _renderWindow)
 {
-	sfRenderWindow_drawSprite(_renderWindow, enemyData.enemy[0].sprite, NULL);
 }
 
 void CleanupEnemy(void)
 {
 
 }
-
-
-
-
-void ScreenCollisionX(Enemy* _enemy)
-{
-	sfFloatRect GB = sfSprite_getGlobalBounds(_enemy->sprite);
-
-	if (GB.left + GB.width > SCREEN_WIDTH)
-	{
-		_enemy->speedMultiplicator = BASE_SPEED * _enemy->speedMultiplicator;
-	}
-	else if (GB.left < 0)
-	{
-		_enemy->speedMultiplicator = -BASE_SPEED * _enemy->speedMultiplicator;
-	}
-}
-
-sfVector2f RandomEnemySpawn(void)
+//Fonction Local
+sfVector2f RandomSpawn(void)
 {
 	int pos[2] = { 1 + rand() % 2, 1 + rand() % 3 };
 	sfVector2f finalPos = { 0 };
@@ -103,4 +121,36 @@ sfVector2f RandomEnemySpawn(void)
 	}
 
 	return finalPos;
+
+}
+
+int RandomExitPos(void)
+{
+	int pos = rand() % 2;
+
+	switch (pos)
+	{
+	case 0:
+		return POS_RIGHT_X;
+
+	case 1:
+		return POS_LEFT_X;
+	}
+
+	printf("error : RandomExitPos");
+	return 0;
+}
+
+int RandomShootPos(void)
+{
+	return SCREEN_WIDTH * 0.05 + rand() % SCREEN_WIDTH * 0.90;
+}
+
+
+
+sfBool Move(Enemy* _enemy, int _targetedPosition)
+{
+	sfVector2f pos = sfSprite_getPosition(enemyData.enemy[temporaire].sprite);
+	pos.x = _targetedPosition;
+	return MoveSpriteToTarget(&enemyData.enemy[temporaire].sprite, pos, enemyData.enemy[temporaire].speed, sfFalse);
 }

@@ -129,7 +129,7 @@ sfBool MoveSpriteToTarget(sfSprite** _sprite, sfVector2f _targetedPosition, floa
 	}
 	else
 	{
-		
+
 		if (actualPosition.x > _targetedPosition.x - _speed && actualPosition.x < _targetedPosition.x + _speed)
 		{
 			actualPosition.x = _targetedPosition.x;
@@ -142,7 +142,7 @@ sfBool MoveSpriteToTarget(sfSprite** _sprite, sfVector2f _targetedPosition, floa
 		{
 			actualPosition.x -= _speed;
 		}
-		
+
 
 		if (actualPosition.y > _targetedPosition.y - _speed && actualPosition.y < _targetedPosition.y + _speed)
 		{
@@ -159,12 +159,17 @@ sfBool MoveSpriteToTarget(sfSprite** _sprite, sfVector2f _targetedPosition, floa
 	}
 
 	sfSprite_setPosition(*_sprite, actualPosition);
-	
+
+
+	if (actualPosition.x == _targetedPosition.x && actualPosition.y == _targetedPosition.y)
+	{
+		return sfTrue;
+	}
 	return sfFalse;
 }
 
 
-sfBool MouseClickOnImagePixel(sfMouseButtonEvent _mouseButton,sfSprite* _sprite, sfImage* _image, sfColor* _pixelColor)
+sfBool MouseClickOnImagePixel(sfMouseButtonEvent _mouseButton, sfSprite* _sprite, sfImage* _image, sfColor* _pixelColor)
 {
 
 	sfFloatRect globalBounds = sfSprite_getGlobalBounds(_sprite);
@@ -174,13 +179,13 @@ sfBool MouseClickOnImagePixel(sfMouseButtonEvent _mouseButton,sfSprite* _sprite,
 		sfVector2i PosPixel = { (unsigned int)(_mouseButton.x - globalBounds.left),(unsigned int)(_mouseButton.y - globalBounds.top) };
 
 		sfColor pixelColor = sfImage_getPixel(_image, PosPixel.x, PosPixel.y);
-	
-		
+
+
 		if (pixelColor.a == 255)
 		{
 			return sfTrue;
 		}
-		
+
 
 	}
 	return sfFalse;
@@ -194,10 +199,3 @@ sfBool MouseClickOnImagePixel(sfMouseButtonEvent _mouseButton,sfSprite* _sprite,
 //	printf("headshot\n");
 //	return sfTrue;
 //}
-
-
-void SetSpriteOrigin(sfSprite** _sprite, sfVector2f divide)
-{
-	sfVector2u size = sfTexture_getSize(sfSprite_getTexture(*_sprite));
-	sfSprite_setOrigin(*_sprite, (sfVector2f) { size.x / divide.x, size.y / divide.y });
-}
