@@ -200,7 +200,6 @@ int RandomShootPos(void)
 }
 
 
-
 sfBool Move(Enemy* _enemy, int _targetedPosition)
 {
 	sfVector2f pos = sfSprite_getPosition(enemyData.enemy[temporaire].sprite);
