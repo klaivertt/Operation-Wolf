@@ -36,5 +36,6 @@ void DrawScore(sfRenderWindow* _renderWindow)
 
 void CleanupScore()
 {
-
+	sfFont_destroy(score.font);
+	score.font = NULL;
 }
