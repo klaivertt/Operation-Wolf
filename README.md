@@ -15,8 +15,8 @@ Ce projet a été réalisé par un groupe d'étudiants de l'école **Creajeux**.
 - [BOSIO Alexandre] - Rôle : Programmation
 - [NURIT-BEASSE Kyllian] - Rôle : Programmation
 - [ROBLES Maxime] - Rôle : Programmation
-- [LHOTEL Damien] -  Rôle : Graphisme
-- [COMBES Jules] -  Rôle : Graphisme
+- [LHOTEL Damien] -  Rôle : Graphiste
+- [COMBES Jules] -  Rôle : Graphiste
 
 ## Remerciements
 Nous tenons à remercier :
