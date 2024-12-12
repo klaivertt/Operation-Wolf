@@ -80,6 +80,7 @@ void UpdateEnemy(float _dt);
 void DrawEnemy(sfRenderWindow* _renderWindow);
 void CleanupEnemy(void);
 
+void ReloadEnemy(Enemy* _enemy);
 
 EnemyState GetEnemyState(Enemy* _enemy);
 void SetEnemyState(Enemy* _enemy, EnemyState _state);

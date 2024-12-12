@@ -83,8 +83,12 @@ sfBool MouseMoveOnSpritePixel(sfMouseMoveEvent _mouseMove, sfSprite* _sprite)
 
 void CreateSprite(sfSprite** _sprite, sfTexture* _texture, sfVector2f _position, sfIntRect _rect, sfVector2f _origin)
 {
-	*_sprite = sfSprite_create();
-	sfSprite_setTexture(*_sprite, _texture, sfFalse);
+
+	if (*_sprite == NULL)
+	{
+		*_sprite = sfSprite_create();
+		sfSprite_setTexture(*_sprite, _texture, sfFalse);
+	}
 
 	//If its not a Sprite sheet
 	if (_rect.width == 0 && _rect.height == 0)
