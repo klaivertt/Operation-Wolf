@@ -58,6 +58,9 @@
     <Filter Include="Fichiers sources\States\Game\Characters\Enemy">
       <UniqueIdentifier>{473f5f5a-5d04-4bec-b301-462fda9743a2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fichiers d%27en-tête\States\Game\Characters\Enemy">
+      <UniqueIdentifier>{e4dd7f5d-6862-4ea5-9e19-2ffe2677f12d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.c">
@@ -119,9 +122,6 @@
     <ClInclude Include="Sprite.h">
       <Filter>Fichiers d%27en-tête\Utilitaires</Filter>
     </ClInclude>
-    <ClInclude Include="Enemy.h">
-      <Filter>Fichiers d%27en-tête\States\Game\Characters</Filter>
-    </ClInclude>
     <ClInclude Include="Game.h">
       <Filter>Fichiers d%27en-tête\States\Game</Filter>
     </ClInclude>
@@ -145,6 +145,9 @@
     </ClInclude>
     <ClInclude Include="Score.h">
       <Filter>Fichiers d%27en-tête\States\Game\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Fichiers d%27en-tête\States\Game\Characters\Enemy</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
