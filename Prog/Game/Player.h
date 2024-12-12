@@ -4,6 +4,9 @@
 
 #include "Common.h"
 #include "Sprite.h"
+#include "Enemy.h"
+
+#define BULLET_NUMBER_MAX 15
 
 typedef struct PlayerData
 {
@@ -11,6 +14,8 @@ typedef struct PlayerData
 	sfVector2f mousePosition;
 
 	int HP;
+	int magazineNumber;
+	int bulletNumber;
 }PlayerData;
 
 void LoadPlayer();
@@ -19,5 +24,9 @@ void UpdatePlayer(float _dt);
 void GetDamage(int _damage);
 void GetMousePositionPlayer(sfMouseMoveEvent _mouseMoved);
 void CleanupPlayer();
+
+void MouseButtonPressedPlayer(sfRenderWindow* const _renderWindow, sfMouseButtonEvent _mouseButton);
+int GetMagazine();
+int GetBullet();
 
 #endif // !PLAYER_H
