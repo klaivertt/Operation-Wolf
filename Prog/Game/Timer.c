@@ -11,7 +11,7 @@ void UpdateTimer(float _dt, Timer* _timer)
 	_timer->current += _dt;
 }
 
-sfBool IsFinished(Timer* _timer)
+sfBool IsTimerFinished(Timer* _timer)
 {
 	if (_timer->current > _timer->max)
 	{

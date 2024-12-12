@@ -13,6 +13,6 @@ typedef struct Timer
 
 void InitTimer(Timer* _timer, float _maxValue);
 void UpdateTimer(float _dt, Timer* _timer);
-sfBool IsFinished(Timer* _timer);
+sfBool IsTimerFinished(Timer* _timer);
 
 #endif
