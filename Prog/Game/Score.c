@@ -9,7 +9,7 @@ void LoadScore()
 
 	sfText_setFont(score.score, score.font);;
 
-	sfText_setString(score.score, "0");
+	sfText_setString(score.score, "00000");
 
 	sfText_setOutlineThickness(score.score, 2);
 
@@ -28,17 +28,14 @@ void LoadScore()
 
 	sfText_setPosition(score.score, (sfVector2f) { SCREEN_WIDTH / 2, SCREEN_HEIGHT * 0.2f });
 
-
 	score.actualScore = 0;
-
-	
 }
 
 void UpdateScore()
 {
 	// Copy the value into the text
 	printf("_value = %d\n", score.actualScore);
-	char string[5];
+	char string[6];
 	sprintf_s(string, sizeof(string), "%d", score.actualScore);
 	sfText_setString(score.score, string);
 }

@@ -4,13 +4,10 @@
 
 #include "Common.h"
 #include "Sprite.h"
-#include "HUD.h"
-
 
 typedef struct PlayerData
 {
 	Image cursor;
-	Image bullet;
 	sfVector2f mousePosition;
 
 	int HP;

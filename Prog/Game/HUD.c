@@ -20,7 +20,7 @@ void MouseButtonPressedHUD(sfRenderWindow* const _renderWindow, sfMouseButtonEve
 	{
 	case sfMouseLeft:
 		ShootBullet();
-		AddScore(1);
+		AddScore(1500);
 		UpdateScore();
 		break;
 	case sfMouseRight:
