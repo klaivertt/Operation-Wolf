@@ -5,14 +5,11 @@
 #include "Common.h"
 #include "Sprite.h"
 
-#define BASE_SPEED 300
-
 #define POS_RIGHT_X -100
-#define POS_LEFT_X 1124
-
-#define POS_HIGHT_Y 300
-#define POS_MIDDLE_Y 600
-#define POS_DOWN_Y 900
+#define POS_LEFT_X SCREEN_WIDTH + 100
+#define POS_HIGHT_Y 200
+#define POS_MIDDLE_Y 400
+#define POS_DOWN_Y 600
 
 typedef enum EnemyState
 {
@@ -43,8 +40,13 @@ typedef struct Enemy
 
 	int life;
 	int damage;
-	int speedMultiplicator;
-	float waitTime;
+	int speed;
+
+	int shootPosition;
+	int exitPosition;
+
+	sfBool goExitPosition;
+
 	sfSprite* sprite;
 
 }Enemy;
@@ -70,5 +72,7 @@ void DrawEnemy(sfRenderWindow* _renderWindow);
 void CleanupEnemy(void);
 
 
+EnemyState GetEnemyState(Enemy* _enemy);
+void SetEnemyState(Enemy* _enemy, EnemyState _state);
 
 #endif
