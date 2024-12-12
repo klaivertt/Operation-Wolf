@@ -25,5 +25,5 @@ void DrawThirdPlanProps(sfRenderWindow* _renderWindow);
 
 void DrawSecondPlanProps(sfRenderWindow* _renderWindow);
 
-void DrawFistPlanProps(sfRenderWindow* _renderWindow);
+void DrawFirstPlanProps(sfRenderWindow* _renderWindow);
 #endif
