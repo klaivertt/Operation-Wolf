@@ -29,4 +29,5 @@ void DrawFirstPlanProps(sfRenderWindow* _renderWindow);
 
 Props* GetAllProps(void);
 Props* GetProps(size_t _index);
+
 #endif

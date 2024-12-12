@@ -24,4 +24,6 @@ sfBool MouseMoveOnSpritePixel(sfMouseMoveEvent _mouseMove, sfSprite* _sprite);
 
 //Return [True] if mouse click position is on one pixel on Image
 sfBool MouseClickOnImagePixel(sfMouseButtonEvent _mouseButton, sfSprite* _sprite, sfImage* _image, sfColor* _pixelColor);
+
+void SetSpriteOrigin(sfSprite** _sprite, sfVector2f divide);
 #endif
