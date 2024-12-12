@@ -21,31 +21,50 @@ void SetEnemyState(Enemy* _enemy, EnemyState _state)
 	_enemy->state = _state;
 }
 
+int PlayerDamage()
+{
+	int totalDamage = 0;
+		
+	if (enemyData.enemy[temporaire].doDamageToPlayer)
+	{
+		enemyData.enemy[temporaire].doDamageToPlayer = sfFalse;
+		totalDamage += enemyData.enemy[temporaire].damage;
+	}
+
+	return totalDamage;
+}
+
+
+
 void LoadEnemy(void)
 {
 	if (enemyData.spriteSheet == NULL)
 	{
 		enemyData.spriteSheet = sfTexture_createFromFile("Assets/Sprites/Spritesheet.png", NULL);
 	}
+
 	if (enemyData.enemy[temporaire].sprite == NULL)
 	{
+		printf("oui");
 		sfVector2f pos = RandomSpawn();
 		sfIntRect rect = { 23,23,50,98 };
 		sfVector2f origin = { 0.5,1 };
 		//pos = (sfVector2f){ SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 };
 		CreateSprite(&enemyData.enemy[temporaire].sprite, enemyData.spriteSheet, pos, rect, origin);
+
 		enemyData.enemy[temporaire].life = 1;
 		enemyData.enemy[temporaire].damage = 1;
 		enemyData.enemy[temporaire].speed = 10;
 
-		enemyData.enemy[temporaire].exitPosition = RandomExitPos();
-		enemyData.enemy[temporaire].shootPosition = RandomShootPos();
+		enemyData.enemy[temporaire].targetedPositon = RandomShootPos();
 
-		enemyData.enemy[temporaire].goExitPosition = sfFalse;
-
+		enemyData.enemy[temporaire].haveAlreadyShoot = sfFalse;
+		enemyData.enemy[temporaire].doDamageToPlayer = sfFalse;
 		
-	}
-}
+		float TimeBeforeShooting = 1;
+		InitTimer(&enemyData.enemy[temporaire].timer, TimeBeforeShooting);
+	}}
+
 
 void KeyPressedEnemy(sfRenderWindow* _renderWindow, sfKeyEvent _key)
 {
@@ -64,35 +83,60 @@ void MouseMovedEnemy(sfRenderWindow* const _renderWindow, sfMouseMoveEvent _mous
 
 void UpdateEnemy(float _dt)
 {
-	enemyData.enemy[temporaire].goExitPosition = Move(&enemyData.enemy[temporaire], enemyData.enemy[temporaire].shootPosition);
 
+	sfBool notMoving, timerEnd;
 
+	switch (enemyData.enemy[temporaire].state)
+	{
+	case WALK:
 
-	//if (!enemyData.enemy[temporaire].goExitPosition)
-	//{
-	//	printf("ok");
-	//	enemyData.enemy[temporaire].goExitPosition = Move(&enemyData.enemy[temporaire], enemyData.enemy[temporaire].shootPosition);
-	//}
-	//else
-	//{
-	//	sfBool exit = Move(&enemyData.enemy[temporaire], enemyData.enemy[temporaire].exitPosition);
-	//}
-	//if (exit)
-	//{
-	//	//sfSprite_destroy(enemyData.enemy[temporaire].sprite);
-	//	//LoadEnemy();
-	//}
+		notMoving = Move(&enemyData.enemy[temporaire], enemyData.enemy[temporaire].targetedPositon);
+		if (notMoving)
+		{
+			if (enemyData.enemy[temporaire].haveAlreadyShoot)
+			{
+				SetEnemyState(&enemyData.enemy[temporaire], DEAD);
+			}
+			else
+			{
+				SetEnemyState(&enemyData.enemy[temporaire], SHOOT);
+			}
+		}
+			
+		break;
+
+	case SHOOT:
+		UpdateTimer(_dt, &enemyData.enemy[temporaire].timer);
+		timerEnd = IsTimerFinished(&enemyData.enemy[temporaire].timer);
+		if (timerEnd){
+			enemyData.enemy[temporaire].doDamageToPlayer = sfTrue;
+			SetEnemyState(&enemyData.enemy[temporaire], WALK);
+			enemyData.enemy[temporaire].targetedPositon = RandomExitPos();
+			enemyData.enemy[temporaire].haveAlreadyShoot = sfTrue;
+		}
+		break;
+
+	case DEAD:
+		printf("dead\n");
+		LoadEnemy();
+		break;
+	}
+
 }
 
 void DrawEnemy(sfRenderWindow* _renderWindow)
 {
+
 	sfRenderWindow_drawSprite(_renderWindow, enemyData.enemy[temporaire].sprite, NULL);
+		
 }
 
 void CleanupEnemy(void)
 {
 
 }
+
+
 
 //Fonction Local
 sfVector2f RandomSpawn(void)

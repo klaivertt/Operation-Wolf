@@ -4,6 +4,7 @@
 
 #include "Common.h"
 #include "Sprite.h"
+#include "Timer.h"
 
 #define POS_RIGHT_X -100
 #define POS_LEFT_X SCREEN_WIDTH + 100
@@ -11,11 +12,13 @@
 #define POS_MIDDLE_Y 400
 #define POS_DOWN_Y 600
 
+#pragma region enum
 typedef enum EnemyState
 {
 	WALK,
 	SHOOT,
 	DEAD,
+	WAIT,
 
 }EnemyState;
 
@@ -32,8 +35,13 @@ typedef enum Drop
 	NONE
 }Drop;
 
+#pragma endregion
+
+#pragma region struct
 typedef struct Enemy
 {
+	sfSprite* sprite;
+
 	EnemyType type;
 	EnemyState state;
 	Drop drop;
@@ -42,12 +50,13 @@ typedef struct Enemy
 	int damage;
 	int speed;
 
-	int shootPosition;
-	int exitPosition;
+	int targetedPositon;
 
-	sfBool goExitPosition;
+	sfBool haveAlreadyShoot;
 
-	sfSprite* sprite;
+	sfBool doDamageToPlayer;
+
+	Timer timer;
 
 }Enemy;
 
@@ -61,7 +70,7 @@ typedef struct EnemyData
 	sfTexture* spriteSheet;
 
 }EnemyData;
-
+#pragma endregion
 
 void LoadEnemy(void);
 void KeyPressedEnemy(sfRenderWindow* _renderWindow, sfKeyEvent _key);
