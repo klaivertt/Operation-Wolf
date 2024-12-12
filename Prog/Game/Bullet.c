@@ -4,6 +4,7 @@ Bullet bullet;
 
 void LoadBullet()
 {
+	bullet.bulletNumber = BULLET_NUMBER_MAX;
 	sfIntRect rect = { 120, 2184, 24 , 48 };
 	sfVector2f position = { SCREEN_WIDTH / 3 * 2 , SCREEN_HEIGHT / 2 };
 	sfVector2f originalPosition = position;
@@ -30,9 +31,21 @@ void UpdateBullet(float _dt)
 
 }
 
+void ShootBullet()
+{
+	if (bullet.bulletNumber > 0)
+	{
+		bullet.bulletNumber--;
+	}
+	else
+	{
+		printf("plus de balles");
+	}
+}
+
 void DrawBullet(sfRenderWindow* _renderWindow)
 {
-	for (int i = 0; i < BULLET_NUMBER_MAX; i++)
+	for (int i = 0; i < bullet.bulletNumber; i++)
 	{
 		sfRenderWindow_drawSprite(_renderWindow, bullet.sprite[i], NULL);
 	}
