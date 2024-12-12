@@ -9,7 +9,6 @@ void CleanupBackground(void);
 
 void LoadProps(void);
 void UpdateProps(float _dt);
-void DrawProps(sfRenderWindow* _renderWindow);
 void CleanupProps(void);
 #pragma endregion
 
@@ -30,7 +29,6 @@ void UpdateMap(float _dt)
 void DrawMap(sfRenderWindow* _renderWindow)
 {
 	sfRenderWindow_drawSprite(_renderWindow, map.background, NULL);
-	DrawProps(_renderWindow);
 }
 
 void CleanupMap(void)
@@ -99,7 +97,25 @@ void UpdateProps(float _dt)
 	}
 }
 
-void DrawProps(sfRenderWindow* _renderWindow)
+void DrawThirdPlan(sfRenderWindow* _renderWindow)
+{
+	for (size_t i = 0; i < MAX_PROPS; i++)
+	{
+		sfRenderWindow_drawSprite(_renderWindow, map.props[i], NULL);
+	}
+
+}
+
+void DrawSecondPlan(sfRenderWindow* _renderWindow)
+{
+	for (size_t i = 0; i < MAX_PROPS; i++)
+	{
+		sfRenderWindow_drawSprite(_renderWindow, map.props[i], NULL);
+	}
+
+}
+
+void DrawFistPlan(sfRenderWindow* _renderWindow)
 {
 	for (size_t i = 0; i < MAX_PROPS; i++)
 	{
