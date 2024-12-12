@@ -88,6 +88,18 @@ void LoadProps(void)
 	}
 }
 
+void NewProps(Props* _props)
+{
+	if (_props == NULL) return;
+
+	_props->layerY = (rand() % 3) + 1;
+	int randomX = (rand() % SCREEN_WIDTH) + (SCREEN_WIDTH * 1.5f);
+	int randomY = PROP_HEIGHT_STEP * _props->layerY;
+
+	sfVector2f position = { (float)randomX, (float)randomY };
+	sfSprite_setPosition(_props->sprite, position);
+}
+
 void UpdateProps(float _dt)
 {
 	for (size_t i = 0; i < MAX_PROPS; i++)
@@ -95,6 +107,12 @@ void UpdateProps(float _dt)
 		float move = -BACKGROUND_SPEED * _dt;
 
 		sfSprite_move(map.props[i].sprite, (sfVector2f) { move, 0 });
+
+		sfFloatRect rect = sfSprite_getGlobalBounds(map.props[i].sprite);
+		if (sfSprite_getPosition(map.props[i].sprite).x < -rect.width)
+		{
+			NewProps(&map.props[i]);
+		}
 	}
 }
 
