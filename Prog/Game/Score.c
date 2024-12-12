@@ -8,15 +8,10 @@ void LoadScore()
 	score.score = sfText_create();
 
 	sfText_setFont(score.score, score.font);;
-
 	sfText_setString(score.score, "0");
-
 	sfText_setOutlineThickness(score.score, 2);
-
 	sfText_setOutlineColor(score.score, sfBlack);
-
 	sfText_setCharacterSize(score.score, 30);
-
 	sfFloatRect sizeActualScore = sfText_getGlobalBounds(score.score);
 
 	sfText_setOrigin(score.score, (sfVector2f) { sizeActualScore.width / 2, sizeActualScore.height });
