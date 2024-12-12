@@ -93,6 +93,9 @@
     <ClCompile Include="Magazine.c">
       <Filter>Fichiers sources\States\Game\Characters\Player\HUD</Filter>
     </ClCompile>
+    <ClCompile Include="Props.c">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Common.h">
@@ -130,6 +133,9 @@
     </ClInclude>
     <ClInclude Include="Magazine.h">
       <Filter>Fichiers d%27en-tête\States\Game\Characters\Player\HUD</Filter>
+    </ClInclude>
+    <ClInclude Include="Props.h">
+      <Filter>Fichiers d%27en-tête\States\Game\Map</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

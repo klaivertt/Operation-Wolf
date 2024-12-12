@@ -145,6 +145,7 @@
     <ClCompile Include="Magazine.c" />
     <ClCompile Include="Map.c" />
     <ClCompile Include="Player.c" />
+    <ClCompile Include="Props.c" />
     <ClCompile Include="Sprite.c" />
     <ClCompile Include="State.c" />
     <ClCompile Include="main.c" />
@@ -160,6 +161,7 @@
     <ClInclude Include="HUD.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Props.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="State.h" />
     <ClInclude Include="Menu.h" />

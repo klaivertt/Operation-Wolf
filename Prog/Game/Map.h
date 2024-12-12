@@ -3,22 +3,13 @@
 
 #include "Common.h"
 #include "Sprite.h"
-
+#include "Props.h"
 
 #define BACKGROUND_SPEED 200.f
-#define MAX_PROPS 10
-#define PROP_HEIGHT_STEP 192
-
-typedef struct Props
-{
-	sfSprite* sprite;
-	int layerY;
-}Props;
 
 typedef struct Map
 {
 	sfSprite* background;
-	Props props[MAX_PROPS];
 }Map;
 
 void LoadMap(void);
