@@ -55,6 +55,9 @@
     <Filter Include="Fichiers sources\States\Game\Characters\Player\HUD">
       <UniqueIdentifier>{a837bdff-7c7f-471b-995e-0457b884183f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fichiers sources\States\Game\Characters\Enemy">
+      <UniqueIdentifier>{473f5f5a-5d04-4bec-b301-462fda9743a2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.c">
@@ -71,9 +74,6 @@
     </ClCompile>
     <ClCompile Include="Sprite.c">
       <Filter>Fichiers sources\Utilitaires</Filter>
-    </ClCompile>
-    <ClCompile Include="Enemy.c">
-      <Filter>Fichiers sources\States\Game\Characters</Filter>
     </ClCompile>
     <ClCompile Include="Game.c">
       <Filter>Fichiers sources\States\Game</Filter>
@@ -98,6 +98,9 @@
     </ClCompile>
     <ClCompile Include="Props.c">
       <Filter>Fichiers sources\States\Game\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.c">
+      <Filter>Fichiers sources\States\Game\Characters\Enemy</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
