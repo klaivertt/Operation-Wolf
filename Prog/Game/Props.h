@@ -2,6 +2,7 @@
 #define PROPS_H
 
 #include "Common.h"
+#include "Sprite.h"
 
 #define MAX_PROPS 10
 #define PROP_HEIGHT_STEP (SCREEN_HEIGHT/4)

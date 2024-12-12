@@ -19,6 +19,7 @@ void LoadProps(void)
 
 		sfVector2f position = { (float)randomX, (float)randomY };
 		sfSprite_setPosition(props[i].sprite, position);
+		SetSpriteOrigin(&props[i].sprite, (sfVector2f) {2,1});
 	}
 }
 
@@ -29,10 +30,11 @@ void NewProps(Props* _props)
 	sfSprite_setTexture(_props->sprite, texture[rand() % MAX_PROPS_TEXTURE], sfTrue);
 	_props->layerY = (rand() % 3) + 1;
 	int randomX = (rand() % SCREEN_WIDTH) + (SCREEN_WIDTH * 1.5f);
-	int randomY = PROP_HEIGHT_STEP * _props->layerY;
+	int randomY = (PROP_HEIGHT_STEP * _props->layerY) + 100;
 
 	sfVector2f position = { (float)randomX, (float)randomY };
 	sfSprite_setPosition(_props->sprite, position);
+	SetSpriteOrigin(&_props->sprite, (sfVector2f) { 2, 1 });
 }
 
 void UpdateProps(float _dt, float _bacgroundSpeed)
