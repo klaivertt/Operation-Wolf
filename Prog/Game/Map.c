@@ -7,9 +7,6 @@ void LoadBackground(void);
 void MoveBackground(sfSprite* _sprite, float _y);
 void CleanupBackground(void);
 
-void LoadProps(void);
-void UpdateProps(float _dt);
-void CleanupProps(void);
 #pragma endregion
 
 #pragma region Game Loop
@@ -21,9 +18,8 @@ void LoadMap(void)
 
 void UpdateMap(float _dt)
 {
-	//float moveX = BACKGROUND_SPEED * _dt;
 	MoveBackground(map.background, -BACKGROUND_SPEED * _dt);
-	UpdateProps(_dt);
+	UpdateProps(_dt, BACKGROUND_SPEED);
 }
 
 void DrawMap(sfRenderWindow* _renderWindow)
@@ -34,6 +30,7 @@ void DrawMap(sfRenderWindow* _renderWindow)
 void CleanupMap(void)
 {
 	CleanupProps();
+	CleanupBackground();
 }
 
 #pragma endregion
@@ -69,92 +66,18 @@ void CleanupBackground(void)
 	sfSprite_destroy(map.background);
 }
 
-void LoadProps(void)
-{
-	sfTexture* propsText = sfTexture_createFromFile("Assets/Sprites/Map/props.png", NULL);
-
-	for (size_t i = 0; i < MAX_PROPS; i++)
-	{
-		map.props[i].sprite = sfSprite_create();
-		sfSprite_setTexture(map.props[i].sprite, propsText, sfTrue);
-
-		// Randomize x position and choose one of 3 fixed y positions
-		map.props[i].layerY = (rand() % 3) + 1;
-		int randomX = rand() % SCREEN_WIDTH;
-		int randomY = PROP_HEIGHT_STEP * map.props[i].layerY;
-
-		sfVector2f position = { (float)randomX, (float)randomY };
-		sfSprite_setPosition(map.props[i].sprite, position);
-	}
-}
-
-void NewProps(Props* _props)
-{
-	if (_props == NULL) return;
-
-	_props->layerY = (rand() % 3) + 1;
-	int randomX = (rand() % SCREEN_WIDTH) + (SCREEN_WIDTH * 1.5f);
-	int randomY = PROP_HEIGHT_STEP * _props->layerY;
-
-	sfVector2f position = { (float)randomX, (float)randomY };
-	sfSprite_setPosition(_props->sprite, position);
-}
-
-void UpdateProps(float _dt)
-{
-	for (size_t i = 0; i < MAX_PROPS; i++)
-	{
-		float move = -BACKGROUND_SPEED * _dt;
-
-		sfSprite_move(map.props[i].sprite, (sfVector2f) { move, 0 });
-
-		sfFloatRect rect = sfSprite_getGlobalBounds(map.props[i].sprite);
-		if (sfSprite_getPosition(map.props[i].sprite).x < -rect.width)
-		{
-			NewProps(&map.props[i]);
-		}
-	}
-}
-
 void DrawThirdPlan(sfRenderWindow* _renderWindow)
 {
-	for (size_t i = 0; i < MAX_PROPS; i++)
-	{
-		if (map.props[i].layerY == 1)
-		{
-			sfRenderWindow_drawSprite(_renderWindow, map.props[i].sprite, NULL);
-		}
-	}
-
+	
+	DrawThirdPlanProps(_renderWindow);
 }
 
 void DrawSecondPlan(sfRenderWindow* _renderWindow)
 {
-	for (size_t i = 0; i < MAX_PROPS; i++)
-	{
-		if (map.props[i].layerY == 2)
-		{
-			sfRenderWindow_drawSprite(_renderWindow, map.props[i].sprite, NULL);
-		}
-	}
-
+	DrawSecondPlanProps(_renderWindow);
 }
 
 void DrawFistPlan(sfRenderWindow* _renderWindow)
 {
-	for (size_t i = 0; i < MAX_PROPS; i++)
-	{
-		if (map.props[i].layerY == 3)
-		{
-			sfRenderWindow_drawSprite(_renderWindow, map.props[i].sprite, NULL);
-		}
-	}
-}
-
-void CleanupProps(void)
-{
-	for (size_t i = 0; i < MAX_PROPS; i++)
-	{
-		sfSprite_destroy(map.props[i].sprite);
-	}
+	DrawFistPlanProps(_renderWindow);
 }
