@@ -29,7 +29,7 @@ void KeyPressedGame(sfRenderWindow* _renderWindow, sfKeyEvent _key)
 
 void MouseButtonPressedGame(sfRenderWindow* const _renderWindow, sfMouseButtonEvent _mouseButton)
 {
-	
+	MouseButtonPressedHUD(_renderWindow, _mouseButton);
 }
 
 void MouseMovedGame(sfRenderWindow* const _renderWindow, sfMouseMoveEvent _mouseMove)

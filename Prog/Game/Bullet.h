@@ -17,6 +17,7 @@ typedef struct Bullet
 void LoadBullet();
 void UpdateBullet(float _dt);
 void ShootBullet();
+void ReloadBullet();
 void DrawBullet(sfRenderWindow* _renderWindow);
 void CleanupBullet();
 
