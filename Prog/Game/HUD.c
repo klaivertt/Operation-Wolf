@@ -1,7 +1,5 @@
 #include "HUD.h"
 
-HUDData data;
-
 void LoadHUD()
 {
 	LoadBullet();

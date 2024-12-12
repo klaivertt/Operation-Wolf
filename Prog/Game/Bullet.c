@@ -21,7 +21,7 @@ void LoadBullet()
 		}
 
 		CreateSprite(&bullet.sprite[i], bullet.texture, position, rect, origin);
-		position.x += rect.width * 1.5;
+		position.x += rect.width * 1.5f;
 	}
 }
 

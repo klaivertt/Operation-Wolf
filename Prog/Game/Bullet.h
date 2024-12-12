@@ -2,10 +2,10 @@
 #ifndef BULLTE_H
 #define BULLET_H
 
-#define BULLET_NUMBER_MAX 15
-
 #include "Common.h"
 #include "Sprite.h"
+
+#define BULLET_NUMBER_MAX 15
 
 typedef struct Bullet
 {

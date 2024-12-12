@@ -9,7 +9,8 @@
 
 typedef struct HUDData
 {
-	Image Bullet;
+	Magazine magazine;
+	Bullet bullet;
 }HUDData;
 
 void LoadHUD();
