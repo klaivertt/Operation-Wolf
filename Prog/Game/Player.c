@@ -2,6 +2,10 @@
 
 PlayerData player;
 
+void ReloadMagazine();
+void ShootBullet();
+void ReloadBullet();
+
 void LoadPlayer()
 {
 	sfIntRect rect = { 1223, 1946, 47 , 47 };
@@ -9,6 +13,8 @@ void LoadPlayer()
 	sfVector2f origin = { 0.5 , 0.5 };
 	player.cursor.texture = sfTexture_createFromFile("Assets/Sprites/SpriteSheet.png", NULL);
 	player.HP = 20;
+	player.magazineNumber = 3;
+	player.bulletNumber = BULLET_NUMBER_MAX;
 
 	CreateSprite(&player.cursor.sprite, player.cursor.texture, position, rect, origin);
 }
@@ -46,4 +52,61 @@ void CleanupPlayer()
 
 	sfTexture_destroy(player.cursor.texture);
 	player.cursor.texture = NULL;
+}
+
+void MouseButtonPressedPlayer(sfRenderWindow* const _renderWindow, sfMouseButtonEvent _mouseButton)
+{
+	switch (_mouseButton.button)
+	{
+	case sfMouseLeft:
+		ShootBullet();
+		AddScore(5);
+		UpdateScore();
+		break;
+	case sfMouseRight:
+		ReloadMagazine();
+		break;
+	default:
+		break;
+	}
+}
+
+void ReloadMagazine()
+{
+	if (player.magazineNumber > 0)
+	{
+		player.magazineNumber--;
+		ReloadBullet();
+	}
+	else
+	{
+		printf("plus de chargeurs");
+	}
+}
+
+int GetMagazine()
+{
+	return player.magazineNumber;
+}
+
+void ShootBullet()
+{
+	if (player.bulletNumber > 0)
+	{
+		player.bulletNumber--;
+	}
+	else
+	{
+		printf("plus de balles");
+	}
+}
+
+void ReloadBullet()
+{
+	player.bulletNumber = BULLET_NUMBER_MAX;
+}
+
+int GetBullet()
+{
+	return player.bulletNumber;
 }

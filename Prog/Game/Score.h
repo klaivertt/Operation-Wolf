@@ -15,7 +15,7 @@ typedef struct Score
 }Score;
 
 void LoadScore();
-void UpdateScore();
+void UpdateScore(); 
 void AddScore(int _score);
 void DrawScore(sfRenderWindow* _renderWindow);
 void CleanupScore();

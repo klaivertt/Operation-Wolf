@@ -13,18 +13,13 @@ void LoadScore()
 
 	sfText_setOutlineThickness(score.score, 2);
 
-
 	sfText_setOutlineColor(score.score, sfBlack);
-
 
 	sfText_setCharacterSize(score.score, 30);
 
-
 	sfFloatRect sizeActualScore = sfText_getGlobalBounds(score.score);
 
-
 	sfText_setOrigin(score.score, (sfVector2f) { sizeActualScore.width / 2, sizeActualScore.height });
-
 
 	sfText_setPosition(score.score, (sfVector2f) { SCREEN_WIDTH / 2, SCREEN_HEIGHT * 0.2f });
 
@@ -34,9 +29,8 @@ void LoadScore()
 void UpdateScore()
 {
 	// Copy the value into the text
-	printf("_value = %d\n", score.actualScore);
-	char string[6];
-	sprintf_s(string, sizeof(string), "%d", score.actualScore);
+	char string[10];
+	sprintf_s(string, sizeof(string), "%8d", score.actualScore);
 	sfText_setString(score.score, string);
 }
 

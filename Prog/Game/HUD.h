@@ -17,7 +17,6 @@ typedef struct HUDData
 
 void LoadHUD();
 void UpdateHUD(float _dt);
-void MouseButtonPressedHUD(sfRenderWindow* const _renderWindow, sfMouseButtonEvent _mouseButton);
 void DrawHUD(sfRenderWindow* _renderWindow);
 void CleanupHUD();
 
