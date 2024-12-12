@@ -6,11 +6,13 @@
 #include "Sprite.h"
 #include "Bullet.h"
 #include "Magazine.h"
+#include "Score.h"
 
 typedef struct HUDData
 {
 	Magazine magazine;
 	Bullet bullet;
+	Score score;
 }HUDData;
 
 void LoadHUD();

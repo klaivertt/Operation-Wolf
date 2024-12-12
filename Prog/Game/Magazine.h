@@ -5,6 +5,7 @@
 #include "Common.h"
 #include "Sprite.h"
 #include "Bullet.h"
+#include "Enemy.h"
 
 #define MAGAZINE_NUMBER_MAX 5
 
@@ -18,6 +19,7 @@ typedef struct Magazine
 void LoadMagazine();
 void UpdateMagazine();
 void ReloadMagazine();
+void DropMagazine();
 void DrawMagazine(sfRenderWindow* _renderWindow);
 void CleanupMagazine();
 

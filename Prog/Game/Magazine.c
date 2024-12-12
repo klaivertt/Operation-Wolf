@@ -35,6 +35,11 @@ void ReloadMagazine()
 	}
 }
 
+void DropMagazine()
+{
+	
+}
+
 void DrawMagazine(sfRenderWindow* _renderWindow)
 {
 	for (int i = 0; i < magazine.magazineNumber; i++)
