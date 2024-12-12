@@ -7,7 +7,6 @@
 #define MAX_PROPS 10
 #define PROP_HEIGHT_STEP (SCREEN_HEIGHT/4)
 
-
 #define MAX_PROPS_TEXTURE 2
 
 typedef struct Props
