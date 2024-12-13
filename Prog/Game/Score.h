@@ -15,28 +15,25 @@ typedef struct Score
 }Score;
 
 
-*@brief Loads the score system.
-*
-* Initializes the resources and variables required for tracking and displaying the score.
-* This includes setting initial values and preparing any graphical components.
-
+//* @brief Loads the score system.
+//*
+//* Initializes the resources and variables required for tracking and displaying the score.
+//* This includes setting initial values and preparing any graphical components.
 void LoadScore();
 
 
-*@brief Updates the score system.
-*
-* Handles any dynamic updates to the score, such as animations or effects,
-* and prepares the score for rendering.
-
+//* @brief Updates the score system.
+//*
+//* Handles any dynamic updates to the score, such as animations or effects,
+//* and prepares the score for rendering.
 void UpdateScore();
 
 
-*@brief Adds a value to the current score.
-*
-* Increases the score by the specified value, which can be positive or negative.
-*
-*@param _score The value to add to the current score.
-
+//* @brief Adds a value to the current score.
+//*
+//* Increases the score by the specified value, which can be positive or negative.
+//*
+//* @param _score The value to add to the current score.
 void AddScore(int _score);
 
 
