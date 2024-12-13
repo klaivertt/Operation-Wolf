@@ -16,9 +16,9 @@
 
 typedef struct HUDData
 {
-    Magazine magazine; ///< Données concernant le chargeur (nombre de balles restantes).
-    Bullet bullet;     ///< Informations sur une balle individuelle (par exemple, statut ou type).
-    Score score;       ///< Score actuel du joueur.
+    Magazine magazine; 
+    Bullet bullet;     
+    Score score;       
 } HUDData;
 
 //*@brief Loads the resources needed for the HUD.
