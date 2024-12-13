@@ -42,7 +42,7 @@ void AddScore(int _score);
 //* Renders the current score on the screen, typically at a HUD or overlay position.
 //*
 //* @param _renderWindow Pointer to the sfRenderWindow where the score will be drawn.
-void DrawScore(sfRenderWindow * _renderWindow);
+void DrawScore(sfRenderWindow* _renderWindow);
 
 
 //* @brief Cleans up the resources used by the score system.
