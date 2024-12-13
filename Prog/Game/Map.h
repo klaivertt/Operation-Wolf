@@ -5,7 +5,7 @@
 #include "Sprite.h"
 #include "Props.h"
 
-#define BACKGROUND_SPEED 200.f
+#define BACKGROUND_SPEED 100.f
 
 typedef struct Map
 {
