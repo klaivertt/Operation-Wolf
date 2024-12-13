@@ -61,6 +61,9 @@
     <Filter Include="Fichiers d%27en-tête\States\Game\Characters\Enemy">
       <UniqueIdentifier>{ad7f7fbe-bc1f-42a9-a546-f34a77a95fa7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fichiers sources\States\Game\Characters\Hostage">
+      <UniqueIdentifier>{ea8010a7-61cc-4ac7-8279-42553b9b27c1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.c">
