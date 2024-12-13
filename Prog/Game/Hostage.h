@@ -1,10 +1,9 @@
 #pragma once
-#ifndef ENEMY_H
-#define ENEMY_H
+#ifndef HOSTAGE_H
+#define HOSTAGE_H
 
 #include "Common.h"
 #include "Sprite.h"
-#include "Timer.h"
 
 #define POS_RIGHT_X -100
 #define POS_LEFT_X SCREEN_WIDTH + 100
@@ -15,79 +14,48 @@
 #define HOSTAGE_MAX 1
 
 #pragma region enum
-typedef enum EnemyState
+typedef enum HostageState
 {
 	WALK,
 	DEAD,
 
-}EnemyState;
+}HostageState;
 
-typedef enum EnemyType
-{
-	SOLDIER,
-}EnemyType;
-
-
-typedef enum Drop
-{
-	HEALTH,
-	AMMO,
-	NONE
-}Drop;
 
 #pragma endregion
 
 #pragma region struct
-typedef struct Enemy
+typedef struct Hostage
 {
 
-	EnemyType type;
-	EnemyState state;
-	Drop drop;
+	HostageState state;
 
 	int life;
-	int damage;
 	int speed;
 
 	int targetedPositon;
+}Hostage;
 
-	sfBool haveAlreadyShoot;
-
-	sfBool doDamageToPlayer;
-
-	Timer timer;
-
-}Enemy;
-
-typedef struct EnemyData
+typedef struct HostageData
 {
-	Enemy enemy[5];
-	sfSprite* enemySprite[5];
+	Hostage hostage[HOSTAGE_MAX];
+	sfSprite* hostageSprite[HOSTAGE_MAX];
 
-	sfIntRect animEnemy[9];
-	int nbEnemy;
-
+	int nbhostage;
 	sfTexture* spriteSheet;
 
-}EnemyData;
+}HostageData;
 #pragma endregion
 
-void LoadEnemy(void);
-void KeyPressedEnemy(sfRenderWindow* _renderWindow, sfKeyEvent _key);
-void MouseButtonPressedEnemy(sfRenderWindow* const _renderWindow, sfMouseButtonEvent _mouseButton);
-void MouseMovedEnemy(sfRenderWindow* const _renderWindow, sfMouseMoveEvent _mouseMove);
-void UpdateEnemy(float _dt);
-void DrawEnemy(sfRenderWindow* _renderWindow);
-void CleanupEnemy(void);
+void LoadHostage(void);
+void KeyPressedHostage(sfRenderWindow* _renderWindow, sfKeyEvent _key);
+void MouseButtonPressedHostage(sfRenderWindow* const _renderWindow, sfMouseButtonEvent _mouseButton);
+void MouseMovedHostage(sfRenderWindow* const _renderWindow, sfMouseMoveEvent _mouseMove);
+void UpdateHostage(float _dt);
+void DrawHostage(sfRenderWindow* _renderWindow);
+void CleanupHostage(void);
 
-
-
-sfBool GetEnemyState(Enemy* _enemy);
-void SetEnemyState(Enemy* _enemy, EnemyState _state);
-
-sfBool VerifPlayerKillEnemy(sfVector2f _mousePos);
-
-
-int PlayerDamage(void);
-
+sfBool VerifPlayerKillHostage(sfVector2f _mousePos);
+HostageState GetHostageState(Hostage* _enemy);
+void SetHostageState(Hostage* _enemy, HostageState _state);
 #endif
