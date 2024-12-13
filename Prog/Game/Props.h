@@ -18,74 +18,74 @@ typedef struct Props
 }Props;
 
 
- * @brief Loads the resources for props.
- *
- * Initializes the props, including loading textures, setting up positions,
- * and preparing other necessary data for rendering in the game.
- 
+*@brief Loads the resources for props.
+*
+* Initializes the props, including loading textures, setting up positions,
+* and preparing other necessary data for rendering in the game.
+
 void LoadProps(void);
 
 
- * @brief Updates the state of props.
- *
- * This function updates the positions or animations of props based on
- * the elapsed time and the background speed.
- *
- * @param _dt Delta time (time elapsed since the last update).
- * @param _backgroundSpeed Speed of the background, which may influence the props' movement.
- 
+*@brief Updates the state of props.
+*
+* This function updates the positions or animations of props based on
+* the elapsed time and the background speed.
+*
+*@param _dt Delta time(time elapsed since the last update).
+* @param _backgroundSpeed Speed of the background, which may influence the props' movement.
+
 void UpdateProps(float _dt, float _backgroundSpeed);
 
 
- * @brief Cleans up the resources used by the props.
- *
- * Frees all memory and resources allocated for the props, such as textures and dynamic data.
- 
+*@brief Cleans up the resources used by the props.
+*
+* Frees all memory and resources allocated for the props, such as textures and dynamic data.
+
 void CleanupProps(void);
 
 
- * @brief Draws the props in the third plan.
- *
- * Renders the props in the farthest background layer, typically used for distant decorative objects.
- *
- * @param _renderWindow Pointer to the sfRenderWindow where the props will be drawn.
+*@brief Draws the props in the third plan.
+*
+* Renders the props in the farthest background layer, typically used for distant decorative objects.
+*
+* @param _renderWindow Pointer to the sfRenderWindow where the props will be drawn.
 
-void DrawThirdPlanProps(sfRenderWindow* _renderWindow);
-
-
- * @brief Draws the props in the second plan.
- *
- * Renders the props in the middle background layer, typically used for elements like trees or buildings.
- *
- * @param _renderWindow Pointer to the sfRenderWindow where the props will be drawn.
- 
-void DrawSecondPlanProps(sfRenderWindow* _renderWindow);
+void DrawThirdPlanProps(sfRenderWindow * _renderWindow);
 
 
- * @brief Draws the props in the first plan.
- *
- * Renders the props in the foreground layer, typically used for elements closest to the camera.
- *
- * @param _renderWindow Pointer to the sfRenderWindow where the props will be drawn.
- 
-void DrawFirstPlanProps(sfRenderWindow* _renderWindow);
+*@brief Draws the props in the second plan.
+*
+* Renders the props in the middle background layer, typically used for elements like trees or buildings.
+*
+*@param _renderWindow Pointer to the sfRenderWindow where the props will be drawn.
+
+void DrawSecondPlanProps(sfRenderWindow * _renderWindow);
 
 
- * @brief Gets all the props.
- *
- * Returns a pointer to the array or collection containing all the props.
- *
- * @return Pointer to the collection of Props.
- 
-Props* GetAllProps(void);
+*@brief Draws the props in the first plan.
+*
+* Renders the props in the foreground layer, typically used for elements closest to the camera.
+*
+* @param _renderWindow Pointer to the sfRenderWindow where the props will be drawn.
+
+void DrawFirstPlanProps(sfRenderWindow * _renderWindow);
 
 
- * @brief Gets a specific prop by index.
- *
- * Returns a pointer to a single prop identified by its index in the collection.
- *
- * @param _index Index of the prop to retrieve.
- * @return Pointer to the specific Prop, or NULL if the index is out of bounds.
+*@brief Gets all the props.
+*
+* Returns a pointer to the array or collection containing all the props.
+*
+*@return Pointer to the collection of Props.
+
+Props * GetAllProps(void);
+
+
+*@brief Gets a specific prop by index.
+*
+* Returns a pointer to a single prop identified by its index in the collection.
+*
+* @param _index Index of the prop to retrieve.
+* @return Pointer to the specific Prop, or NULL if the index is out of bounds.
 
 Props* GetProps(size_t _index);
 
