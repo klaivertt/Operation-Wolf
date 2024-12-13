@@ -64,6 +64,9 @@
     <Filter Include="Fichiers sources\States\Game\Characters\Hostage">
       <UniqueIdentifier>{ea8010a7-61cc-4ac7-8279-42553b9b27c1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fichiers d%27en-tête\States\Game\Characters\Hostage">
+      <UniqueIdentifier>{26406c10-2e40-4b69-8004-47a1107d398c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.c">
@@ -117,6 +120,9 @@
     <ClCompile Include="Grenade.c">
       <Filter>Fichiers sources\States\Game\Characters\Player\HUD</Filter>
     </ClCompile>
+    <ClCompile Include="Hostage.c">
+      <Filter>Fichiers sources\States\Game\Characters\Hostage</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Common.h">
@@ -169,6 +175,9 @@
     </ClInclude>
     <ClInclude Include="Grenade.h">
       <Filter>Fichiers d%27en-tête\States\Game\Characters\Player\HUD</Filter>
+    </ClInclude>
+    <ClInclude Include="Hostage.h">
+      <Filter>Fichiers d%27en-tête\States\Game\Characters\Hostage</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
