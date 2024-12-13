@@ -12,7 +12,7 @@ void LoadMagazine()
 	for (int i = 0; i < GetMagazine(); i++)
 	{
 		CreateSprite(&magazine.sprite[i], magazine.texture, position, rect, origin);
-		position.x += rect.width * 1.5;
+		position.x += rect.width * 1.5f;
 	}
 }
 

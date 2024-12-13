@@ -16,6 +16,7 @@ void LoadPlayer()
 	player.magazineNumber = 3;
 	player.bulletNumber = BULLET_NUMBER_MAX;
 	player.grenadeNumber = 1;
+	player.state = ALIVE;
 
 	CreateSprite(&player.cursor.sprite, player.cursor.texture, position, rect, origin);
 }
@@ -120,18 +121,18 @@ int GetGrenade()
 
 void VerifClickOnEnemy(sfMouseButtonEvent _mouseButton)
 {
-
 	sfVector2f pos = { _mouseButton.x, _mouseButton.y };
 	printf("x : %f    y : %f\n", pos.x, pos.y);
-	/*for (int i = 0; i < ENEMY_MAX; i++)
-	{*/
+
 	sfBool killEnemy = VerifPlayerKillEnemy(pos);
-	printf("kill : %d\n", killEnemy);
-	//if (killEnemy)
-	//{
-	//	AddScore(1);
-	//	UpdateScore();
-	//
-	//}
-//}
+	if (killEnemy)
+	{
+		AddScore(1);
+		UpdateScore();
+	}
+}
+
+int GetPlayerState()
+{
+	return player.state;
 }

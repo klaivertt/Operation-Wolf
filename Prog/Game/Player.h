@@ -9,10 +9,17 @@
 #define BULLET_NUMBER_MAX 15
 #define GRENADE_NUMBER_MAX 5
 
+typedef enum PlayerState
+{
+	ALIVE,
+	NOT_ALIVE,
+}PlayerState;
+
 typedef struct PlayerData
 {
 	Image cursor;
 	sfVector2f mousePosition;
+	PlayerState state;
 
 	int HP;
 	int magazineNumber;
@@ -33,5 +40,7 @@ int GetBullet();
 int GetGrenade();
 
 void VerifClickOnEnemy(sfMouseButtonEvent _mouseButton);
+
+int GetPlayerState();
 
 #endif // !PLAYER_H
