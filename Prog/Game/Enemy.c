@@ -32,6 +32,9 @@ sfBool VerifPlayerKillEnemy(sfVector2f _mousePos)
 	return sfFalse;
 }
 
+void BackGroundMovement(sfSprite* _enemySprite, float _dt);
+
+
 
 
 int PlayerDamage(void)
@@ -112,7 +115,6 @@ void MouseMovedEnemy(sfRenderWindow* const _renderWindow, sfMouseMoveEvent _mous
 
 void UpdateEnemy(float _dt)
 {
-
 	sfBool notMoving, timerEnd;
 
 	switch (enemyData.enemy[temporaire].state)
@@ -151,6 +153,8 @@ void UpdateEnemy(float _dt)
 		break;
 	}
 
+	BackGroundMovement(enemyData.enemySprite[temporaire], _dt);
+
 }
 
 void DrawEnemy(sfRenderWindow* _renderWindow)
@@ -164,10 +168,6 @@ void CleanupEnemy(void)
 {
 
 }
-
-
-
-
 
 
 //Fonction Local
@@ -233,12 +233,20 @@ int RandomMapPos(void)
 
 sfBool Move(Enemy* _enemy, int _targetedPosition)
 {
-	sfVector2f pos = sfSprite_getPosition(enemyData.enemySprite[temporaire]);
+	sfVector2f pos = sfSprite_getPosition(enemyData.enemySprite[temporaire]);		
+
 	pos.x = _targetedPosition;
+
 	return MoveSpriteToTarget(&enemyData.enemySprite[temporaire], pos, enemyData.enemy[temporaire].speed, sfFalse);
 }
 
-
+void BackGroundMovement(sfSprite* _enemySprite,float _dt)
+{
+	sfVector2f pos = sfSprite_getPosition(_enemySprite);
+	pos.x -= BACKGROUND_SPEED*_dt;
+	sfSprite_setPosition(_enemySprite, pos);
+	//Verifer position
+}
 
 ////Verifer position
 //sfVector2f ok = sfSprite_getPosition(enemyData.enemy[temporaire].sprite);
