@@ -18,7 +18,7 @@ sfBool MouseClickOnSprite(sfMouseButtonEvent _mouseButton, sfSprite* _sprite);
 sfBool MouseMoveOnSprite(sfMouseMoveEvent _mouseMove, sfSprite* _sprite);
 
 //Return [True] if mouse click position is on one pixel on sprite
-sfBool MouseClickOnSpritePixel(sfMouseButtonEvent _mouseButton, sfSprite* _sprite);
+sfBool MouseClickOnSpritePixel(sfVector2f _mouseButton, sfSprite* _sprite);
 //Return [True] if mouse move on one pixel on sprite
 sfBool MouseMoveOnSpritePixel(sfMouseMoveEvent _mouseMove, sfSprite* _sprite);
 
