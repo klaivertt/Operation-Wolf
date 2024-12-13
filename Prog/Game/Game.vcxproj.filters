@@ -108,6 +108,9 @@
     <ClCompile Include="Timer.c">
       <Filter>Fichiers sources\Utilitaires</Filter>
     </ClCompile>
+    <ClCompile Include="Animation.c">
+      <Filter>Fichiers sources\Utilitaires</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Common.h">
@@ -154,6 +157,9 @@
     </ClInclude>
     <ClInclude Include="Enemy.h">
       <Filter>Fichiers d%27en-tête\States\Game\Characters\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Animations.h">
+      <Filter>Fichiers d%27en-tête\Utilitaires</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

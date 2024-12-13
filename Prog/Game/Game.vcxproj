@@ -137,6 +137,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Animation.c" />
     <ClCompile Include="Bullet.c" />
     <ClCompile Include="Enemy.c" />
     <ClCompile Include="Game.c" />
@@ -154,6 +155,7 @@
     <ClCompile Include="Timer.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Animations.h" />
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="Magazine.h" />
     <ClInclude Include="Common.h" />
