@@ -4,7 +4,6 @@ EnemyData enemyData;
 
 int temporaire = 0;
 
-ReloadEnemy(Enemy* _enemy, sfSprite* _enemySprite);
 sfVector2f RandomSpawn(void);
 int RandomExitPos(void);
 int RandomMapPos(void);
@@ -27,7 +26,6 @@ sfBool VerifPlayerKillEnemy(sfVector2f _mousePos)
 	sfBool click = MouseClickOnSpritePixel(_mousePos, enemyData.enemySprite[temporaire]);
 	if (click)
 	{
-		printf("MOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOORRRRRRRRRRRRRRRRRRRRRRRRRRTTTTTTTTTTTTTTTTTTTTTTTT\n");
 		SetEnemyState(&enemyData.enemy, DEAD);
 		return sfTrue;
 	}
@@ -50,21 +48,49 @@ int PlayerDamage(void)
 }
 
 
-void LoadEnemy(void)
+void LoadEnemies(short _enemyToLoad)
 {
-	if (enemyData.spriteSheet == NULL)
-	{
-		enemyData.spriteSheet = sfTexture_createFromFile("Assets/Sprites/Spritesheet.png", NULL);
-	}
+	//short i, max;
+	////Every enemies
+	//if (_enemyToLoad != NULL)
+	//{
+	//	i = 0;
+	//	max = ENEMY_MAX;
+	//}
+	//else
+	//{
+	//	i = _enemyToLoad;
+	//	max = i + 1;
+	//}
 
-	sfVector2f pos = RandomSpawn();
-	sfIntRect rect = { 23,23,50,98 };
-	sfVector2f origin = { 0.5,1 };
-	//pos = (sfVector2f){ SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 };
-	CreateSprite(&enemyData.enemySprite[temporaire], enemyData.spriteSheet, pos, rect, origin);
+	//for (i; i < max;i++)
+	//{
+		enemyData.enemy[temporaire].state = WALK;
+		enemyData.enemy[temporaire].life = 1;
+		enemyData.enemy[temporaire].damage = 1;
+		enemyData.enemy[temporaire].speed = 5;
 
-	ReloadEnemy(&enemyData.enemy[temporaire], &enemyData.enemySprite[temporaire]);
+		enemyData.enemy[temporaire].targetedPositon = RandomMapPos();
 
+		enemyData.enemy[temporaire].haveAlreadyShoot = sfFalse;
+		enemyData.enemy[temporaire].doDamageToPlayer = sfFalse;
+
+		float TimeBeforeShooting = 1;
+		InitTimer(&enemyData.enemy[temporaire].timer, TimeBeforeShooting);
+
+		if (enemyData.spriteSheet == NULL)
+		{
+			enemyData.spriteSheet = sfTexture_createFromFile("Assets/Sprites/Spritesheet.png", NULL);
+		}
+
+		sfVector2f pos = RandomSpawn();
+		sfIntRect rect = { 23,23,50,98 };
+		sfVector2f origin = { 0.5,1 };
+		//pos = (sfVector2f){ SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 };
+		CreateSprite(&enemyData.enemySprite, enemyData.spriteSheet, pos, rect, origin);
+
+	//}
+	
 }
 
 
@@ -89,8 +115,7 @@ void UpdateEnemy(float _dt)
 
 	sfBool notMoving, timerEnd;
 
-	sfSprite_setPosition(enemyData.enemySprite[temporaire], (sfVector2f) {200,200});
-	/*switch (enemyData.enemy[temporaire].state)
+	switch (enemyData.enemy[temporaire].state)
 	{
 	case WALK:
 
@@ -122,9 +147,9 @@ void UpdateEnemy(float _dt)
 
 	case DEAD:
 		printf("dead\n");
-		ReloadEnemy(&enemyData.enemy[temporaire], &enemyData.enemySprite[temporaire]);
+		LoadEnemies(temporaire);
 		break;
-	}*/
+	}
 
 }
 
@@ -146,23 +171,9 @@ void CleanupEnemy(void)
 
 
 //Fonction Local
-ReloadEnemy(Enemy* _enemy, sfSprite* _enemySprite)
+void EnemyInitialisation(Enemy* _enemy, sfSprite* _enemySprite)
 {
-	_enemy->state = WALK;
-	_enemy->life = 1;
-	_enemy->damage = 1;
-	_enemy->speed = 5;
-
-	_enemy->targetedPositon = RandomMapPos();
-
-	_enemy->haveAlreadyShoot = sfFalse;
-	_enemy->doDamageToPlayer = sfFalse;
-
-	float TimeBeforeShooting = 1;
-	InitTimer(&_enemy->timer, TimeBeforeShooting);
-
-	sfVector2f pos = RandomSpawn();
-	sfSprite_setPosition(_enemySprite, pos);
+	
 }
 
 sfVector2f RandomSpawn(void)

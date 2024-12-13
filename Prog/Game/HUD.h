@@ -7,7 +7,7 @@
 #include "Bullet.h"
 #include "Magazine.h"
 #include "Score.h"
-
+#include "Grenade.h"
 
 //* @brief Structure containing user interface(HUD) data.
 //*

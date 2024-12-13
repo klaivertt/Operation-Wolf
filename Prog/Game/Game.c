@@ -7,7 +7,7 @@ void LoadGame(void)
 	printf("LOAD GAME\n");
 
 	LoadMap();
-	LoadEnemy();
+	LoadEnemies(NULL);
 	LoadPlayer();
 	LoadHUD();
 }
