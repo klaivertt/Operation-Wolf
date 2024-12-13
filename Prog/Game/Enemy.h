@@ -12,6 +12,8 @@
 #define POS_MIDDLE_Y 400
 #define POS_DOWN_Y 600
 
+#define ENEMY_MAX 5
+
 #pragma region enum
 typedef enum EnemyState
 {
@@ -40,7 +42,6 @@ typedef enum Drop
 #pragma region struct
 typedef struct Enemy
 {
-	sfSprite* sprite;
 
 	EnemyType type;
 	EnemyState state;
@@ -63,9 +64,10 @@ typedef struct Enemy
 typedef struct EnemyData
 {
 	Enemy enemy[5];
+	sfSprite* enemySprite[5];
 
-	sfIntRect animSoldier[9];
-	int nbSoldierSprite;
+	sfIntRect animEnemy[9];
+	int nbEnemy;
 
 	sfTexture* spriteSheet;
 
@@ -80,10 +82,11 @@ void UpdateEnemy(float _dt);
 void DrawEnemy(sfRenderWindow* _renderWindow);
 void CleanupEnemy(void);
 
-void ReloadEnemy(Enemy* _enemy);
+
 
 EnemyState GetEnemyState(Enemy* _enemy);
 void SetEnemyState(Enemy* _enemy, EnemyState _state);
+sfSprite* GetEnemySprite(short _i);
 
 int PlayerDamage(void);
 
