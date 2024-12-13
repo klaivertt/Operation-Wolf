@@ -85,4 +85,6 @@ void ReloadEnemy(Enemy* _enemy);
 EnemyState GetEnemyState(Enemy* _enemy);
 void SetEnemyState(Enemy* _enemy, EnemyState _state);
 
+int PlayerDamage(void);
+
 #endif

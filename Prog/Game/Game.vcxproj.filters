@@ -58,14 +58,8 @@
     <Filter Include="Fichiers sources\States\Game\Characters\Enemy">
       <UniqueIdentifier>{473f5f5a-5d04-4bec-b301-462fda9743a2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Fichiers sources\States\Game\Characters\Enemy\Type">
-      <UniqueIdentifier>{b1a09fc5-f5b8-4ae8-9ff2-0ffeedd51c01}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Fichiers d%27en-tête\States\Game\Characters\Enemy">
       <UniqueIdentifier>{ad7f7fbe-bc1f-42a9-a546-f34a77a95fa7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Fichiers d%27en-tête\States\Game\Characters\Enemy\Type">
-      <UniqueIdentifier>{4b273f66-7e25-419f-8066-71deb7e89a43}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -131,9 +125,6 @@
     <ClInclude Include="Sprite.h">
       <Filter>Fichiers d%27en-tête\Utilitaires</Filter>
     </ClInclude>
-    <ClInclude Include="Enemy.h">
-      <Filter>Fichiers d%27en-tête\States\Game\Characters</Filter>
-    </ClInclude>
     <ClInclude Include="Game.h">
       <Filter>Fichiers d%27en-tête\States\Game</Filter>
     </ClInclude>
@@ -160,6 +151,9 @@
     </ClInclude>
     <ClInclude Include="Timer.h">
       <Filter>Fichiers d%27en-tête\Utilitaires</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Fichiers d%27en-tête\States\Game\Characters\Enemy</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

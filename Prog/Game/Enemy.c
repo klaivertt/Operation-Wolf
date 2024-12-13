@@ -21,7 +21,7 @@ void SetEnemyState(Enemy* _enemy, EnemyState _state)
 	_enemy->state = _state;
 }
 
-int PlayerDamage()
+int PlayerDamage(void)
 {
 	int totalDamage = 0;
 		
