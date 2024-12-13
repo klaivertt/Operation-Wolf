@@ -7,6 +7,7 @@
 #include "Enemy.h"
 
 #define BULLET_NUMBER_MAX 15
+#define GRENADE_NUMBER_MAX 5
 
 typedef struct PlayerData
 {
@@ -16,17 +17,21 @@ typedef struct PlayerData
 	int HP;
 	int magazineNumber;
 	int bulletNumber;
+	int grenadeNumber;
 }PlayerData;
 
 void LoadPlayer();
 void DrawPlayer(sfRenderWindow* _renderWindow);
 void UpdatePlayer(float _dt);
-void GetDamage(int _damage);
+void GetDamage();
 void GetMousePositionPlayer(sfMouseMoveEvent _mouseMoved);
 void CleanupPlayer();
 
 void MouseButtonPressedPlayer(sfRenderWindow* const _renderWindow, sfMouseButtonEvent _mouseButton);
 int GetMagazine();
 int GetBullet();
+int GetGrenade();
+
+void VerifClickOnEnemy(sfMouseButtonEvent _mouseButton);
 
 #endif // !PLAYER_H

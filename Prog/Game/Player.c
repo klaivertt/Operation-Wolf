@@ -15,6 +15,7 @@ void LoadPlayer()
 	player.HP = 20;
 	player.magazineNumber = 3;
 	player.bulletNumber = BULLET_NUMBER_MAX;
+	player.grenadeNumber = 1;
 
 	CreateSprite(&player.cursor.sprite, player.cursor.texture, position, rect, origin);
 }
@@ -32,17 +33,19 @@ void UpdatePlayer(float _dt)
 	{
 		sfSprite_setPosition(player.cursor.sprite, (sfVector2f) { player.mousePosition.x, player.mousePosition.y });
 	}
+
+	GetDamage();
 }
 
-void GetDamage(int _damage)
+void GetDamage()
 {
-	player.HP -= _damage;
+	player.HP -= PlayerDamage();
 }
 
 void GetMousePositionPlayer(sfMouseMoveEvent _mouseMoved)
 {
-	player.mousePosition.x = (float) _mouseMoved.x;
-	player.mousePosition.y = (float) _mouseMoved.y;
+	player.mousePosition.x = (float)_mouseMoved.x;
+	player.mousePosition.y = (float)_mouseMoved.y;
 }
 
 void CleanupPlayer()
@@ -61,9 +64,7 @@ void MouseButtonPressedPlayer(sfRenderWindow* const _renderWindow, sfMouseButton
 	case sfMouseLeft:
 		if (player.bulletNumber != 0)
 		{
-			AddScore(1);
-			UpdateScore();
-			ShootBullet();
+			VerifClickOnEnemy(_mouseButton);
 		}
 		break;
 	case sfMouseRight:
@@ -74,6 +75,12 @@ void MouseButtonPressedPlayer(sfRenderWindow* const _renderWindow, sfMouseButton
 	}
 }
 
+void ShootBullet()
+{
+	player.bulletNumber--;
+}
+
+//make the player use 1 magazine and reload bullets
 void ReloadMagazine()
 {
 	if (player.magazineNumber > 0)
@@ -87,22 +94,43 @@ void ReloadMagazine()
 	}
 }
 
-int GetMagazine()
-{
-	return player.magazineNumber;
-}
-
-void ShootBullet()
-{
-	player.bulletNumber--;
-}
-
+//reset bullet amount to maximum value
 void ReloadBullet()
 {
 	player.bulletNumber = BULLET_NUMBER_MAX;
 }
 
+//return magazine amount
+int GetMagazine()
+{
+	return player.magazineNumber;
+}
+
+//return bullet number left in the magazine
 int GetBullet()
 {
 	return player.bulletNumber;
+}
+
+int GetGrenade()
+{
+	return player.grenadeNumber;
+}
+
+void VerifClickOnEnemy(sfMouseButtonEvent _mouseButton)
+{
+
+	sfVector2f pos = { _mouseButton.x, _mouseButton.y };
+	printf("x : %f    y : %f\n", pos.x, pos.y);
+	/*for (int i = 0; i < ENEMY_MAX; i++)
+	{*/
+	sfBool killEnemy = VerifPlayerKillEnemy(pos);
+	printf("kill : %d\n", killEnemy);
+	//if (killEnemy)
+	//{
+	//	AddScore(1);
+	//	UpdateScore();
+	//	ShootBullet();
+	//}
+//}
 }
