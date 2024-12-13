@@ -6,7 +6,7 @@ int temporaire = 0;
 
 sfVector2f RandomSpawn(void);
 int RandomExitPos(void);
-int RandomShootPos(void);
+int RandomMapPos(void);
 
 //Return True if is on targeted Position
 sfBool Move(Enemy* _enemy, int _position);
@@ -59,7 +59,7 @@ void ReloadEnemy(Enemy* _enemy)
 	_enemy->damage = 1;
 	_enemy->speed = 5;
 
-	_enemy->targetedPositon = RandomShootPos();
+	_enemy->targetedPositon = RandomMapPos();
 
 	_enemy->haveAlreadyShoot = sfFalse;
 	_enemy->doDamageToPlayer = sfFalse;
@@ -194,7 +194,7 @@ int RandomExitPos(void)
 	return 0;
 }
 
-int RandomShootPos(void)
+int RandomMapPos(void)
 {
 	return SCREEN_WIDTH * 0.05 + rand() % SCREEN_WIDTH * 0.90;
 }
