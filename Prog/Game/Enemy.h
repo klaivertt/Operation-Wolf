@@ -74,7 +74,8 @@ typedef struct EnemyData
 }EnemyData;
 #pragma endregion
 
-void LoadEnemy(void);
+// NULL for Load Every Enemies
+void LoadEnemies(short _enemyToLoad);
 void KeyPressedEnemy(sfRenderWindow* _renderWindow, sfKeyEvent _key);
 void MouseButtonPressedEnemy(sfRenderWindow* const _renderWindow, sfMouseButtonEvent _mouseButton);
 void MouseMovedEnemy(sfRenderWindow* const _renderWindow, sfMouseMoveEvent _mouseMove);
