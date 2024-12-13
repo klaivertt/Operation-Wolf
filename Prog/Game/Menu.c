@@ -35,15 +35,15 @@ void LoadMenu(void)
 	menuData.userInterface.textureWhiteButton = sfTexture_createFromFile("Assets/Sprites/Buttons.png", NULL);
 
 	//PlayButton
-	sfIntRect rect = { 0,0,201,67 };
+	sfIntRect rect = { 0,0,402,134 };
 	sfVector2f origin = (sfVector2f){ 0.5, 1 };
-	position = (sfVector2f){ SCREEN_WIDTH * 0.85f,SCREEN_HEIGHT * 0.15f };
+	position = (sfVector2f){ SCREEN_WIDTH * 0.85f,SCREEN_HEIGHT * 0.2f };
 	CreateSprite(&menuData.userInterface.playButtonSprite, menuData.userInterface.textureWhiteButton, position, rect, origin);
 
 	//ExitButton
-	rect = (sfIntRect){ 405,208,200,67 };
+	rect = (sfIntRect){ 810,416,400,134 };
 	origin = (sfVector2f){ 0.5, 1 };
-	position = (sfVector2f){ SCREEN_WIDTH * 0.85f ,SCREEN_HEIGHT * 0.28f };
+	position = (sfVector2f){ SCREEN_WIDTH * 0.85f ,SCREEN_HEIGHT * 0.4f };
 	CreateSprite(&menuData.userInterface.exitButtonSprite, menuData.userInterface.textureWhiteButton, position, rect, origin);
 
 }
