@@ -1,13 +1,12 @@
 #include "Animations.h"
 
 
-void CreateAnimation(Animation* _anim, char* const _filepath, int _maxFrame, int _frameCount, int _frameRate, sfBool _isLooping, sfVector2f _start)
+void CreateAnimation(Animation* _anim, sfTexture** _texture, int _maxFrame, int _frameCount, int _frameRate, sfBool _isLooping, sfVector2f _start)
 {
 	// Fonction qui permet de charger et stocker une animation
-	_anim->texture = sfTexture_createFromFile(_filepath, NULL);
 	_anim->sprite = sfSprite_create();
 
-	sfSprite_setTexture(_anim->sprite, _anim->texture, sfTrue);
+	sfSprite_setTexture(_anim->sprite, *_texture, sfTrue);
 	sfIntRect rect = sfSprite_getTextureRect(_anim->sprite);
 
 	rect.width = rect.width / _maxFrame;
