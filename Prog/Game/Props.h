@@ -66,22 +66,20 @@ void DrawSecondPlanProps(sfRenderWindow * _renderWindow);
 void DrawFirstPlanProps(sfRenderWindow * _renderWindow);
 
 
-*@brief Gets all the props.
-*
-* Returns a pointer to the array or collection containing all the props.
-*
-*@return Pointer to the collection of Props.
-
+//* @brief Gets all the props.
+//*
+//* Returns a pointer to the array or collection containing all the props.
+//*
+//* @return Pointer to the collection of Props.
 Props * GetAllProps(void);
 
 
-*@brief Gets a specific prop by index.
-*
-* Returns a pointer to a single prop identified by its index in the collection.
-*
-* @param _index Index of the prop to retrieve.
-* @return Pointer to the specific Prop, or NULL if the index is out of bounds.
-
+//* @brief Gets a specific prop by index.
+//*
+//* Returns a pointer to a single prop identified by its index in the collection.
+//*
+//* @param _index Index of the prop to retrieve.
+//* @return Pointer to the specific Prop, or NULL if the index is out of bounds.
 Props* GetProps(size_t _index);
 
 
