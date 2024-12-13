@@ -37,7 +37,7 @@ int PlayerDamage(void)
 
 sfSprite* GetEnemySprite(short _i)
 {
-	return enemyData.enemySprite[_i];
+	return &enemyData.enemySprite[_i];
 }
 
 
