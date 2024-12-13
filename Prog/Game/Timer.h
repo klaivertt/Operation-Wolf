@@ -17,7 +17,7 @@ typedef struct Timer
 //*
 //*@param _timer Pointer to the Timer to initialize.
 //*@param _maxValue Maximum duration of the timer.
-void InitTimer(Timer * _timer, float _maxValue);
+void InitTimer(Timer* _timer, float _maxValue);
 
 //* @brief Updates the Timer based on the elapsed time.
 //*
