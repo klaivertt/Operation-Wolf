@@ -33,7 +33,7 @@ void DrawGrenade(sfRenderWindow* _renderWindow)
 
 void CleanupGrenade()
 {
-	for (int i = 0; i < BULLET_NUMBER_MAX; i++)
+	for (int i = 0; i < GRENADE_NUMBER_MAX; i++)
 	{
 		sfSprite_destroy(grenade.sprite[i]);
 		grenade.sprite[i] = NULL;

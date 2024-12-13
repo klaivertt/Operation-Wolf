@@ -64,6 +64,7 @@ void MouseButtonPressedPlayer(sfRenderWindow* const _renderWindow, sfMouseButton
 	case sfMouseLeft:
 		if (player.bulletNumber != 0)
 		{
+			ShootBullet();
 			VerifClickOnEnemy(_mouseButton);
 		}
 		break;
@@ -130,7 +131,7 @@ void VerifClickOnEnemy(sfMouseButtonEvent _mouseButton)
 	//{
 	//	AddScore(1);
 	//	UpdateScore();
-	//	ShootBullet();
+	//
 	//}
 //}
 }
