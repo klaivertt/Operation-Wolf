@@ -67,7 +67,7 @@ void PollEvent(MainData* const _mainData)
 			sfRenderWindow_close(_mainData->renderWindow);
 			break;
 		case sfEvtKeyPressed:
-			
+
 			KeyPressed(_mainData->renderWindow, event.key);
 			break;
 		case sfEvtMouseButtonPressed:
