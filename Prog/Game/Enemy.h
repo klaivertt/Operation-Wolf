@@ -5,6 +5,7 @@
 #include "Common.h"
 #include "Sprite.h"
 #include "Timer.h"
+#include "Map.h"
 
 #define POS_RIGHT_X -100
 #define POS_LEFT_X SCREEN_WIDTH + 100
