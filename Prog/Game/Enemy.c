@@ -61,13 +61,11 @@ void LoadEnemies(short _enemyToLoad)
 	//Every enemies
 	if (_enemyToLoad == NULL)
 	{
-		printf("toutLeMonde");
 		i = 0;
 		max = ENEMY_MAX;
 	}
 	else
 	{
-		printf("unSeul");
 		i = _enemyToLoad - 1;
 		max = i + 1;
 	}
@@ -86,7 +84,6 @@ void LoadEnemies(short _enemyToLoad)
 
 		enemyData.enemy[i].maxSpeed *= 1 - speedMultiplicator;
 		
-		printf("%d : %f\n",i, speedMultiplicator);
 		enemyData.enemy[i].haveAlreadyShoot = sfFalse;
 		enemyData.enemy[i].doDamageToPlayer = sfFalse;
 
@@ -131,7 +128,6 @@ void UpdateEnemy(float _dt)
 
 	for (short i = 0; i < ENEMY_MAX; i++)
 	{
-		printf("%d\n",i);
 		switch (enemyData.enemy[i].state)
 		{
 		case WALK:
@@ -238,7 +234,6 @@ int RandomExitPos(void)
 		return POS_LEFT_X;
 	}
 
-	printf("error : RandomExitPos");
 	return 0;
 }
 
