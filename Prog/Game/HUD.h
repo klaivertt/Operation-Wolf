@@ -37,19 +37,19 @@ void LoadHUD();
 void UpdateHUD(float _dt);
 
 
- //* @brief Dessine le HUD dans la fenêtre de rendu spécifiée.
- //*
- //* Cette fonction affiche tous les éléments du HUD, tels que le score, le chargeur,
- //* et toute autre information pertinente, sur la fenêtre de jeu.
- //*
- //* @param _renderWindow Pointeur vers la fenêtre SFML où le HUD sera affiché.
+//* @brief Draws the HUD in the specified rendering window.
+//*
+//* This function displays all HUD elements, such as score, loader,
+//* and any other relevant information, on the game window.
+//*
+//* @param _renderWindow Pointer to the SFML window where the HUD will be displayed.
 void DrawHUD(sfRenderWindow* _renderWindow);
 
 
- * @brief Libère les ressources associées au HUD.
- *
- * Cette fonction nettoie les ressources allouées pour le HUD afin d'éviter les fuites de mémoire.
- * Cela inclut la destruction des textures, des polices ou des autres données chargées.
+//*@brief Releases resources associated with the HUD.
+//*
+//* This function cleans up the resources allocated to the HUD to prevent memory leaks.
+//* This includes the destruction of textures, fonts or other loaded data
 void CleanupHUD();
 
 
