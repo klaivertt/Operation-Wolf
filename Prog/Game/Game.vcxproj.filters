@@ -111,6 +111,9 @@
     <ClCompile Include="Animation.c">
       <Filter>Fichiers sources\Utilitaires</Filter>
     </ClCompile>
+    <ClCompile Include="Grenade.c">
+      <Filter>Fichiers sources\States\Game\Characters\Player\HUD</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Common.h">
@@ -160,6 +163,9 @@
     </ClInclude>
     <ClInclude Include="Animations.h">
       <Filter>Fichiers d%27en-tête\Utilitaires</Filter>
+    </ClInclude>
+    <ClInclude Include="Grenade.h">
+      <Filter>Fichiers d%27en-tête\States\Game\Characters\Player\HUD</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
