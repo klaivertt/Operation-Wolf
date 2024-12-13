@@ -29,11 +29,8 @@ typedef struct HUDData
  */
 void LoadHUD();
 
-/**
- * @brief Met à jour les données du HUD en fonction du temps et de l'état du jeu.
- *
- * @param _dt Temps écoulé depuis la dernière mise à jour (delta time).
- */
+
+
 void UpdateHUD(float _dt);
 
 
