@@ -8,12 +8,12 @@
 #include "Magazine.h"
 #include "Score.h"
 
-/**
- * @brief Structure contenant les données de l'interface utilisateur (HUD).
- *
- * Cette structure regroupe les éléments nécessaires à l'affichage et à la gestion
- * du HUD, incluant les informations sur le chargeur, les balles restantes, et le score.
- */
+
+//* @brief Structure containing user interface(HUD) data.
+//*
+//* This structure contains all the elements required to display and manage
+//* HUD, including loader information, remaining bullets and score.
+
 typedef struct HUDData
 {
     Magazine magazine; ///< Données concernant le chargeur (nombre de balles restantes).
@@ -21,12 +21,10 @@ typedef struct HUDData
     Score score;       ///< Score actuel du joueur.
 } HUDData;
 
-/**
- * @brief Charge les ressources nécessaires pour le HUD.
- *
- * Cette fonction initialise les données et ressources associées au HUD, telles que
- * les textures, polices, ou autres éléments graphiques nécessaires.
- */
+//*@brief Loads the resources needed for the HUD.
+//*
+//* This function initializes the data and resources associated with the HUD, such as
+//* textures, fonts and other graphic elements.
 void LoadHUD();
 
 
