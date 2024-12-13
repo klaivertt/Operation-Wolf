@@ -37,19 +37,17 @@ void UpdateScore();
 void AddScore(int _score);
 
 
-*@brief Draws the score on the given render window.
-*
-* Renders the current score on the screen, typically at a HUD or overlay position.
-*
-*@param _renderWindow Pointer to the sfRenderWindow where the score will be drawn.
-
+//* @brief Draws the score on the given render window.
+//*
+//* Renders the current score on the screen, typically at a HUD or overlay position.
+//*
+//* @param _renderWindow Pointer to the sfRenderWindow where the score will be drawn.
 void DrawScore(sfRenderWindow * _renderWindow);
 
 
-*@brief Cleans up the resources used by the score system.
-*
-* Frees memory and releases resources allocated for managing or displaying the score.
-
+//* @brief Cleans up the resources used by the score system.
+//*
+//* Frees memory and releases resources allocated for managing or displaying the score.
 void CleanupScore();
 
 
