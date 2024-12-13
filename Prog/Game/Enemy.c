@@ -2,14 +2,14 @@
 
 EnemyData enemyData;
 
-int temporaire = 0;
+int i = 0;
 
 sfVector2f RandomSpawn(void);
 int RandomExitPos(void);
 int RandomMapPos(void);
 
 //Return True if is on targeted Position
-sfBool Move(Enemy* _enemy, int _position);
+sfBool Move(Enemy* _enemy, sfSprite** _sprite);
 
 EnemyState GetEnemyState(Enemy* _enemy)
 {
@@ -23,11 +23,14 @@ void SetEnemyState(Enemy* _enemy, EnemyState _state)
 
 sfBool VerifPlayerKillEnemy(sfVector2f _mousePos)
 {
-	sfBool click = MouseClickOnSpritePixel(_mousePos, enemyData.enemySprite[temporaire]);
-	if (click)
+	for (short i = 0; i < ENEMY_MAX; i++)
 	{
-		SetEnemyState(&enemyData.enemy, DEAD);
-		return sfTrue;
+		sfBool click = MouseClickOnSpritePixel(_mousePos, enemyData.enemySprite[i]);
+		if (click)
+		{
+			SetEnemyState(&enemyData.enemy[i], DEAD);
+			return sfTrue;
+		}
 	}
 	return sfFalse;
 }
@@ -40,46 +43,55 @@ void BackGroundMovement(sfSprite* _enemySprite, float _dt);
 int PlayerDamage(void)
 {
 	int totalDamage = 0;
-
-	if (enemyData.enemy[temporaire].doDamageToPlayer)
+	for (short i = 0; i < ENEMY_MAX; i++)
 	{
-		enemyData.enemy[temporaire].doDamageToPlayer = sfFalse;
-		totalDamage += enemyData.enemy[temporaire].damage;
+		if (enemyData.enemy[i].doDamageToPlayer)
+		{
+			enemyData.enemy[i].doDamageToPlayer = sfFalse;
+			totalDamage += enemyData.enemy[i].damage;
+		}
 	}
-
 	return totalDamage;
 }
 
 
 void LoadEnemies(short _enemyToLoad)
 {
-	//short i, max;
-	////Every enemies
-	//if (_enemyToLoad != NULL)
-	//{
-	//	i = 0;
-	//	max = ENEMY_MAX;
-	//}
-	//else
-	//{
-	//	i = _enemyToLoad;
-	//	max = i + 1;
-	//}
+	short i, max;
+	//Every enemies
+	if (_enemyToLoad == NULL)
+	{
+		printf("toutLeMonde");
+		i = 0;
+		max = ENEMY_MAX;
+	}
+	else
+	{
+		printf("unSeul");
+		i = _enemyToLoad - 1;
+		max = i + 1;
+	}
 
-	//for (i; i < max;i++)
-	//{
-		enemyData.enemy[temporaire].state = WALK;
-		enemyData.enemy[temporaire].life = 1;
-		enemyData.enemy[temporaire].damage = 1;
-		enemyData.enemy[temporaire].speed = 5;
+	for (i; i < max;i++)
+	{
+		enemyData.enemy[i].state = WALK;
+		enemyData.enemy[i].life = 1;
+		enemyData.enemy[i].damage = 1;
+		enemyData.enemy[i].maxSpeed = 8;
 
-		enemyData.enemy[temporaire].targetedPositon = RandomMapPos();
+		enemyData.enemy[i].targetedPositon = RandomMapPos();
 
-		enemyData.enemy[temporaire].haveAlreadyShoot = sfFalse;
-		enemyData.enemy[temporaire].doDamageToPlayer = sfFalse;
+		float speedMultiplicator = 1 + rand() % 6;
+		speedMultiplicator /= 10;
+
+		enemyData.enemy[i].maxSpeed *= 1 - speedMultiplicator;
+		
+		printf("%d : %f\n",i, speedMultiplicator);
+		enemyData.enemy[i].haveAlreadyShoot = sfFalse;
+		enemyData.enemy[i].doDamageToPlayer = sfFalse;
 
 		float TimeBeforeShooting = 1;
-		InitTimer(&enemyData.enemy[temporaire].timer, TimeBeforeShooting);
+		InitTimer(&enemyData.enemy[i].timer, TimeBeforeShooting);
 
 		if (enemyData.spriteSheet == NULL)
 		{
@@ -90,9 +102,9 @@ void LoadEnemies(short _enemyToLoad)
 		sfIntRect rect = { 23,23,50,98 };
 		sfVector2f origin = { 0.5,1 };
 		//pos = (sfVector2f){ SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 };
-		CreateSprite(&enemyData.enemySprite, enemyData.spriteSheet, pos, rect, origin);
+		CreateSprite(&enemyData.enemySprite[i], enemyData.spriteSheet, pos, rect, origin);
 
-	//}
+	}
 	
 }
 
@@ -117,51 +129,56 @@ void UpdateEnemy(float _dt)
 {
 	sfBool notMoving, timerEnd;
 
-	switch (enemyData.enemy[temporaire].state)
+	for (short i = 0; i < ENEMY_MAX; i++)
 	{
-	case WALK:
-
-		notMoving = Move(&enemyData.enemy[temporaire], enemyData.enemy[temporaire].targetedPositon);
-		if (notMoving)
+		printf("%d\n",i);
+		switch (enemyData.enemy[i].state)
 		{
-			if (enemyData.enemy[temporaire].haveAlreadyShoot)
+		case WALK:
+
+			notMoving = Move(&enemyData.enemy[i], &enemyData.enemySprite[i]);
+			if (notMoving)
 			{
-				SetEnemyState(&enemyData.enemy[temporaire], DEAD);
+				if (enemyData.enemy[i].haveAlreadyShoot)
+				{
+					SetEnemyState(&enemyData.enemy[i], DEAD);
+				}
+				else
+				{
+					SetEnemyState(&enemyData.enemy[i], SHOOT);
+				}
 			}
-			else
-			{
-				SetEnemyState(&enemyData.enemy[temporaire], SHOOT);
+
+			break;
+
+		case SHOOT:
+			UpdateTimer(_dt, &enemyData.enemy[i].timer);
+			timerEnd = IsTimerFinished(&enemyData.enemy[i].timer);
+			if (timerEnd) {
+				enemyData.enemy[i].doDamageToPlayer = sfTrue;
+				SetEnemyState(&enemyData.enemy[i], WALK);
+				enemyData.enemy[i].targetedPositon = RandomExitPos();
+				enemyData.enemy[i].haveAlreadyShoot = sfTrue;
 			}
+			break;
+
+		case DEAD:
+			printf("dead\n");
+			LoadEnemies(i + 1);
+			break;
 		}
 
-		break;
-
-	case SHOOT:
-		UpdateTimer(_dt, &enemyData.enemy[temporaire].timer);
-		timerEnd = IsTimerFinished(&enemyData.enemy[temporaire].timer);
-		if (timerEnd) {
-			enemyData.enemy[temporaire].doDamageToPlayer = sfTrue;
-			SetEnemyState(&enemyData.enemy[temporaire], WALK);
-			enemyData.enemy[temporaire].targetedPositon = RandomExitPos();
-			enemyData.enemy[temporaire].haveAlreadyShoot = sfTrue;
-		}
-		break;
-
-	case DEAD:
-		printf("dead\n");
-		LoadEnemies(temporaire);
-		break;
+		BackGroundMovement(enemyData.enemySprite[i], _dt);
 	}
-
-	BackGroundMovement(enemyData.enemySprite[temporaire], _dt);
 
 }
 
 void DrawEnemy(sfRenderWindow* _renderWindow)
 {
-
-	sfRenderWindow_drawSprite(_renderWindow, enemyData.enemySprite[temporaire], NULL);
-
+	for (short i = 0; i < ENEMY_MAX; i++)
+	{
+		sfRenderWindow_drawSprite(_renderWindow, enemyData.enemySprite[i], NULL);
+	}
 }
 
 void CleanupEnemy(void)
@@ -231,23 +248,23 @@ int RandomMapPos(void)
 }
 
 
-sfBool Move(Enemy* _enemy, int _targetedPosition)
+sfBool Move(Enemy* _enemy, sfSprite** _sprite)
 {
-	sfVector2f pos = sfSprite_getPosition(enemyData.enemySprite[temporaire]);		
+	sfVector2f pos = sfSprite_getPosition(*_sprite);
 
-	pos.x = _targetedPosition;
+	pos.x = _enemy->targetedPositon;
 
-	return MoveSpriteToTarget(&enemyData.enemySprite[temporaire], pos, enemyData.enemy[temporaire].speed, sfFalse);
+	return MoveSpriteToTarget(_sprite, pos, _enemy->maxSpeed, sfFalse);
 }
 
 void BackGroundMovement(sfSprite* _enemySprite,float _dt)
 {
-	sfVector2f pos = sfSprite_getPosition(_enemySprite);
+	sfVector2f pos = sfSprite_getPosition(&_enemySprite);
 	pos.x -= BACKGROUND_SPEED*_dt;
-	sfSprite_setPosition(_enemySprite, pos);
+	sfSprite_setPosition(&_enemySprite, pos);
 	//Verifer position
 }
 
 ////Verifer position
 //sfVector2f ok = sfSprite_getPosition(enemyData.enemy[temporaire].sprite);
-//printf("\npos origin : %f %f\n", ok.x, ok.y);
+//printf("\npos origin : %f %f\Bn", ok.x, ok.y);

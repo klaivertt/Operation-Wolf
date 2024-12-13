@@ -9,9 +9,9 @@
 
 #define POS_RIGHT_X -100
 #define POS_LEFT_X SCREEN_WIDTH + 100
-#define POS_HIGHT_Y 200
-#define POS_MIDDLE_Y 400
-#define POS_DOWN_Y 600
+#define POS_HIGHT_Y 498
+#define POS_MIDDLE_Y 850
+#define POS_DOWN_Y 1000
 
 #define ENEMY_MAX 5
 
@@ -50,9 +50,10 @@ typedef struct Enemy
 
 	int life;
 	int damage;
-	int speed;
+	float maxSpeed;
 
 	int targetedPositon;
+
 
 	sfBool haveAlreadyShoot;
 
