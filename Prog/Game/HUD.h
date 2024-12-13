@@ -30,7 +30,9 @@ typedef struct HUDData
 void LoadHUD();
 
 
-
+//*@brief Updates HUD data according to time and game status.
+//*
+//* @param _dt Time elapsed since last update(delta time).
 void UpdateHUD(float _dt);
 
 
