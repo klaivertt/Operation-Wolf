@@ -32,7 +32,7 @@ sfBool MouseMoveOnSprite(sfMouseMoveEvent _mouseMove, sfSprite* _sprite)
 }
 
 
-sfBool MouseClickOnSpritePixel(sfMouseButtonEvent _mouseButton, sfSprite* _sprite)
+sfBool MouseClickOnSpritePixel(sfVector2f _mouseButton, sfSprite* _sprite)
 {
 
 	sfFloatRect globalBounds = sfSprite_getGlobalBounds(_sprite);
@@ -51,11 +51,8 @@ sfBool MouseClickOnSpritePixel(sfMouseButtonEvent _mouseButton, sfSprite* _sprit
 		{
 			return sfTrue;
 		}
-
-
 	}
 	return sfFalse;
-
 }
 
 sfBool MouseMoveOnSpritePixel(sfMouseMoveEvent _mouseMove, sfSprite* _sprite)

@@ -84,9 +84,11 @@ void CleanupEnemy(void);
 
 
 
-EnemyState GetEnemyState(Enemy* _enemy);
+sfBool GetEnemyState(Enemy* _enemy);
 void SetEnemyState(Enemy* _enemy, EnemyState _state);
-sfSprite* GetEnemySprite(short _i);
+
+sfBool VerifPlayerKillEnemy(sfVector2f _mousePos);
+
 
 int PlayerDamage(void);
 

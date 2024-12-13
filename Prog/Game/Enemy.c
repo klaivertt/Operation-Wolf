@@ -22,6 +22,19 @@ void SetEnemyState(Enemy* _enemy, EnemyState _state)
 	_enemy->state = _state;
 }
 
+sfBool VerifPlayerKillEnemy(sfVector2f _mousePos)
+{
+	sfBool click = MouseClickOnSpritePixel(_mousePos, &enemyData.enemySprite[temporaire]);
+	if (click)
+	{
+		SetEnemyState(&enemyData.enemy, DEAD);
+		return sfTrue;
+	}
+	return sfFalse;
+}
+
+
+
 int PlayerDamage(void)
 {
 	int totalDamage = 0;
@@ -33,11 +46,6 @@ int PlayerDamage(void)
 	}
 
 	return totalDamage;
-}
-
-sfSprite* GetEnemySprite(short _i)
-{
-	return &enemyData.enemySprite[_i];
 }
 
 
