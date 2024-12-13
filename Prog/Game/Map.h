@@ -47,13 +47,13 @@ void DrawMap(sfRenderWindow* _renderWindow);
  */
 void CleanupMap(void);
 
-/**
- * @brief Draws the third plan of the map.
- *
- * This function renders the farthest background layer, typically used for distant elements
- * like mountains, skies, or other decorative objects.
- *
- * @param _renderWindow Pointer to the sfRenderWindow where the third plan will be drawn.
+
+ //* @brief Draws the third plan of the map.
+ //*
+ //* This function renders the farthest background layer, typically used for distant elements
+ //* like mountains, skies, or other decorative objects.
+ //*
+ //* @param _renderWindow Pointer to the sfRenderWindow where the third plan will be drawn.
 void DrawThirdPlan(sfRenderWindow* _renderWindow);
 
 
