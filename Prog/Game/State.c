@@ -25,7 +25,7 @@ void SetGameState(GameState _gameState)
 		break;
 	}
 
-    gameState = _gameState;
+	gameState = _gameState;
 
 	switch (gameState)
 	{
@@ -48,5 +48,5 @@ void SetGameState(GameState _gameState)
 
 GameState GetGameState(void)
 {
-    return gameState;
+	return gameState;
 }

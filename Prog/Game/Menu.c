@@ -65,7 +65,7 @@ void KeyPressedMenu(sfRenderWindow* _renderWindow, sfKeyEvent _key)
 
 void MouseButtonPressedMenu(sfRenderWindow* const _renderWindow, sfMouseButtonEvent _mouseButton)
 {
-	
+
 	if (MouseClickOnSprite(_mouseButton, menuData.userInterface.playButtonSprite))
 	{
 		SetGameState(GAME);

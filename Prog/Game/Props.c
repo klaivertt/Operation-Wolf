@@ -23,14 +23,13 @@ void LoadProps(void)
 	for (size_t i = 0; i < MAX_PROPS; i++)
 	{
 		sfVector2f position = { 0,0 };
-		do 
+		do
 		{
 			props[i].layerY = (rand() % 3) + 1;
 			int randomX = rand() % SCREEN_WIDTH;
 			int randomY = PROP_HEIGHT_STEP * props[i].layerY;
 			position = (sfVector2f){ (float)randomX, (float)randomY };
-		} 
-		while (IsPositionOccupied(position, PROP_MIN_DISTANCE));
+		} while (IsPositionOccupied(position, PROP_MIN_DISTANCE));
 
 		sfSprite_setPosition(props[i].sprite, position);
 		SetSpriteOrigin(&props[i].sprite, (sfVector2f) { 2, 1 });
