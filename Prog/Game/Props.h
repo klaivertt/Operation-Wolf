@@ -47,7 +47,7 @@ void CleanupProps(void);
 //* Renders the props in the farthest background layer, typically used for distant decorative objects.
 //*
 //* @param _renderWindow Pointer to the sfRenderWindow where the props will be drawn.
-void DrawThirdPlanProps(sfRenderWindow * _renderWindow);
+void DrawThirdPlanProps(sfRenderWindow* _renderWindow);
 
 
 //* @brief Draws the props in the second plan.
@@ -55,7 +55,7 @@ void DrawThirdPlanProps(sfRenderWindow * _renderWindow);
 //* Renders the props in the middle background layer, typically used for elements like trees or buildings.
 //*
 //* @param _renderWindow Pointer to the sfRenderWindow where the props will be drawn.
-void DrawSecondPlanProps(sfRenderWindow * _renderWindow);
+void DrawSecondPlanProps(sfRenderWindow* _renderWindow);
 
 
 //* @brief Draws the props in the first plan.
@@ -63,7 +63,7 @@ void DrawSecondPlanProps(sfRenderWindow * _renderWindow);
 //* Renders the props in the foreground layer, typically used for elements closest to the camera.
 //*
 //* @param _renderWindow Pointer to the sfRenderWindow where the props will be drawn.
-void DrawFirstPlanProps(sfRenderWindow * _renderWindow);
+void DrawFirstPlanProps(sfRenderWindow* _renderWindow);
 
 
 //* @brief Gets all the props.
@@ -71,7 +71,7 @@ void DrawFirstPlanProps(sfRenderWindow * _renderWindow);
 //* Returns a pointer to the array or collection containing all the props.
 //*
 //* @return Pointer to the collection of Props.
-Props * GetAllProps(void);
+Props* GetAllProps(void);
 
 
 //* @brief Gets a specific prop by index.
