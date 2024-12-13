@@ -16,9 +16,9 @@
 
 typedef struct HUDData
 {
-    Magazine magazine; 
-    Bullet bullet;     
-    Score score;       
+	Magazine magazine;
+	Bullet bullet;
+	Score score;
 } HUDData;
 
 //*@brief Loads the resources needed for the HUD.

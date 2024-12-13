@@ -12,7 +12,7 @@ void LoadBullet()
 
 	for (int i = 0; i < BULLET_NUMBER_MAX; i++)
 	{
-		if (i == 5 || i == 10 || i==15)
+		if (i == 5 || i == 10 || i == 15)
 		{
 			position.x = originalPosition.x;
 			position.y += rect.height;

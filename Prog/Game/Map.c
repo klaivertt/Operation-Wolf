@@ -68,7 +68,7 @@ void CleanupBackground(void)
 
 void DrawThirdPlan(sfRenderWindow* _renderWindow)
 {
-	
+
 	DrawThirdPlanProps(_renderWindow);
 }
 
