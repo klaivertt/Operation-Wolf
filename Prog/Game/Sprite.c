@@ -37,20 +37,26 @@ sfBool MouseClickOnSpritePixel(sfVector2f _mouseButton, sfSprite* _sprite)
 
 	sfFloatRect globalBounds = sfSprite_getGlobalBounds(_sprite);
 
-	if (sfFloatRect_contains(&globalBounds, (float)_mouseButton.x, (float)_mouseButton.y))
+	if (sfFloatRect_contains(&globalBounds, (float)_mouseButton.x, (float)_mouseButton.y)) 
 	{
-		sfFloatRect globalBounds = sfSprite_getGlobalBounds(_sprite);
-		const sfTexture* texture = sfSprite_getTexture(_sprite);
-		sfImage* image = sfTexture_copyToImage(texture);
+		sfVector2u pixelPos = { _mouseButton.x - (unsigned int)globalBounds.left, _mouseButton.y - (unsigned int)globalBounds.top };
 
-		sfVector2i PosPixel = { (unsigned int)(_mouseButton.x - globalBounds.left),(unsigned int)(_mouseButton.y - globalBounds.top) };
+		sfIntRect textureRect = sfSprite_getTextureRect(_sprite);
 
-		sfColor pixelColor = sfImage_getPixel(image, PosPixel.x, PosPixel.y);
+		sfVector2u texturePixelPos = { textureRect.left + pixelPos.x,textureRect.top + pixelPos.y };
 
-		if (pixelColor.a == 255)
-		{
+		sfTexture* spriteTexture = sfSprite_getTexture(_sprite);
+
+		sfImage* spriteSheetImage = sfTexture_copyToImage(spriteTexture);
+
+		sfColor color = sfImage_getPixel(spriteSheetImage, texturePixelPos.x, texturePixelPos.y);
+
+		sfImage_destroy(spriteSheetImage);
+
+		if (color.a == 255) {
 			return sfTrue;
 		}
+
 	}
 	return sfFalse;
 }
@@ -61,15 +67,21 @@ sfBool MouseMoveOnSpritePixel(sfMouseMoveEvent _mouseMove, sfSprite* _sprite)
 
 	if (sfFloatRect_contains(&globalBounds, (float)_mouseMove.x, (float)_mouseMove.y))
 	{
-		const sfTexture* texture = sfSprite_getTexture(_sprite);
-		sfImage* image = sfTexture_copyToImage(texture);
+		sfVector2u pixelPos = { _mouseMove.x - (unsigned int)globalBounds.left, _mouseMove.y - (unsigned int)globalBounds.top };
 
-		sfVector2u PixelPos = { (unsigned int)(_mouseMove.x - globalBounds.left),(unsigned int)(_mouseMove.y - globalBounds.top) };
+		sfIntRect textureRect = sfSprite_getTextureRect(_sprite);
 
-		sfColor pixelColor = sfImage_getPixel(image, PixelPos.x, PixelPos.y);
+		sfVector2u texturePixelPos = { textureRect.left + pixelPos.x,textureRect.top + pixelPos.y };
 
-		if (pixelColor.a == 255)
-		{
+		sfTexture* spriteTexture = sfSprite_getTexture(_sprite);
+
+		sfImage* spriteSheetImage = sfTexture_copyToImage(spriteTexture);
+
+		sfColor color = sfImage_getPixel(spriteSheetImage, texturePixelPos.x, texturePixelPos.y);
+
+		sfImage_destroy(spriteSheetImage);
+
+		if (color.a == 255) {
 			return sfTrue;
 		}
 

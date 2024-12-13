@@ -24,9 +24,10 @@ void SetEnemyState(Enemy* _enemy, EnemyState _state)
 
 sfBool VerifPlayerKillEnemy(sfVector2f _mousePos)
 {
-	sfBool click = MouseClickOnSpritePixel(_mousePos, &enemyData.enemySprite[temporaire]);
+	sfBool click = MouseClickOnSpritePixel(_mousePos, enemyData.enemySprite[temporaire]);
 	if (click)
 	{
+		printf("MOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOORRRRRRRRRRRRRRRRRRRRRRRRRRTTTTTTTTTTTTTTTTTTTTTTTT\n");
 		SetEnemyState(&enemyData.enemy, DEAD);
 		return sfTrue;
 	}
@@ -63,6 +64,7 @@ void LoadEnemy(void)
 	CreateSprite(&enemyData.enemySprite[temporaire], enemyData.spriteSheet, pos, rect, origin);
 
 	ReloadEnemy(&enemyData.enemy[temporaire], &enemyData.enemySprite[temporaire]);
+
 }
 
 
@@ -87,7 +89,8 @@ void UpdateEnemy(float _dt)
 
 	sfBool notMoving, timerEnd;
 
-	switch (enemyData.enemy[temporaire].state)
+	sfSprite_setPosition(enemyData.enemySprite[temporaire], (sfVector2f) {200,200});
+	/*switch (enemyData.enemy[temporaire].state)
 	{
 	case WALK:
 
@@ -121,7 +124,7 @@ void UpdateEnemy(float _dt)
 		printf("dead\n");
 		ReloadEnemy(&enemyData.enemy[temporaire], &enemyData.enemySprite[temporaire]);
 		break;
-	}
+	}*/
 
 }
 
