@@ -9,19 +9,33 @@
 
 #define POS_RIGHT_X -100
 #define POS_LEFT_X SCREEN_WIDTH + 100
+
 #define POS_HIGHT_Y 498
 #define POS_MIDDLE_Y 850
 #define POS_DOWN_Y 1000
 
+//24 Enemies maximum 
 #define ENEMY_MAX 5
+#define ENEMY_MAX_PER_POS_Y 2
+
+#define SHOOT_DELAY 1.5f
+#define MAX_SPAWN_DELAY 2
+
 
 #pragma region enum
+typedef enum PosY
+{
+	HIGHT,
+	MIDDLE,
+	DOWN,
+}PosY;
+
 typedef enum EnemyState
 {
+	WAIT,
 	WALK,
 	SHOOT,
 	DEAD,
-	WAIT,
 
 }EnemyState;
 
@@ -29,7 +43,6 @@ typedef enum EnemyType
 {
 	SOLDIER,
 }EnemyType;
-
 
 typedef enum Drop
 {
@@ -43,7 +56,6 @@ typedef enum Drop
 #pragma region struct
 typedef struct Enemy
 {
-
 	EnemyType type;
 	EnemyState state;
 	Drop drop;
@@ -59,19 +71,24 @@ typedef struct Enemy
 
 	sfBool doDamageToPlayer;
 
-	Timer timer;
+	Timer shootTimer;
+	Timer waitTimer;
 
 }Enemy;
 
 typedef struct EnemyData
 {
-	Enemy enemy[5];
+	Enemy enemy[ENEMY_MAX];
 	sfSprite* enemySprite[5];
 
 	sfIntRect animEnemy[9];
 	int nbEnemy;
 
 	sfTexture* spriteSheet;
+
+	short nbEnemyPosHIGHT;
+	short nbEnemyPosMIDDLE;
+	short nbEnemyPosDOWN;
 
 }EnemyData;
 #pragma endregion
