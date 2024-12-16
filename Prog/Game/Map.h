@@ -6,10 +6,13 @@
 #include "Props.h"
 
 #define BACKGROUND_SPEED 100.f
+#define SPACE_SPEED 35.f
 
 typedef struct Map
 {
+	sfSprite* space;
 	sfSprite* background;
+	sfSprite* balcony;
 }Map;
 
 
@@ -60,14 +63,5 @@ void DrawThirdPlan(sfRenderWindow* _renderWindow);
 //*
 //* @param _renderWindow Pointer to the sfRenderWindow where the second plan will be drawn.
 void DrawSecondPlan(sfRenderWindow* _renderWindow);
-
-
-//* @brief Draws the first plan of the map.
-//*
-//* Renders the foreground layer of the map, typically the closest objects to the camera,
-//* such as interactive elements or characters.
-//*
-//* @param _renderWindow Pointer to the sfRenderWindow where the first plan will be drawn.
-void DrawFistPlan(sfRenderWindow* _renderWindow);
 
 #endif
