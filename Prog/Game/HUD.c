@@ -7,6 +7,7 @@ void LoadHUD()
 	LoadScore();
 	LoadGrenade();
 	LoadIcon();
+	LoadHealthBar();
 }
 
 void DrawHUD(sfRenderWindow* _renderWindow)
@@ -16,6 +17,7 @@ void DrawHUD(sfRenderWindow* _renderWindow)
 	DrawScore(_renderWindow);
 	DrawGrenade(_renderWindow);
 	DrawIcon(_renderWindow);
+	DrawHealthBar(_renderWindow);
 }
 
 void CleanupHUD()

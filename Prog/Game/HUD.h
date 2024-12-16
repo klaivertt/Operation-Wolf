@@ -9,6 +9,7 @@
 #include "Score.h"
 #include "Grenade.h"
 #include "HumanIcon.h"
+#include "HealthBar.h"
 
 //*@brief Loads the resources needed for the HUD.
 //*

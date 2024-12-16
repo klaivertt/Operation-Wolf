@@ -143,6 +143,7 @@
     <ClCompile Include="Game.c" />
     <ClCompile Include="GameOver.c" />
     <ClCompile Include="Grenade.c" />
+    <ClCompile Include="HealthBar.c" />
     <ClCompile Include="Hostage.c" />
     <ClCompile Include="HUD.c" />
     <ClCompile Include="HumanIcon.c" />
@@ -162,6 +163,7 @@
     <ClInclude Include="Animations.h" />
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="Grenade.h" />
+    <ClInclude Include="HealthBar.h" />
     <ClInclude Include="Hostage.h" />
     <ClInclude Include="HumanIcon.h" />
     <ClInclude Include="Magazine.h" />
