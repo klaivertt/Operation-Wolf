@@ -6,7 +6,7 @@
 #include "Player.h"
 #include "Enemy.h"
 #include "Map.h"
-
+#include "Props.h"
 
 typedef struct GameData
 {
