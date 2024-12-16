@@ -22,6 +22,7 @@ void UpdateMap(float _dt)
 	MoveBackground(map.background, -BACKGROUND_SPEED * _dt);
 	MoveBackground(map.balcony, -BACKGROUND_SPEED * _dt);
 	UpdateProps(_dt, BACKGROUND_SPEED);
+	map.bgSpeed.x = BACKGROUND_SPEED * _dt;
 }
 
 void DrawMap(sfRenderWindow* _renderWindow)
@@ -100,4 +101,11 @@ void DrawThirdPlan(sfRenderWindow* _renderWindow)
 void DrawSecondPlan(sfRenderWindow* _renderWindow)
 {
 	sfRenderWindow_drawSprite(_renderWindow, map.balcony, NULL);
+}
+
+
+sfVector2f GetBackGroundSpeed()
+{
+	sfVector2f speed = map.bgSpeed;
+	return ;
 }

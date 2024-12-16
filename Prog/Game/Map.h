@@ -13,6 +13,7 @@ typedef struct Map
 	sfSprite* space;
 	sfSprite* background;
 	sfSprite* balcony;
+	sfVector2f bgSpeed;
 }Map;
 
 
