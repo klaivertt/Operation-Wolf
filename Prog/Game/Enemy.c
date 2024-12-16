@@ -13,6 +13,7 @@ void IncreaseVariablesNbEnemyPos(sfSprite* _sprite);
 void DecreaseVariablesNbEnemyPos(sfSprite* _sprite);
 void BackGroundMovement(sfSprite* _enemySprite, float _dt);
 void LoadAnimation(Anim* _anim);
+void UpdateAnimState(Animation* _animation, EnemyState _state);
 
 
 EnemyState GetEnemyState(Enemy* _enemy)
@@ -61,7 +62,7 @@ int PlayerDamage(void)
 void LoadEnemies(short _enemyToLoad)
 {
 
-
+	
 
 
 	short i, max;
@@ -131,17 +132,19 @@ void MouseMovedEnemy(sfRenderWindow* const _renderWindow, sfMouseMoveEvent _mous
 void UpdateEnemy(float _dt)
 {
 	sfBool notMoving, timerEnd;
+	UpdateAnimState(&enemyData.enemy[i].currentAnimation, enemyData.enemy[i].state);
+	UpdateAnimation(&enemyData.enemy[i].currentAnimation, _dt);
 
 	for (short i = 0; i < ENEMY_MAX; i++)
 	{
 		switch (enemyData.enemy[i].state)
 		{
 		case WAIT:
+
 			UpdateTimer(_dt, &enemyData.enemy[i].waitTimer);
 			timerEnd = IsTimerFinished(&enemyData.enemy[i].waitTimer);
 			if (timerEnd)
 			{
-
 				SetEnemyState(&enemyData.enemy[i], WALK);
 			}
 			break;
@@ -163,6 +166,7 @@ void UpdateEnemy(float _dt)
 			break;
 
 		case SHOOT:
+
 			UpdateTimer(_dt, &enemyData.enemy[i].shootTimer);
 			timerEnd = IsTimerFinished(&enemyData.enemy[i].shootTimer);
 			if (timerEnd) {
@@ -176,11 +180,12 @@ void UpdateEnemy(float _dt)
 		case DEAD:
 			DecreaseVariablesNbEnemyPos(enemyData.enemySprite[i]);
 			LoadEnemies(i + 1);
+
 			break;
 		}
 
 		BackGroundMovement(enemyData.enemySprite[i], _dt);
-
+		
 	}
 }
 
@@ -196,7 +201,6 @@ void CleanupEnemy(void)
 {
 
 }
-
 
 
 
@@ -352,6 +356,7 @@ void DecreaseVariablesNbEnemyPos(sfSprite* _sprite)
 
 }
 
+
 void LoadAnimation(Anim* _anim)
 {
 	if (_anim->texture == NULL)
@@ -388,6 +393,27 @@ void LoadAnimation(Anim* _anim)
 	
 }
 
+void UpdateAnimState(Animation* _currentAnimation, EnemyState _state)
+{
+	switch (_state)
+	{
+	case WALK:
+		_currentAnimation = enemyData.anim.walk;
+		ResetAnimation(enemyData.anim.shoot);
+		ResetAnimation(enemyData.anim.dead);
+		break;
+	case SHOOT:
+		_currentAnimation = enemyData.anim.shoot;
+		ResetAnimation(enemyData.anim.walk);
+		ResetAnimation(enemyData.anim.dead);
+		break;
+	case DEAD:
+		_currentAnimation = enemyData.anim.dead;
+		ResetAnimation(enemyData.anim.walk);
+		ResetAnimation(enemyData.anim.shoot);
+		break;
+	}
+}
 ////Verifer position
 //sfVector2f ok = sfSprite_getPosition(enemyData.enemy[temporaire].sprite);
 //printf("\npos origin : %f %f\Bn", ok.x, ok.y);

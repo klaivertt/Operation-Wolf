@@ -55,7 +55,7 @@ typedef struct Anim
 
 	Animation* walk;
 	Animation* shoot;
-	Animation* die;
+	Animation* dead;
 }Anim;
 
 typedef struct Enemy
