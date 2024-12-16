@@ -89,6 +89,7 @@ void CleanupBackground(void)
 {
 	sfSprite_destroy(map.background);
 	sfSprite_destroy(map.space);
+	sfSprite_destroy(map.balcony);
 }
 
 void DrawThirdPlan(sfRenderWindow* _renderWindow)
