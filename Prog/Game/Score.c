@@ -49,7 +49,6 @@ void UpdateScore(int _score)
 {
 	score.actualScore += _score;
 	UpdateScoreText(score.score, score.actualScore);
-	SetHighScore();
 }
 
 void DrawScore(sfRenderWindow* _renderWindow)
