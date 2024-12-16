@@ -5,6 +5,7 @@
 #include "State.h"
 #include "Player.h"
 #include "Enemy.h"
+#include "Hostage.h"
 #include "Map.h"
 #include "Props.h"
 

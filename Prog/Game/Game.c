@@ -8,6 +8,7 @@ void LoadGame(void)
 
 	LoadMap();
 	LoadEnemies(NULL);
+	LoadHostage(NULL);
 	LoadPlayer();
 	LoadHUD();
 }
@@ -41,6 +42,7 @@ void UpdateGame(float _dt)
 {
 	UpdatePlayer(_dt);
 	UpdateEnemy(_dt);
+	void UpdateHostage(float _dt);
 	UpdateMap(_dt);
 }
 
@@ -50,6 +52,7 @@ void DrawGame(sfRenderWindow* _renderWindow)
 	DrawThirdPlan(_renderWindow);
 
 	DrawEnemy(_renderWindow);
+	DrawHostage(_renderWindow);
 	DrawProps(_renderWindow);
 	DrawSecondPlan(_renderWindow);
 
@@ -62,6 +65,7 @@ void CleanupGame(void)
 	CleanupPlayer();
 	CleanupMap();
 	CleanupHUD();
+	CleanupHostage();
 	printf("CLEANUP GAME\n");
 }
 

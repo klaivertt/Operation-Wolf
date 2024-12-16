@@ -1,4 +1,3 @@
-#pragma once
 #ifndef POSITION_H
 #define POSITION_H
 
@@ -17,12 +16,14 @@
 sfVector2f RandomSpawn(void);
 int RandomExitPos(void);
 int RandomMapPos(void);
+void IncreaseNbEnemyPositionGround(sfSprite* _sprite);
+void DecreaseNbEnemyPositionGround(sfSprite* _sprite);
 
 typedef struct PositionData
 {
 	short nbEnemyInBackground;
 	short nbEnemyInMiddleground;
-	short nbEnemyInDownground;
+	short nbEnemyInDownground;	
 }PositionData;
 
 #endif

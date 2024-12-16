@@ -1,9 +1,10 @@
-#pragma once
 #ifndef HOSTAGE_H
 #define HOSTAGE_H
 
 #include "Common.h"
 #include "Sprite.h"
+#include "Map.h"
+#include "Position.h"
 
 #define POS_RIGHT_X -100
 #define GROUND_LEFT SCREEN_WIDTH + 100
@@ -16,9 +17,8 @@
 #pragma region enum
 typedef enum HostageState
 {
-	WALK,
-	DEAD,
-
+	H_WALK,
+	H_DEAD
 }HostageState;
 
 
@@ -32,6 +32,7 @@ typedef struct Hostage
 
 	int life;
 	int speed;
+	int maxSpeed;
 
 	int targetedPositon;
 }Hostage;
@@ -41,21 +42,16 @@ typedef struct HostageData
 	Hostage hostage[HOSTAGE_MAX];
 	sfSprite* hostageSprite[HOSTAGE_MAX];
 
-	int nbhostage;
+	int nbHostage;
 	sfTexture* spriteSheet;
 
 }HostageData;
 #pragma endregion
 
-void LoadHostage(void);
-void KeyPressedHostage(sfRenderWindow* _renderWindow, sfKeyEvent _key);
-void MouseButtonPressedHostage(sfRenderWindow* const _renderWindow, sfMouseButtonEvent _mouseButton);
-void MouseMovedHostage(sfRenderWindow* const _renderWindow, sfMouseMoveEvent _mouseMove);
+void LoadHostage(short _hostageToLoad);
 void UpdateHostage(float _dt);
 void DrawHostage(sfRenderWindow* _renderWindow);
 void CleanupHostage(void);
 
 sfBool VerifPlayerKillHostage(sfVector2f _mousePos);
-HostageState GetHostageState(Hostage* _enemy);
-void SetHostageState(Hostage* _enemy, HostageState _state);
 #endif
