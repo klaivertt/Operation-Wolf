@@ -25,9 +25,22 @@ void LoadProps(void)
 		sfVector2f position = { 0,0 };
 		do
 		{
-			props[i].layerY = (rand() % 3) + 1;
+			props[i].layerY = (rand() % 3);
 			int randomX = rand() % SCREEN_WIDTH;
-			int randomY = PROP_HEIGHT_STEP * props[i].layerY;
+			int randomY = 0;
+
+			switch (props[i].layerY)
+			{
+			case 0:
+				randomY = POS_HIGHT_Y;
+				break;
+			case 1:
+				randomY = POS_MIDDLE_Y;
+				break;
+			case 2:
+				randomY = POS_DOWN_Y;
+				break;
+			}
 			position = (sfVector2f){ (float)randomX, (float)randomY };
 		} while (IsPositionOccupied(position, PROP_MIN_DISTANCE));
 
@@ -52,8 +65,16 @@ void UpdateProps(float _dt, float _backgroundSpeed)
 	}
 }
 
-void DrawThirdPlanProps(sfRenderWindow* _renderWindow)
+void DrawProps(sfRenderWindow* _renderWindow)
 {
+	for (size_t i = 0; i < MAX_PROPS; i++)
+	{
+		if (props[i].layerY == 0)
+		{
+			sfRenderWindow_drawSprite(_renderWindow, props[i].sprite, NULL);
+		}
+	}
+
 	for (size_t i = 0; i < MAX_PROPS; i++)
 	{
 		if (props[i].layerY == 1)
@@ -61,24 +82,10 @@ void DrawThirdPlanProps(sfRenderWindow* _renderWindow)
 			sfRenderWindow_drawSprite(_renderWindow, props[i].sprite, NULL);
 		}
 	}
-}
 
-void DrawSecondPlanProps(sfRenderWindow* _renderWindow)
-{
 	for (size_t i = 0; i < MAX_PROPS; i++)
 	{
 		if (props[i].layerY == 2)
-		{
-			sfRenderWindow_drawSprite(_renderWindow, props[i].sprite, NULL);
-		}
-	}
-}
-
-void DrawFirstPlanProps(sfRenderWindow* _renderWindow)
-{
-	for (size_t i = 0; i < MAX_PROPS; i++)
-	{
-		if (props[i].layerY == 3)
 		{
 			sfRenderWindow_drawSprite(_renderWindow, props[i].sprite, NULL);
 		}
@@ -101,7 +108,7 @@ sfBool IsPositionOccupied(sfVector2f position, float minDistance)
 	for (size_t i = 0; i < MAX_PROPS; i++)
 	{
 		sfVector2f existingPos = sfSprite_getPosition(props[i].sprite);
-		float distance = sqrtf(powf(position.x - existingPos.x, 2) + powf(position.y - existingPos.y, 2));
+		float distance = sqrtf(((position.x - existingPos.x) * (position.x - existingPos.x)) + ((position.y - existingPos.y)* (position.y - existingPos.y)));
 		if (distance < minDistance)
 		{
 			return sfTrue;
@@ -119,9 +126,22 @@ void NewProps(Props* _props)
 	// Ensure unique position
 	sfVector2f position;
 	do {
-		_props->layerY = (rand() % 3) + 1;
+		_props->layerY = (rand() % 3);
 		int randomX = (rand() % SCREEN_WIDTH) + (SCREEN_WIDTH * 1.5f);
-		int randomY = (PROP_HEIGHT_STEP * _props->layerY) + 100;
+		int randomY = 0;
+
+		switch (_props->layerY)
+		{
+		case 0:
+			randomY = POS_HIGHT_Y;
+			break;
+		case 1:
+			randomY = POS_MIDDLE_Y;
+			break;
+		case 2:
+			randomY = POS_DOWN_Y;
+			break;
+		}
 		position = (sfVector2f){ (float)randomX, (float)randomY };
 	} while (IsPositionOccupied(position, PROP_MIN_DISTANCE));
 
