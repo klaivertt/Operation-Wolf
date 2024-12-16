@@ -22,13 +22,28 @@ EnemyState GetEnemyState(Enemy* _enemy)
 void SetEnemyState(Enemy* _enemy, EnemyState _state)
 {
 	_enemy->state = _state;
+
+	switch (_state)
+	{
+	case WALK:
+		ResetAnimation(&_enemy->anim.walk, &_enemy->sprite);
+		break;
+	case SHOOT:
+		ResetAnimation(&_enemy->anim.shoot, &_enemy->sprite);
+		break;
+	case DEAD:
+		ResetAnimation(&_enemy->anim.dead, &_enemy->sprite);
+		break;
+	default:
+		break;
+	}
 }
 
 sfBool VerifPlayerKillEnemy(sfVector2f _mousePos)
 {
 	for (short i = 0; i < ENEMY_MAX; i++)
 	{
-		sfBool click = MouseClickOnSpritePixel(_mousePos, enemyData.enemySprite[i]);
+		sfBool click = MouseClickOnSpritePixel(_mousePos, enemyData.enemy[i].sprite);
 		if (click)
 		{
 			SetEnemyState(&enemyData.enemy[i], DEAD);
@@ -59,10 +74,6 @@ int PlayerDamage(void)
 
 void LoadEnemies(short _enemyToLoad)
 {
-
-	
-
-
 	short i, max;
 	//Every enemies
 	if (_enemyToLoad == NULL)
@@ -89,11 +100,17 @@ void LoadEnemies(short _enemyToLoad)
 		enemyData.enemy[i].haveAlreadyShoot = sfFalse;
 		enemyData.enemy[i].doDamageToPlayer = sfFalse;
 
-		float ShootDelay = SHOOT_DELAY;
-		InitTimer(&enemyData.enemy[i].shootTimer, ShootDelay);
+		//TIMER
+		float Delay = SHOOT_DELAY;
+		InitTimer(&enemyData.enemy[i].shootTimer, Delay);
 
-		float spawnDelay = rand() % MAX_SPAWN_DELAY + (float)(rand() % 10) / 10;
-		InitTimer(&enemyData.enemy[i].waitTimer, spawnDelay);
+		Delay = rand() % MAX_SPAWN_DELAY + (float)(rand() % 10) / 10;
+		InitTimer(&enemyData.enemy[i].waitTimer, Delay);
+		
+		Delay = DEATH_DELAY;
+		InitTimer(&enemyData.enemy[i].deadTimer, Delay);
+
+
 
 		if (enemyData.spriteSheet == NULL)
 		{
@@ -103,18 +120,14 @@ void LoadEnemies(short _enemyToLoad)
 		sfVector2f pos = RandomSpawn();
 		sfIntRect rect = { 0,0,753/5,208 };
 		sfVector2f origin = { 0.5,1 };
-		if (enemyData.enemySprite[i] == NULL)
-		{
-			CreateSprite(&enemyData.enemySprite[i], enemyData.spriteSheet, pos, rect, origin);
-		}
-		else
-		{
-			sfSprite_setTextureRect(enemyData.enemySprite[i], rect);
-			sfSprite_setOrigin(enemyData.enemySprite[i], (sfVector2f) { (float)rect.width* origin.x, (float)rect.height* origin.y });
-			sfSprite_setPosition(enemyData.enemySprite[i], pos);
-		}
+		CreateSprite(&enemyData.enemy[i].sprite, enemyData.spriteSheet, pos, rect, origin);
 		
-		IncreaseNbEnemyPositionGround(enemyData.enemySprite[i]);
+		CreateAnimation(&enemyData.enemy[i].anim.walk, &enemyData.enemy[i].sprite, &enemyData.spriteSheet, 5, 2, 5, sfTrue, (sfVector2f) { 0, 0 });
+		CreateAnimation(&enemyData.enemy[i].anim.shoot, &enemyData.enemy[i].sprite, &enemyData.spriteSheet, 5, 2, 1, sfTrue, (sfVector2f) { 2, 0 });
+		CreateAnimation(&enemyData.enemy[i].anim.dead, &enemyData.enemy[i].sprite, &enemyData.spriteSheet, 5, 1, 1, sfTrue, (sfVector2f) { 4, 0 });
+
+		IncreaseNbEnemyPositionGround(enemyData.enemy[i].sprite);
+
 	}
 	
 }
@@ -136,10 +149,15 @@ void MouseMovedEnemy(sfRenderWindow* const _renderWindow, sfMouseMoveEvent _mous
 
 void UpdateEnemy(float _dt)
 {
+	
+	
 	sfBool notMoving, timerEnd;
 
 	for (short i = 0; i < ENEMY_MAX; i++)
 	{
+
+		
+
 		switch (enemyData.enemy[i].state)
 		{
 		case WAIT:
@@ -153,7 +171,8 @@ void UpdateEnemy(float _dt)
 			break;
 		case WALK:
 
-			notMoving = Move(&enemyData.enemy[i], &enemyData.enemySprite[i]);
+			UpdateAnimation(&enemyData.enemy[i].anim.walk, &enemyData.enemy[i].sprite, _dt);
+			notMoving = Move(&enemyData.enemy[i], &enemyData.enemy[i].sprite);
 			if (notMoving)
 			{
 				if (enemyData.enemy[i].haveAlreadyShoot)
@@ -170,6 +189,7 @@ void UpdateEnemy(float _dt)
 
 		case SHOOT:
 
+			UpdateAnimation(&enemyData.enemy[i].anim.shoot, &enemyData.enemy[i].sprite, _dt);
 			UpdateTimer(_dt, &enemyData.enemy[i].shootTimer);
 			timerEnd = IsTimerFinished(&enemyData.enemy[i].shootTimer);
 			if (timerEnd) {
@@ -181,15 +201,20 @@ void UpdateEnemy(float _dt)
 			break;
 
 		case DEAD:
-			DecreaseNbEnemyPositionGround(enemyData.enemySprite[i]);
-			LoadEnemies(i + 1);
-
+			UpdateAnimation(&enemyData.enemy[i].anim.dead, &enemyData.enemy[i].sprite, _dt);
+			UpdateTimer(_dt, &enemyData.enemy[i].deadTimer);
+			sfBool endDeadAnimation = IsTimerFinished(&enemyData.enemy[i].deadTimer);
+			if (endDeadAnimation)
+			{
+				DecreaseNbEnemyPositionGround(enemyData.enemy[i].sprite);
+				LoadEnemies(i + 1);
+			}
 			break;
 		}
 
 		if (enemyData.enemy[i].state != WAIT)
 		{
-		BackGroundMovement(enemyData.enemySprite[i], _dt);
+		BackGroundMovement(enemyData.enemy[i].sprite, _dt);
 		}
 		
 	}
@@ -199,7 +224,7 @@ void DrawEnemy(sfRenderWindow* _renderWindow)
 {
 	for (short i = 0; i < ENEMY_MAX; i++)
 	{
-		sfRenderWindow_drawSprite(_renderWindow, enemyData.enemySprite[i], NULL);
+		sfRenderWindow_drawSprite(_renderWindow, enemyData.enemy[i].sprite, NULL);
 	}
 }
 

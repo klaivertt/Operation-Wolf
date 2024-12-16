@@ -1,7 +1,7 @@
 #ifndef ANIMATIONS_H
 #define ANIMATIONS_H
 
-#include <SFML/Graphics.h>
+#include "Common.h"
 
 typedef struct Animation
 {
@@ -17,7 +17,6 @@ typedef struct Animation
 	sfBool isFinished;
 }Animation;
 
-
 //* @brief Creates and initializes an animation.
 //*
 //* This function sets up the animation by loading the texture from the specified file,
@@ -31,7 +30,7 @@ typedef struct Animation
 //* @param _frameRate The rate at which frames should be updated (frames per second).
 //* @param _isLooping A boolean indicating if the animation should loop once it finishes.
 //* @param _start The starting position (sfVector2f) for the animation on the screen.
-void CreateAnimation(Animation* _anim,sfSprite** _sprite, sfTexture** _texture, int _maxFrame, int _frameCount, int _frameRate, sfBool _isLooping, sfVector2f _start);
+void CreateAnimation(Animation* _anim, sfSprite** _sprite, sfTexture** _texture, int _maxFrame, int _frameCount, int _frameRate, sfBool _isLooping, sfVector2f _start);
 
 
 //* @brief Updates the current animation frame.
@@ -42,7 +41,7 @@ void CreateAnimation(Animation* _anim,sfSprite** _sprite, sfTexture** _texture, 
 //*
 //* @param _anim Pointer to the Animation structure to update.
 //* @param _dt Delta time (time elapsed since the last update) to control the animation speed.
-void UpdateAnimation(Animation* _anim, float _dt);
+void UpdateAnimation(Animation* _anim, sfSprite** _sprite, float _dt);
 
 
 //* @brief Resets the animation to its initial state.
@@ -51,7 +50,7 @@ void UpdateAnimation(Animation* _anim, float _dt);
 //* It is useful for restarting an animation from the beginning.
 //*
 //* @param _anim Pointer to the Animation structure to reset.
-void ResetAnimation(Animation* _anim);
+void ResetAnimation(Animation* _anim, sfSprite** _sprite);
 
 sfBool AnimIsFinished(Animation* const _anim);
 

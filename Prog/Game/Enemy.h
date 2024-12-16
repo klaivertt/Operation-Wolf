@@ -20,6 +20,7 @@
 #define DAMAGE 1
 #define TOTAL_LIFE 1
 #define MAX_SPEED 8
+#define DEATH_DELAY 0.5f
 
 #pragma region enum
 
@@ -49,11 +50,9 @@ typedef enum Drop
 #pragma region struct
 typedef struct Anim
 {
-	sfTexture* texture;
-
-	Animation* walk;
-	Animation* shoot;
-	Animation* dead;
+	Animation walk;
+	Animation shoot;
+	Animation dead;
 }Anim;
 
 typedef struct Enemy
@@ -74,20 +73,17 @@ typedef struct Enemy
 
 	Timer shootTimer;
 	Timer waitTimer;
+	Timer deadTimer;
 
-	Animation* currentAnimation;
+	Anim anim;
+	sfSprite* sprite;
 
 }Enemy;
 
 typedef struct EnemyData
 {
 	Enemy enemy[ENEMY_MAX];
-	sfSprite* enemySprite[ENEMY_MAX];
 	sfTexture* spriteSheet;
-
-
-
-	Anim anim;
 
 }EnemyData;
 #pragma endregion
