@@ -9,9 +9,10 @@ typedef struct Score
 {
 	sfFont* font;
 	sfText* score;
+	sfText* highScore;
 
 	int actualScore;
-	int highScore;
+	int topScore;
 }Score;
 
 
@@ -26,7 +27,7 @@ void LoadScore();
 //*
 //* Handles any dynamic updates to the score, such as animations or effects,
 //* and prepares the score for rendering.
-void UpdateScore();
+void UpdateScoreText(sfText* _text, int _value);
 
 
 //* @brief Adds a value to the current score.
@@ -34,7 +35,7 @@ void UpdateScore();
 //* Increases the score by the specified value, which can be positive or negative.
 //*
 //* @param _score The value to add to the current score.
-void AddScore(int _score);
+void UpdateScore(int _score);
 
 
 //* @brief Draws the score on the given render window.
@@ -44,6 +45,8 @@ void AddScore(int _score);
 //* @param _renderWindow Pointer to the sfRenderWindow where the score will be drawn.
 void DrawScore(sfRenderWindow* _renderWindow);
 
+
+void SetHighScore();
 
 //* @brief Cleans up the resources used by the score system.
 //*
