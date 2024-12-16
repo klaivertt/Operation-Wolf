@@ -7,17 +7,12 @@
 #include "Timer.h"
 #include "Map.h"
 #include "Animations.h"
+#include "Position.h"
 
-#define POS_RIGHT_X -100
-#define POS_LEFT_X SCREEN_WIDTH + 100
 
-#define POS_HIGHT_Y 498
-#define POS_MIDDLE_Y 850
-#define POS_DOWN_Y 1000
 
 //24 Enemies maximum 
-#define ENEMY_MAX 6
-#define ENEMY_MAX_PER_POS_Y 2
+
 
 #define SHOOT_DELAY 1.5f
 #define MAX_SPAWN_DELAY 2
@@ -87,14 +82,11 @@ typedef struct EnemyData
 	Enemy enemy[ENEMY_MAX];
 	sfSprite* enemySprite[ENEMY_MAX];
 
-	sfIntRect animEnemy[9];
 	int nbEnemy;
 
 	sfTexture* spriteSheet;
 
-	short nbEnemyPosHIGHT;
-	short nbEnemyPosMIDDLE;
-	short nbEnemyPosDOWN;
+
 
 	Anim anim;
 

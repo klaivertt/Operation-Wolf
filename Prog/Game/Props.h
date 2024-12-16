@@ -7,8 +7,8 @@
 #define MAX_PROPS 8
 
 #define POS_HIGHT_Y 498
-#define POS_MIDDLE_Y 850
-#define POS_DOWN_Y 1000
+#define MIDDLEGROUND 850
+#define FORGROUND 1000
 
 #define MAX_PROPS_TEXTURE 3
 

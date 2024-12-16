@@ -35,10 +35,10 @@ void LoadProps(void)
 				randomY = POS_HIGHT_Y;
 				break;
 			case 1:
-				randomY = POS_MIDDLE_Y;
+				randomY = MIDDLEGROUND;
 				break;
 			case 2:
-				randomY = POS_DOWN_Y;
+				randomY = FORGROUND;
 				break;
 			}
 			position = (sfVector2f){ (float)randomX, (float)randomY };
@@ -136,10 +136,10 @@ void NewProps(Props* _props)
 			randomY = POS_HIGHT_Y;
 			break;
 		case 1:
-			randomY = POS_MIDDLE_Y;
+			randomY = MIDDLEGROUND;
 			break;
 		case 2:
-			randomY = POS_DOWN_Y;
+			randomY = FORGROUND;
 			break;
 		}
 		position = (sfVector2f){ (float)randomX, (float)randomY };

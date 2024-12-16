@@ -6,10 +6,10 @@
 #include "Sprite.h"
 
 #define POS_RIGHT_X -100
-#define POS_LEFT_X SCREEN_WIDTH + 100
+#define GROUND_LEFT SCREEN_WIDTH + 100
 #define POS_HIGHT_Y 200
-#define POS_MIDDLE_Y 400
-#define POS_DOWN_Y 600
+#define MIDDLEGROUND 400
+#define FORGROUND 600
 
 #define HOSTAGE_MAX 1
 

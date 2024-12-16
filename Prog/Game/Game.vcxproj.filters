@@ -123,6 +123,9 @@
     <ClCompile Include="Hostage.c">
       <Filter>Fichiers sources\States\Game\Characters\Hostage</Filter>
     </ClCompile>
+    <ClCompile Include="Position.c">
+      <Filter>Fichiers sources\States\Game\Characters\Enemy</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Common.h">
@@ -178,6 +181,9 @@
     </ClInclude>
     <ClInclude Include="Hostage.h">
       <Filter>Fichiers d%27en-tête\States\Game\Characters\Hostage</Filter>
+    </ClInclude>
+    <ClInclude Include="Position.h">
+      <Filter>Fichiers d%27en-tête\States\Game\Characters\Enemy</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

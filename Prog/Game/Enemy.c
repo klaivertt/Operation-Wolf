@@ -9,11 +9,9 @@ int RandomExitPos(void);
 int RandomMapPos(void);
 //Return True if is on targeted Position
 sfBool Move(Enemy* _enemy, sfSprite** _sprite);
-void IncreaseVariablesNbEnemyPos(sfSprite* _sprite);
-void DecreaseVariablesNbEnemyPos(sfSprite* _sprite);
+void IncreaseNbEnemyPositionGround(sfSprite* _sprite);
+void DecreaseNbEnemyPositionGround(sfSprite* _sprite);
 void BackGroundMovement(sfSprite* _enemySprite, float _dt);
-void LoadAnimation(Anim* _anim);
-void UpdateAnimState(Animation* _animation, EnemyState _state);
 
 
 EnemyState GetEnemyState(Enemy* _enemy)
@@ -101,15 +99,24 @@ void LoadEnemies(short _enemyToLoad)
 
 		if (enemyData.spriteSheet == NULL)
 		{
-			enemyData.spriteSheet = sfTexture_createFromFile("Assets/Sprites/Spritesheet.png", NULL);
+			enemyData.spriteSheet = sfTexture_createFromFile("Assets/Sprites/Sprite-MovingSoldier.png", NULL);
 		}
 
 		sfVector2f pos = RandomSpawn();
-		sfIntRect rect = { 23,23,50,98 };
+		sfIntRect rect = { 0,0,753/5,208 };
 		sfVector2f origin = { 0.5,1 };
-		CreateSprite(&enemyData.enemySprite[i], enemyData.spriteSheet, pos, rect, origin);
-
-		IncreaseVariablesNbEnemyPos(enemyData.enemySprite[i]);
+		if (enemyData.enemySprite[i] == NULL)
+		{
+			CreateSprite(&enemyData.enemySprite[i], enemyData.spriteSheet, pos, rect, origin);
+		}
+		else
+		{
+			sfSprite_setTextureRect(enemyData.enemySprite[i], rect);
+			sfSprite_setOrigin(enemyData.enemySprite[i], (sfVector2f) { (float)rect.width* origin.x, (float)rect.height* origin.y });
+			sfSprite_setPosition(enemyData.enemySprite[i], pos);
+		}
+		
+		IncreaseNbEnemyPositionGround(enemyData.enemySprite[i]);
 	}
 	
 }
@@ -132,8 +139,6 @@ void MouseMovedEnemy(sfRenderWindow* const _renderWindow, sfMouseMoveEvent _mous
 void UpdateEnemy(float _dt)
 {
 	sfBool notMoving, timerEnd;
-	UpdateAnimState(&enemyData.enemy[i].currentAnimation, enemyData.enemy[i].state);
-	UpdateAnimation(&enemyData.enemy[i].currentAnimation, _dt);
 
 	for (short i = 0; i < ENEMY_MAX; i++)
 	{
@@ -178,7 +183,7 @@ void UpdateEnemy(float _dt)
 			break;
 
 		case DEAD:
-			DecreaseVariablesNbEnemyPos(enemyData.enemySprite[i]);
+			DecreaseNbEnemyPositionGround(enemyData.enemySprite[i]);
 			LoadEnemies(i + 1);
 
 			break;
@@ -204,95 +209,7 @@ void CleanupEnemy(void)
 
 
 
-
-
-
 //Local Function
-
-sfVector2f RandomSpawn(void)
-{
-	int pos[2] = { 1 + rand() % 2, 1 + rand() % 3 };
-	sfVector2f finalPos = { 0 };
-
-	for (short i = 0; i < 2; i++)
-	{
-
-		switch (pos[i])
-		{
-		case 1:
-
-			if (i == 0)
-			{
-				finalPos.x = POS_LEFT_X;
-				break;
-			}
-			if (i == 1 && enemyData.nbEnemyPosHIGHT < ENEMY_MAX_PER_POS_Y)
-			{
-				finalPos.y = POS_HIGHT_Y;
-				break;
-			}
-			
-		case 2:
-
-			if (i == 0)
-			{
-				finalPos.x = POS_RIGHT_X;
-				break;
-			}
-			if (i == 1 && enemyData.nbEnemyPosMIDDLE < ENEMY_MAX_PER_POS_Y)
-			{
-				finalPos.y = POS_MIDDLE_Y;
-				break;
-			}
-		case 3:
-			if (enemyData.nbEnemyPosDOWN < ENEMY_MAX_PER_POS_Y)
-			{
-				finalPos.y = POS_DOWN_Y;
-				break;
-			}
-		default :
-			if (enemyData.nbEnemyPosHIGHT < ENEMY_MAX_PER_POS_Y)
-			{
-				finalPos.y = POS_HIGHT_Y;
-			}
-			else if (enemyData.nbEnemyPosMIDDLE < ENEMY_MAX_PER_POS_Y)
-			{
-				finalPos.y = POS_MIDDLE_Y;
-			}
-			else if ((enemyData.nbEnemyPosDOWN < ENEMY_MAX_PER_POS_Y))
-			{
-				finalPos.y = POS_DOWN_Y;
-			}
-			break;
-		}
-
-	}
-
-	return finalPos;
-
-}
-
-int RandomExitPos(void)
-{
-	int pos = rand() % 2;
-
-	switch (pos)
-	{
-	case 0:
-		return POS_RIGHT_X;
-
-	case 1:
-		return POS_LEFT_X;
-	}
-
-	return 0;
-}
-
-int RandomMapPos(void)
-{
-	return SCREEN_WIDTH * 0.05 + rand() % SCREEN_WIDTH * 0.90;
-}
-
 
 sfBool Move(Enemy* _enemy, sfSprite** _sprite)
 {
@@ -313,107 +230,9 @@ void BackGroundMovement(sfSprite* _enemySprite,float _dt)
 }
 
 
-void IncreaseVariablesNbEnemyPos(sfSprite* _sprite)
-{
-	sfVector2f pos = sfSprite_getPosition(_sprite);
-	int posY = pos.y;
-	switch (posY)
-	{
-	case POS_HIGHT_Y:
-		enemyData.nbEnemyPosHIGHT += 1;
-		break;
-	case POS_MIDDLE_Y:
-		enemyData.nbEnemyPosMIDDLE += 1;
-		break;
-	case POS_DOWN_Y:
-		enemyData.nbEnemyPosDOWN += 1;
-		break;
-	default:
-		printf("\nIncreaseVariablesNbEnemyPos error : problem with enemy position Y : %d",posY);
-		break;
-	}
-}
-
-void DecreaseVariablesNbEnemyPos(sfSprite* _sprite)
-{
-	sfVector2f pos = sfSprite_getPosition(_sprite);
-	int posY = pos.y;
-	switch (posY)
-	{
-	case POS_HIGHT_Y:
-		enemyData.nbEnemyPosHIGHT -= 1;
-		break;
-	case POS_MIDDLE_Y:
-		enemyData.nbEnemyPosMIDDLE -= 1;
-		break;
-	case POS_DOWN_Y:
-		enemyData.nbEnemyPosDOWN -= 1;
-		break;
-	default:
-		printf("\nDecreaseVariablesNbEnemyPos error : problem with enemy position Y : %d", posY);
-		break;
-	}
-
-}
 
 
-void LoadAnimation(Anim* _anim)
-{
-	if (_anim->texture == NULL)
-	{
-		_anim->texture = sfTexture_createFromFile("Assets/Sprites/Sprite-MovingSoldier.png", NULL);
 
-		//WALK
-		int maxFrame = 5;
-		int frameCount = 2;
-		int frameRate = 4;
-		sfBool isLooping = sfTrue;
-		sfVector2f startFrame = { 0,0 };
-
-		CreateAnimation(_anim->walk, _anim->texture, maxFrame, frameCount, frameRate, isLooping, startFrame);
-
-		//SHOOT
-		maxFrame = 5;
-		frameCount = 2;
-		frameRate = 4;
-		isLooping = sfTrue;
-		startFrame = (sfVector2f){ 2,0 };
-
-		CreateAnimation(_anim->shoot, _anim->texture, maxFrame, frameCount, frameRate, isLooping, startFrame);
-
-		//DIE
-		maxFrame = 5;
-		frameCount = 1;
-		frameRate = 2;
-		isLooping = sfFalse;
-		startFrame = (sfVector2f){ 2,0 };
-
-		CreateAnimation(_anim->shoot, _anim->texture, maxFrame, frameCount, frameRate, isLooping, startFrame);
-	}
-	
-}
-
-void UpdateAnimState(Animation* _currentAnimation, EnemyState _state)
-{
-	switch (_state)
-	{
-	case WALK:
-		_currentAnimation = enemyData.anim.walk;
-		ResetAnimation(enemyData.anim.shoot);
-		ResetAnimation(enemyData.anim.dead);
-		break;
-	case SHOOT:
-		_currentAnimation = enemyData.anim.shoot;
-		ResetAnimation(enemyData.anim.walk);
-		ResetAnimation(enemyData.anim.dead);
-		break;
-	case DEAD:
-		_currentAnimation = enemyData.anim.dead;
-		ResetAnimation(enemyData.anim.walk);
-		ResetAnimation(enemyData.anim.shoot);
-		break;
-	}
-}
 ////Verifer position
 //sfVector2f ok = sfSprite_getPosition(enemyData.enemy[temporaire].sprite);
 //printf("\npos origin : %f %f\Bn", ok.x, ok.y);
