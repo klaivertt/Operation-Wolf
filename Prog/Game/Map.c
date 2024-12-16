@@ -106,6 +106,5 @@ void DrawSecondPlan(sfRenderWindow* _renderWindow)
 
 sfVector2f GetBackGroundSpeed()
 {
-	sfVector2f speed = map.bgSpeed;
-	return ;
+	return map.bgSpeed;
 }
