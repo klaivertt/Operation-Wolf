@@ -3,10 +3,16 @@
 
 #include "Common.h"
 #include "State.h"
+#include "Score.h"
+
+#define MAX_TEXT 3
 typedef struct GameOverData
 {
 	sfTexture* texture;
 	sfSprite* sprite;
+	sfFont* font;
+	sfText* gameOver;
+	sfText* text[MAX_TEXT];
 }GameOverData;
 
 
