@@ -126,5 +126,4 @@ void DecreaseNbEnemyPositionGround(sfSprite* _sprite)
 		printf("\nDecreaseVariablesNbEnemyPos error : problem with enemy position Y : %d", posY);
 		break;
 	}
-
 }
