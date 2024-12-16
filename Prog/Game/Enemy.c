@@ -180,9 +180,9 @@ void UpdateEnemy(float _dt)
 			LoadEnemies(i + 1);
 			break;
 		}
-		/*printf("debut : %f  ", pos.x);
-		printf(" fin : %f\n", pos.x);*/
+
 		BackGroundMovement(enemyData.enemySprite[i], _dt);
+
 	}
 }
 

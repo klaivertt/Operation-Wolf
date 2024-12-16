@@ -15,8 +15,8 @@
 #define POS_DOWN_Y 1000
 
 //24 Enemies maximum 
-#define ENEMY_MAX 5
-#define ENEMY_MAX_PER_POS_Y 2
+#define ENEMY_MAX 24
+#define ENEMY_MAX_PER_POS_Y 10
 
 #define SHOOT_DELAY 1.5f
 #define MAX_SPAWN_DELAY 2
