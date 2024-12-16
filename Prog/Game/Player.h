@@ -5,6 +5,7 @@
 #include "Common.h"
 #include "Sprite.h"
 #include "Enemy.h"
+#include "State.h"
 
 #define BULLET_NUMBER_MAX 15
 #define GRENADE_NUMBER_MAX 5
