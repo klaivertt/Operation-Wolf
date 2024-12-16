@@ -8,6 +8,7 @@
 #include "State.h"
 #include "Grenade.h"
 #include "score.h"
+#include "HealthBar.h"
 
 #define BULLET_NUMBER_MAX 16
 #define GRENADE_NUMBER_MAX 1

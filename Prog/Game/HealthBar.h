@@ -4,8 +4,10 @@
 
 #include "Common.h"
 #include "Sprite.h"
+#include "player.h"
 
 void LoadHealthBar();
+void UpdateBar();
 void DrawHealthBar(sfRenderWindow* _renderWindow);
 void CleanupHealthBar();
 

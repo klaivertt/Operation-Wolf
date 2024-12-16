@@ -47,6 +47,7 @@ void UpdatePlayer(float _dt)
 void GetDamage()
 {
 	player.HP -= PlayerDamage();
+	UpdateBar();
 }
 
 void GetMousePositionPlayer(sfMouseMoveEvent _mouseMoved)
@@ -141,6 +142,11 @@ int GetGrenade()
 	return player.grenadeNumber;
 }
 
+int GetPlayerHP()
+{
+	return player.HP;
+}
+
 void VerifClickOnEnemy(sfMouseButtonEvent _mouseButton)
 {
 	sfVector2f pos = { _mouseButton.x, _mouseButton.y };
@@ -151,6 +157,8 @@ void VerifClickOnEnemy(sfMouseButtonEvent _mouseButton)
 		UpdateScore(1);
 	}
 }
+
+
 
 int GetPlayerState()
 {
