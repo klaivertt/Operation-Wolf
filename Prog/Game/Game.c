@@ -47,14 +47,10 @@ void UpdateGame(float _dt)
 void DrawGame(sfRenderWindow* _renderWindow)
 {
 	DrawMap(_renderWindow);
-
 	DrawThirdPlan(_renderWindow);
-	DrawThirdPlanProps(_renderWindow);
-
-	DrawSecondPlanProps(_renderWindow);
-	DrawFirstPlanProps(_renderWindow);
 
 	DrawEnemy(_renderWindow);
+	DrawProps(_renderWindow);
 	DrawSecondPlan(_renderWindow);
 
 	DrawHUD(_renderWindow);
