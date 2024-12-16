@@ -41,7 +41,7 @@ void UpdateScoreText(sfText* _text, int _value)
 	// Copy the value into the text
 	char string[10];
 	sprintf_s(string, sizeof(string), "%d", _value);
-	sfText_setString(score.score, string);
+	sfText_setString(_text, string);
 }
 
 //add the ennemi score to the actual score
@@ -49,6 +49,7 @@ void UpdateScore(int _score)
 {
 	score.actualScore += _score;
 	UpdateScoreText(score.score, score.actualScore);
+	SetHighScore();
 }
 
 void DrawScore(sfRenderWindow* _renderWindow)
@@ -59,11 +60,11 @@ void DrawScore(sfRenderWindow* _renderWindow)
 
 void SetHighScore()
 {
-	//if (score.score > score.highScore)
-	//{
-	//	score.highScore = score.score;
-	//	UpdateScoreText(score.highScore, score.topScore);
-	//}
+	if (score.actualScore > score.topScore)
+	{
+		score.topScore = score.actualScore;
+		UpdateScoreText(score.highScore, score.topScore);
+	}
 }
 
 void CleanupScore()
