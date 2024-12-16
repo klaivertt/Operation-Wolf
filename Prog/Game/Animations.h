@@ -53,5 +53,7 @@ void UpdateAnimation(Animation* _anim, float _dt);
 //* @param _anim Pointer to the Animation structure to reset.
 void ResetAnimation(Animation* _anim);
 
+sfBool AnimIsFinished(Animation* const _anim);
+
 
 #endif // !ANIMATIONS_H

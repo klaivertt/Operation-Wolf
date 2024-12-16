@@ -78,3 +78,8 @@ void ResetAnimation(Animation* _anim)
 
 	sfSprite_setTextureRect(_anim->sprite, rect);
 }
+
+sfBool AnimIsFinished(Animation* const _anim)
+{
+	return _anim->isFinished;
+}
