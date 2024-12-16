@@ -22,7 +22,7 @@ void UpdateMap(float _dt)
 	MoveBackground(map.background, -BACKGROUND_SPEED * _dt);
 	MoveBackground(map.balcony, -BACKGROUND_SPEED * _dt);
 	UpdateProps(_dt, BACKGROUND_SPEED);
-	map.bgSpeed.x = BACKGROUND_SPEED * _dt;
+	map.bgSpeed.x = -BACKGROUND_SPEED * _dt;
 }
 
 void DrawMap(sfRenderWindow* _renderWindow)
