@@ -20,10 +20,4 @@ typedef struct Image
 
 }Image;
 
-typedef enum Character
-{
-	PLAYER,
-	DEALER,
-}Character;
-
 #endif // !COMMON_H

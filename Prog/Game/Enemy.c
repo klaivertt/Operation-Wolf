@@ -7,15 +7,13 @@ int i = 0;
 sfVector2f RandomSpawn(void);
 int RandomExitPos(void);
 int RandomMapPos(void);
-
 //Return True if is on targeted Position
 sfBool Move(Enemy* _enemy, sfSprite** _sprite);
-
-
 void IncreaseVariablesNbEnemyPos(sfSprite* _sprite);
-
 void DecreaseVariablesNbEnemyPos(sfSprite* _sprite);
-
+void BackGroundMovement(sfSprite* _enemySprite, float _dt);
+void LoadAnimation(Anim* _anim);
+void UpdateAnimState(Animation* _animation, EnemyState _state);
 
 
 EnemyState GetEnemyState(Enemy* _enemy)
@@ -42,11 +40,6 @@ sfBool VerifPlayerKillEnemy(sfVector2f _mousePos)
 	return sfFalse;
 }
 
-void BackGroundMovement(sfSprite* _enemySprite, float _dt);
-
-
-
-
 int PlayerDamage(void)
 {
 	int totalDamage = 0;
@@ -62,8 +55,16 @@ int PlayerDamage(void)
 }
 
 
+
+
+
+
 void LoadEnemies(short _enemyToLoad)
 {
+
+	
+
+
 	short i, max;
 	//Every enemies
 	if (_enemyToLoad == NULL)
@@ -113,8 +114,6 @@ void LoadEnemies(short _enemyToLoad)
 	
 }
 
-
-
 void KeyPressedEnemy(sfRenderWindow* _renderWindow, sfKeyEvent _key)
 {
 
@@ -133,17 +132,19 @@ void MouseMovedEnemy(sfRenderWindow* const _renderWindow, sfMouseMoveEvent _mous
 void UpdateEnemy(float _dt)
 {
 	sfBool notMoving, timerEnd;
+	UpdateAnimState(&enemyData.enemy[i].currentAnimation, enemyData.enemy[i].state);
+	UpdateAnimation(&enemyData.enemy[i].currentAnimation, _dt);
 
 	for (short i = 0; i < ENEMY_MAX; i++)
 	{
 		switch (enemyData.enemy[i].state)
 		{
 		case WAIT:
+
 			UpdateTimer(_dt, &enemyData.enemy[i].waitTimer);
 			timerEnd = IsTimerFinished(&enemyData.enemy[i].waitTimer);
 			if (timerEnd)
 			{
-
 				SetEnemyState(&enemyData.enemy[i], WALK);
 			}
 			break;
@@ -165,6 +166,7 @@ void UpdateEnemy(float _dt)
 			break;
 
 		case SHOOT:
+
 			UpdateTimer(_dt, &enemyData.enemy[i].shootTimer);
 			timerEnd = IsTimerFinished(&enemyData.enemy[i].shootTimer);
 			if (timerEnd) {
@@ -178,11 +180,12 @@ void UpdateEnemy(float _dt)
 		case DEAD:
 			DecreaseVariablesNbEnemyPos(enemyData.enemySprite[i]);
 			LoadEnemies(i + 1);
+
 			break;
 		}
-		/*printf("debut : %f  ", pos.x);
-		printf(" fin : %f\n", pos.x);*/
+
 		BackGroundMovement(enemyData.enemySprite[i], _dt);
+		
 	}
 }
 
@@ -199,6 +202,12 @@ void CleanupEnemy(void)
 
 }
 
+
+
+
+
+
+//Local Function
 
 sfVector2f RandomSpawn(void)
 {
@@ -304,7 +313,6 @@ void BackGroundMovement(sfSprite* _enemySprite,float _dt)
 }
 
 
-
 void IncreaseVariablesNbEnemyPos(sfSprite* _sprite)
 {
 	sfVector2f pos = sfSprite_getPosition(_sprite);
@@ -349,6 +357,63 @@ void DecreaseVariablesNbEnemyPos(sfSprite* _sprite)
 }
 
 
+void LoadAnimation(Anim* _anim)
+{
+	if (_anim->texture == NULL)
+	{
+		_anim->texture = sfTexture_createFromFile("Assets/Sprites/Sprite-MovingSoldier.png", NULL);
+
+		//WALK
+		int maxFrame = 5;
+		int frameCount = 2;
+		int frameRate = 4;
+		sfBool isLooping = sfTrue;
+		sfVector2f startFrame = { 0,0 };
+
+		CreateAnimation(_anim->walk, _anim->texture, maxFrame, frameCount, frameRate, isLooping, startFrame);
+
+		//SHOOT
+		maxFrame = 5;
+		frameCount = 2;
+		frameRate = 4;
+		isLooping = sfTrue;
+		startFrame = (sfVector2f){ 2,0 };
+
+		CreateAnimation(_anim->shoot, _anim->texture, maxFrame, frameCount, frameRate, isLooping, startFrame);
+
+		//DIE
+		maxFrame = 5;
+		frameCount = 1;
+		frameRate = 2;
+		isLooping = sfFalse;
+		startFrame = (sfVector2f){ 2,0 };
+
+		CreateAnimation(_anim->shoot, _anim->texture, maxFrame, frameCount, frameRate, isLooping, startFrame);
+	}
+	
+}
+
+void UpdateAnimState(Animation* _currentAnimation, EnemyState _state)
+{
+	switch (_state)
+	{
+	case WALK:
+		_currentAnimation = enemyData.anim.walk;
+		ResetAnimation(enemyData.anim.shoot);
+		ResetAnimation(enemyData.anim.dead);
+		break;
+	case SHOOT:
+		_currentAnimation = enemyData.anim.shoot;
+		ResetAnimation(enemyData.anim.walk);
+		ResetAnimation(enemyData.anim.dead);
+		break;
+	case DEAD:
+		_currentAnimation = enemyData.anim.dead;
+		ResetAnimation(enemyData.anim.walk);
+		ResetAnimation(enemyData.anim.shoot);
+		break;
+	}
+}
 ////Verifer position
 //sfVector2f ok = sfSprite_getPosition(enemyData.enemy[temporaire].sprite);
 //printf("\npos origin : %f %f\Bn", ok.x, ok.y);

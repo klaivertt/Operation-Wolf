@@ -18,13 +18,15 @@ void LoadMap(void)
 
 void UpdateMap(float _dt)
 {
+	MoveBackground(map.space, -SPACE_SPEED * _dt);
 	MoveBackground(map.background, -BACKGROUND_SPEED * _dt);
+	MoveBackground(map.balcony, -BACKGROUND_SPEED * _dt);
 	UpdateProps(_dt, BACKGROUND_SPEED);
 }
 
 void DrawMap(sfRenderWindow* _renderWindow)
 {
-	sfRenderWindow_drawSprite(_renderWindow, map.background, NULL);
+	sfRenderWindow_drawSprite(_renderWindow, map.space, NULL);
 }
 
 void CleanupMap(void)
@@ -37,16 +39,38 @@ void CleanupMap(void)
 
 void LoadBackground(void)
 {
-	sfTexture* textBackground = sfTexture_createFromFile("Assets/Sprites/Map/Bakcground.png", NULL);
+	sfTexture* textSpace = sfTexture_createFromFile("Assets/Sprites/Map/Space.png", NULL);
+	map.space = sfSprite_create();
+
+	sfSprite_setPosition(map.space, (sfVector2f) { 0, 0 });
+	sfTexture_setRepeated(textSpace, sfTrue);
+	sfSprite_setTexture(map.space, textSpace, sfTrue);
+
+	sfIntRect textRect = sfSprite_getTextureRect(map.space);
+	textRect.width *= 2;
+	sfSprite_setTextureRect(map.space, textRect);
+	
+	sfTexture* textBackground = sfTexture_createFromFile("Assets/Sprites/Map/Background.png", NULL);
 	map.background = sfSprite_create();
 
 	sfSprite_setPosition(map.background, (sfVector2f) { 0, 0 });
 	sfTexture_setRepeated(textBackground, sfTrue);
 	sfSprite_setTexture(map.background, textBackground, sfTrue);
 
-	sfIntRect textRect = sfSprite_getTextureRect(map.background);
+	textRect = sfSprite_getTextureRect(map.background);
 	textRect.width *= 2;
 	sfSprite_setTextureRect(map.background, textRect);
+	
+	sfTexture* textBalcony = sfTexture_createFromFile("Assets/Sprites/Map/Balcony.png", NULL);
+	map.balcony = sfSprite_create();
+
+	sfSprite_setPosition(map.balcony, (sfVector2f) { 0, 0 });
+	sfTexture_setRepeated(textBalcony, sfTrue);
+	sfSprite_setTexture(map.balcony, textBalcony, sfTrue);
+
+	textRect = sfSprite_getTextureRect(map.balcony);
+	textRect.width *= 2;
+	sfSprite_setTextureRect(map.balcony, textRect);
 }
 
 void MoveBackground(sfSprite* _sprite, float _x)
@@ -64,20 +88,16 @@ void MoveBackground(sfSprite* _sprite, float _x)
 void CleanupBackground(void)
 {
 	sfSprite_destroy(map.background);
+	sfSprite_destroy(map.space);
+	sfSprite_destroy(map.balcony);
 }
 
 void DrawThirdPlan(sfRenderWindow* _renderWindow)
 {
-
-	DrawThirdPlanProps(_renderWindow);
+	sfRenderWindow_drawSprite(_renderWindow, map.background, NULL);
 }
 
 void DrawSecondPlan(sfRenderWindow* _renderWindow)
 {
-	DrawSecondPlanProps(_renderWindow);
-}
-
-void DrawFistPlan(sfRenderWindow* _renderWindow)
-{
-	DrawFirstPlanProps(_renderWindow);
+	sfRenderWindow_drawSprite(_renderWindow, map.balcony, NULL);
 }

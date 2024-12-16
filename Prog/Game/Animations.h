@@ -31,7 +31,7 @@ typedef struct Animation
 //* @param _frameRate The rate at which frames should be updated (frames per second).
 //* @param _isLooping A boolean indicating if the animation should loop once it finishes.
 //* @param _start The starting position (sfVector2f) for the animation on the screen.
-void CreateAnimation(Animation* _anim, sfTexture** _texture, int _maxFrame, int _frameCount, int _frameRate, sfBool _isLooping, sfVector2f _start);
+void CreateAnimation(Animation* _anim,sfSprite** _sprite, sfTexture** _texture, int _maxFrame, int _frameCount, int _frameRate, sfBool _isLooping, sfVector2f _start);
 
 
 //* @brief Updates the current animation frame.
@@ -52,6 +52,8 @@ void UpdateAnimation(Animation* _anim, float _dt);
 //*
 //* @param _anim Pointer to the Animation structure to reset.
 void ResetAnimation(Animation* _anim);
+
+sfBool AnimIsFinished(Animation* const _anim);
 
 
 #endif // !ANIMATIONS_H

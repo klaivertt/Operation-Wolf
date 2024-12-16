@@ -6,6 +6,7 @@
 #include "Sprite.h"
 #include "Timer.h"
 #include "Map.h"
+#include "Animations.h"
 
 #define POS_RIGHT_X -100
 #define POS_LEFT_X SCREEN_WIDTH + 100
@@ -15,7 +16,7 @@
 #define POS_DOWN_Y 1000
 
 //24 Enemies maximum 
-#define ENEMY_MAX 5
+#define ENEMY_MAX 6
 #define ENEMY_MAX_PER_POS_Y 2
 
 #define SHOOT_DELAY 1.5f
@@ -23,12 +24,6 @@
 
 
 #pragma region enum
-typedef enum PosY
-{
-	HIGHT,
-	MIDDLE,
-	DOWN,
-}PosY;
 
 typedef enum EnemyState
 {
@@ -54,6 +49,15 @@ typedef enum Drop
 #pragma endregion
 
 #pragma region struct
+typedef struct Anim
+{
+	sfTexture* texture;
+
+	Animation* walk;
+	Animation* shoot;
+	Animation* dead;
+}Anim;
+
 typedef struct Enemy
 {
 	EnemyType type;
@@ -74,12 +78,14 @@ typedef struct Enemy
 	Timer shootTimer;
 	Timer waitTimer;
 
+	Animation* currentAnimation;
+
 }Enemy;
 
 typedef struct EnemyData
 {
 	Enemy enemy[ENEMY_MAX];
-	sfSprite* enemySprite[5];
+	sfSprite* enemySprite[ENEMY_MAX];
 
 	sfIntRect animEnemy[9];
 	int nbEnemy;
@@ -89,6 +95,8 @@ typedef struct EnemyData
 	short nbEnemyPosHIGHT;
 	short nbEnemyPosMIDDLE;
 	short nbEnemyPosDOWN;
+
+	Anim anim;
 
 }EnemyData;
 #pragma endregion

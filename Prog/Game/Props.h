@@ -5,7 +5,10 @@
 #include "Sprite.h"
 
 #define MAX_PROPS 8
-#define PROP_HEIGHT_STEP (SCREEN_HEIGHT/4)
+
+#define POS_HIGHT_Y 498
+#define POS_MIDDLE_Y 850
+#define POS_DOWN_Y 1000
 
 #define MAX_PROPS_TEXTURE 3
 
@@ -41,29 +44,12 @@ void UpdateProps(float _dt, float _backgroundSpeed);
 //* Frees all memory and resources allocated for the props, such as textures and dynamic data.
 void CleanupProps(void);
 
-
-//* @brief Draws the props in the third plan.
-//*
-//* Renders the props in the farthest background layer, typically used for distant decorative objects.
-//*
-//* @param _renderWindow Pointer to the sfRenderWindow where the props will be drawn.
-void DrawThirdPlanProps(sfRenderWindow* _renderWindow);
-
-
-//* @brief Draws the props in the second plan.
+//* @brief Draws the props in the plan.
 //*
 //* Renders the props in the middle background layer, typically used for elements like trees or buildings.
 //*
 //* @param _renderWindow Pointer to the sfRenderWindow where the props will be drawn.
-void DrawSecondPlanProps(sfRenderWindow* _renderWindow);
-
-
-//* @brief Draws the props in the first plan.
-//*
-//* Renders the props in the foreground layer, typically used for elements closest to the camera.
-//*
-//* @param _renderWindow Pointer to the sfRenderWindow where the props will be drawn.
-void DrawFirstPlanProps(sfRenderWindow* _renderWindow);
+void DrawProps(sfRenderWindow* _renderWindow);
 
 
 //* @brief Gets all the props.

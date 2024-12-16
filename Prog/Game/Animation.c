@@ -1,19 +1,18 @@
 #include "Animations.h"
 
 
-void CreateAnimation(Animation* _anim, sfTexture** _texture, int _maxFrame, int _frameCount, int _frameRate, sfBool _isLooping, sfVector2f _start)
+void CreateAnimation(Animation* _anim, sfSprite** _sprite, sfTexture** _texture, int _maxFrame, int _frameCount, int _frameRate, sfBool _isLooping, sfVector2f _start)
 {
 	// Fonction qui permet de charger et stocker une animation
-	_anim->sprite = sfSprite_create();
 
-	sfSprite_setTexture(_anim->sprite, *_texture, sfTrue);
-	sfIntRect rect = sfSprite_getTextureRect(_anim->sprite);
+	sfSprite_setTexture(*_sprite, *_texture, sfTrue);
+	sfIntRect rect = sfSprite_getTextureRect(*_sprite);
 
 	rect.width = rect.width / _maxFrame;
 	rect.left = _start.x * rect.width;
 	rect.top = _start.y * rect.height;
 
-	sfSprite_setTextureRect(_anim->sprite, rect);
+	sfSprite_setTextureRect(*_sprite, rect);
 
 	_anim->size = rect;
 	_anim->timer = 0.0f;
@@ -27,7 +26,7 @@ void CreateAnimation(Animation* _anim, sfTexture** _texture, int _maxFrame, int 
 	_anim->isFinished = sfFalse;
 }
 
-void UpdateAnimation(Animation* _anim, float _dt)
+void UpdateAnimation(Animation* _anim, sfSprite** _sprite, float _dt)
 {
 	// Fonction appelé toutes les frames pour mettre à jour l'animation actuelle
 	_anim->timer += _dt;
@@ -40,11 +39,11 @@ void UpdateAnimation(Animation* _anim, float _dt)
 				_anim->currentFrame = 1;
 				_anim->timer = _anim->timer - (1.0f / _anim->frameRate);
 
-				sfIntRect rect = sfSprite_getTextureRect(_anim->sprite);
+				sfIntRect rect = sfSprite_getTextureRect(*_sprite);
 
 				rect.left = _anim->start.x + rect.width * (_anim->currentFrame - 1);
 
-				sfSprite_setTextureRect(_anim->sprite, rect);
+				sfSprite_setTextureRect(*_sprite, rect);
 			}
 			else
 			{
@@ -56,25 +55,30 @@ void UpdateAnimation(Animation* _anim, float _dt)
 			_anim->currentFrame += 1;
 			_anim->timer = _anim->timer - (1.0f / _anim->frameRate);
 
-			sfIntRect rect = sfSprite_getTextureRect(_anim->sprite);
+			sfIntRect rect = sfSprite_getTextureRect(*_sprite);
 
 			rect.left = _anim->start.x + rect.width * (_anim->currentFrame - 1);
 
-			sfSprite_setTextureRect(_anim->sprite, rect);
+			sfSprite_setTextureRect(*_sprite, rect);
 		}
 	}
 }
 
-void ResetAnimation(Animation* _anim)
+void ResetAnimation(Animation* _anim, sfSprite** _sprite)
 {
 	// Fonction appelé pour réinitialiser une animation à son état de base
 	_anim->currentFrame = 1;
 	_anim->timer = 0;
 	_anim->isFinished = sfFalse;
 
-	sfIntRect rect = sfSprite_getTextureRect(_anim->sprite);
+	sfIntRect rect = sfSprite_getTextureRect(*_sprite);
 
 	rect.left = _anim->start.x + rect.width * (_anim->currentFrame - 1);
 
-	sfSprite_setTextureRect(_anim->sprite, rect);
+	sfSprite_setTextureRect(*_sprite, rect);
+}
+
+sfBool AnimIsFinished(Animation* const _anim)
+{
+	return _anim->isFinished;
 }
