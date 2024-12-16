@@ -17,6 +17,9 @@
 #define SHOOT_DELAY 1.5f
 #define MAX_SPAWN_DELAY 2
 
+#define DAMAGE 1
+#define TOTAL_LIFE 1
+#define MAX_SPEED 8
 
 #pragma region enum
 
@@ -60,8 +63,7 @@ typedef struct Enemy
 	Drop drop;
 
 	int life;
-	int damage;
-	float maxSpeed;
+	float speed;
 
 	int targetedPositon;
 
@@ -81,9 +83,6 @@ typedef struct EnemyData
 {
 	Enemy enemy[ENEMY_MAX];
 	sfSprite* enemySprite[ENEMY_MAX];
-
-	int nbEnemy;
-
 	sfTexture* spriteSheet;
 
 

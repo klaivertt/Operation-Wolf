@@ -46,7 +46,7 @@ int PlayerDamage(void)
 		if (enemyData.enemy[i].doDamageToPlayer)
 		{
 			enemyData.enemy[i].doDamageToPlayer = sfFalse;
-			totalDamage += enemyData.enemy[i].damage;
+			totalDamage += DAMAGE;
 		}
 	}
 	return totalDamage;
@@ -79,14 +79,12 @@ void LoadEnemies(short _enemyToLoad)
 	for (i; i < max;i++)
 	{
 		enemyData.enemy[i].state = WAIT;
-		enemyData.enemy[i].life = 1;
-		enemyData.enemy[i].damage = 1;
-		enemyData.enemy[i].maxSpeed = 8;
+		enemyData.enemy[i].life = TOTAL_LIFE;
 
 		enemyData.enemy[i].targetedPositon = RandomMapPos();
 
 		float speedMultiplicator = (1 + rand() % 6) / 10.0f;
-		enemyData.enemy[i].maxSpeed *= 1 - speedMultiplicator;
+		enemyData.enemy[i].speed = MAX_SPEED * (1 - speedMultiplicator);
 		
 		enemyData.enemy[i].haveAlreadyShoot = sfFalse;
 		enemyData.enemy[i].doDamageToPlayer = sfFalse;
@@ -189,7 +187,10 @@ void UpdateEnemy(float _dt)
 			break;
 		}
 
+		if (enemyData.enemy[i].state != WAIT)
+		{
 		BackGroundMovement(enemyData.enemySprite[i], _dt);
+		}
 		
 	}
 }
@@ -217,7 +218,7 @@ sfBool Move(Enemy* _enemy, sfSprite** _sprite)
 
 	pos.x = _enemy->targetedPositon;
 
-	return MoveSpriteToTarget(_sprite, pos, _enemy->maxSpeed, sfFalse);
+	return MoveSpriteToTarget(_sprite, pos, _enemy->speed, sfFalse);
 }
 
 void BackGroundMovement(sfSprite* _enemySprite,float _dt)
