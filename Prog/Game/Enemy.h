@@ -15,20 +15,14 @@
 #define POS_DOWN_Y 1000
 
 //24 Enemies maximum 
-#define ENEMY_MAX 24
-#define ENEMY_MAX_PER_POS_Y 10
+#define ENEMY_MAX 6
+#define ENEMY_MAX_PER_POS_Y 2
 
 #define SHOOT_DELAY 1.5f
 #define MAX_SPAWN_DELAY 2
 
 
 #pragma region enum
-typedef enum PosY
-{
-	HIGHT,
-	MIDDLE,
-	DOWN,
-}PosY;
 
 typedef enum EnemyState
 {
@@ -79,7 +73,7 @@ typedef struct Enemy
 typedef struct EnemyData
 {
 	Enemy enemy[ENEMY_MAX];
-	sfSprite* enemySprite[5];
+	sfSprite* enemySprite[ENEMY_MAX];
 
 	sfIntRect animEnemy[9];
 	int nbEnemy;

@@ -7,14 +7,11 @@ int i = 0;
 sfVector2f RandomSpawn(void);
 int RandomExitPos(void);
 int RandomMapPos(void);
-
 //Return True if is on targeted Position
 sfBool Move(Enemy* _enemy, sfSprite** _sprite);
-
-
 void IncreaseVariablesNbEnemyPos(sfSprite* _sprite);
-
 void DecreaseVariablesNbEnemyPos(sfSprite* _sprite);
+void BackGroundMovement(sfSprite* _enemySprite, float _dt);
 
 
 
@@ -42,9 +39,6 @@ sfBool VerifPlayerKillEnemy(sfVector2f _mousePos)
 	return sfFalse;
 }
 
-void BackGroundMovement(sfSprite* _enemySprite, float _dt);
-
-
 
 
 int PlayerDamage(void)
@@ -60,7 +54,6 @@ int PlayerDamage(void)
 	}
 	return totalDamage;
 }
-
 
 void LoadEnemies(short _enemyToLoad)
 {
@@ -112,7 +105,6 @@ void LoadEnemies(short _enemyToLoad)
 	}
 	
 }
-
 
 
 void KeyPressedEnemy(sfRenderWindow* _renderWindow, sfKeyEvent _key)
@@ -199,6 +191,7 @@ void CleanupEnemy(void)
 
 }
 
+//Local Function
 
 sfVector2f RandomSpawn(void)
 {
@@ -302,7 +295,6 @@ void BackGroundMovement(sfSprite* _enemySprite,float _dt)
 	
 	//Verifer position
 }
-
 
 
 void IncreaseVariablesNbEnemyPos(sfSprite* _sprite)
