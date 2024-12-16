@@ -10,7 +10,7 @@
 #define MIDDLEGROUND 850
 #define FORGROUND 1000
 
-#define ENEMY_MAX 6
+#define ENEMY_MAX 5
 #define ENEMY_MAX_PER_POS_Y 2
 
 sfVector2f RandomSpawn(void);

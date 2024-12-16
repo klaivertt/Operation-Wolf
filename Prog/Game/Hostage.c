@@ -2,8 +2,6 @@
 
 HostageData hostageData;
 
-int ii = 0;
-
 //Return True if is on targeted Position
 sfBool MoveHostage(Hostage* _hostage, sfSprite** _sprite);
 void HostageMovement(sfSprite* _enemySprite, float _dt);
@@ -93,11 +91,6 @@ void UpdateHostage(float _dt)
 		{
 		case H_WALK:
 
-			notMoving = MoveHostage(&hostageData.hostage[i], &hostageData.hostageSprite[i]);
-			if (notMoving)
-			{
-				SetHostageState(&hostageData.hostage[i], H_DEAD);
-			}
 			break;
 		case H_DEAD:
 			DecreaseNbEnemyPositionGround(hostageData.hostageSprite[i]);
@@ -106,7 +99,8 @@ void UpdateHostage(float _dt)
 		}
 
 		HostageMovement(hostageData.hostageSprite[i], _dt);
-
+				
+		printf("position x : %f y : %f\n", sfSprite_getPosition(hostageData.hostageSprite[i]).x, sfSprite_getPosition(hostageData.hostageSprite[i]).y);
 	}
 }
 
@@ -143,11 +137,3 @@ void HostageMovement(sfSprite* _enemySprite, float _dt)
 
 	//Verifer position
 }
-
-
-
-
-
-////Verifer position
-//sfVector2f ok = sfSprite_getPosition(enemyData.enemy[temporaire].sprite);
-//printf("\npos origin : %f %f\Bn", ok.x, ok.y);

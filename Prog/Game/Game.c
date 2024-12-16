@@ -42,7 +42,7 @@ void UpdateGame(float _dt)
 {
 	UpdatePlayer(_dt);
 	UpdateEnemy(_dt);
-	void UpdateHostage(float _dt);
+	UpdateHostage(_dt);
 	UpdateMap(_dt);
 }
 
