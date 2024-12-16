@@ -6,6 +6,7 @@
 #include "Sprite.h"
 #include "Timer.h"
 #include "Map.h"
+#include "Animations.h"
 
 #define POS_RIGHT_X -100
 #define POS_LEFT_X SCREEN_WIDTH + 100
@@ -48,6 +49,15 @@ typedef enum Drop
 #pragma endregion
 
 #pragma region struct
+typedef struct Anim
+{
+	sfTexture* texture;
+
+	Animation* walk;
+	Animation* shoot;
+	Animation* die;
+}Anim;
+
 typedef struct Enemy
 {
 	EnemyType type;
@@ -68,6 +78,8 @@ typedef struct Enemy
 	Timer shootTimer;
 	Timer waitTimer;
 
+	Animation* currentAnimation;
+
 }Enemy;
 
 typedef struct EnemyData
@@ -83,6 +95,8 @@ typedef struct EnemyData
 	short nbEnemyPosHIGHT;
 	short nbEnemyPosMIDDLE;
 	short nbEnemyPosDOWN;
+
+	Anim anim;
 
 }EnemyData;
 #pragma endregion

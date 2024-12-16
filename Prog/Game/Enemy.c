@@ -12,7 +12,7 @@ sfBool Move(Enemy* _enemy, sfSprite** _sprite);
 void IncreaseVariablesNbEnemyPos(sfSprite* _sprite);
 void DecreaseVariablesNbEnemyPos(sfSprite* _sprite);
 void BackGroundMovement(sfSprite* _enemySprite, float _dt);
-
+void LoadAnimation(Anim* _anim);
 
 
 EnemyState GetEnemyState(Enemy* _enemy)
@@ -39,8 +39,6 @@ sfBool VerifPlayerKillEnemy(sfVector2f _mousePos)
 	return sfFalse;
 }
 
-
-
 int PlayerDamage(void)
 {
 	int totalDamage = 0;
@@ -55,8 +53,17 @@ int PlayerDamage(void)
 	return totalDamage;
 }
 
+
+
+
+
+
 void LoadEnemies(short _enemyToLoad)
 {
+
+
+
+
 	short i, max;
 	//Every enemies
 	if (_enemyToLoad == NULL)
@@ -105,7 +112,6 @@ void LoadEnemies(short _enemyToLoad)
 	}
 	
 }
-
 
 void KeyPressedEnemy(sfRenderWindow* _renderWindow, sfKeyEvent _key)
 {
@@ -190,6 +196,12 @@ void CleanupEnemy(void)
 {
 
 }
+
+
+
+
+
+
 
 //Local Function
 
@@ -340,6 +352,41 @@ void DecreaseVariablesNbEnemyPos(sfSprite* _sprite)
 
 }
 
+void LoadAnimation(Anim* _anim)
+{
+	if (_anim->texture == NULL)
+	{
+		_anim->texture = sfTexture_createFromFile("Assets/Sprites/Sprite-MovingSoldier.png", NULL);
+
+		//WALK
+		int maxFrame = 5;
+		int frameCount = 2;
+		int frameRate = 4;
+		sfBool isLooping = sfTrue;
+		sfVector2f startFrame = { 0,0 };
+
+		CreateAnimation(_anim->walk, _anim->texture, maxFrame, frameCount, frameRate, isLooping, startFrame);
+
+		//SHOOT
+		maxFrame = 5;
+		frameCount = 2;
+		frameRate = 4;
+		isLooping = sfTrue;
+		startFrame = (sfVector2f){ 2,0 };
+
+		CreateAnimation(_anim->shoot, _anim->texture, maxFrame, frameCount, frameRate, isLooping, startFrame);
+
+		//DIE
+		maxFrame = 5;
+		frameCount = 1;
+		frameRate = 2;
+		isLooping = sfFalse;
+		startFrame = (sfVector2f){ 2,0 };
+
+		CreateAnimation(_anim->shoot, _anim->texture, maxFrame, frameCount, frameRate, isLooping, startFrame);
+	}
+	
+}
 
 ////Verifer position
 //sfVector2f ok = sfSprite_getPosition(enemyData.enemy[temporaire].sprite);
