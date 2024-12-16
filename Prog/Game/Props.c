@@ -69,8 +69,26 @@ void DrawProps(sfRenderWindow* _renderWindow)
 {
 	for (size_t i = 0; i < MAX_PROPS; i++)
 	{
-		
+		if (props[i].layerY == 0)
+		{
 			sfRenderWindow_drawSprite(_renderWindow, props[i].sprite, NULL);
+		}
+	}
+
+	for (size_t i = 0; i < MAX_PROPS; i++)
+	{
+		if (props[i].layerY == 1)
+		{
+			sfRenderWindow_drawSprite(_renderWindow, props[i].sprite, NULL);
+		}
+	}
+
+	for (size_t i = 0; i < MAX_PROPS; i++)
+	{
+		if (props[i].layerY == 2)
+		{
+			sfRenderWindow_drawSprite(_renderWindow, props[i].sprite, NULL);
+		}
 	}
 }
 
