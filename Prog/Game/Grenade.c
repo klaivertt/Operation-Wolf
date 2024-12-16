@@ -5,7 +5,7 @@ Grenade grenade;
 void LoadGrenade()
 {
 	sfIntRect rect = { 24, 2184, 24 , 48 };
-	sfVector2f position = { (float)rect.width , rect.height * 1.2f };
+	sfVector2f position = { SCREEN_WIDTH / 4 * 3 + 9.5 * rect.width, rect.height };
 	sfVector2f origin = { 0.5 , 1 };
 	grenade.texture = sfTexture_createFromFile("Assets/Sprites/SpriteSheet.png", NULL);
 
@@ -20,6 +20,10 @@ void LoadGrenade()
 	sfText_setOutlineColor(grenade.text, sfBlack);
 	sfText_setCharacterSize(grenade.text, 30);
 
+	sfFloatRect text = sfText_getGlobalBounds(grenade.text);
+
+	sfText_setOrigin(grenade.text, (sfVector2f) { text.width / 2, text.height });
+	sfText_setPosition(grenade.text, (sfVector2f){position.x , text.height });
 	grenade.time = MAX_TIMER;
 }
 
