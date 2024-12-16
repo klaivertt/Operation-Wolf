@@ -65,4 +65,6 @@ void DrawThirdPlan(sfRenderWindow* _renderWindow);
 //* @param _renderWindow Pointer to the sfRenderWindow where the second plan will be drawn.
 void DrawSecondPlan(sfRenderWindow* _renderWindow);
 
+
+sfVector2f GetBackGroundSpeed();
 #endif
