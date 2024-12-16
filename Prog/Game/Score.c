@@ -25,7 +25,7 @@ void UpdateScore()
 {
 	// Copy the value into the text
 	char string[10];
-	sprintf_s(string, sizeof(string), "%8d", score.actualScore);
+	sprintf_s(string, sizeof(string), "%d", score.actualScore);
 	sfText_setString(score.score, string);
 }
 

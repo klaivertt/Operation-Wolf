@@ -5,13 +5,20 @@
 #include "Common.h"
 #include "Sprite.h"
 #include "Player.h"
+#include "Timer.h"
 
-#define GRENADE_NUMBER_MAX 5
+#define MAX_TIMER 60
 
 typedef struct Grenade
 {
-	sfSprite* sprite[GRENADE_NUMBER_MAX];
+	sfSprite* sprite;
 	sfTexture* texture;
+
+	sfFont* font;
+	sfText* text;
+
+	float timer;
+	int time;
 }Grenade;
 
 //* @brief Loads the magazine resources such as textures and sprites.
@@ -28,6 +35,12 @@ void LoadGrenade();
 //* @param _renderWindow Pointer to the sfRenderWindow where the magazine will be drawn.
 void DrawGrenade(sfRenderWindow* _renderWindow);
 
+
+//void InitGrenadeTimer();
+
+void UpdateGrenadeTimer(float _dt);
+
+void ResetGrenadeTimer();
 
 //* @brief Cleans up the resources used by the magazine.
 //*

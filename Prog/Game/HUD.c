@@ -1,18 +1,11 @@
 #include "HUD.h"
 
-HUDData data;
-
 void LoadHUD()
 {
 	LoadBullet();
 	LoadMagazine();
 	LoadScore();
 	LoadGrenade();
-}
-
-void UpdateHUD(float _dt)
-{
-	
 }
 
 void DrawHUD(sfRenderWindow* _renderWindow)
