@@ -96,8 +96,7 @@ void UpdateHostage(float _dt)
 			DecreaseNbEnemyPositionGround(hostageData.hostageSprite[i]);
 			LoadHostage(i + 1);
 			break;
-		}
-
+		};
 		HostageMovement(hostageData.hostageSprite[i], _dt);
 				
 		//printf("position x : %f y : %f\n", sfSprite_getPosition(hostageData.hostageSprite[i]).x, sfSprite_getPosition(hostageData.hostageSprite[i]).y);
