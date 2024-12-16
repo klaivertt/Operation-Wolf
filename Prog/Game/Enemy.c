@@ -180,7 +180,8 @@ void UpdateEnemy(float _dt)
 			LoadEnemies(i + 1);
 			break;
 		}
-
+		/*printf("debut : %f  ", pos.x);
+		printf(" fin : %f\n", pos.x);*/
 		BackGroundMovement(enemyData.enemySprite[i], _dt);
 	}
 }
@@ -298,6 +299,7 @@ void BackGroundMovement(sfSprite* _enemySprite,float _dt)
 	sfVector2f pos = sfSprite_getPosition(_enemySprite);
 	pos.x -= BACKGROUND_SPEED*_dt;
 	sfSprite_setPosition(_enemySprite, pos);
+	
 	//Verifer position
 }
 
