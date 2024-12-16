@@ -12,7 +12,7 @@ void LoadPlayer()
 	sfVector2f position = { SCREEN_WIDTH / 2 , SCREEN_HEIGHT / 2 };
 	sfVector2f origin = { 0.5 , 0.5 };
 	player.cursor.texture = sfTexture_createFromFile("Assets/Sprites/SpriteSheet.png", NULL);
-	player.HP = MAX_HP;
+	player.HP = 10;
 	player.magazineNumber = 5;
 	player.bulletNumber = BULLET_NUMBER_MAX;
 	player.grenadeNumber = 1;

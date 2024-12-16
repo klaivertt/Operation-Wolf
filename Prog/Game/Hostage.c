@@ -100,7 +100,7 @@ void UpdateHostage(float _dt)
 
 		HostageMovement(hostageData.hostageSprite[i], _dt);
 				
-		printf("position x : %f y : %f\n", sfSprite_getPosition(hostageData.hostageSprite[i]).x, sfSprite_getPosition(hostageData.hostageSprite[i]).y);
+		//printf("position x : %f y : %f\n", sfSprite_getPosition(hostageData.hostageSprite[i]).x, sfSprite_getPosition(hostageData.hostageSprite[i]).y);
 	}
 }
 
