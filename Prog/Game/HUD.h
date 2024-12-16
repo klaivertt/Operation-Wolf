@@ -8,6 +8,7 @@
 #include "Magazine.h"
 #include "Score.h"
 #include "Grenade.h"
+#include "HumanIcon.h"
 
 //*@brief Loads the resources needed for the HUD.
 //*
