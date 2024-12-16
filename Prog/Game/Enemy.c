@@ -296,10 +296,8 @@ sfBool Move(Enemy* _enemy, sfSprite** _sprite)
 void BackGroundMovement(sfSprite* _enemySprite,float _dt)
 {
 	sfVector2f pos = sfSprite_getPosition(_enemySprite);
-	printf("debut : %f  ", pos.x);
 	pos.x -= BACKGROUND_SPEED*_dt;
 	sfSprite_setPosition(_enemySprite, pos);
-	printf(" fin : %f\n", pos.x);
 	//Verifer position
 }
 
