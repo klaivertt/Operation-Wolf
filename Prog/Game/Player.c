@@ -36,11 +36,17 @@ void UpdatePlayer(float _dt)
 	}
 
 	GetDamage();
+
+	if (player.HP <= 0)
+	{
+		SetGameState(GAME_OVER);
+	}
 }
 
 void GetDamage()
 {
 	player.HP -= PlayerDamage();
+	printf("%d\n", player.HP);
 }
 
 void GetMousePositionPlayer(sfMouseMoveEvent _mouseMoved)
@@ -122,7 +128,6 @@ int GetGrenade()
 void VerifClickOnEnemy(sfMouseButtonEvent _mouseButton)
 {
 	sfVector2f pos = { _mouseButton.x, _mouseButton.y };
-	printf("x : %f    y : %f\n", pos.x, pos.y);
 
 	sfBool killEnemy = VerifPlayerKillEnemy(pos);
 	if (killEnemy)
