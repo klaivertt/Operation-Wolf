@@ -12,7 +12,7 @@ void LoadPlayer()
 	sfVector2f position = { SCREEN_WIDTH / 2 , SCREEN_HEIGHT / 2 };
 	sfVector2f origin = { 0.5 , 0.5 };
 	player.cursor.texture = sfTexture_createFromFile("Assets/Sprites/SpriteSheet.png", NULL);
-	player.HP = 20;
+	player.HP = MAX_HP;
 	player.magazineNumber = 3;
 	player.bulletNumber = BULLET_NUMBER_MAX;
 	player.grenadeNumber = 1;
@@ -36,6 +36,7 @@ void UpdatePlayer(float _dt)
 	}
 
 	GetDamage();
+	UpdateGrenadeTimer(_dt);
 
 	if (player.HP <= 0)
 	{
@@ -46,7 +47,6 @@ void UpdatePlayer(float _dt)
 void GetDamage()
 {
 	player.HP -= PlayerDamage();
-	printf("%d\n", player.HP);
 }
 
 void GetMousePositionPlayer(sfMouseMoveEvent _mouseMoved)
@@ -78,6 +78,12 @@ void MouseButtonPressedPlayer(sfRenderWindow* const _renderWindow, sfMouseButton
 	case sfMouseRight:
 		ReloadMagazine();
 		break;
+	case sfMouseMiddle:
+		if (player.grenadeNumber == 1)
+		{
+
+			ShootGrenade();
+		}
 	default:
 		break;
 	}
@@ -86,6 +92,11 @@ void MouseButtonPressedPlayer(sfRenderWindow* const _renderWindow, sfMouseButton
 void ShootBullet()
 {
 	player.bulletNumber--;
+}
+
+void ShootGrenade()
+{
+	player.grenadeNumber--;
 }
 
 //make the player use 1 magazine and reload bullets
@@ -106,6 +117,11 @@ void ReloadMagazine()
 void ReloadBullet()
 {
 	player.bulletNumber = BULLET_NUMBER_MAX;
+}
+
+void ReloadGrenade()
+{
+	player.grenadeNumber++;
 }
 
 //return magazine amount

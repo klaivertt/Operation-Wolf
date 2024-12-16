@@ -9,29 +9,11 @@
 #include "Score.h"
 #include "Grenade.h"
 
-//* @brief Structure containing user interface(HUD) data.
-//*
-//* This structure contains all the elements required to display and manage
-//* HUD, including loader information, remaining bullets and score.
-
-typedef struct HUDData
-{
-	Magazine magazine;
-	Bullet bullet;
-	Score score;
-} HUDData;
-
 //*@brief Loads the resources needed for the HUD.
 //*
 //* This function initializes the data and resources associated with the HUD, such as
 //* textures, fonts and other graphic elements.
 void LoadHUD();
-
-
-//*@brief Updates HUD data according to time and game status.
-//*
-//* @param _dt Time elapsed since last update(delta time).
-void UpdateHUD(float _dt);
 
 
 //* @brief Draws the HUD in the specified rendering window.

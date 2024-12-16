@@ -6,9 +6,12 @@
 #include "Sprite.h"
 #include "Enemy.h"
 #include "State.h"
+#include "Grenade.h"
+#include "score.h"
 
 #define BULLET_NUMBER_MAX 15
-#define GRENADE_NUMBER_MAX 5
+#define GRENADE_NUMBER_MAX 1
+#define MAX_HP 200
 
 typedef enum PlayerState
 {
@@ -40,7 +43,11 @@ int GetMagazine();
 int GetBullet();
 int GetGrenade();
 
+void ReloadGrenade();
+
 void VerifClickOnEnemy(sfMouseButtonEvent _mouseButton);
+
+void ShootGrenade();
 
 int GetPlayerState();
 
