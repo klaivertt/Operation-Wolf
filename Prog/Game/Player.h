@@ -9,9 +9,9 @@
 #include "Grenade.h"
 #include "score.h"
 
-#define BULLET_NUMBER_MAX 15
+#define BULLET_NUMBER_MAX 16
 #define GRENADE_NUMBER_MAX 1
-#define MAX_HP 200
+#define MAX_HP 20
 
 typedef enum PlayerState
 {
@@ -24,6 +24,8 @@ typedef struct PlayerData
 	Image cursor;
 	sfVector2f mousePosition;
 	PlayerState state;
+
+	Score score;
 
 	int HP;
 	int magazineNumber;

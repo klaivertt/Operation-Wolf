@@ -1,4 +1,3 @@
-#pragma once
 #ifndef POSITION_H
 #define POSITION_H
 
@@ -11,18 +10,20 @@
 #define MIDDLEGROUND 850
 #define FORGROUND 1000
 
-#define ENEMY_MAX 6
+#define ENEMY_MAX 5
 #define ENEMY_MAX_PER_POS_Y 2
 
 sfVector2f RandomSpawn(void);
 int RandomExitPos(void);
 int RandomMapPos(void);
+void IncreaseNbEnemyPositionGround(sfSprite* _sprite);
+void DecreaseNbEnemyPositionGround(sfSprite* _sprite);
 
 typedef struct PositionData
 {
 	short nbEnemyInBackground;
 	short nbEnemyInMiddleground;
-	short nbEnemyInDownground;
+	short nbEnemyInDownground;	
 }PositionData;
 
 #endif
