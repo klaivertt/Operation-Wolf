@@ -54,7 +54,6 @@ void DrawGame(sfRenderWindow* _renderWindow)
 	DrawSecondPlan(_renderWindow);
 	DrawSecondPlanProps(_renderWindow);
 
-	DrawFistPlan(_renderWindow);
 	DrawFirstPlanProps(_renderWindow);
 
 	DrawEnemy(_renderWindow);

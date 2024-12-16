@@ -76,8 +76,3 @@ void DrawSecondPlan(sfRenderWindow* _renderWindow)
 {
 	DrawSecondPlanProps(_renderWindow);
 }
-
-void DrawFistPlan(sfRenderWindow* _renderWindow)
-{
-	DrawFirstPlanProps(_renderWindow);
-}
