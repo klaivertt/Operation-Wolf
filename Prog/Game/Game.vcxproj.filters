@@ -126,11 +126,14 @@
     <ClCompile Include="Position.c">
       <Filter>Fichiers sources\States\Game\Characters\Enemy</Filter>
     </ClCompile>
+    <ClCompile Include="HealthBar.c">
+      <Filter>Fichiers sources\States\Game\Characters\Player\HUD</Filter>
+    </ClCompile>
+    <ClCompile Include="HumanIcon.c">
+      <Filter>Fichiers sources\States\Game\Characters\Player\HUD</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Common.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
     <ClInclude Include="Menu.h">
       <Filter>Fichiers d%27en-tête\States</Filter>
     </ClInclude>
@@ -184,6 +187,15 @@
     </ClInclude>
     <ClInclude Include="Position.h">
       <Filter>Fichiers d%27en-tête\States\Game\Characters\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="HealthBar.h">
+      <Filter>Fichiers d%27en-tête\States\Game\Characters\Player\HUD</Filter>
+    </ClInclude>
+    <ClInclude Include="HumanIcon.h">
+      <Filter>Fichiers d%27en-tête\States\Game\Characters\Player\HUD</Filter>
+    </ClInclude>
+    <ClInclude Include="Common.h">
+      <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

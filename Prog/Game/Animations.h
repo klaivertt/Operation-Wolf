@@ -54,5 +54,6 @@ void ResetAnimation(Animation* _anim, sfSprite** _sprite);
 
 sfBool AnimIsFinished(Animation* const _anim);
 
+int GetAnimCurrentFrame(Animation* _anim);
 
 #endif // !ANIMATIONS_H

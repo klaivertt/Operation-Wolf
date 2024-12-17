@@ -52,6 +52,8 @@ void VerifClickOnEnemy(sfMouseButtonEvent _mouseButton);
 
 void ShootGrenade();
 
+void ResetPlayer();
+
 int GetPlayerState();
 
 #endif // !PLAYER_H
