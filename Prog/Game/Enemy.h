@@ -14,7 +14,7 @@
 //24 Enemies maximum 
 
 
-#define SHOOT_DELAY 1.5f
+#define SHOOT_DELAY 1
 #define MAX_SPAWN_DELAY 2
 
 #define DAMAGE 1
@@ -26,7 +26,7 @@
 
 typedef enum EnemyState
 {
-	WAIT,
+	WAIT_TO_SPAWN,
 	WALK,
 	SHOOT,
 	DEAD,
@@ -51,6 +51,7 @@ typedef enum Drop
 typedef struct Anim
 {
 	Animation walk;
+	Animation waitToShoot;
 	Animation shoot;
 	Animation dead;
 }Anim;
@@ -71,6 +72,7 @@ typedef struct Enemy
 
 	sfBool doDamageToPlayer;
 
+	Timer waitToShootTimer;
 	Timer shootTimer;
 	Timer waitTimer;
 	Timer deadTimer;

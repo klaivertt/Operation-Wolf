@@ -89,7 +89,7 @@ void LoadEnemies(short _enemyToLoad)
 
 	for (i; i < max;i++)
 	{
-		enemyData.enemy[i].state = WAIT;
+		enemyData.enemy[i].state = WAIT_TO_SPAWN;
 		enemyData.enemy[i].life = TOTAL_LIFE;
 
 		enemyData.enemy[i].targetedPositon = RandomMapPos();
@@ -101,14 +101,14 @@ void LoadEnemies(short _enemyToLoad)
 		enemyData.enemy[i].doDamageToPlayer = sfFalse;
 
 		//TIMER
-		float Delay = SHOOT_DELAY;
-		InitTimer(&enemyData.enemy[i].shootTimer, Delay);
+		float delay = SHOOT_DELAY * 1.5f;
+		InitTimer(&enemyData.enemy[i].shootTimer, delay);
 
-		Delay = rand() % MAX_SPAWN_DELAY + (float)(rand() % 10) / 10;
-		InitTimer(&enemyData.enemy[i].waitTimer, Delay);
+		delay = rand() % MAX_SPAWN_DELAY + (float)(rand() % 10) / 10;
+		InitTimer(&enemyData.enemy[i].waitTimer, delay);
 		
-		Delay = DEATH_DELAY;
-		InitTimer(&enemyData.enemy[i].deadTimer, Delay);
+		delay = DEATH_DELAY;
+		InitTimer(&enemyData.enemy[i].deadTimer, delay);
 
 
 
@@ -122,8 +122,9 @@ void LoadEnemies(short _enemyToLoad)
 		sfVector2f origin = { 0.5,1 };
 		CreateSprite(&enemyData.enemy[i].sprite, enemyData.spriteSheet, pos, rect, origin);
 		
+
 		CreateAnimation(&enemyData.enemy[i].anim.walk, &enemyData.enemy[i].sprite, &enemyData.spriteSheet, 5, 2, 5, sfTrue, (sfVector2f) { 0, 0 });
-		CreateAnimation(&enemyData.enemy[i].anim.shoot, &enemyData.enemy[i].sprite, &enemyData.spriteSheet, 5, 2, 1, sfTrue, (sfVector2f) { 2, 0 });
+		CreateAnimation(&enemyData.enemy[i].anim.shoot, &enemyData.enemy[i].sprite, &enemyData.spriteSheet, 5, 2, 2, sfTrue, (sfVector2f) { 2, 0 });
 		CreateAnimation(&enemyData.enemy[i].anim.dead, &enemyData.enemy[i].sprite, &enemyData.spriteSheet, 5, 1, 1, sfTrue, (sfVector2f) { 4, 0 });
 
 		IncreaseNbEnemyPositionGround(enemyData.enemy[i].sprite);
@@ -160,7 +161,7 @@ void UpdateEnemy(float _dt)
 
 		switch (enemyData.enemy[i].state)
 		{
-		case WAIT:
+		case WAIT_TO_SPAWN:
 
 			UpdateTimer(_dt, &enemyData.enemy[i].waitTimer);
 			timerEnd = IsTimerFinished(&enemyData.enemy[i].waitTimer);
@@ -186,18 +187,18 @@ void UpdateEnemy(float _dt)
 			}
 
 			break;
-
 		case SHOOT:
-
 			UpdateAnimation(&enemyData.enemy[i].anim.shoot, &enemyData.enemy[i].sprite, _dt);
 			UpdateTimer(_dt, &enemyData.enemy[i].shootTimer);
 			timerEnd = IsTimerFinished(&enemyData.enemy[i].shootTimer);
-			if (timerEnd) {
+			if (timerEnd)
+			{
 				enemyData.enemy[i].doDamageToPlayer = sfTrue;
 				SetEnemyState(&enemyData.enemy[i], WALK);
 				enemyData.enemy[i].targetedPositon = RandomExitPos();
 				enemyData.enemy[i].haveAlreadyShoot = sfTrue;
 			}
+			
 			break;
 
 		case DEAD:
@@ -212,7 +213,7 @@ void UpdateEnemy(float _dt)
 			break;
 		}
 
-		if (enemyData.enemy[i].state != WAIT)
+		if (enemyData.enemy[i].state != WAIT_TO_SPAWN)
 		{
 		BackGroundMovement(enemyData.enemy[i].sprite, _dt);
 		}
