@@ -26,7 +26,7 @@ void LoadProps(void)
 		do
 		{
 			props[i].layerY = (rand() % 3);
-			int randomX = rand() % SCREEN_WIDTH;
+			int randomX = rand() % SCREEN_WIDTH * 2;
 			int randomY = 0;
 
 			switch (props[i].layerY)
@@ -132,7 +132,7 @@ void NewProps(Props* _props)
 	sfVector2f position;
 	do {
 		_props->layerY = (rand() % 3);
-		int randomX = (rand() % SCREEN_WIDTH) + (SCREEN_WIDTH * 1.5f);
+		int randomX = (rand() % SCREEN_WIDTH/2) + (SCREEN_WIDTH * 1.1f);
 		int randomY = 0;
 
 		switch (_props->layerY)
