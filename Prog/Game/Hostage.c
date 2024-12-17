@@ -52,7 +52,7 @@ void LoadHostage(short _hostageToLoad)
 		hostageData.hostage[i].life = 1;
 		hostageData.hostage[i].maxSpeed = 8;
 
-		hostageData.hostage[i].targetedPositon = RandomMapPos();
+		
 
 		float speedMultiplicator = (1 + rand() % 6) / 10.0f;
 		hostageData.hostage[i].maxSpeed *= 1 - speedMultiplicator;
@@ -65,18 +65,15 @@ void LoadHostage(short _hostageToLoad)
 		sfVector2f pos = RandomSpawn();
 		sfIntRect rect = { 0,0,753 / 5,208 };
 		sfVector2f origin = { 0.5,1 };
-		if (hostageData.hostageSprite[i] == NULL)
-		{
-			CreateSprite(&hostageData.hostageSprite[i], hostageData.spriteSheet, pos, rect, origin);
-		}
-		else
-		{
-			sfSprite_setTextureRect(hostageData.hostageSprite[i], rect);
-			sfSprite_setOrigin(hostageData.hostageSprite[i], (sfVector2f) { (float)rect.width* origin.x, (float)rect.height* origin.y });
-			sfSprite_setPosition(hostageData.hostageSprite[i], pos);
-		}
 
-		IncreaseNbEnemyPositionGround(hostageData.hostageSprite[i]);
+		CreateSprite(&hostageData.hostageSprite[i], hostageData.spriteSheet, pos, rect, origin);
+
+
+		if (pos.x == )
+		{
+
+		}
+		hostageData.hostage[i].targetedPositon =
 	}
 
 }
@@ -129,6 +126,9 @@ sfBool MoveHostage(Hostage* _enemy, sfSprite** _sprite)
 
 void HostageMovement(sfSprite* _enemySprite, float _dt)
 {
+	sfVector2f movement = GetBackGroundSpeed();
+
+	MoveHostage(hostageData.hostage, hostageData.hostageSprite);
 
 	sfSprite_move(_enemySprite, GetBackGroundSpeed());
 

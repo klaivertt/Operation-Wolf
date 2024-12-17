@@ -6,10 +6,6 @@
 #include "Map.h"
 #include "Position.h"
 
-#define POS_RIGHT_X -100
-#define GROUND_LEFT SCREEN_WIDTH + 100
-#define POS_HIGHT_Y 200
-
 #define HOSTAGE_MAX 1
 
 #pragma region enum
