@@ -10,9 +10,7 @@
 #include "Position.h"
 
 
-
 //24 Enemies maximum 
-
 
 #define SHOOT_DELAY 1
 #define MAX_SPAWN_DELAY 2

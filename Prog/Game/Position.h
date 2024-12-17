@@ -5,9 +5,6 @@
 #include "Collision.h"
 #include "Map.h"
 
-#define GROUND_RIGHT -100
-#define GROUND_LEFT SCREEN_WIDTH + 100
-
 #define ENEMY_MAX 5
 #define ENEMY_MAX_PER_POS_Y 2
 

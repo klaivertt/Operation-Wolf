@@ -15,6 +15,9 @@
 #define BACKGROUND 500
 #define MIDDLEGROUND 850
 #define FORGROUND 1000
+
+#define GROUND_RIGHT -100
+#define GROUND_LEFT SCREEN_WIDTH + 100
 #pragma endregion
 typedef struct Image
 {
