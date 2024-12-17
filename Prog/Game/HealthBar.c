@@ -24,7 +24,7 @@ void UpdateBar()
 	int playerHP = GetPlayerHP();
 	printf("%d\n", playerHP);
 	sfIntRect size = sfSprite_getTextureRect(healthBar.sprite);
-	sfSprite_setTextureRect(healthBar.sprite, (sfIntRect) { size.left, size.top, 254 * playerHP / 20, size.height });
+	sfSprite_setTextureRect(healthBar.sprite, (sfIntRect) { size.left, size.top, 254 * playerHP / MAX_HP, size.height });
 }
 
 void DrawHealthBar(sfRenderWindow* _renderWindow)

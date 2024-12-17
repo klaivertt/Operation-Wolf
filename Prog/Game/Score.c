@@ -4,48 +4,26 @@ Score score;
 
 void LoadScore()
 {
-	score.font = sfFont_createFromFile("Assets/Fonts/Prototype.ttf");
-	score.score = sfText_create();
-	score.highScore = sfText_create();
+	char scoreString = "5";
+	int fontSize = 30;
 
-	sfText_setFont(score.score, score.font);;
-	sfText_setFont(score.highScore, score.font);;
-	
-	sfText_setString(score.score, "0");
-	sfText_setString(score.highScore, "0");
-	
-	sfText_setOutlineThickness(score.score, 2);
-	sfText_setOutlineThickness(score.highScore, 2);
-	
-	sfText_setOutlineColor(score.score, sfBlack);
-	sfText_setOutlineColor(score.highScore, sfBlack);
-	
-	sfText_setCharacterSize(score.score, 30);
-	sfText_setCharacterSize(score.highScore, 30);
+	sfVector2f positionScore = { SCREEN_WIDTH / 3 , 30 };
+	sfVector2f positionHighScore = { SCREEN_WIDTH / 2 + 30 * 20 , 30 };
 
-	sfFloatRect sizeActualScore = sfText_getGlobalBounds(score.score);
-	sfFloatRect sizeHighScore = sfText_getGlobalBounds(score.highScore);
-
-	sfText_setOrigin(score.score, (sfVector2f) { sizeActualScore.width / 2, sizeActualScore.height });
-	sfText_setOrigin(score.highScore, (sfVector2f) { sizeHighScore.width / 2, sizeHighScore.height });
-
-	sfText_setPosition(score.score, (sfVector2f) { SCREEN_WIDTH / 3, sizeActualScore.height });
-	sfText_setPosition(score.highScore, (sfVector2f) { SCREEN_WIDTH / 2 + sizeActualScore.width * 20, sizeHighScore.height});
+	InitText(&score.score, "%d", fontSize, positionScore);
+	InitText(&score.highScore, "%d", fontSize, positionHighScore);
 
 	score.actualScore = 0;
 	if (score.isLoaded)
 	{
-		score.topScore = 120;
-		score.isLoaded == sfFalse;
+		score.topScore = 0;
+		score.isLoaded = sfFalse;
 	}
 }
 
 void UpdateScoreText(sfText* _text, int _value)
 {
-	// Copy the value into the text
-	char string[10];
-	sprintf_s(string, sizeof(string), "%d", _value);
-	sfText_setString(_text, string);
+	UpdateText(&score.score, "%d", score.actualScore);
 }
 
 //add the ennemi score to the actual score
@@ -69,7 +47,7 @@ int GetMaxScore()
 void DrawScore(sfRenderWindow* _renderWindow)
 {
 	sfRenderWindow_drawText(_renderWindow, score.score, NULL);
-	sfRenderWindow_drawText(_renderWindow, score.highScore, NULL);
+	//sfRenderWindow_drawText(_renderWindow, score.highScore, NULL);
 }
 
 void SetHighScore()

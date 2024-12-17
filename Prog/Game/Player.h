@@ -12,7 +12,7 @@
 
 #define BULLET_NUMBER_MAX 16
 #define GRENADE_NUMBER_MAX 1
-#define MAX_HP 20
+#define MAX_HP 15
 
 typedef enum PlayerState
 {
@@ -46,9 +46,12 @@ int GetMagazine();
 int GetBullet();
 int GetGrenade();
 
+int GetPlayerHP();
+
 void ReloadGrenade();
 
 void VerifClickOnEnemy(sfMouseButtonEvent _mouseButton);
+void VerifyClickOnHostage(sfMouseButtonEvent _mouseButton);
 
 void ShootGrenade();
 

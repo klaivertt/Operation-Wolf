@@ -4,6 +4,7 @@
 
 #include "Common.h"
 #include "Sprite.h"
+#include "Text.h"
 
 typedef struct Score
 {
@@ -46,15 +47,9 @@ void UpdateScore(int _score);
 //* @param _renderWindow Pointer to the sfRenderWindow where the score will be drawn.
 void DrawScore(sfRenderWindow* _renderWindow);
 
-int GetScore()
-{
-	return score.actualScore;
-}
+int GetScore();
 
-int GetMaxScore()
-{
-	return score.topScore;
-}
+int GetMaxScore();
 
 void SetHighScore();
 

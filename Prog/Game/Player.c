@@ -158,6 +158,18 @@ void VerifClickOnEnemy(sfMouseButtonEvent _mouseButton)
 	}
 }
 
+void VerifyClickOnHostage(sfMouseButtonEvent _mouseButton)
+{
+	//sfVector2f pos = { _mouseButton.x, _mouseButton.y };
+	//
+	//sfBool killHostage = VerifPlayerKillHostage;
+	//if (killHostage)
+	//{
+	//	UpdateScore(-1);
+	//	player.HP--;
+	//}
+}
+
 void ResetPlayer()
 {
 	player.HP = MAX_HP;
