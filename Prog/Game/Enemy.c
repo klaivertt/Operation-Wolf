@@ -293,7 +293,7 @@ void Scale(Enemy* _enemy, sfSprite** _sprite)
 {
 	sfVector2f scale = { 1,1 };
 
-	if (_enemy->state == WALK)
+	if (_enemy->state == WALK || _enemy->state == DEAD)
 	{
 		sfVector2f pos = sfSprite_getPosition(*_sprite);
 

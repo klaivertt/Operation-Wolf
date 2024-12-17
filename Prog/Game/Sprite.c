@@ -55,7 +55,6 @@ sfBool MouseClickOnSpritePixel(sfVector2f _mouseButton, sfSprite* _sprite)
 
 		sfImage_destroy(spriteSheetImage);
 
-		//printf("\nspriteTexture : %d %d\n", textureRect.left, textureRect.top);
 
 		if (color.a != 0) {
 			return sfTrue;
