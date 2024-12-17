@@ -82,3 +82,8 @@ sfBool AnimIsFinished(Animation* const _anim)
 {
 	return _anim->isFinished;
 }
+
+int GetAnimCurrentFrame(Animation* _anim)
+{
+	return _anim->currentFrame;
+}
