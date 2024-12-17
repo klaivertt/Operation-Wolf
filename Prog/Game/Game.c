@@ -11,6 +11,7 @@ void LoadGame(void)
 	LoadHostage(NULL);
 	LoadPlayer();
 	LoadHUD();
+	LoadDrop();
 }
 
 void KeyPressedGame(sfRenderWindow* _renderWindow, sfKeyEvent _key)
@@ -44,6 +45,7 @@ void UpdateGame(float _dt)
 	UpdateEnemy(_dt);
 	UpdateHostage(_dt);
 	UpdateMap(_dt);
+	//MoveDrop();
 }
 
 void DrawGame(sfRenderWindow* _renderWindow)
@@ -65,6 +67,7 @@ void DrawGame(sfRenderWindow* _renderWindow)
 	DrawSecondPlan(_renderWindow);
 
 	DrawHUD(_renderWindow);
+	DrawDrop(_renderWindow);
 	DrawPlayer(_renderWindow);
 }
 
