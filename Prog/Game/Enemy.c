@@ -120,7 +120,7 @@ void LoadEnemies(short _enemyToLoad)
 
 		IncreaseNbEnemyPositionGround(enemyData.enemy[i].sprite);
 
-		enemyData.enemy[i].ground = pos.y;
+		enemyData.enemy[i].ground = (int)pos.y;
 
 	}
 	
