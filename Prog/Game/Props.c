@@ -26,7 +26,7 @@ void LoadProps(void)
 		do
 		{
 			props[i].layerY = (rand() % 3);
-			int randomX = rand() % SCREEN_WIDTH * 2;
+			int randomX = rand() % (SCREEN_WIDTH * 2);
 			int randomY = 0;
 
 			switch (props[i].layerY)
@@ -58,7 +58,7 @@ void UpdateProps(float _dt, float _backgroundSpeed)
 		sfSprite_move(props[i].sprite, (sfVector2f) { move, 0 });
 
 		sfFloatRect rect = sfSprite_getGlobalBounds(props[i].sprite);
-		if (sfSprite_getPosition(props[i].sprite).x < -rect.width)
+		if (sfSprite_getPosition(props[i].sprite).x < -rect.width/2)
 		{
 			NewProps(&props[i]);
 		}
@@ -132,7 +132,7 @@ void NewProps(Props* _props)
 	sfVector2f position;
 	do {
 		_props->layerY = (rand() % 3);
-		int randomX = (rand() % SCREEN_WIDTH/2) + (SCREEN_WIDTH * 1.1f);
+		int randomX = rand() % 200 + (SCREEN_WIDTH * 1.1f);
 		int randomY = 0;
 
 		switch (_props->layerY)
