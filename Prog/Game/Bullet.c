@@ -5,7 +5,7 @@ Bullet bullet;
 void LoadBullet()
 {
 	sfIntRect rect = { 120, 2184, 24 , 48 };
-	sfVector2f position = { SCREEN_WIDTH - BULLET_NUMBER_MAX/2 * rect.width , rect.height };
+	sfVector2f position = { SCREEN_WIDTH - BULLET_NUMBER_MAX/2.f * rect.width , (float)rect.height };
 	sfVector2f originalPosition = position;
 	sfVector2f origin = { 0.5 , 1 };
 	bullet.texture = sfTexture_createFromFile("Assets/Sprites/SpriteSheet.png", NULL);

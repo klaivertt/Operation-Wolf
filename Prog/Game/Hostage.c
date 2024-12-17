@@ -116,8 +116,6 @@ void CleanupHostage(void)
 
 }
 
-
-
 //Local Function
 
 sfBool MoveHostage(Hostage* _enemy, sfSprite** _sprite)
