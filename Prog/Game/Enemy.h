@@ -8,7 +8,7 @@
 #include "Map.h"
 #include "Animations.h"
 #include "Position.h"
-
+#include "Collision.h"
 
 
 //24 Enemies maximum 

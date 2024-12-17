@@ -151,9 +151,6 @@ void MouseMovedEnemy(sfRenderWindow* const _renderWindow, sfMouseMoveEvent _mous
 
 void UpdateEnemy(float _dt)
 {
-	
-	sfBool notMoving, timerEnd;
-	
 
 	for (short i = 0; i < ENEMY_MAX; i++)
 	{
@@ -254,6 +251,28 @@ void Shoot(Enemy* _enemy, float _dt)
 	{
 		_enemy->doDamageToPlayer = sfTrue;
 		_enemy->haveAlreadyShoot = sfTrue;
+		Props* props[MAX_PROPS] = GetAllProps();
+
+		sfFloatRect rectEnemy = sfSprite_getGlobalBounds(_enemy->sprite);
+		rectEnemy = (sfFloatRect){ rectEnemy.left + 74, rectEnemy.top + 80, 5, 5 };
+
+		
+
+		for (short p = 0; p < MAX_PROPS; p++)
+		{
+			sfFloatRect rectProps = sfSprite_getGlobalBounds(props[p]->sprite);
+			sfBool collision = CollisionRectRect(&rectProps, &rectEnemy);
+			if (collision)
+			{
+				_enemy->doDamageToPlayer = sfFalse;
+				_enemy->haveAlreadyShoot = sfFalse;
+				printf("collision");
+			}
+		}
+		
+		
+
+		
 	}
 	if (timerEnd)
 	{

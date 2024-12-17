@@ -1,8 +1,8 @@
 #include "Collision.h"
 
-sfBool CollisionRectRect(sfIntRect* const _rect1, sfIntRect* const _rect2)
+sfBool CollisionRectRect(sfFloatRect* const _rect1, sfIntRect* const _rect2)
 {
-	if (sfIntRect_intersects(_rect1, _rect2, NULL))
+	if (sfFloatRect_intersects(_rect1, _rect2, NULL))
 	{
 		return sfTrue;
 	}
@@ -13,7 +13,7 @@ sfBool CollisionRectRect(sfIntRect* const _rect1, sfIntRect* const _rect2)
     
 }
 
-sfBool CollisionPointRect(sfIntRect* const _rect1, sfVector2i const _point)
+sfBool CollisionPointRect(sfFloatRect* const _rect1, sfVector2i const _point)
 {
 	if (sfFloatRect_contains(_rect1, (float)_point.x, (float)_point.x))
 	{

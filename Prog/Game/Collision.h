@@ -3,9 +3,9 @@
 
 #include "Common.h"
 
-sfBool CollisionRectRect(sfIntRect* const, sfIntRect* const);
+sfBool CollisionRectRect(sfFloatRect* const, sfIntRect* const);
 
-sfBool CollisionPointRect(sfIntRect* const _rect1, sfVector2i const _point);
+sfBool CollisionPointRect(sfFloatRect* const _rect1, sfVector2i const _point);
 
 #endif // !COLLISION_H
 
