@@ -56,9 +56,14 @@ void UpdateScore(int _score)
 	SetHighScore();
 }
 
-sfVector2i GetScore()
+int GetScore()
 {
-	return (sfVector2i){ score.actualScore, score.topScore };
+	return score.actualScore;
+}
+
+int GetMaxScore()
+{
+	return score.topScore;
 }
 
 void DrawScore(sfRenderWindow* _renderWindow)
