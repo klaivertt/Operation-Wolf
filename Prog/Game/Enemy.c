@@ -2,15 +2,9 @@
 
 EnemyData enemyData;
 
-int i = 0;
-
-sfVector2f RandomSpawn(void);
-int RandomExitPos(void);
-int RandomMapPos(void);
 //Return True if is on targeted Position
 sfBool Move(Enemy* _enemy, sfSprite** _sprite);
-void IncreaseNbEnemyPositionGround(sfSprite* _sprite);
-void DecreaseNbEnemyPositionGround(sfSprite* _sprite);
+
 
 
 void WaitToSpawn(Enemy* _enemy, float _dt);
@@ -77,7 +71,7 @@ void LoadEnemies(short _enemyToLoad)
 {
 	short i, max;
 	//Every enemies
-	if (_enemyToLoad == NULL)
+	if (_enemyToLoad == 0)
 	{
 		i = 0;
 		max = ENEMY_MAX;
@@ -251,28 +245,12 @@ void Shoot(Enemy* _enemy, float _dt)
 	{
 		_enemy->doDamageToPlayer = sfTrue;
 		_enemy->haveAlreadyShoot = sfTrue;
-		Props* props[MAX_PROPS] = GetAllProps();
-
-		sfFloatRect rectEnemy = sfSprite_getGlobalBounds(_enemy->sprite);
-		rectEnemy = (sfFloatRect){ rectEnemy.left + 74, rectEnemy.top + 80, 5, 5 };
-
 		
-
-		for (short p = 0; p < MAX_PROPS; p++)
+		if (EnemyShootBehindProps(_enemy->sprite))
 		{
-			sfFloatRect rectProps = sfSprite_getGlobalBounds(props[p]->sprite);
-			sfBool collision = CollisionRectRect(&rectProps, &rectEnemy);
-			if (collision)
-			{
-				_enemy->doDamageToPlayer = sfFalse;
-				_enemy->haveAlreadyShoot = sfFalse;
-				printf("collision");
-			}
+			_enemy->doDamageToPlayer = sfFalse;
+			_enemy->haveAlreadyShoot = sfFalse;
 		}
-		
-		
-
-		
 	}
 	if (timerEnd)
 	{
@@ -294,14 +272,16 @@ void Dead(Enemy* _enemy, float _dt, short i)
 }
 
 
+
 sfBool Move(Enemy* _enemy, sfSprite** _sprite)
 {
 	sfVector2f pos = sfSprite_getPosition(*_sprite);
 
-	pos.x = _enemy->targetedPositon;
+	pos.x = (float)_enemy->targetedPositon;
 
 	return MoveSpriteToTarget(_sprite, pos, _enemy->speed, sfFalse);
 }
+
 
 ////Verifer position
 //sfVector2f ok = sfSprite_getPosition(enemyData.enemy[temporaire].sprite);
