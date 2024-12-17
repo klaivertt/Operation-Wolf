@@ -63,7 +63,24 @@ int PlayerDamage(void)
 	return totalDamage;
 }
 
+Drop EnemyDrop(void)
+{
+	int dropChance = 1 + rand() % 100;
 
+	if (dropChance <= 15)
+	{
+		return AMMO;
+	}
+	else
+	{
+		dropChance = 1 + rand() % 100;
+		if (dropChance <= 10)
+		{
+			return HEALTH;
+		}
+	}
+	return NONE;
+}
 
 void LoadEnemies(short _enemyToLoad)
 {

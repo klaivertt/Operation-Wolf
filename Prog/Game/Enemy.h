@@ -107,7 +107,8 @@ void SetEnemyState(Enemy* _enemy, EnemyState _state);
 
 sfBool VerifPlayerKillEnemy(sfVector2f _mousePos);
 
-
 int PlayerDamage(void);
+
+Drop EnemyDrop(void);
 
 #endif
