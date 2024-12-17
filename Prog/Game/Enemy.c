@@ -73,9 +73,6 @@ int PlayerDamage(void)
 
 
 
-
-
-
 void LoadEnemies(short _enemyToLoad)
 {
 	short i, max;
