@@ -11,8 +11,11 @@
 #define SCREEN_WIDTH 1920
 #define SCREEN_HEIGHT 1080
 #define BPP 32
-#pragma endregion
 
+#define BACKGROUND 500
+#define MIDDLEGROUND 850
+#define FORGROUND 1000
+#pragma endregion
 typedef struct Image
 {
 	sfTexture* texture;

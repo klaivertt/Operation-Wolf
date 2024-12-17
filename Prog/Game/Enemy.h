@@ -67,6 +67,7 @@ typedef struct Enemy
 
 	int targetedPositon;
 
+	int ground;
 
 	sfBool haveAlreadyShoot;
 
@@ -79,6 +80,8 @@ typedef struct Enemy
 
 	Anim anim;
 	sfSprite* sprite;
+
+	
 
 }Enemy;
 
@@ -96,7 +99,7 @@ void KeyPressedEnemy(sfRenderWindow* _renderWindow, sfKeyEvent _key);
 void MouseButtonPressedEnemy(sfRenderWindow* const _renderWindow, sfMouseButtonEvent _mouseButton);
 void MouseMovedEnemy(sfRenderWindow* const _renderWindow, sfMouseMoveEvent _mouseMove);
 void UpdateEnemy(float _dt);
-void DrawEnemy(sfRenderWindow* _renderWindow);
+void DrawEnemy(sfRenderWindow* _renderWindow, int _ground);
 void CleanupEnemy(void);
 
 
