@@ -5,10 +5,10 @@
 #include "Common.h"
 #include "Sprite.h"
 #include "Timer.h"
-#include "Map.h"
+
 #include "Animations.h"
 #include "Position.h"
-#include "Collision.h"
+
 
 
 //24 Enemies maximum 

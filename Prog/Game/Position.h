@@ -2,6 +2,8 @@
 #define POSITION_H
 
 #include "Common.h"
+#include "Collision.h"
+#include "Map.h"
 
 #define GROUND_RIGHT -100
 #define GROUND_LEFT SCREEN_WIDTH + 100
@@ -16,8 +18,11 @@
 sfVector2f RandomSpawn(void);
 int RandomExitPos(void);
 int RandomMapPos(void);
+
 void IncreaseNbEnemyPositionGround(sfSprite* _sprite);
 void DecreaseNbEnemyPositionGround(sfSprite* _sprite);
+
+sfBool EnemyShootBehindProps(sfSprite* _sprite);
 
 typedef struct PositionData
 {
@@ -25,5 +30,7 @@ typedef struct PositionData
 	short nbEnemyInMiddleground;
 	short nbEnemyInDownground;	
 }PositionData;
+
+
 
 #endif

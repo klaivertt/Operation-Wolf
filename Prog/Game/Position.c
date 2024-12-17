@@ -127,3 +127,25 @@ void DecreaseNbEnemyPositionGround(sfSprite* _sprite)
 		break;
 	}
 }
+
+
+sfBool EnemyShootBehindProps(sfSprite* _sprite)
+{
+	Props* props = GetAllProps();
+
+	sfFloatRect rectEnemy = sfSprite_getGlobalBounds(_sprite);
+	rectEnemy = (sfFloatRect){ rectEnemy.left + 74, rectEnemy.top + 80, 5, 5 };
+
+	for (short p = 0; p < MAX_PROPS; p++)
+	{
+		sfFloatRect rectProps = sfSprite_getGlobalBounds(props[p].sprite);
+		sfBool collision = CollisionRectRect(&rectProps, &rectEnemy);
+
+		if (collision)
+		{
+			return sfTrue;
+		}
+
+	}
+	return sfFalse;
+}
