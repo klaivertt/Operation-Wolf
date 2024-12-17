@@ -68,7 +68,7 @@ void LoadHostage(short _hostageToLoad)
 		hostageData.hostage[i].speed = MAX_SPEED * (1 - speedMultiplicator);
 
 		//TIMER
-		float delay = rand() % MAX_HOSTAGE_SPAWN_DELAY;
+		float delay = (float)(rand() % MAX_HOSTAGE_SPAWN_DELAY);
 		InitTimer(&hostageData.hostage[i].waitTimer, delay);
 
 		delay = DEATH_DELAY;
@@ -81,7 +81,7 @@ void LoadHostage(short _hostageToLoad)
 		}
 
 		sfVector2f pos = RandomSpawn();
-		sfIntRect rect = { 0,0,406 / 3, 209 };
+		sfIntRect rect = { 0,0,360 / 3, 189 };
 		sfVector2f origin = { 0.5,1 };
 
 		CreateSprite(&hostageData.hostage[i].sprite, hostageData.spriteSheet, pos, rect, origin);
@@ -99,7 +99,7 @@ void LoadHostage(short _hostageToLoad)
 		sfSprite_setScale(hostageData.hostage->sprite, scale);
 
 		CreateAnimation(&hostageData.hostage[i].anim.walk, &hostageData.hostage[i].sprite, &hostageData.spriteSheet, 3, 2, 5, sfTrue, (sfVector2f) { 0, 0 });
-		CreateAnimation(&hostageData.hostage[i].anim.dead, &hostageData.hostage[i].sprite, &hostageData.spriteSheet, 3, 1, 1, sfTrue, (sfVector2f) { 4, 0 });
+		CreateAnimation(&hostageData.hostage[i].anim.dead, &hostageData.hostage[i].sprite, &hostageData.spriteSheet, 3, 1, 1, sfTrue, (sfVector2f) { 2, 0 });
 
 		hostageData.hostage[i].ground = (int)pos.y;
 	}
@@ -135,11 +135,11 @@ void UpdateHostage(float _dt)
 		case H_DEAD:
 
 			UpdateAnimation(&hostageData.hostage[i].anim.dead, &hostageData.hostage[i].sprite, _dt);
-
 			UpdateTimer(_dt, &hostageData.hostage[i].deadTimer);
 			timerEnd = IsTimerFinished(&hostageData.hostage[i].deadTimer);
 			if (timerEnd)
 			{
+				printf("ok");
 				DecreaseNbEnemyPositionGround(hostageData.hostage[i].sprite);
 				LoadHostage(i + 1);
 			}

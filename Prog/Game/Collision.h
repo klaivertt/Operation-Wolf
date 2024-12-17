@@ -3,7 +3,7 @@
 
 #include "Common.h"
 
-sfBool CollisionRectRect(sfFloatRect* const, sfIntRect* const);
+sfBool CollisionRectRect(sfFloatRect* const, sfFloatRect* const);
 
 sfBool CollisionPointRect(sfFloatRect* const _rect1, sfVector2i const _point);
 

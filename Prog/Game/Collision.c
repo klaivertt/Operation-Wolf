@@ -1,6 +1,6 @@
 #include "Collision.h"
 
-sfBool CollisionRectRect(sfFloatRect* const _rect1, sfIntRect* const _rect2)
+sfBool CollisionRectRect(sfFloatRect* const _rect1, sfFloatRect* const _rect2)
 {
 	if (sfFloatRect_intersects(_rect1, _rect2, NULL))
 	{

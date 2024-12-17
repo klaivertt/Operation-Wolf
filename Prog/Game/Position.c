@@ -26,7 +26,7 @@ sfVector2f RandomSpawn(void)
 			}
 
 		case 2:
-
+			
 			if (i == 0)
 			{
 				finalPos.x = GROUND_RIGHT;
@@ -83,7 +83,7 @@ int RandomExitPos(void)
 
 int RandomMapPos(void)
 {
-	return SCREEN_WIDTH * 0.05 + rand() % SCREEN_WIDTH * 0.90;
+	return (int)(SCREEN_WIDTH * 0.1 + rand() % SCREEN_WIDTH * 0.90);
 }
 
 
@@ -91,7 +91,7 @@ int RandomMapPos(void)
 void IncreaseNbEnemyPositionGround(sfSprite* _sprite)
 {
 	sfVector2f pos = sfSprite_getPosition(_sprite);
-	int posY = pos.y;
+	int posY = (int)pos.y;
 	switch (posY)
 	{
 	case BACKGROUND:
@@ -112,7 +112,7 @@ void IncreaseNbEnemyPositionGround(sfSprite* _sprite)
 void DecreaseNbEnemyPositionGround(sfSprite* _sprite)
 {
 	sfVector2f pos = sfSprite_getPosition(_sprite);
-	int posY = pos.y;
+	int posY = (int)pos.y;
 	switch (posY)
 	{
 	case BACKGROUND:
