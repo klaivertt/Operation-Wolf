@@ -11,8 +11,12 @@ int RandomMapPos(void);
 sfBool Move(Enemy* _enemy, sfSprite** _sprite);
 void IncreaseNbEnemyPositionGround(sfSprite* _sprite);
 void DecreaseNbEnemyPositionGround(sfSprite* _sprite);
-void BackGroundMovement(sfSprite* _enemySprite, float _dt);
 
+
+void WaitToSpawn(Enemy* _enemy, float _dt);
+void Walk(Enemy* _enemy, float _dt);
+void Shoot(Enemy* _enemy, float _dt);
+void Dead(Enemy* _enemy, float _dt, short i);
 
 EnemyState GetEnemyState(Enemy* _enemy)
 {
@@ -66,9 +70,6 @@ int PlayerDamage(void)
 	}
 	return totalDamage;
 }
-
-
-
 
 
 
@@ -151,71 +152,44 @@ void MouseMovedEnemy(sfRenderWindow* const _renderWindow, sfMouseMoveEvent _mous
 void UpdateEnemy(float _dt)
 {
 	
-	
 	sfBool notMoving, timerEnd;
+	
 
 	for (short i = 0; i < ENEMY_MAX; i++)
 	{
-
-		
 
 		switch (enemyData.enemy[i].state)
 		{
 		case WAIT_TO_SPAWN:
 
-			UpdateTimer(_dt, &enemyData.enemy[i].waitTimer);
-			timerEnd = IsTimerFinished(&enemyData.enemy[i].waitTimer);
-			if (timerEnd)
-			{
-				SetEnemyState(&enemyData.enemy[i], WALK);
-			}
+			WaitToSpawn(&enemyData.enemy[i], _dt);
 			break;
 		case WALK:
 
-			UpdateAnimation(&enemyData.enemy[i].anim.walk, &enemyData.enemy[i].sprite, _dt);
-			notMoving = Move(&enemyData.enemy[i], &enemyData.enemy[i].sprite);
-			if (notMoving)
-			{
-				if (enemyData.enemy[i].haveAlreadyShoot)
-				{
-					SetEnemyState(&enemyData.enemy[i], DEAD);
-				}
-				else
-				{
-					SetEnemyState(&enemyData.enemy[i], SHOOT);
-				}
-			}
-
+			Walk(&enemyData.enemy[i], _dt);
 			break;
 		case SHOOT:
-			UpdateAnimation(&enemyData.enemy[i].anim.shoot, &enemyData.enemy[i].sprite, _dt);
-			UpdateTimer(_dt, &enemyData.enemy[i].shootTimer);
-			timerEnd = IsTimerFinished(&enemyData.enemy[i].shootTimer);
-			if (timerEnd)
-			{
-				enemyData.enemy[i].doDamageToPlayer = sfTrue;
-				SetEnemyState(&enemyData.enemy[i], WALK);
-				enemyData.enemy[i].targetedPositon = RandomExitPos();
-				enemyData.enemy[i].haveAlreadyShoot = sfTrue;
-			}
-			
+
+			Shoot(&enemyData.enemy[i], _dt);
 			break;
 
 		case DEAD:
-			UpdateAnimation(&enemyData.enemy[i].anim.dead, &enemyData.enemy[i].sprite, _dt);
+
+			/*UpdateAnimation(&enemyData.enemy[i].anim.dead, &enemyData.enemy[i].sprite, _dt);
 			UpdateTimer(_dt, &enemyData.enemy[i].deadTimer);
 			sfBool endDeadAnimation = IsTimerFinished(&enemyData.enemy[i].deadTimer);
 			if (endDeadAnimation)
 			{
 				DecreaseNbEnemyPositionGround(enemyData.enemy[i].sprite);
 				LoadEnemies(i + 1);
-			}
+			}*/
+			Dead(&enemyData.enemy[i],_dt,i);
 			break;
 		}
 
 		if (enemyData.enemy[i].state != WAIT_TO_SPAWN)
 		{
-		BackGroundMovement(enemyData.enemy[i].sprite, _dt);
+			sfSprite_move(enemyData.enemy[i].sprite, GetBackGroundSpeed());
 		}
 		
 	}
@@ -238,6 +212,69 @@ void CleanupEnemy(void)
 
 //Local Function
 
+void WaitToSpawn(Enemy* _enemy, float _dt)
+{
+	sfBool timerEnd;
+	UpdateTimer(_dt, &_enemy->waitTimer);
+	timerEnd = IsTimerFinished(&_enemy->waitTimer);
+	if (timerEnd)
+	{
+		SetEnemyState(_enemy, WALK);
+	}
+}
+
+void Walk(Enemy* _enemy, float _dt)
+{
+	sfBool notMoving;
+
+	UpdateAnimation(&_enemy->anim.walk, &_enemy->sprite, _dt);
+	notMoving = Move(_enemy, &_enemy->sprite);
+	if (notMoving)
+	{
+		if (_enemy->haveAlreadyShoot)
+		{
+			SetEnemyState(_enemy, DEAD);
+		}
+		else
+		{
+			SetEnemyState(_enemy, SHOOT);
+		}
+	}
+}
+
+void Shoot(Enemy* _enemy, float _dt)
+{
+	sfBool timerEnd;
+
+	UpdateAnimation(&_enemy->anim.shoot, &_enemy->sprite, _dt);
+	UpdateTimer(_dt, &_enemy->shootTimer);
+	timerEnd = IsTimerFinished(&_enemy->shootTimer);
+	int actualFrame = GetAnimCurrentFrame(&_enemy->anim.shoot);
+	if (actualFrame == 2 && !_enemy->haveAlreadyShoot)
+	{
+		_enemy->doDamageToPlayer = sfTrue;
+		_enemy->haveAlreadyShoot = sfTrue;
+	}
+	if (timerEnd)
+	{
+		SetEnemyState(_enemy, WALK);
+		_enemy->targetedPositon = RandomExitPos();
+	}
+}
+
+void Dead(Enemy* _enemy, float _dt, short i)
+{
+	UpdateAnimation(&_enemy->anim.dead, &_enemy->sprite, _dt);
+	UpdateTimer(_dt, &_enemy->deadTimer);
+	sfBool endDeadAnimation = IsTimerFinished(&_enemy->deadTimer);
+	if (endDeadAnimation)
+	{
+		DecreaseNbEnemyPositionGround(_enemy->sprite);
+		LoadEnemies(i + 1);
+	}
+}
+
+
 sfBool Move(Enemy* _enemy, sfSprite** _sprite)
 {
 	sfVector2f pos = sfSprite_getPosition(*_sprite);
@@ -246,19 +283,6 @@ sfBool Move(Enemy* _enemy, sfSprite** _sprite)
 
 	return MoveSpriteToTarget(_sprite, pos, _enemy->speed, sfFalse);
 }
-
-void BackGroundMovement(sfSprite* _enemySprite,float _dt)
-{
-	sfVector2f pos = sfSprite_getPosition(_enemySprite);
-	pos.x -= BACKGROUND_SPEED*_dt;
-	sfSprite_setPosition(_enemySprite, pos);
-	
-	//Verifer position
-}
-
-
-
-
 
 ////Verifer position
 //sfVector2f ok = sfSprite_getPosition(enemyData.enemy[temporaire].sprite);
