@@ -12,7 +12,7 @@
 
 #define MAX_PROPS_TEXTURE 3
 
-#define PROP_MIN_DISTANCE 30
+#define PROP_MIN_DISTANCE 70
 
 typedef struct Props
 {
