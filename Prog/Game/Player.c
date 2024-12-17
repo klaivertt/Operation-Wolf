@@ -74,6 +74,7 @@ void MouseButtonPressedPlayer(sfRenderWindow* const _renderWindow, sfMouseButton
 		{
 			ShootBullet();
 			VerifClickOnEnemy(_mouseButton);
+			VerifClickOnHostage(_mouseButton);
 		}
 		break;
 	case sfMouseRight:
@@ -158,16 +159,20 @@ void VerifClickOnEnemy(sfMouseButtonEvent _mouseButton)
 	}
 }
 
-void VerifyClickOnHostage(sfMouseButtonEvent _mouseButton)
+void VerifClickOnHostage(sfMouseButtonEvent _mouseButton)
 {
-	//sfVector2f pos = { _mouseButton.x, _mouseButton.y };
-	//
-	//sfBool killHostage = VerifPlayerKillHostage;
-	//if (killHostage)
-	//{
-	//	UpdateScore(-1);
-	//	player.HP--;
-	//}
+	sfVector2f pos = { _mouseButton.x, _mouseButton.y };
+	
+	sfBool killHostage = VerifPlayerKillHostage(pos);
+	if (killHostage)
+	{
+		printf("%d", player.score.actualScore);
+		if (player.score.actualScore <= 0)
+		{
+			UpdateScore(-1);
+		}
+		player.HP--;
+	}
 }
 
 void ResetPlayer()

@@ -5,6 +5,7 @@
 #include "Common.h"
 #include "Sprite.h"
 #include "Enemy.h"
+#include "Hostage.h"
 #include "State.h"
 #include "Grenade.h"
 #include "score.h"
@@ -51,7 +52,7 @@ int GetPlayerHP();
 void ReloadGrenade();
 
 void VerifClickOnEnemy(sfMouseButtonEvent _mouseButton);
-void VerifyClickOnHostage(sfMouseButtonEvent _mouseButton);
+void VerifClickOnHostage(sfMouseButtonEvent _mouseButton);
 
 void ShootGrenade();
 
