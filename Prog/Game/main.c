@@ -3,6 +3,7 @@
 #include "Menu.h"
 #include "Game.h"
 #include "GameOver.h"
+#include "Text.h"
 
 #pragma region Struct
 typedef struct MainData
@@ -52,7 +53,7 @@ void Load(MainData* const _mainData)
 	srand(_getpid());
 
 	LoadMainData(_mainData);
-
+	LoadTextManager();
 	SetGameState(MENU);
 }
 

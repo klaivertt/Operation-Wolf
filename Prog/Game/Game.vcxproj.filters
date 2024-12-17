@@ -132,6 +132,9 @@
     <ClCompile Include="HumanIcon.c">
       <Filter>Fichiers sources\States\Game\Characters\Player\HUD</Filter>
     </ClCompile>
+    <ClCompile Include="Text.c">
+      <Filter>Fichiers sources\Utilitaires</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Menu.h">
@@ -196,6 +199,9 @@
     </ClInclude>
     <ClInclude Include="Common.h">
       <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="Text.h">
+      <Filter>Fichiers d%27en-tête\Utilitaires</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
