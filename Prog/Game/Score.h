@@ -13,6 +13,7 @@ typedef struct Score
 
 	int actualScore;
 	int topScore;
+	sfBool isLoaded;
 }Score;
 
 
@@ -45,6 +46,7 @@ void UpdateScore(int _score);
 //* @param _renderWindow Pointer to the sfRenderWindow where the score will be drawn.
 void DrawScore(sfRenderWindow* _renderWindow);
 
+sfVector2i GetScore();
 
 void SetHighScore();
 
