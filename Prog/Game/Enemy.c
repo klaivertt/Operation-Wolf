@@ -5,8 +5,6 @@ EnemyData enemyData;
 //Return True if is on targeted Position
 sfBool Move(Enemy* _enemy, sfSprite** _sprite);
 
-
-
 void WaitToSpawn(Enemy* _enemy, float _dt);
 void Walk(Enemy* _enemy, float _dt);
 void Shoot(Enemy* _enemy, float _dt);
@@ -105,8 +103,6 @@ void LoadEnemies(short _enemyToLoad)
 		delay = DEATH_DELAY;
 		InitTimer(&enemyData.enemy[i].deadTimer, delay);
 
-
-
 		if (enemyData.spriteSheet == NULL)
 		{
 			enemyData.spriteSheet = sfTexture_createFromFile("Assets/Sprites/Sprite-MovingSoldier.png", NULL);
@@ -123,6 +119,8 @@ void LoadEnemies(short _enemyToLoad)
 		CreateAnimation(&enemyData.enemy[i].anim.dead, &enemyData.enemy[i].sprite, &enemyData.spriteSheet, 5, 1, 1, sfTrue, (sfVector2f) { 4, 0 });
 
 		IncreaseNbEnemyPositionGround(enemyData.enemy[i].sprite);
+
+		enemyData.enemy[i].ground = pos.y;
 
 	}
 	
@@ -186,11 +184,16 @@ void UpdateEnemy(float _dt)
 	}
 }
 
-void DrawEnemy(sfRenderWindow* _renderWindow)
+void DrawEnemy(sfRenderWindow* _renderWindow,int _ground)
 {
 	for (short i = 0; i < ENEMY_MAX; i++)
 	{
-		sfRenderWindow_drawSprite(_renderWindow, enemyData.enemy[i].sprite, NULL);
+
+		int enemyGround = enemyData.enemy[i].ground;
+		if (enemyGround == _ground)
+		{
+			sfRenderWindow_drawSprite(_renderWindow, enemyData.enemy[i].sprite, NULL);
+		}
 	}
 }
 

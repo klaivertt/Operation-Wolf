@@ -86,6 +86,8 @@ int RandomMapPos(void)
 	return SCREEN_WIDTH * 0.05 + rand() % SCREEN_WIDTH * 0.90;
 }
 
+
+
 void IncreaseNbEnemyPositionGround(sfSprite* _sprite)
 {
 	sfVector2f pos = sfSprite_getPosition(_sprite);

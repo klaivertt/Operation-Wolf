@@ -67,6 +67,7 @@ typedef struct Enemy
 
 	int targetedPositon;
 
+	int ground;
 
 	sfBool haveAlreadyShoot;
 
@@ -79,6 +80,8 @@ typedef struct Enemy
 
 	Anim anim;
 	sfSprite* sprite;
+
+	
 
 }Enemy;
 
