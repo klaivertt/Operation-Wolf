@@ -298,9 +298,17 @@ sfBool Move(Enemy* _enemy, sfSprite** _sprite)
 {
 	sfVector2f pos = sfSprite_getPosition(*_sprite);
 
+	sfVector2f scale = { 1,1 };
+	if (pos.x < _enemy->targetedPositon)
+	{
+		scale.x = -1;
+	}
+	sfSprite_setScale(*_sprite, scale);
+
 	pos.x = (float)_enemy->targetedPositon;
 
 	return MoveSpriteToTarget(_sprite, pos, _enemy->speed, sfFalse);
+
 }
 
 
