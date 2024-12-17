@@ -17,7 +17,7 @@ void LoadTextManager(void);
 // *@param _string: The string to be displayed by the text
 // *@param _fontSize: The font size for the text
 // *@param _position: The position of the text on the screen
-void InitText(sfText** _text, const char* _string, unsigned int _fontSize, sfVector2f _position);
+sfText* InitText(const char* _string, unsigned int _fontSize, sfVector2f _position);
 
 // *@brief Function to initialize a text object with specific attributes
 // *
@@ -26,7 +26,7 @@ void InitText(sfText** _text, const char* _string, unsigned int _fontSize, sfVec
 // *@param _value: The value to be displayed by the text
 // *@param _fontSize: The font size for the text
 // *@param _position: The position of the text on the screen
-void InitTextWithValue(sfText** _text, const char* _string, int _value, unsigned int _fontSize, sfVector2f _position);
+sfText* InitTextWithValue(const char* _string, int _value, unsigned int _fontSize, sfVector2f _position);
 
 // *@brief Function to update the content of a text object with a new string and value
 // *

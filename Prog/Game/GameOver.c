@@ -6,14 +6,14 @@ void LoadGameOver(void)
 {
 	printf("LOAD GAME OVER\n");
 
-	InitText(&data.gameOver, "Game Over", 145, (sfVector2f) { SCREEN_WIDTH / 2, SCREEN_HEIGHT * 0.2f });
+	data.gameOver = InitText("Game Over", 145, (sfVector2f) { SCREEN_WIDTH / 2, SCREEN_HEIGHT * 0.2f });
 
 	sfFloatRect gameOverSize = sfText_getGlobalBounds(data.gameOver);
 	sfText_setOrigin(data.gameOver, (sfVector2f) { (float)gameOverSize.width / 2, gameOverSize.height / 2 });
 
-	InitText(&data.text[0], "Press 'Space' to restart", 35, (sfVector2f) { SCREEN_WIDTH / 2, SCREEN_HEIGHT * 0.4f - 45 });
-	InitText(&data.text[1], "or", 35, (sfVector2f) { SCREEN_WIDTH / 2, SCREEN_HEIGHT * 0.4f - 10 });
-	InitText(&data.text[2], "'Escape' to quit", 35, (sfVector2f) { SCREEN_WIDTH / 2, SCREEN_HEIGHT * 0.4f + 45 });
+	data.text[0] = InitText("Press 'Space' to restart", 35, (sfVector2f) { SCREEN_WIDTH / 2, SCREEN_HEIGHT * 0.4f - 45 });
+	data.text[1] = InitText("or", 35, (sfVector2f) { SCREEN_WIDTH / 2, SCREEN_HEIGHT * 0.4f - 10 });
+	data.text[2] = InitText("'Escape' to quit", 35, (sfVector2f) { SCREEN_WIDTH / 2, SCREEN_HEIGHT * 0.4f + 45 });
 
 	// Centrer chaque ligne horizontalement
 	sfFloatRect bounds1 = sfText_getGlobalBounds(data.text[0]);
@@ -24,8 +24,8 @@ void LoadGameOver(void)
 	sfText_setOrigin(data.text[1], (sfVector2f) { bounds2.width / 2, bounds2.height / 2 });
 	sfText_setOrigin(data.text[2], (sfVector2f) { bounds3.width / 2, bounds3.height / 2 });
 
-	InitTextWithValue(&data.score, "Score : %d", GetScore(), 30, (sfVector2f) { SCREEN_WIDTH / 2, SCREEN_HEIGHT * 0.70f });
-	InitTextWithValue(&data.maxScore, "Max Score : %d", GetMaxScore(), 30, (sfVector2f) { SCREEN_WIDTH / 2, SCREEN_HEIGHT * 0.73f });
+	data.score = InitTextWithValue("Score : %d", GetScore(), 30, (sfVector2f) { SCREEN_WIDTH / 2, SCREEN_HEIGHT * 0.70f });
+	data.maxScore = InitTextWithValue("Max Score : %d", GetMaxScore(), 30, (sfVector2f) { SCREEN_WIDTH / 2, SCREEN_HEIGHT * 0.73f });
 
 	sfFloatRect scoreBounds = sfText_getGlobalBounds(data.score);
 	sfFloatRect maxScoreBounds = sfText_getGlobalBounds(data.maxScore);
