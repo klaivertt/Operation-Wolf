@@ -138,6 +138,9 @@
     <ClCompile Include="Collision.c">
       <Filter>Fichiers sources\Utilitaires</Filter>
     </ClCompile>
+    <ClCompile Include="Drop.c">
+      <Filter>Fichiers sources\States\Game\Characters\Player</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Menu.h">
@@ -208,6 +211,9 @@
     </ClInclude>
     <ClInclude Include="Collision.h">
       <Filter>Fichiers d%27en-tête\Utilitaires</Filter>
+    </ClInclude>
+    <ClInclude Include="Drop.h">
+      <Filter>Fichiers d%27en-tête\States\Game\Characters\Player</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

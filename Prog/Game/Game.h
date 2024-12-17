@@ -8,6 +8,7 @@
 #include "Hostage.h"
 #include "Map.h"
 #include "Props.h"
+#include "Drop.h"
 
 typedef struct GameData
 {
