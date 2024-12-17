@@ -69,13 +69,15 @@ void LoadHostage(short _hostageToLoad)
 		CreateSprite(&hostageData.hostageSprite[i], hostageData.spriteSheet, pos, rect, origin);
 
 
-		if (pos.x == )
+		if (pos.x == GROUND_RIGHT)
 		{
-
+			hostageData.hostage->targetedPositon = GROUND_LEFT;
 		}
-		hostageData.hostage[i].targetedPositon =
+		else
+		{
+			hostageData.hostage->targetedPositon = GROUND_RIGHT;
+		}
 	}
-
 }
 
 void UpdateHostage(float _dt)
