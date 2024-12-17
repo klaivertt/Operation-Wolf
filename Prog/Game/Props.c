@@ -25,19 +25,16 @@ void LoadProps(void)
 		sfVector2f position = { 0,0 };
 		do
 		{
-			props[i].layerY = (rand() % 3);
+			props[i].layerY = (rand() % 2);
 			int randomX = rand() % (SCREEN_WIDTH * 2);
 			int randomY = 0;
 
 			switch (props[i].layerY)
 			{
 			case 0:
-				randomY = POS_HIGHT_Y;
-				break;
-			case 1:
 				randomY = MIDDLEGROUND;
 				break;
-			case 2:
+			case 1:
 				randomY = FORGROUND;
 				break;
 			}
@@ -74,15 +71,6 @@ void DrawProps(sfRenderWindow* _renderWindow)
 			sfRenderWindow_drawSprite(_renderWindow, props[i].sprite, NULL);
 		}
 	}
-
-	for (size_t i = 0; i < MAX_PROPS; i++)
-	{
-		if (props[i].layerY == 1)
-		{
-			sfRenderWindow_drawSprite(_renderWindow, props[i].sprite, NULL);
-		}
-	}
-
 	
 }
 
@@ -90,7 +78,7 @@ void DrawLayer2Props(sfRenderWindow* _renderWindow)
 {
 	for (size_t i = 0; i < MAX_PROPS; i++)
 	{
-		if (props[i].layerY == 2)
+		if (props[i].layerY == 1)
 		{
 			sfRenderWindow_drawSprite(_renderWindow, props[i].sprite, NULL);
 		}
@@ -131,19 +119,16 @@ void NewProps(Props* _props)
 	// Ensure unique position
 	sfVector2f position;
 	do {
-		_props->layerY = (rand() % 3);
+		_props->layerY = (rand() % 2);
 		int randomX = rand() % 200 + (SCREEN_WIDTH * 1.1f);
 		int randomY = 0;
 
 		switch (_props->layerY)
 		{
 		case 0:
-			randomY = POS_HIGHT_Y;
-			break;
-		case 1:
 			randomY = MIDDLEGROUND;
 			break;
-		case 2:
+		case 1:
 			randomY = FORGROUND;
 			break;
 		}
