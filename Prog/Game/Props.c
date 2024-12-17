@@ -83,6 +83,11 @@ void DrawProps(sfRenderWindow* _renderWindow)
 		}
 	}
 
+	
+}
+
+void DrawLayer2Props(sfRenderWindow* _renderWindow)
+{
 	for (size_t i = 0; i < MAX_PROPS; i++)
 	{
 		if (props[i].layerY == 2)

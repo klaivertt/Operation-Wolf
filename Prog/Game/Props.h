@@ -51,6 +51,7 @@ void CleanupProps(void);
 //* @param _renderWindow Pointer to the sfRenderWindow where the props will be drawn.
 void DrawProps(sfRenderWindow* _renderWindow);
 
+void DrawLayer2Props(sfRenderWindow* _renderWindow);
 
 //* @brief Gets all the props.
 //*
