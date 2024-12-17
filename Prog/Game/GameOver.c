@@ -23,6 +23,16 @@ void LoadGameOver(void)
 	sfText_setOrigin(data.text[0], (sfVector2f) { bounds1.width / 2, bounds1.height / 2 });
 	sfText_setOrigin(data.text[1], (sfVector2f) { bounds2.width / 2, bounds2.height / 2 });
 	sfText_setOrigin(data.text[2], (sfVector2f) { bounds3.width / 2, bounds3.height / 2 });
+
+	InitTextWithValue(&data.score, "Score : %d", GetScore(), 30, (sfVector2f) { SCREEN_WIDTH / 2, SCREEN_HEIGHT * 0.70f });
+	InitTextWithValue(&data.maxScore, "Max Score : %d", GetMaxScore(), 30, (sfVector2f) { SCREEN_WIDTH / 2, SCREEN_HEIGHT * 0.73f });
+
+	sfFloatRect scoreBounds = sfText_getGlobalBounds(data.score);
+	sfFloatRect maxScoreBounds = sfText_getGlobalBounds(data.maxScore);
+
+	sfText_setOrigin(data.score, (sfVector2f) { scoreBounds.width / 2, scoreBounds.height / 2 });
+	sfText_setOrigin(data.maxScore, (sfVector2f) { maxScoreBounds.width / 2, maxScoreBounds.height / 2 });
+
 }
 
 void KeyPressedGameOver(sfRenderWindow* _renderWindow, sfKeyEvent _key)
@@ -61,7 +71,8 @@ void DrawGameOver(sfRenderWindow* _renderWindow)
 	{
 		sfRenderWindow_drawText(_renderWindow, data.text[i], NULL);
 	}
-	//DrawScore(_renderWindow);
+	sfRenderWindow_drawText(_renderWindow, data.score, NULL);
+	sfRenderWindow_drawText(_renderWindow, data.maxScore, NULL);
 }
 
 void CleanupGameOver(void)
