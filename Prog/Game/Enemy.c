@@ -82,6 +82,8 @@ Drop EnemyDrop(void)
 	return NONE;
 }
 
+
+
 void LoadEnemies(short _enemyToLoad)
 {
 	short i, max;
