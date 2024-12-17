@@ -10,6 +10,8 @@
 typedef struct GameOverData
 {
 	sfText* gameOver;
+	sfText* maxScore;
+	sfText* score;
 	sfText* text[MAX_TEXT];
 }GameOverData;
 
