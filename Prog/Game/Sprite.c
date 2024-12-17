@@ -39,7 +39,7 @@ sfBool MouseClickOnSpritePixel(sfVector2f _mouseButton, sfSprite* _sprite)
 
 	if (sfFloatRect_contains(&globalBounds, (float)_mouseButton.x, (float)_mouseButton.y)) 
 	{
-		sfVector2u pixelPos = { _mouseButton.x - (unsigned int)globalBounds.left, _mouseButton.y - (unsigned int)globalBounds.top };
+		sfVector2u pixelPos = { _mouseButton.x - globalBounds.left,_mouseButton.y - globalBounds.top };
 
 		sfIntRect textureRect = sfSprite_getTextureRect(_sprite);
 
@@ -49,11 +49,15 @@ sfBool MouseClickOnSpritePixel(sfVector2f _mouseButton, sfSprite* _sprite)
 
 		sfImage* spriteSheetImage = sfTexture_copyToImage(spriteTexture);
 
+		sfVector2f scale = sfSprite_getScale(_sprite);
+
 		sfColor color = sfImage_getPixel(spriteSheetImage, texturePixelPos.x, texturePixelPos.y);
 
 		sfImage_destroy(spriteSheetImage);
 
-		if (color.a == 255) {
+		//printf("\nspriteTexture : %d %d\n", textureRect.left, textureRect.top);
+
+		if (color.a != 0) {
 			return sfTrue;
 		}
 
@@ -81,7 +85,7 @@ sfBool MouseMoveOnSpritePixel(sfMouseMoveEvent _mouseMove, sfSprite* _sprite)
 
 		sfImage_destroy(spriteSheetImage);
 
-		if (color.a == 255) {
+		if (color.a != 0) {
 			return sfTrue;
 		}
 
@@ -194,7 +198,7 @@ sfBool MouseClickOnImagePixel(sfMouseButtonEvent _mouseButton, sfSprite* _sprite
 		sfColor pixelColor = sfImage_getPixel(_image, PosPixel.x, PosPixel.y);
 
 
-		if (pixelColor.a == 255)
+		if (pixelColor.a != 0)
 		{
 			return sfTrue;
 		}

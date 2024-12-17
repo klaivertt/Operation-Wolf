@@ -4,6 +4,7 @@ EnemyData enemyData;
 
 //Return True if is on targeted Position
 sfBool Move(Enemy* _enemy, sfSprite** _sprite);
+void Scale(Enemy* _enemy, sfSprite** _sprite);
 
 void WaitToSpawn(Enemy* _enemy, float _dt);
 void Walk(Enemy* _enemy, float _dt);
@@ -162,9 +163,13 @@ void MouseMovedEnemy(sfRenderWindow* const _renderWindow, sfMouseMoveEvent _mous
 
 void UpdateEnemy(float _dt)
 {
+	
 
 	for (short i = 0; i < ENEMY_MAX; i++)
 	{
+
+		Scale(&enemyData.enemy[i], &enemyData.enemy[i].sprite);
+
 
 		switch (enemyData.enemy[i].state)
 		{
@@ -183,14 +188,6 @@ void UpdateEnemy(float _dt)
 
 		case DEAD:
 
-			/*UpdateAnimation(&enemyData.enemy[i].anim.dead, &enemyData.enemy[i].sprite, _dt);
-			UpdateTimer(_dt, &enemyData.enemy[i].deadTimer);
-			sfBool endDeadAnimation = IsTimerFinished(&enemyData.enemy[i].deadTimer);
-			if (endDeadAnimation)
-			{
-				DecreaseNbEnemyPositionGround(enemyData.enemy[i].sprite);
-				LoadEnemies(i + 1);
-			}*/
 			Dead(&enemyData.enemy[i],_dt,i);
 			break;
 		}
@@ -292,18 +289,28 @@ void Dead(Enemy* _enemy, float _dt, short i)
 	}
 }
 
+void Scale(Enemy* _enemy, sfSprite** _sprite)
+{
+	sfVector2f scale = { 1,1 };
 
+	if (_enemy->state == WALK)
+	{
+		sfVector2f pos = sfSprite_getPosition(*_sprite);
+
+		
+		if (pos.x < _enemy->targetedPositon)
+		{
+			scale.x = -1;
+		}
+		
+	}
+
+	sfSprite_setScale(*_sprite, scale);
+}
 
 sfBool Move(Enemy* _enemy, sfSprite** _sprite)
 {
 	sfVector2f pos = sfSprite_getPosition(*_sprite);
-
-	sfVector2f scale = { 1,1 };
-	if (pos.x < _enemy->targetedPositon)
-	{
-		scale.x = -1;
-	}
-	sfSprite_setScale(*_sprite, scale);
 
 	pos.x = (float)_enemy->targetedPositon;
 

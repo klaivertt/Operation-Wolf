@@ -139,14 +139,13 @@ void UpdateHostage(float _dt)
 			timerEnd = IsTimerFinished(&hostageData.hostage[i].deadTimer);
 			if (timerEnd)
 			{
-				printf("ok");
 				DecreaseNbEnemyPositionGround(hostageData.hostage[i].sprite);
 				LoadHostage(i + 1);
 			}
 			break;
 		};
 				
-		printf("position x : %f y : %f\n", sfSprite_getPosition(hostageData.hostage[i].sprite).x, sfSprite_getPosition(hostageData.hostage[i].sprite).y);
+		//printf("position x : %f y : %f\n", sfSprite_getPosition(hostageData.hostage[i].sprite).x, sfSprite_getPosition(hostageData.hostage[i].sprite).y);
 	}
 }
 
