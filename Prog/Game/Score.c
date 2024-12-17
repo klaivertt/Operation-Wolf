@@ -33,7 +33,7 @@ void LoadScore()
 	sfText_setPosition(score.highScore, (sfVector2f) { SCREEN_WIDTH / 2 + sizeActualScore.width * 20, sizeHighScore.height});
 
 	score.actualScore = 0;
-	score.topScore = 0;
+	score.topScore = 120;
 }
 
 void UpdateScoreText(sfText* _text, int _value)
@@ -49,6 +49,7 @@ void UpdateScore(int _score)
 {
 	score.actualScore += _score;
 	UpdateScoreText(score.score, score.actualScore);
+	SetHighScore();
 }
 
 void DrawScore(sfRenderWindow* _renderWindow)

@@ -158,7 +158,14 @@ void VerifClickOnEnemy(sfMouseButtonEvent _mouseButton)
 	}
 }
 
-
+void ResetPlayer()
+{
+	player.HP = MAX_HP;
+	player.state = ALIVE;
+	player.score.actualScore = 0;
+	player.magazineNumber = 3;
+	player.bulletNumber = BULLET_NUMBER_MAX;
+}
 
 int GetPlayerState()
 {

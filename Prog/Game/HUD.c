@@ -24,7 +24,7 @@ void CleanupHUD()
 {
 	CleanupBullet();
 	CleanupMagazine();
-	CleanupScore();
+
 	CleanupGrenade();
 	CleanupIcon();
 }
