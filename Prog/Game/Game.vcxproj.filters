@@ -135,6 +135,9 @@
     <ClCompile Include="Text.c">
       <Filter>Fichiers sources\Utilitaires</Filter>
     </ClCompile>
+    <ClCompile Include="Collision.c">
+      <Filter>Fichiers sources\Utilitaires</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Menu.h">
@@ -202,6 +205,9 @@
     </ClInclude>
     <ClInclude Include="Score.h">
       <Filter>Fichiers d%27en-tête\States\Game\Characters\Player\HUD</Filter>
+    </ClInclude>
+    <ClInclude Include="Collision.h">
+      <Filter>Fichiers d%27en-tête\Utilitaires</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

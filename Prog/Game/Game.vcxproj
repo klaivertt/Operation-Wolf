@@ -139,6 +139,7 @@
   <ItemGroup>
     <ClCompile Include="Animation.c" />
     <ClCompile Include="Bullet.c" />
+    <ClCompile Include="Collision.c" />
     <ClCompile Include="Enemy.c" />
     <ClCompile Include="Game.c" />
     <ClCompile Include="GameOver.c" />
@@ -163,6 +164,7 @@
   <ItemGroup>
     <ClInclude Include="Animations.h" />
     <ClInclude Include="Bullet.h" />
+    <ClInclude Include="Collision.h" />
     <ClInclude Include="Grenade.h" />
     <ClInclude Include="HealthBar.h" />
     <ClInclude Include="Hostage.h" />
