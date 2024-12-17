@@ -51,10 +51,15 @@ void DrawGame(sfRenderWindow* _renderWindow)
 	DrawMap(_renderWindow);
 	DrawThirdPlan(_renderWindow);
 
+	DrawHostage(_renderWindow, BACKGROUND);
 	DrawEnemy(_renderWindow, BACKGROUND);
+
+	DrawHostage(_renderWindow, MIDDLEGROUND);
 	DrawEnemy(_renderWindow, MIDDLEGROUND);
-	DrawHostage(_renderWindow);
+	
 	DrawProps(_renderWindow);
+
+	DrawHostage(_renderWindow, FORGROUND);
 	DrawEnemy(_renderWindow, FORGROUND);
 	DrawLayer2Props(_renderWindow);
 	DrawSecondPlan(_renderWindow);

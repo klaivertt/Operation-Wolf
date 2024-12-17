@@ -5,7 +5,6 @@
 #include "Collision.h"
 #include "Map.h"
 
-#define ENEMY_MAX 5
 #define ENEMY_MAX_PER_POS_Y 2
 
 sfVector2f RandomSpawn(void);

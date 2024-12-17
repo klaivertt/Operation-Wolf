@@ -11,6 +11,7 @@
 
 
 //24 Enemies maximum 
+#define ENEMY_MAX 5
 
 #define SHOOT_DELAY 1
 #define MAX_SPAWN_DELAY 2
