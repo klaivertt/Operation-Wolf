@@ -73,8 +73,8 @@ void MouseButtonPressedPlayer(sfRenderWindow* const _renderWindow, sfMouseButton
 		if (player.bulletNumber != 0)
 		{
 			ShootBullet();
-			VerifClickOnEnemy(_mouseButton);
 			VerifClickOnHostage(_mouseButton);
+			VerifClickOnEnemy(_mouseButton);
 		}
 		break;
 	case sfMouseRight:
@@ -166,8 +166,9 @@ void VerifClickOnHostage(sfMouseButtonEvent _mouseButton)
 	sfBool killHostage = VerifPlayerKillHostage(pos);
 	if (killHostage)
 	{
-		printf("%d", player.score.actualScore);
-		if (player.score.actualScore <= 0)
+		int score = GetScore();
+	
+		if (score > 0)
 		{
 			UpdateScore(-1);
 		}

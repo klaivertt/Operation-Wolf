@@ -10,8 +10,8 @@ void LoadScore()
 	sfVector2f positionScore = { SCREEN_WIDTH / 3 , 30 };
 	sfVector2f positionHighScore = { SCREEN_WIDTH / 2 + 30 * 20 , 30 };
 
-	InitText(&score.score, "%d", fontSize, positionScore);
-	InitText(&score.highScore, "%d", fontSize, positionHighScore);
+	InitText(&score.score, "0", fontSize, positionScore);
+	InitText(&score.highScore, "0", fontSize, positionHighScore);
 
 	score.actualScore = 0;
 	if (score.isLoaded)
