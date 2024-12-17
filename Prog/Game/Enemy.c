@@ -188,7 +188,6 @@ void DrawEnemy(sfRenderWindow* _renderWindow,int _ground)
 {
 	for (short i = 0; i < ENEMY_MAX; i++)
 	{
-
 		int enemyGround = enemyData.enemy[i].ground;
 		if (enemyGround == _ground)
 		{
