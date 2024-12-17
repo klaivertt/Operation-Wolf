@@ -32,7 +32,6 @@ void LoadGameOver(void)
 
 	sfText_setOrigin(data.score, (sfVector2f) { scoreBounds.width / 2, scoreBounds.height / 2 });
 	sfText_setOrigin(data.maxScore, (sfVector2f) { maxScoreBounds.width / 2, maxScoreBounds.height / 2 });
-
 }
 
 void KeyPressedGameOver(sfRenderWindow* _renderWindow, sfKeyEvent _key)
