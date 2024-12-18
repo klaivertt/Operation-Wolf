@@ -1,55 +1,86 @@
 #include "Musics.h"
 
-Music music;
+GameMusic music;
 
-void LoadMusic(void)
+void LoadGameMusic(void)
 {
-	GameState state = GetGameState();
-	switch (state)
-	{
-	case GAME:
-		//music.soundBuffer = sfSoundBuffer_createFromFile("Assets/Musics/");
-		break;
-	case MENU:
-		//music.soundBuffer = sfSoundBuffer_createFromFile("Assets/Musics/");
-		break;
-	case GAME_OVER:
 
-		break;
+	music.soundBuffer.waves = sfSoundBuffer_createFromFile("Assets/Musics/WaveFight.ogg");
+	music.soundBuffer.boss = sfSoundBuffer_createFromFile("Assets/Musics/BossFight.ogg");
+
+
+	if (music.sound == NULL)
+	{
+		music.sound = sfSound_create();
 	}
 
-	if (music.sound != NULL)
-	{
-		sfSound_setBuffer(music.sound, music.soundBuffer);
-		sfSound_play(music.sound);
-	}
-	sfSound_setVolume(music.sound, 0.f);
-	music.volume = 0;
+	sfSound_setBuffer(music.sound, music.soundBuffer.boss);
+	sfSound_setLoop(music.sound, sfTrue);
+	sfSound_play(music.sound);
+
+	sfSound_setVolume(music.sound, 0);
+	music.volume = MAX_VOLUME;
 }
 
-void UpdateVolume(float _dt)
+void UpdateGameMusic(float _dt)
 {
+	float volumeSpeed = VOLUME_SPEED;
 	float actualVolume = sfSound_getVolume(music.sound);
 
-	if (actualVolume < music.volume)
+	if (actualVolume > music.volume - _dt * volumeSpeed && actualVolume < music.volume + _dt * volumeSpeed)
 	{
-		//actualVolume += SPEED_VOLUME * _dt;
+		actualVolume = music.volume;
+	}
+	else if (actualVolume < music.volume)
+	{
+		actualVolume += _dt * VOLUME_SPEED ;
 	}
 	else if (actualVolume > music.volume)
 	{
-		//actualVolume -= SPEED_VOLUME * _dt;
+		actualVolume -= _dt * VOLUME_SPEED ;
 	}
+
 
 	sfSound_setVolume(music.sound, actualVolume);
 
 }
 
-void CleanupMusic()
+void CleanupGameMusic()
 {
 	sfSound_destroy(music.sound);
-	sfSoundBuffer_destroy(music.soundBuffer);
+	sfSoundBuffer_destroy(music.soundBuffer.waves);
 	music.sound = NULL;
 }
 
 
 
+void ChangeGameMusic(MusicToPlay _mtp)
+{
+	switch (_mtp)
+	{
+	case WAVES:
+		sfSound_setBuffer(music.sound, music.soundBuffer.waves);
+		break;
+	case BOSS:
+		sfSound_setBuffer(music.sound, music.soundBuffer.boss);
+		break;
+	}
+	sfSound_play(music.sound);
+}
+
+sfBool ChangeGameMusicVolume(float _volume, sfBool  _instantaneous)
+{
+	music.volume = _volume;
+
+	if (_instantaneous)
+	{
+		sfSound_setVolume(music.sound, _volume);
+	}
+
+	float actualVolume = sfSound_getVolume(music.sound);
+	if (actualVolume = music.volume)
+	{
+		return sfTrue;
+	}
+	return sfFalse;
+}

@@ -1,23 +1,41 @@
 #pragma once
-#ifndef MUSICS_H
-#define MUSICS_H
+#ifndef MUSIC_H
+#define MUSIC_H
 
 #include "Common.h"
 #include "State.h"
 
-#define SPEED_VOLUME 10;
+#define MAX_VOLUME 100;
+#define VOLUME_SPEED 10;
 
-typedef struct Music
+typedef enum MusicToPlay
 {
-	sfSoundBuffer* soundBuffer;
+	WAVES,
+	BOSS,
+}MusicToPlay;
+
+typedef struct Buffer
+{
+	sfSoundBuffer* waves;
+	sfSoundBuffer* boss;
+}Buffer;
+
+typedef struct GameMusic
+{
+	
+	Buffer soundBuffer;
 	sfSound* sound;
 
 	float volume;
 
-}Music;
+}GameMusic;
 
-void LoadMusic(void);
-void UpdateVolume(float _dt);
-void CleanupMusic(void);
+void LoadGameMusic(void);
+void UpdateGameMusic(float _dt);
+void CleanupGameMusic(void);
+
+// restart music if it's the same then before
+void ChangeGameMusic(MusicToPlay _mtp);
+sfBool ChangeGameMusicVolume(float _volume, sfBool  _instantaneous);
 
 #endif

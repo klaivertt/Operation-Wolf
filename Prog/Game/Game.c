@@ -6,9 +6,10 @@ void LoadGame(void)
 {
 	printf("LOAD GAME\n");
 
+	LoadGameMusic();
 	LoadMap();
-	LoadEnemies(NULL);
-	LoadHostage(NULL);
+	LoadEnemies(0);
+	LoadHostage(0);
 	LoadPlayer();
 	LoadHUD();
 	LoadDrop();
@@ -41,11 +42,12 @@ void MouseMovedGame(sfRenderWindow* const _renderWindow, sfMouseMoveEvent _mouse
 
 void UpdateGame(float _dt)
 {
-	UpdatePlayer(_dt);
+	UpdateGameMusic(_dt);
 	UpdateEnemy(_dt);
 	UpdateHostage(_dt);
 	UpdateMap(_dt);
 	UpdateHUD(_dt);
+	UpdatePlayer(_dt);
 	//MoveDrop();
 }
 
@@ -74,6 +76,7 @@ void DrawGame(sfRenderWindow* _renderWindow)
 
 void CleanupGame(void)
 {
+	CleanupGameMusic();
 	CleanupPlayer();
 	CleanupEnemy();
 	CleanupMap();
