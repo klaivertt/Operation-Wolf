@@ -4,7 +4,6 @@ EnemyData enemyData;
 
 //Return True if is on targeted Position
 sfBool Move(Enemy* _enemy, sfSprite** _sprite);
-void Scale(Enemy* _enemy, sfSprite** _sprite);
 
 void WaitToSpawn(Enemy* _enemy, float _dt);
 void Walk(Enemy* _enemy, float _dt);
@@ -100,7 +99,7 @@ void LoadEnemies(short _enemyToLoad)
 		max = i + 1;
 	}
 
-	for (i; i < max;i++)
+	for (i; i < max; i++)
 	{
 		enemyData.enemy[i].state = WAIT_TO_SPAWN;
 		enemyData.enemy[i].life = TOTAL_LIFE;
@@ -109,17 +108,17 @@ void LoadEnemies(short _enemyToLoad)
 
 		float speedMultiplicator = (1 + rand() % 6) / 10.0f;
 		enemyData.enemy[i].speed = MAX_SPEED * (1 - speedMultiplicator);
-		
+
 		enemyData.enemy[i].haveAlreadyShoot = sfFalse;
 		enemyData.enemy[i].doDamageToPlayer = sfFalse;
 
 		//TIMER
 		float delay = SHOOT_DELAY * 1.5f;
 		InitTimer(&enemyData.enemy[i].shootTimer, delay);
-		
+
 		delay = rand() % MAX_SPAWN_DELAY + (float)(rand() % 10) / 10;
 		InitTimer(&enemyData.enemy[i].waitTimer, delay);
-		
+
 		delay = DEATH_DELAY;
 		InitTimer(&enemyData.enemy[i].deadTimer, delay);
 
@@ -129,11 +128,10 @@ void LoadEnemies(short _enemyToLoad)
 		}
 
 		sfVector2f pos = RandomSpawn();
-		sfVector2u sizeTexture = sfTexture_getSize(enemyData.spriteSheet);
-		sfIntRect rect = { 0,0,sizeTexture.x / 5,sizeTexture.y };
+		sfIntRect rect = { 0,0,753 / 5,208 };
 		sfVector2f origin = { 0.5,1 };
 		CreateSprite(&enemyData.enemy[i].sprite, enemyData.spriteSheet, pos, rect, origin);
-		
+
 
 		CreateAnimation(&enemyData.enemy[i].anim.walk, &enemyData.enemy[i].sprite, &enemyData.spriteSheet, 5, 2, 5, sfTrue, (sfVector2f) { 0, 0 });
 		CreateAnimation(&enemyData.enemy[i].anim.shoot, &enemyData.enemy[i].sprite, &enemyData.spriteSheet, 5, 2, 2, sfTrue, (sfVector2f) { 2, 0 });
@@ -144,7 +142,7 @@ void LoadEnemies(short _enemyToLoad)
 		enemyData.enemy[i].ground = (int)pos.y;
 
 	}
-	
+
 }
 
 void KeyPressedEnemy(sfRenderWindow* _renderWindow, sfKeyEvent _key)
@@ -164,13 +162,9 @@ void MouseMovedEnemy(sfRenderWindow* const _renderWindow, sfMouseMoveEvent _mous
 
 void UpdateEnemy(float _dt)
 {
-	
 
 	for (short i = 0; i < ENEMY_MAX; i++)
 	{
-
-		Scale(&enemyData.enemy[i], &enemyData.enemy[i].sprite);
-
 
 		switch (enemyData.enemy[i].state)
 		{
@@ -189,7 +183,15 @@ void UpdateEnemy(float _dt)
 
 		case DEAD:
 
-			Dead(&enemyData.enemy[i],_dt,i);
+			/*UpdateAnimation(&enemyData.enemy[i].anim.dead, &enemyData.enemy[i].sprite, _dt);
+			UpdateTimer(_dt, &enemyData.enemy[i].deadTimer);
+			sfBool endDeadAnimation = IsTimerFinished(&enemyData.enemy[i].deadTimer);
+			if (endDeadAnimation)
+			{
+				DecreaseNbEnemyPositionGround(enemyData.enemy[i].sprite);
+				LoadEnemies(i + 1);
+			}*/
+			Dead(&enemyData.enemy[i], _dt, i);
 			break;
 		}
 
@@ -197,11 +199,11 @@ void UpdateEnemy(float _dt)
 		{
 			sfSprite_move(enemyData.enemy[i].sprite, GetBackGroundSpeed());
 		}
-		
+
 	}
 }
 
-void DrawEnemy(sfRenderWindow* _renderWindow,int _ground)
+void DrawEnemy(sfRenderWindow* _renderWindow, int _ground)
 {
 	for (short i = 0; i < ENEMY_MAX; i++)
 	{
@@ -264,7 +266,7 @@ void Shoot(Enemy* _enemy, float _dt)
 	{
 		_enemy->doDamageToPlayer = sfTrue;
 		_enemy->haveAlreadyShoot = sfTrue;
-		
+
 		if (EnemyShootBehindProps(_enemy->sprite))
 		{
 			_enemy->doDamageToPlayer = sfFalse;
@@ -290,24 +292,7 @@ void Dead(Enemy* _enemy, float _dt, short i)
 	}
 }
 
-void Scale(Enemy* _enemy, sfSprite** _sprite)
-{
-	sfVector2f scale = { 1,1 };
 
-	if (_enemy->state == WALK || _enemy->state == DEAD)
-	{
-		sfVector2f pos = sfSprite_getPosition(*_sprite);
-
-		
-		if (pos.x < _enemy->targetedPositon)
-		{
-			scale.x = -1;
-		}
-		
-	}
-
-	sfSprite_setScale(*_sprite, scale);
-}
 
 sfBool Move(Enemy* _enemy, sfSprite** _sprite)
 {
@@ -316,7 +301,6 @@ sfBool Move(Enemy* _enemy, sfSprite** _sprite)
 	pos.x = (float)_enemy->targetedPositon;
 
 	return MoveSpriteToTarget(_sprite, pos, _enemy->speed, sfFalse);
-
 }
 
 

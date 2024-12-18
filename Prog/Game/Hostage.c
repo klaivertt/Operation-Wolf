@@ -143,13 +143,10 @@ void UpdateHostage(float _dt)
 				LoadHostage(i + 1);
 			}
 			break;
-		};
+		}
 				
-<<<<<<< HEAD
-		
-=======
 		//printf("position x : %f y : %f\n", sfSprite_getPosition(hostageData.hostage[i].sprite).x, sfSprite_getPosition(hostageData.hostage[i].sprite).y);
->>>>>>> 33d6afb01ac8ff9a469722f5e18d997e709534f4
+
 	}
 }
 
