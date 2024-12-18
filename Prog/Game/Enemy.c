@@ -3,12 +3,13 @@
 EnemyData enemyData;
 
 //Return True if is on targeted Position
-sfBool Move(Enemy* _enemy, sfSprite** _sprite);
 
 void WaitToSpawn(Enemy* _enemy, float _dt);
 void Walk(Enemy* _enemy, float _dt);
 void Shoot(Enemy* _enemy, float _dt);
 void Dead(Enemy* _enemy, float _dt, short i);
+sfBool Move(Enemy* _enemy, sfSprite** _sprite);
+
 
 EnemyState GetEnemyState(Enemy* _enemy)
 {
@@ -81,6 +82,7 @@ Drop EnemyDrop(void)
 	}
 	return NONE;
 }
+
 
 
 

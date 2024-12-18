@@ -32,10 +32,10 @@ typedef enum EnemyState
 
 }EnemyState;
 
-typedef enum EnemyType
-{
-	SOLDIER,
-}EnemyType;
+//typedef enum EnemyType
+//{
+//	SOLDIER,
+//}EnemyType;
 
 typedef enum Drop
 {
@@ -57,7 +57,7 @@ typedef struct Anim
 
 typedef struct Enemy
 {
-	EnemyType type;
+	//EnemyType type;
 	EnemyState state;
 	Drop drop;
 
