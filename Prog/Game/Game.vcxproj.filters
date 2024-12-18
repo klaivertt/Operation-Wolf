@@ -49,12 +49,6 @@
     <Filter Include="Fichiers sources\States\Game\Characters\Player">
       <UniqueIdentifier>{564a8d39-1fc7-4297-a78c-f3dde7a6a2c5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Fichiers d%27en-tête\States\Game\Characters\Player\HUD">
-      <UniqueIdentifier>{94b25208-bcff-4384-9e39-6de3b2f8bc15}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Fichiers sources\States\Game\Characters\Player\HUD">
-      <UniqueIdentifier>{a837bdff-7c7f-471b-995e-0457b884183f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Fichiers sources\States\Game\Characters\Enemy">
       <UniqueIdentifier>{473f5f5a-5d04-4bec-b301-462fda9743a2}</UniqueIdentifier>
     </Filter>
@@ -66,6 +60,12 @@
     </Filter>
     <Filter Include="Fichiers d%27en-tête\States\Game\Characters\Hostage">
       <UniqueIdentifier>{26406c10-2e40-4b69-8004-47a1107d398c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\States\Game\HUD">
+      <UniqueIdentifier>{94b25208-bcff-4384-9e39-6de3b2f8bc15}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\States\Game\HUD">
+      <UniqueIdentifier>{a837bdff-7c7f-471b-995e-0457b884183f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -94,16 +94,16 @@
       <Filter>Fichiers sources\States\Game\Characters\Player</Filter>
     </ClCompile>
     <ClCompile Include="HUD.c">
-      <Filter>Fichiers sources\States\Game\Characters\Player\HUD</Filter>
+      <Filter>Fichiers sources\States\Game\HUD</Filter>
     </ClCompile>
     <ClCompile Include="Bullet.c">
-      <Filter>Fichiers sources\States\Game\Characters\Player\HUD</Filter>
+      <Filter>Fichiers sources\States\Game\HUD</Filter>
     </ClCompile>
     <ClCompile Include="Magazine.c">
-      <Filter>Fichiers sources\States\Game\Characters\Player\HUD</Filter>
+      <Filter>Fichiers sources\States\Game\HUD</Filter>
     </ClCompile>
     <ClCompile Include="Score.c">
-      <Filter>Fichiers sources\States\Game\Characters\Player\HUD</Filter>
+      <Filter>Fichiers sources\States\Game\HUD</Filter>
     </ClCompile>
     <ClCompile Include="Props.c">
       <Filter>Fichiers sources\States\Game\Map</Filter>
@@ -118,7 +118,7 @@
       <Filter>Fichiers sources\Utilitaires</Filter>
     </ClCompile>
     <ClCompile Include="Grenade.c">
-      <Filter>Fichiers sources\States\Game\Characters\Player\HUD</Filter>
+      <Filter>Fichiers sources\States\Game\HUD</Filter>
     </ClCompile>
     <ClCompile Include="Hostage.c">
       <Filter>Fichiers sources\States\Game\Characters\Hostage</Filter>
@@ -127,10 +127,10 @@
       <Filter>Fichiers sources\States\Game\Characters\Enemy</Filter>
     </ClCompile>
     <ClCompile Include="HealthBar.c">
-      <Filter>Fichiers sources\States\Game\Characters\Player\HUD</Filter>
+      <Filter>Fichiers sources\States\Game\HUD</Filter>
     </ClCompile>
     <ClCompile Include="HumanIcon.c">
-      <Filter>Fichiers sources\States\Game\Characters\Player\HUD</Filter>
+      <Filter>Fichiers sources\States\Game\HUD</Filter>
     </ClCompile>
     <ClCompile Include="Text.c">
       <Filter>Fichiers sources\Utilitaires</Filter>
@@ -142,7 +142,7 @@
       <Filter>Fichiers sources\States\Game\Characters\Player</Filter>
     </ClCompile>
     <ClCompile Include="DamageWindow.c">
-      <Filter>Fichiers sources\States\Game\Characters\Player\HUD</Filter>
+      <Filter>Fichiers sources\States\Game\HUD</Filter>
     </ClCompile>
     <ClCompile Include="ObjectsClickVerif.c">
       <Filter>Fichiers sources\Utilitaires</Filter>
@@ -171,13 +171,13 @@
       <Filter>Fichiers d%27en-tête\States\Game\Characters\Player</Filter>
     </ClInclude>
     <ClInclude Include="HUD.h">
-      <Filter>Fichiers d%27en-tête\States\Game\Characters\Player\HUD</Filter>
+      <Filter>Fichiers d%27en-tête\States\Game\HUD</Filter>
     </ClInclude>
     <ClInclude Include="Bullet.h">
-      <Filter>Fichiers d%27en-tête\States\Game\Characters\Player\HUD</Filter>
+      <Filter>Fichiers d%27en-tête\States\Game\HUD</Filter>
     </ClInclude>
     <ClInclude Include="Magazine.h">
-      <Filter>Fichiers d%27en-tête\States\Game\Characters\Player\HUD</Filter>
+      <Filter>Fichiers d%27en-tête\States\Game\HUD</Filter>
     </ClInclude>
     <ClInclude Include="Props.h">
       <Filter>Fichiers d%27en-tête\States\Game\Map</Filter>
@@ -192,7 +192,7 @@
       <Filter>Fichiers d%27en-tête\Utilitaires</Filter>
     </ClInclude>
     <ClInclude Include="Grenade.h">
-      <Filter>Fichiers d%27en-tête\States\Game\Characters\Player\HUD</Filter>
+      <Filter>Fichiers d%27en-tête\States\Game\HUD</Filter>
     </ClInclude>
     <ClInclude Include="Hostage.h">
       <Filter>Fichiers d%27en-tête\States\Game\Characters\Hostage</Filter>
@@ -201,10 +201,10 @@
       <Filter>Fichiers d%27en-tête\States\Game\Characters\Enemy</Filter>
     </ClInclude>
     <ClInclude Include="HealthBar.h">
-      <Filter>Fichiers d%27en-tête\States\Game\Characters\Player\HUD</Filter>
+      <Filter>Fichiers d%27en-tête\States\Game\HUD</Filter>
     </ClInclude>
     <ClInclude Include="HumanIcon.h">
-      <Filter>Fichiers d%27en-tête\States\Game\Characters\Player\HUD</Filter>
+      <Filter>Fichiers d%27en-tête\States\Game\HUD</Filter>
     </ClInclude>
     <ClInclude Include="Common.h">
       <Filter>Fichiers d%27en-tête</Filter>
@@ -213,7 +213,7 @@
       <Filter>Fichiers d%27en-tête\Utilitaires</Filter>
     </ClInclude>
     <ClInclude Include="Score.h">
-      <Filter>Fichiers d%27en-tête\States\Game\Characters\Player\HUD</Filter>
+      <Filter>Fichiers d%27en-tête\States\Game\HUD</Filter>
     </ClInclude>
     <ClInclude Include="Collision.h">
       <Filter>Fichiers d%27en-tête\Utilitaires</Filter>
@@ -222,7 +222,7 @@
       <Filter>Fichiers d%27en-tête\States\Game\Characters\Player</Filter>
     </ClInclude>
     <ClInclude Include="DamageWindow.h">
-      <Filter>Fichiers d%27en-tête\States\Game\Characters\Player\HUD</Filter>
+      <Filter>Fichiers d%27en-tête\States\Game\HUD</Filter>
     </ClInclude>
     <ClInclude Include="ObjectsClickVerif.h">
       <Filter>Fichiers d%27en-tête\Utilitaires</Filter>

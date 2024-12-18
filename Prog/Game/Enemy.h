@@ -14,7 +14,7 @@
 #define ENEMY_MAX 6
 
 #define SHOOT_DELAY 1
-#define MAX_SPAWN_DELAY 2
+#define MAX_SPAWN_DELAY 4
 
 #define DAMAGE 1
 #define TOTAL_LIFE 1

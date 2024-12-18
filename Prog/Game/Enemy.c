@@ -9,6 +9,7 @@ void Walk(Enemy* _enemy, float _dt);
 void Shoot(Enemy* _enemy, float _dt);
 void Dead(Enemy* _enemy, float _dt, short i);
 sfBool Move(Enemy* _enemy, sfSprite** _sprite);
+void Scale(Enemy* _enemy, sfSprite** _sprite);
 
 Enemy* GetAllEnemy(void)
 {
@@ -141,7 +142,7 @@ void LoadEnemies(short _enemyToLoad)
 		CreateAnimation(&enemyData.enemy[i].anim.shoot, &enemyData.enemy[i].sprite, &enemyData.spriteSheet, 5, 2, 2, sfTrue, (sfVector2f) { 2, 0 });
 		CreateAnimation(&enemyData.enemy[i].anim.dead, &enemyData.enemy[i].sprite, &enemyData.spriteSheet, 5, 1, 1, sfTrue, (sfVector2f) { 4, 0 });
 
-		IncreaseNbEnemyPositionGround(enemyData.enemy[i].sprite);
+		IncreaseNbCharactersPositionGround(enemyData.enemy[i].sprite);
 
 		enemyData.enemy[i].ground = pos.y;
 
@@ -202,6 +203,11 @@ void UpdateEnemy(float _dt)
 		if (enemyData.enemy[i].state != WAIT_TO_SPAWN)
 		{
 			sfSprite_move(enemyData.enemy[i].sprite, GetBackGroundSpeed());
+		}
+
+		if (enemyData.enemy[i].state == WALK || enemyData.enemy[i].state == DEAD)
+		{
+			Scale(&enemyData.enemy[i], &enemyData.enemy[i].sprite);
 		}
 
 	}
@@ -291,12 +297,34 @@ void Dead(Enemy* _enemy, float _dt, short i)
 	sfBool endDeadAnimation = IsTimerFinished(&_enemy->deadTimer);
 	if (endDeadAnimation)
 	{
-		DecreaseNbEnemyPositionGround(_enemy->sprite);
+		DecreaseNbCharactersPositionGround(_enemy->sprite);
 		LoadEnemies(i + 1);
 	}
 }
 
 
+void Scale(Enemy* _enemy, sfSprite** _sprite)
+{
+	sfVector2f pos = sfSprite_getPosition(*_sprite);
+
+	sfVector2f scale = { 1,1 };
+	if (pos.x < _enemy->targetedPositon)
+
+		if (_enemy->state == WALK)
+		{
+			scale.x = -1;
+			sfVector2f pos = sfSprite_getPosition(*_sprite);
+
+
+			if (pos.x < _enemy->targetedPositon)
+			{
+				scale.x = -1;
+			}
+
+		}
+
+	sfSprite_setScale(*_sprite, scale);
+}
 
 sfBool Move(Enemy* _enemy, sfSprite** _sprite)
 {

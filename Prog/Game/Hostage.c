@@ -81,6 +81,7 @@ void LoadHostage(short _hostageToLoad)
 		}
 
 		sfVector2f pos = RandomSpawn();
+		
 		sfIntRect rect = { 0,0,360 / 3, 189 };
 		sfVector2f origin = { 0.5,1 };
 
@@ -139,14 +140,14 @@ void UpdateHostage(float _dt)
 			timerEnd = IsTimerFinished(&hostageData.hostage[i].deadTimer);
 			if (timerEnd)
 			{
-				DecreaseNbEnemyPositionGround(hostageData.hostage[i].sprite);
+				DecreaseNbCharactersPositionGround(hostageData.hostage[i].sprite);
 				LoadHostage(i + 1);
 			}
 			break;
-		}
-				
-		//printf("position x : %f y : %f\n", sfSprite_getPosition(hostageData.hostage[i].sprite).x, sfSprite_getPosition(hostageData.hostage[i].sprite).y);
+		};
 
+		printf("position x : %f y : %f\n", sfSprite_getPosition(hostageData.hostage[i].sprite).x, sfSprite_getPosition(hostageData.hostage[i].sprite).y);
+		//printf("position x : %f y : %f\n", sfSprite_getPosition(hostageData.hostage[i].sprite).x, sfSprite_getPosition(hostageData.hostage[i].sprite).y);
 	}
 }
 
@@ -161,7 +162,7 @@ void DrawHostage(sfRenderWindow* _renderWindow, int _ground)
 		}
 		sfRenderWindow_drawSprite(_renderWindow, hostageData.hostage[i].sprite, NULL);
 	}
-	
+
 }
 
 void CleanupHostage(void)

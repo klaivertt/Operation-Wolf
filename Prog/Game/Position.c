@@ -5,7 +5,7 @@ PositionData positionData;
 sfVector2f RandomSpawn(void)
 {
 	int pos[2] = { 1 + rand() % 2, 1 + rand() % 3 };
-	sfVector2f finalPos = { 0 };
+	sfVector2f finalPos = { 0,0 };
 
 	for (short i = 0; i < 2; i++)
 	{
@@ -19,7 +19,7 @@ sfVector2f RandomSpawn(void)
 				finalPos.x = GROUND_LEFT;
 				break;
 			}
-			if (i == 1 && positionData.nbEnemyInBackground < ENEMY_MAX_PER_POS_Y)
+			if (i == 1 && positionData.charactersInBackground < CHARACTERS_MAX_PER_GROUND)
 			{
 				finalPos.y = BACKGROUND;
 				break;
@@ -32,27 +32,27 @@ sfVector2f RandomSpawn(void)
 				finalPos.x = GROUND_RIGHT;
 				break;
 			}
-			if (i == 1 && positionData.nbEnemyInMiddleground < ENEMY_MAX_PER_POS_Y)
+			if (i == 1 && positionData.charactersInMiddleground < CHARACTERS_MAX_PER_GROUND)
 			{
 				finalPos.y = MIDDLEGROUND;
 				break;
 			}
 		case 3:
-			if (positionData.nbEnemyInDownground < ENEMY_MAX_PER_POS_Y)
+			if (positionData.charactersInDownground < CHARACTERS_MAX_PER_GROUND)
 			{
 				finalPos.y = FORGROUND;
 				break;
 			}
 		default:
-			if (positionData.nbEnemyInBackground < ENEMY_MAX_PER_POS_Y)
+			if (positionData.charactersInBackground < CHARACTERS_MAX_PER_GROUND)
 			{
 				finalPos.y = BACKGROUND;
 			}
-			else if (positionData.nbEnemyInMiddleground < ENEMY_MAX_PER_POS_Y)
+			else if (positionData.charactersInMiddleground < CHARACTERS_MAX_PER_GROUND)
 			{
 				finalPos.y = MIDDLEGROUND;
 			}
-			else if ((positionData.nbEnemyInDownground < ENEMY_MAX_PER_POS_Y))
+			else if ((positionData.charactersInDownground < CHARACTERS_MAX_PER_GROUND))
 			{
 				finalPos.y = FORGROUND;
 			}
@@ -60,7 +60,7 @@ sfVector2f RandomSpawn(void)
 		}
 
 	}
-
+	printf("\ndebut : %f", finalPos.y);
 	return finalPos;
 
 }
@@ -88,20 +88,20 @@ int RandomMapPos(void)
 
 
 
-void IncreaseNbEnemyPositionGround(sfSprite* _sprite)
+void IncreaseNbCharactersPositionGround(sfSprite* _sprite)
 {
 	sfVector2f pos = sfSprite_getPosition(_sprite);
 	int posY = (int)pos.y;
 	switch (posY)
 	{
 	case BACKGROUND:
-		positionData.nbEnemyInBackground += 1;
+		positionData.charactersInBackground += 1;
 		break;
 	case MIDDLEGROUND:
-		positionData.nbEnemyInMiddleground += 1;
+		positionData.charactersInMiddleground += 1;
 		break;
 	case FORGROUND:
-		positionData.nbEnemyInDownground += 1;
+		positionData.charactersInDownground += 1;
 		break;
 	default:
 		printf("\nIncreaseVariablesNbEnemyPos error : problem with enemy position Y : %d", posY);
@@ -109,20 +109,20 @@ void IncreaseNbEnemyPositionGround(sfSprite* _sprite)
 	}
 }
 
-void DecreaseNbEnemyPositionGround(sfSprite* _sprite)
+void DecreaseNbCharactersPositionGround(sfSprite* _sprite)
 {
 	sfVector2f pos = sfSprite_getPosition(_sprite);
 	int posY = (int)pos.y;
 	switch (posY)
 	{
 	case BACKGROUND:
-		positionData.nbEnemyInBackground -= 1;
+		positionData.charactersInBackground -= 1;
 		break;
 	case MIDDLEGROUND:
-		positionData.nbEnemyInMiddleground -= 1;
+		positionData.charactersInMiddleground -= 1;
 		break;
 	case FORGROUND:
-		positionData.nbEnemyInDownground -= 1;
+		positionData.charactersInDownground -= 1;
 		break;
 	default:
 		printf("\nDecreaseVariablesNbEnemyPos error : problem with enemy position Y : %d", posY);
