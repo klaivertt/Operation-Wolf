@@ -10,6 +10,10 @@ void Shoot(Enemy* _enemy, float _dt);
 void Dead(Enemy* _enemy, float _dt, short i);
 sfBool Move(Enemy* _enemy, sfSprite** _sprite);
 
+Enemy* GetAllEnemy(void)
+{
+	return enemyData.enemy;
+}
 
 EnemyState GetEnemyState(Enemy* _enemy)
 {
@@ -36,17 +40,15 @@ void SetEnemyState(Enemy* _enemy, EnemyState _state)
 	}
 }
 
-sfBool VerifPlayerKillEnemy(sfVector2f _mousePos)
+sfBool VerifPlayerKillEnemy(sfVector2f _mousePos, short i)
 {
-	for (short i = 0; i < ENEMY_MAX; i++)
-	{
 		sfBool click = MouseClickOnSpritePixel(_mousePos, enemyData.enemy[i].sprite);
 		if (click)
 		{
 			SetEnemyState(&enemyData.enemy[i], DEAD);
 			return sfTrue;
 		}
-	}
+
 	return sfFalse;
 }
 
@@ -141,7 +143,7 @@ void LoadEnemies(short _enemyToLoad)
 
 		IncreaseNbEnemyPositionGround(enemyData.enemy[i].sprite);
 
-		enemyData.enemy[i].ground = (int)pos.y;
+		enemyData.enemy[i].ground = pos.y;
 
 	}
 

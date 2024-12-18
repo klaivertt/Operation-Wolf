@@ -144,6 +144,9 @@
     <ClCompile Include="DamageWindow.c">
       <Filter>Fichiers sources\States\Game\Characters\Player\HUD</Filter>
     </ClCompile>
+    <ClCompile Include="ObjectsClickVerif.c">
+      <Filter>Fichiers sources\Utilitaires</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Menu.h">
@@ -220,6 +223,9 @@
     </ClInclude>
     <ClInclude Include="DamageWindow.h">
       <Filter>Fichiers d%27en-tête\States\Game\Characters\Player\HUD</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectsClickVerif.h">
+      <Filter>Fichiers d%27en-tête\Utilitaires</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

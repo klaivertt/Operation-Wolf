@@ -102,11 +102,11 @@ void DrawEnemy(sfRenderWindow* _renderWindow, int _ground);
 void CleanupEnemy(void);
 
 
-
+Enemy* GetAllEnemy(void);
 sfBool GetEnemyState(Enemy* _enemy);
 void SetEnemyState(Enemy* _enemy, EnemyState _state);
 
-sfBool VerifPlayerKillEnemy(sfVector2f _mousePos);
+sfBool VerifPlayerKillEnemy(sfVector2f _mousePos, short i);
 
 int PlayerDamage(void);
 

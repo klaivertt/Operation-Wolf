@@ -35,7 +35,7 @@ void UpdatePlayer(float _dt)
 		sfSprite_setPosition(player.cursor.sprite, (sfVector2f) { player.mousePosition.x, player.mousePosition.y });
 	}
 
-	GetDamage();
+	VerifGetDamage();
 	UpdateGrenadeTimer(_dt);
 
 	if (player.HP <= 0)
@@ -44,14 +44,14 @@ void UpdatePlayer(float _dt)
 	}
 }
 
-void GetDamage()
+void VerifGetDamage()
 {
 	short totalDamage = PlayerDamage();
 	player.HP -= totalDamage;
 	UpdateBar();
 	if (totalDamage != 0)
 	{
-	DisplayDamageWindow();
+		DisplayDamageWindow();
 	}
 }
 
@@ -78,8 +78,20 @@ void MouseButtonPressedPlayer(sfRenderWindow* const _renderWindow, sfMouseButton
 		if (player.bulletNumber != 0)
 		{
 			ShootBullet();
-			VerifClickOnHostage(_mouseButton);
-			VerifClickOnEnemy(_mouseButton);
+			if (VerifClickOnHostage(_mouseButton))
+			{
+				int score = GetScore();
+
+				if (score > 0)
+				{
+					UpdateScore(-1);
+				}
+				player.HP--;
+			}
+			if (VerifClickOnEnemy(_mouseButton))
+			{
+				UpdateScore(1);
+			}
 		}
 		break;
 	case sfMouseRight:
@@ -153,33 +165,6 @@ int GetPlayerHP()
 	return player.HP;
 }
 
-void VerifClickOnEnemy(sfMouseButtonEvent _mouseButton)
-{
-	sfVector2f pos = { _mouseButton.x, _mouseButton.y };
-
-	sfBool killEnemy = VerifPlayerKillEnemy(pos);
-	if (killEnemy)
-	{
-		UpdateScore(1);
-	}
-}
-
-void VerifClickOnHostage(sfMouseButtonEvent _mouseButton)
-{
-	sfVector2f pos = { _mouseButton.x, _mouseButton.y };
-	
-	sfBool killHostage = VerifPlayerKillHostage(pos);
-	if (killHostage)
-	{
-		int score = GetScore();
-	
-		if (score > 0)
-		{
-			UpdateScore(-1);
-		}
-		player.HP--;
-	}
-}
 
 void ResetPlayer()
 {

@@ -4,12 +4,11 @@
 
 #include "Common.h"
 #include "Sprite.h"
-#include "Enemy.h"
-#include "Hostage.h"
 #include "State.h"
 #include "Grenade.h"
 #include "score.h"
 #include "HealthBar.h"
+#include "ObjectsClickVerif.h"
 
 #define BULLET_NUMBER_MAX 16
 #define GRENADE_NUMBER_MAX 1
@@ -38,7 +37,7 @@ typedef struct PlayerData
 void LoadPlayer();
 void DrawPlayer(sfRenderWindow* _renderWindow);
 void UpdatePlayer(float _dt);
-void GetDamage();
+void VerifGetDamage();
 void GetMousePositionPlayer(sfMouseMoveEvent _mouseMoved);
 void CleanupPlayer();
 
@@ -51,8 +50,6 @@ int GetPlayerHP();
 
 void ReloadGrenade();
 
-void VerifClickOnEnemy(sfMouseButtonEvent _mouseButton);
-void VerifClickOnHostage(sfMouseButtonEvent _mouseButton);
 
 void ShootGrenade();
 
