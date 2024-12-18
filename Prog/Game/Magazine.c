@@ -4,10 +4,10 @@ Magazine magazine;
 
 void LoadMagazine()
 {
-	sfIntRect rect = { 72, 2184, 24 , 48 };
+	sfIntRect rect = { 0, 0, 30 , 54 };
 	sfVector2f position = { SCREEN_WIDTH / 4 * 3 + rect.width * 3, rect.height };
 	sfVector2f origin = { 0.5 , 1 };
-	magazine.texture = sfTexture_createFromFile("Assets/Sprites/SpriteSheet.png", NULL);
+	magazine.texture = sfTexture_createFromFile("Assets/Sprites/HUD/AmmoAndcharger.png", NULL);
 
 	for (int i = 0; i < GetMagazine(); i++)
 	{

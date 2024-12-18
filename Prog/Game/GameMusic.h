@@ -1,11 +1,11 @@
 #pragma once
-#ifndef MUSIC_H
-#define MUSIC_H
+#ifndef GAMEMUSIC_H
+#define GAMEMUSIC_H
 
 #include "Common.h"
 #include "State.h"
 
-#define MAX_VOLUME 100;
+#define MAX_VOLUME 200;
 #define VOLUME_SPEED 10;
 
 typedef enum MusicToPlay

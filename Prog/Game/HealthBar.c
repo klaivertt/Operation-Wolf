@@ -12,8 +12,8 @@ void LoadHealthBar()
 
 	sfVector2f origin = { 0.5 , 0.5 };
 
-	healthBarContainer.texture = sfTexture_createFromFile("Assets/Sprites/TimeContainer.png", NULL);
-	healthBar.texture = sfTexture_createFromFile("Assets/Sprites/TimeBar.png", NULL);
+	healthBarContainer.texture = sfTexture_createFromFile("Assets/Sprites/HUD/TimeContainer.png", NULL);
+	healthBar.texture = sfTexture_createFromFile("Assets/Sprites/HUD/TimeBar.png", NULL);
 
 	CreateSprite(&healthBarContainer.sprite, healthBarContainer.texture, positionHealthBarContainer, (sfIntRect) { 0, 0, 0, 0 }, origin);
 	CreateSprite(&healthBar.sprite, healthBar.texture, positionHealthBar, (sfIntRect){0,0,0,0}, origin);

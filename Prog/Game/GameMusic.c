@@ -1,4 +1,4 @@
-#include "Musics.h"
+#include "GameMusic.h"
 
 GameMusic music;
 
@@ -9,12 +9,10 @@ void LoadGameMusic(void)
 	music.soundBuffer.boss = sfSoundBuffer_createFromFile("Assets/Musics/BossFight.ogg");
 
 
-	if (music.sound == NULL)
-	{
-		music.sound = sfSound_create();
-	}
+	music.sound = sfSound_create();
+	
 
-	sfSound_setBuffer(music.sound, music.soundBuffer.boss);
+	sfSound_setBuffer(music.sound, music.soundBuffer.waves);
 	sfSound_setLoop(music.sound, sfTrue);
 	sfSound_play(music.sound);
 

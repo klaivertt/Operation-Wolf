@@ -120,9 +120,8 @@ void NewProps(Props* _props)
 	sfVector2f position;
 	do {
 		_props->layerY = (rand() % 2);
-		int randomX = rand() % 200 + (SCREEN_WIDTH * 1.1f);
+		int randomX = rand() % 200 + (int)(SCREEN_WIDTH * 1.1);
 		int randomY = 0;
-
 		switch (_props->layerY)
 		{
 		case 0:

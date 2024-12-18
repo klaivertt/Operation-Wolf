@@ -153,7 +153,10 @@
     <ClCompile Include="ObjectsClickVerif.c">
       <Filter>Fichiers sources\Utilitaires</Filter>
     </ClCompile>
-    <ClCompile Include="Musics.c">
+    <ClCompile Include="GameMusic.c">
+      <Filter>Fichiers sources\SoundsAndMusics</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuMusic.c">
       <Filter>Fichiers sources\SoundsAndMusics</Filter>
     </ClCompile>
   </ItemGroup>
@@ -236,7 +239,10 @@
     <ClInclude Include="ObjectsClickVerif.h">
       <Filter>Fichiers d%27en-tête\Utilitaires</Filter>
     </ClInclude>
-    <ClInclude Include="Musics.h">
+    <ClInclude Include="GameMusic.h">
+      <Filter>Fichiers d%27en-tête\SoundsAndMusics</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuMusic.h">
       <Filter>Fichiers d%27en-tête\SoundsAndMusics</Filter>
     </ClInclude>
   </ItemGroup>

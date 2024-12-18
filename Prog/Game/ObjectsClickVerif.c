@@ -8,7 +8,8 @@ sfBool VerifClickOnEnemy(sfMouseButtonEvent _mouseButton)
 	sfVector2f pos = { _mouseButton.x, _mouseButton.y };
 	Enemy* enemy = GetAllEnemy();
 
-	for (short i = 0; i < ENEMY_MAX; i++)
+	//Decremente for touch the last enemy draw in first
+	for (short i = ENEMY_MAX - 1; i >= 0; i--)
 	{
 		if (!VerifClickOnProps(_mouseButton, enemy[i].ground))
 		{

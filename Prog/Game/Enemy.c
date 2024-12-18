@@ -130,7 +130,7 @@ void LoadEnemies(short _enemyToLoad)
 
 		if (enemyData.spriteSheet == NULL)
 		{
-			enemyData.spriteSheet = sfTexture_createFromFile("Assets/Sprites/Sprite-MovingSoldier.png", NULL);
+			enemyData.spriteSheet = sfTexture_createFromFile("Assets/Sprites/Characters/Sprite-MovingSoldier.png", NULL);
 		}
 
 		sfVector2f pos = RandomSpawn();

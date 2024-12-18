@@ -13,12 +13,15 @@ MenuData menuData;
 void LoadMenu(void)
 {
 	printf("LOAD MENU\n");
+
+	LoadMenuMusic();
+
 	//Origin : Bottom Left
 
 	//Background
 	menuData.background.sprite = sfSprite_create();
 
-	menuData.background.texture = sfTexture_createFromFile("Assets/Sprites/Menu.png", NULL);
+	menuData.background.texture = sfTexture_createFromFile("Assets/Sprites/Menu/MenuBackGround.png", NULL);
 
 	sfSprite_setTexture(menuData.background.sprite, menuData.background.texture, sfTrue);
 
@@ -32,7 +35,7 @@ void LoadMenu(void)
 	sfVector2f screen = { SCREEN_WIDTH,SCREEN_HEIGHT };
 
 	//BUTTON TEXTURE
-	menuData.userInterface.textureWhiteButton = sfTexture_createFromFile("Assets/Sprites/Buttons.png", NULL);
+	menuData.userInterface.textureWhiteButton = sfTexture_createFromFile("Assets/Sprites/Menu/Buttons.png", NULL);
 
 	//PlayButton
 	sfIntRect rect = { 0,0,402,134 };
@@ -97,7 +100,7 @@ void MouseMovedMenu(sfRenderWindow* const _renderWindow, sfMouseMoveEvent _mouse
 
 void UpdateMenu(float _dt)
 {
-
+	UpdateMenuMusic(_dt);
 }
 
 void DrawMenu(sfRenderWindow* _renderWindow)
@@ -112,6 +115,8 @@ void DrawMenu(sfRenderWindow* _renderWindow)
 void CleanupMenu(void)
 {
 	printf("CLEANUP MENU\n");
+
+	CleanupMenuMusic();
 	//BackGround
 	sfTexture_destroy(menuData.background.texture);
 	menuData.background.texture = NULL;

@@ -10,7 +10,7 @@
 #include "Props.h"
 #include "Drop.h"
 #include "HUD.h"
-#include "Musics.h"
+#include "GameMusic.h"
 
 typedef struct GameData
 {

@@ -77,7 +77,7 @@ void LoadHostage(short _hostageToLoad)
 
 		if (hostageData.spriteSheet == NULL)
 		{
-			hostageData.spriteSheet = sfTexture_createFromFile("Assets/Sprites/Hostage.png", NULL);
+			hostageData.spriteSheet = sfTexture_createFromFile("Assets/Sprites/Characters/Hostage.png", NULL);
 		}
 
 		sfVector2f pos = RandomSpawn();

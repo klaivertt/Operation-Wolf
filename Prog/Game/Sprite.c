@@ -98,7 +98,6 @@ void CreateSprite(sfSprite** _sprite, sfTexture* _texture, sfVector2f _position,
 
 	if (*_sprite == NULL)
 	{
-		printf("oui");
 		*_sprite = sfSprite_create();
 		sfSprite_setTexture(*_sprite, _texture, sfFalse);
 	}
