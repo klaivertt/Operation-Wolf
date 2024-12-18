@@ -117,7 +117,6 @@ void MouseButtonPressed(sfRenderWindow* const _renderWindow, sfMouseButtonEvent 
 	default:
 		break;
 	}
-
 }
 
 void MouseMoved(sfRenderWindow* const _renderWindow, sfMouseMoveEvent _mouseMove)

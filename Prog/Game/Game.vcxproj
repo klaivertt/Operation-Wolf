@@ -152,6 +152,7 @@
     <ClCompile Include="HumanIcon.c" />
     <ClCompile Include="Magazine.c" />
     <ClCompile Include="Map.c" />
+    <ClCompile Include="Musics.c" />
     <ClCompile Include="ObjectsClickVerif.c" />
     <ClCompile Include="Player.c" />
     <ClCompile Include="Position.c" />
@@ -181,6 +182,7 @@
     <ClInclude Include="GameOver.h" />
     <ClInclude Include="HUD.h" />
     <ClInclude Include="Map.h" />
+    <ClInclude Include="Musics.h" />
     <ClInclude Include="ObjectsClickVerif.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Position.h" />

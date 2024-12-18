@@ -153,6 +153,9 @@
     <ClCompile Include="ObjectsClickVerif.c">
       <Filter>Fichiers sources\Utilitaires</Filter>
     </ClCompile>
+    <ClCompile Include="Musics.c">
+      <Filter>Fichiers sources\SoundsAndMusics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Menu.h">
@@ -232,6 +235,9 @@
     </ClInclude>
     <ClInclude Include="ObjectsClickVerif.h">
       <Filter>Fichiers d%27en-tête\Utilitaires</Filter>
+    </ClInclude>
+    <ClInclude Include="Musics.h">
+      <Filter>Fichiers d%27en-tête\SoundsAndMusics</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
