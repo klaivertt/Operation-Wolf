@@ -9,6 +9,7 @@
 #include "Map.h"
 #include "Props.h"
 #include "Drop.h"
+#include "HUD.h"
 
 typedef struct GameData
 {

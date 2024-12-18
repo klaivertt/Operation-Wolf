@@ -45,6 +45,7 @@ void UpdateGame(float _dt)
 	UpdateEnemy(_dt);
 	UpdateHostage(_dt);
 	UpdateMap(_dt);
+	UpdateHUD(_dt);
 	//MoveDrop();
 }
 

@@ -141,6 +141,9 @@
     <ClCompile Include="Drop.c">
       <Filter>Fichiers sources\States\Game\Characters\Player</Filter>
     </ClCompile>
+    <ClCompile Include="DamageWindow.c">
+      <Filter>Fichiers sources\States\Game\Characters\Player\HUD</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Menu.h">
@@ -214,6 +217,9 @@
     </ClInclude>
     <ClInclude Include="Drop.h">
       <Filter>Fichiers d%27en-tête\States\Game\Characters\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="DamageWindow.h">
+      <Filter>Fichiers d%27en-tête\States\Game\Characters\Player\HUD</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

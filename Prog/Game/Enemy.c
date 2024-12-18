@@ -116,7 +116,7 @@ void LoadEnemies(short _enemyToLoad)
 		//TIMER
 		float delay = SHOOT_DELAY * 1.5f;
 		InitTimer(&enemyData.enemy[i].shootTimer, delay);
-
+		
 		delay = rand() % MAX_SPAWN_DELAY + (float)(rand() % 10) / 10;
 		InitTimer(&enemyData.enemy[i].waitTimer, delay);
 		
@@ -129,7 +129,8 @@ void LoadEnemies(short _enemyToLoad)
 		}
 
 		sfVector2f pos = RandomSpawn();
-		sfIntRect rect = { 0,0,753/5,208 };
+		sfVector2u sizeTexture = sfTexture_getSize(enemyData.spriteSheet);
+		sfIntRect rect = { 0,0,sizeTexture.x / 5,sizeTexture.y };
 		sfVector2f origin = { 0.5,1 };
 		CreateSprite(&enemyData.enemy[i].sprite, enemyData.spriteSheet, pos, rect, origin);
 		

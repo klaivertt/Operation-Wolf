@@ -46,8 +46,13 @@ void UpdatePlayer(float _dt)
 
 void GetDamage()
 {
-	player.HP -= PlayerDamage();
+	short totalDamage = PlayerDamage();
+	player.HP -= totalDamage;
 	UpdateBar();
+	if (totalDamage != 0)
+	{
+	DisplayDamageWindow();
+	}
 }
 
 void GetMousePositionPlayer(sfMouseMoveEvent _mouseMoved)

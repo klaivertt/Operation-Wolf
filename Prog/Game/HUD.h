@@ -10,13 +10,16 @@
 #include "Grenade.h"
 #include "HumanIcon.h"
 #include "HealthBar.h"
+#include "DamageWindow.h"
 
 //*@brief Loads the resources needed for the HUD.
 //*
 //* This function initializes the data and resources associated with the HUD, such as
 //* textures, fonts and other graphic elements.
-void LoadHUD();
+void LoadHUD(void);
 
+
+void UpdateHUD(float _dt);
 
 //* @brief Draws the HUD in the specified rendering window.
 //*
@@ -31,7 +34,7 @@ void DrawHUD(sfRenderWindow* _renderWindow);
 //*
 //* This function cleans up the resources allocated to the HUD to prevent memory leaks.
 //* This includes the destruction of textures, fonts or other loaded data
-void CleanupHUD();
+void CleanupHUD(void);
 
 
 #endif // !HUD_H
