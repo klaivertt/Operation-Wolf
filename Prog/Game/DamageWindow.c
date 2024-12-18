@@ -4,7 +4,6 @@ DamageWindow damageWindow;
 
 void DisplayDamageWindow(void)
 {
-	printf("degat");
 	sfColor color = sfSprite_getColor(damageWindow.sprite);
 	color.a = 255;
 	sfSprite_setColor(damageWindow.sprite, color);

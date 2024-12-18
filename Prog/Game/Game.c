@@ -75,6 +75,7 @@ void DrawGame(sfRenderWindow* _renderWindow)
 void CleanupGame(void)
 {
 	CleanupPlayer();
+	CleanupEnemy();
 	CleanupMap();
 	CleanupHUD();
 	CleanupHostage();

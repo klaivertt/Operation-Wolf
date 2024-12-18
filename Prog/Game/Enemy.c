@@ -91,6 +91,7 @@ Drop EnemyDrop(void)
 
 void LoadEnemies(short _enemyToLoad)
 {
+
 	short i, max;
 	//Every enemies
 	if (_enemyToLoad == 0)
@@ -144,7 +145,7 @@ void LoadEnemies(short _enemyToLoad)
 
 		IncreaseNbCharactersPositionGround(enemyData.enemy[i].sprite);
 
-		enemyData.enemy[i].ground = pos.y;
+		enemyData.enemy[i].ground = (int)pos.y;
 
 	}
 
@@ -227,9 +228,26 @@ void DrawEnemy(sfRenderWindow* _renderWindow, int _ground)
 
 void CleanupEnemy(void)
 {
+	for (short i = 0; i < ENEMY_MAX; i++)
+	{
+		if (enemyData.enemy[i].sprite != NULL)
+		{
+			sfSprite_destroy(enemyData.enemy[i].sprite);
+			enemyData.enemy[i].sprite = NULL;
+		}
 
+		//CleanupAnimation(&enemyData.enemy[i].anim.walk);
+		//CleanupAnimation(&enemyData.enemy[i].anim.waitToShoot);
+		//CleanupAnimation(&enemyData.enemy[i].anim.shoot);
+		//CleanupAnimation(&enemyData.enemy[i].anim.dead);
+	}
+
+	if (enemyData.spriteSheet != NULL)
+	{
+		sfTexture_destroy(enemyData.spriteSheet);
+		enemyData.spriteSheet = NULL;
+	}
 }
-
 
 
 //Local Function

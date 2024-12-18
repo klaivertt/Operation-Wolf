@@ -60,7 +60,6 @@ sfVector2f RandomSpawn(void)
 		}
 
 	}
-	printf("\ndebut : %f", finalPos.y);
 	return finalPos;
 
 }

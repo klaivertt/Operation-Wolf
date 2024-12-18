@@ -146,7 +146,6 @@ void UpdateHostage(float _dt)
 			break;
 		};
 
-		printf("position x : %f y : %f\n", sfSprite_getPosition(hostageData.hostage[i].sprite).x, sfSprite_getPosition(hostageData.hostage[i].sprite).y);
 		//printf("position x : %f y : %f\n", sfSprite_getPosition(hostageData.hostage[i].sprite).x, sfSprite_getPosition(hostageData.hostage[i].sprite).y);
 	}
 }

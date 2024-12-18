@@ -43,17 +43,14 @@ sfBool VerifClickOnProps(sfMouseButtonEvent _mouseButton, int _enemyGround)
 		sfVector2f pos = sfSprite_getPosition(props[i].sprite);
 		sfVector2f mouse = { _mouseButton.x, _mouseButton.y };
 
-		printf("\nground : %d", _enemyGround);
 		if (pos.y == _enemyGround)
 		{
 			collision = MouseClickOnSpritePixel(mouse, props[i].sprite);
 		}
 		if (collision)
 		{
-			printf("oui");
 			return sfTrue;
 		}
 	}
-	printf("non");
 	return sfFalse;
 }

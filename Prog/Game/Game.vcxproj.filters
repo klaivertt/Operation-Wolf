@@ -67,6 +67,12 @@
     <Filter Include="Fichiers sources\States\Game\HUD">
       <UniqueIdentifier>{a837bdff-7c7f-471b-995e-0457b884183f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fichiers d%27en-tête\SoundsAndMusics">
+      <UniqueIdentifier>{9c65c5f7-1ba9-4823-9367-b5ecdcd59071}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\SoundsAndMusics">
+      <UniqueIdentifier>{785615de-8991-4b90-ab9f-f0fc88ac1706}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.c">
