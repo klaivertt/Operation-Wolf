@@ -4,64 +4,50 @@ PositionData positionData;
 
 sfVector2f RandomSpawn(void)
 {
-	int pos[2] = { 1 + rand() % 2, 1 + rand() % 3 };
+	
 	sfVector2f finalPos = { 0,0 };
 
-	for (short i = 0; i < 2; i++)
+	int pos[2] = { 1 + rand() % 2, 1 + rand() % 3 };
+
+	// Ensure x is always GROUND_LEFT or GROUND_RIGHT, and y is always BACKGROUND, MIDDLEGROUND, or FORGROUND
+	for (int i = 0; i < 2; i++)
 	{
 
 		switch (pos[i])
 		{
+
 		case 1:
 
 			if (i == 0)
 			{
 				finalPos.x = GROUND_LEFT;
-				break;
 			}
-			if (i == 1 && positionData.charactersInBackground < CHARACTERS_MAX_PER_GROUND)
+			else if (i == 1)
 			{
 				finalPos.y = BACKGROUND;
-				break;
 			}
+			break;
 
 		case 2:
-			
+
 			if (i == 0)
 			{
 				finalPos.x = GROUND_RIGHT;
-				break;
 			}
-			if (i == 1 && positionData.charactersInMiddleground < CHARACTERS_MAX_PER_GROUND)
+			else if (i == 1 )
 			{
 				finalPos.y = MIDDLEGROUND;
-				break;
 			}
+
+			break;
+
 		case 3:
-			if (positionData.charactersInDownground < CHARACTERS_MAX_PER_GROUND)
-			{
-				finalPos.y = FORGROUND;
-				break;
-			}
-		default:
-			if (positionData.charactersInBackground < CHARACTERS_MAX_PER_GROUND)
-			{
-				finalPos.y = BACKGROUND;
-			}
-			else if (positionData.charactersInMiddleground < CHARACTERS_MAX_PER_GROUND)
-			{
-				finalPos.y = MIDDLEGROUND;
-			}
-			else if ((positionData.charactersInDownground < CHARACTERS_MAX_PER_GROUND))
-			{
-				finalPos.y = FORGROUND;
-			}
+
+			finalPos.y = FORGROUND; // Ensure valid fallback
 			break;
 		}
-
 	}
 	return finalPos;
-
 }
 
 int RandomExitPos(void)

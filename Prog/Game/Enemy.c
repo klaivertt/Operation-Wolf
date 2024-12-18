@@ -146,7 +146,6 @@ void LoadEnemies(short _enemyToLoad)
 		IncreaseNbCharactersPositionGround(enemyData.enemy[i].sprite);
 
 		enemyData.enemy[i].ground = (int)pos.y;
-
 	}
 
 }
@@ -189,14 +188,6 @@ void UpdateEnemy(float _dt)
 
 		case DEAD:
 
-			/*UpdateAnimation(&enemyData.enemy[i].anim.dead, &enemyData.enemy[i].sprite, _dt);
-			UpdateTimer(_dt, &enemyData.enemy[i].deadTimer);
-			sfBool endDeadAnimation = IsTimerFinished(&enemyData.enemy[i].deadTimer);
-			if (endDeadAnimation)
-			{
-				DecreaseNbEnemyPositionGround(enemyData.enemy[i].sprite);
-				LoadEnemies(i + 1);
-			}*/
 			Dead(&enemyData.enemy[i], _dt, i);
 			break;
 		}
@@ -237,7 +228,6 @@ void CleanupEnemy(void)
 		}
 
 		//CleanupAnimation(&enemyData.enemy[i].anim.walk);
-		//CleanupAnimation(&enemyData.enemy[i].anim.waitToShoot);
 		//CleanupAnimation(&enemyData.enemy[i].anim.shoot);
 		//CleanupAnimation(&enemyData.enemy[i].anim.dead);
 	}

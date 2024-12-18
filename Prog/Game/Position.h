@@ -5,8 +5,6 @@
 #include "Collision.h"
 #include "Map.h"
 
-#define CHARACTERS_MAX_PER_GROUND 3
-
 sfVector2f RandomSpawn(void);
 int RandomExitPos(void);
 int RandomMapPos(void);
