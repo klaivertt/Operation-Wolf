@@ -6,7 +6,7 @@
 #include "State.h"
 #include"EnemySound.h"
 
-#define MAX_VOLUME 100
+#define MAX_VOLUME 50
 #define VOLUME_SPEED 20
 
 typedef enum MusicToPlay

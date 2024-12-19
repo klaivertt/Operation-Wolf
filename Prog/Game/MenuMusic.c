@@ -15,7 +15,7 @@ void LoadMenuMusic(void)
 	sfSound_setLoop(music.sound, sfTrue);
 	sfSound_play(music.sound);
 
-	sfSound_setVolume(music.sound, 100);
+	sfSound_setVolume(music.sound, MAX_VOLUME);
 	music.volume = MAX_VOLUME;
 }
 

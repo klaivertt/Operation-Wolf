@@ -2,8 +2,8 @@
 #ifndef PLAYERSOUNDS_H
 #define PLAYERSOUNDS_H
 
-#define SHOOT_VOLUME 100
-#define DIE_VOLUME 100
+#define SHOOT_VOLUME 50
+#define DIE_VOLUME 50
 
 #include "Common.h"
 
