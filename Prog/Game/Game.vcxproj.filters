@@ -183,6 +183,9 @@
     <ClCompile Include="HostageSound.c">
       <Filter>Fichiers sources\Sounds\GameSounds</Filter>
     </ClCompile>
+    <ClCompile Include="FrontEnemy.c">
+      <Filter>Fichiers sources\States\Game\Characters\Enemy</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Menu.h">
@@ -280,6 +283,9 @@
     </ClInclude>
     <ClInclude Include="HostageSound.h">
       <Filter>Fichiers d%27en-tête\Sounds\GameSounds</Filter>
+    </ClInclude>
+    <ClInclude Include="FrontEnemy.h">
+      <Filter>Fichiers d%27en-tête\States\Game\Characters\Enemy</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

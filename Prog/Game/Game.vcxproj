@@ -144,6 +144,7 @@
     <ClCompile Include="Drop.c" />
     <ClCompile Include="Enemy.c" />
     <ClCompile Include="EnemySound.c" />
+    <ClCompile Include="FrontEnemy.c" />
     <ClCompile Include="Game.c" />
     <ClCompile Include="GameOver.c" />
     <ClCompile Include="GameSound.c" />
@@ -177,6 +178,7 @@
     <ClInclude Include="DamageWindow.h" />
     <ClInclude Include="Drop.h" />
     <ClInclude Include="EnemySound.h" />
+    <ClInclude Include="FrontEnemy.h" />
     <ClInclude Include="GameSound.h" />
     <ClInclude Include="Grenade.h" />
     <ClInclude Include="HealthBar.h" />
