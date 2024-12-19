@@ -13,6 +13,7 @@
 #define BULLET_NUMBER_MAX 16
 #define GRENADE_NUMBER_MAX 1
 #define MAX_HP 15
+#define MAGAZINE_NUMBER_MAX 5
 
 typedef enum PlayerState
 {

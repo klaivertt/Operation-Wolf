@@ -31,7 +31,8 @@ typedef struct DropItem
 
 typedef struct DropData
 {
-	sfTexture* texture;
+	sfTexture* ammoTexture;
+	sfTexture* healthTexture;
 	DropItem drop[MAX_DROP];
 }DropData;
 
@@ -47,4 +48,6 @@ void SetDropState(DropItem* _drop, DropState _state);
 sfBool VerifPlayerClickOnDrop(sfVector2f _mousePos, int _dropNB);
 
 DropItem* GetAllDrop();
+
+void ResetDrop(int _nb);
 #endif

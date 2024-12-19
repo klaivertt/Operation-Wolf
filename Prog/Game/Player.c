@@ -92,10 +92,26 @@ void MouseButtonPressedPlayer(sfRenderWindow* const _renderWindow, sfMouseButton
 			{
 				UpdateScore(1);
 			}
-			//if (VerifyClickOnDrop(_mouseButton, ))
-			//{
-
-			//}
+			int nbDrop = VerifClickOnDrop(_mouseButton);
+			if (nbDrop != NULL)
+			{
+				DropItem* drop = GetAllDrop();
+				if (drop[nbDrop].typeDrop == AMMO)
+				{
+					if (player.magazineNumber < MAGAZINE_NUMBER_MAX)
+					{
+						player.magazineNumber++;
+					}
+				}
+				else
+				{
+					if (player.HP < MAX_HP)
+					{
+						player.HP++;
+					}
+				}
+				ResetDrop(nbDrop);
+			}
 		}
 		break;
 	case sfMouseRight:
