@@ -71,18 +71,16 @@ Drop EnemyDrop(void)
 {
 	int dropChance = 1 + rand() % 100;
 
-	if (dropChance >= 10 && dropChance <= 20)
+	if (dropChance >= 20 && dropChance <= 40)
 	{
 		return AMMO;
 	}
-	else if (dropChance <= 10)
+	else if (dropChance <= 20)
 	{
 		return HEALTH;
 	}
 	return NONE;
 }
-
-
 
 
 void LoadEnemies(short _enemyToLoad)

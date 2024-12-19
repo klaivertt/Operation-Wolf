@@ -31,7 +31,8 @@ typedef struct DropItem
 
 typedef struct DropData
 {
-	sfTexture* texture;
+	sfTexture* ammoTexture;
+	sfTexture* healthTexture;
 	DropItem drop[MAX_DROP];
 }DropData;
 

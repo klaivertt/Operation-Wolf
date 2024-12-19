@@ -8,18 +8,14 @@ void LoadDrop()
 	sfIntRect rectMagazine = { 866, 1964, 47 , 29 };
 	sfVector2f position = { -100, -100 };
 	sfVector2f origin = { 0.5 , 1 };
-	dropData.texture = sfTexture_createFromFile("Assets/Sprites/SpriteSheet.png", NULL);
+
+	dropData.ammoTexture = sfTexture_createFromFile("Assets/Sprites/Magazin.png", NULL);
+
+	dropData.healthTexture = sfTexture_createFromFile("Assets/Sprites/Health.png", NULL);
 
 	for (int i = 0; i < MAX_DROP; i++)
 	{
-		if (i <= 2)
-		{
-			CreateSprite(&dropData.drop[i].sprite, dropData.texture, position, rectHeal, origin);
-		}
-		else
-		{
-			CreateSprite(&dropData.drop[i].sprite, dropData.texture, position, rectMagazine, origin);
-		}
+		CreateSprite(&dropData.drop[i].sprite, dropData.ammoTexture, position, (sfIntRect){0}, origin);
 		dropData.drop[i].state = OFF_FIELD;
 	}
 }
@@ -42,14 +38,27 @@ void MoveDrop()
 
 void CreateDrop(sfVector2f _vector, DropState _state)
 {
+	sfBool fined = sfFalse;
 	for (size_t i = 0; i < MAX_DROP; i++)
 	{
-		if (dropData.drop[i].state == OFF_FIELD)
+		if (!fined)
 		{
-			SetDropState(&dropData.drop[i], ON_FIELD);
-			sfSprite_setPosition(dropData.drop[i].sprite, _vector);
-			dropData.drop[i].typeDrop = _state;
-		}
+			if (dropData.drop[i].state == OFF_FIELD)
+			{
+				SetDropState(&dropData.drop[i], ON_FIELD);
+				sfSprite_setPosition(dropData.drop[i].sprite, _vector);
+				dropData.drop[i].typeDrop = _state;
+				if (_state == HEALTH)
+				{
+					sfSprite_setTexture(dropData.drop[i].sprite, dropData.healthTexture, sfFalse);
+				}
+				else
+				{
+					sfSprite_setTexture(dropData.drop[i].sprite, dropData.ammoTexture, sfFalse);
+				}
+				fined = sfTrue;
+			}
+		}		
 	}
 }
 
