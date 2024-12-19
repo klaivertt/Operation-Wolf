@@ -12,6 +12,7 @@ typedef struct PlayerSound
 
 	Buffer shoot;
 	Buffer ShootWithoutBullet;
+	Buffer reload;
 
 }PlayerSound;
 
@@ -20,4 +21,5 @@ void CleanupPlayerSound(void);
 
 void PlaySound_PlayerShoot(void);
 void PlaySound_PlayerShootWithoutBullet(void);
+void PlaySound_PlayerReload(void);
 #endif

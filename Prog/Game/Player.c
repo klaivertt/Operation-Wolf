@@ -155,6 +155,7 @@ void ReloadMagazine()
 void ReloadBullet()
 {
 	player.bulletNumber = BULLET_NUMBER_MAX;
+	PlaySound_PlayerReload();
 }
 
 void ReloadGrenade()
