@@ -48,8 +48,8 @@ void UpdateGame(float _dt)
 	UpdateHostage(_dt);
 	UpdateMap(_dt);
 	UpdateHUD(_dt);
+	MoveDrop();
 	UpdatePlayer(_dt);
-	//MoveDrop();
 }
 
 void DrawGame(sfRenderWindow* _renderWindow)

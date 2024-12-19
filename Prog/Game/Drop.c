@@ -32,7 +32,18 @@ void MoveDrop()
 {
 	for (int i = 0; i < MAX_DROP; i++)
 	{
-		sfSprite_move(dropData.drop[i].sprite, GetBackGroundSpeed());
+		if (dropData.drop[i].state == ON_FIELD)
+		{
+			sfSprite_move(dropData.drop[i].sprite, GetBackGroundSpeed());
+			sfVector2f dropPosition = sfSprite_getPosition(dropData.drop[i].sprite);
+
+			// Vérifier si le drop est hors de l'écran
+			if (dropPosition.x < -100)
+			{
+				SetDropState(&dropData.drop[i], OFF_FIELD);
+				sfSprite_setPosition(dropData.drop[i].sprite, (sfVector2f) { -100, -100 });
+			}
+		}
 	}
 }
 
@@ -67,9 +78,16 @@ void CreateDrop(sfVector2f _vector, DropState _state)
 	}
 }
 
+
 void CleanupDrop()
 {
+	if (dropData.ammoTexture) sfTexture_destroy(dropData.ammoTexture);
+	if (dropData.healthTexture) sfTexture_destroy(dropData.healthTexture);
 
+	for (int i = 0; i < MAX_DROP; i++)
+	{
+		if (dropData.drop[i].sprite) sfSprite_destroy(dropData.drop[i].sprite);
+	}
 }
 
 void SetDropState(DropItem* _dropItem, DropState _state)
@@ -79,11 +97,14 @@ void SetDropState(DropItem* _dropItem, DropState _state)
 
 sfBool VerifPlayerClickOnDrop(sfVector2f _mousePos, int _dropNB)
 {
-	sfBool click = MouseClickOnSpritePixel(_mousePos, dropData.drop[_dropNB].sprite);
-	if (click)
+	if (dropData.drop[_dropNB].state == ON_FIELD)
 	{
-		SetDropState(&dropData.drop[_dropNB], OFF_FIELD);
-		return sfTrue;
+		sfBool click = MouseClickOnSpritePixel(_mousePos, dropData.drop[_dropNB].sprite);
+		if (click)
+		{
+			ResetDrop(_dropNB);
+			return sfTrue;
+		}
 	}
 	return sfFalse;
 }
