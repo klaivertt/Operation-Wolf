@@ -7,6 +7,7 @@ void LoadGame(void)
 	printf("LOAD GAME\n");
 
 	LoadGameMusic();
+	LoadGameSounds();
 	LoadMap();
 	LoadEnemies(0);
 	LoadHostage(0);
@@ -77,6 +78,7 @@ void DrawGame(sfRenderWindow* _renderWindow)
 void CleanupGame(void)
 {
 	CleanupGameMusic();
+	CleanupGameSound();
 	CleanupPlayer();
 	CleanupEnemy();
 	CleanupMap();

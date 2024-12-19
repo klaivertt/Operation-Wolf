@@ -7,7 +7,7 @@ void LoadGameSounds(void)
 	LoadPlayerSounds();
 }
 
-void CleanupGameSounds(void)
+void CleanupGameSound(void)
 {
 	CleanupEnemySound();
 	CleanupEnemySound();

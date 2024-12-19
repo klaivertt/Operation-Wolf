@@ -11,6 +11,7 @@
 #include "Drop.h"
 #include "HUD.h"
 #include "GameMusic.h"
+#include "GameSound.h"
 
 typedef struct GameData
 {
