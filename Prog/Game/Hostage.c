@@ -13,19 +13,24 @@ HostageState GetHostageState(Hostage* _enemy)
 
 void SetHostageState(Hostage* _enemy, HostageState _state)
 {
-	_enemy->state = _state;
-
-	switch (_state)
+	
+	if (_enemy->state != _state)
 	{
-	case H_WALK:
-		ResetAnimation(&_enemy->anim.walk, &_enemy->sprite);
-		break;
-	case H_DEAD:
-		ResetAnimation(&_enemy->anim.dead, &_enemy->sprite);
-		break;
-	default:
-		break;
+		switch (_state)
+		{
+		case H_WALK:
+			ResetAnimation(&_enemy->anim.walk, &_enemy->sprite);
+			break;
+		case H_DEAD:
+			ResetAnimation(&_enemy->anim.dead, &_enemy->sprite);
+			PlaySound_HostageDie();
+			break;
+		default:
+			break;
+		}
+		_enemy->state = _state;
 	}
+	
 }
 
 

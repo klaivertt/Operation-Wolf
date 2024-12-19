@@ -9,6 +9,7 @@
 #include "Animations.h"
 #include "Position.h"
 
+#include "HostageSound.h"
 
 //24 Enemies maximum 
 

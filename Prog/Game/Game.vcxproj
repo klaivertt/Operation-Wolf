@@ -150,6 +150,7 @@
     <ClCompile Include="Grenade.c" />
     <ClCompile Include="HealthBar.c" />
     <ClCompile Include="Hostage.c" />
+    <ClCompile Include="HostageSound.c" />
     <ClCompile Include="HUD.c" />
     <ClCompile Include="HumanIcon.c" />
     <ClCompile Include="Magazine.c" />
@@ -180,6 +181,7 @@
     <ClInclude Include="Grenade.h" />
     <ClInclude Include="HealthBar.h" />
     <ClInclude Include="Hostage.h" />
+    <ClInclude Include="HostageSound.h" />
     <ClInclude Include="HumanIcon.h" />
     <ClInclude Include="Magazine.h" />
     <ClInclude Include="Common.h" />

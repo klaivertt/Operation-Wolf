@@ -10,6 +10,8 @@
 #include "HealthBar.h"
 #include "ObjectsClickVerif.h"
 
+#include "PlayerSound.h"
+
 #define BULLET_NUMBER_MAX 16
 #define GRENADE_NUMBER_MAX 1
 #define MAX_HP 15

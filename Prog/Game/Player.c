@@ -113,6 +113,10 @@ void MouseButtonPressedPlayer(sfRenderWindow* const _renderWindow, sfMouseButton
 				ResetDrop(nbDrop);
 			}
 		}
+		else
+		{
+			PlaySound_PlayerShootWithoutBullet();
+		}
 		break;
 	case sfMouseRight:
 		ReloadMagazine();
@@ -125,6 +129,7 @@ void MouseButtonPressedPlayer(sfRenderWindow* const _renderWindow, sfMouseButton
 void ShootBullet()
 {
 	player.bulletNumber--;
+	PlaySound_PlayerShoot();
 }
 
 void ShootGrenade()

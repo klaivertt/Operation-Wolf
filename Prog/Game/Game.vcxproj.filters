@@ -180,6 +180,9 @@
     <ClCompile Include="PlayerSound.c">
       <Filter>Fichiers sources\Sounds\GameSounds</Filter>
     </ClCompile>
+    <ClCompile Include="HostageSound.c">
+      <Filter>Fichiers sources\Sounds\GameSounds</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Menu.h">
@@ -273,6 +276,9 @@
       <Filter>Fichiers d%27en-tête\Sounds\GameSounds</Filter>
     </ClInclude>
     <ClInclude Include="PlayerSound.h">
+      <Filter>Fichiers d%27en-tête\Sounds\GameSounds</Filter>
+    </ClInclude>
+    <ClInclude Include="HostageSound.h">
       <Filter>Fichiers d%27en-tête\Sounds\GameSounds</Filter>
     </ClInclude>
   </ItemGroup>

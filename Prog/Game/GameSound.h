@@ -6,6 +6,7 @@
 #include "State.h"
 #include "EnemySound.h"
 #include "PlayerSound.h"
+#include "HostageSound.h"
 
 #define MAX_VOLUME 100
 
