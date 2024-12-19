@@ -71,6 +71,6 @@ int VerifClickOnDrop(sfMouseButtonEvent _mousePos)
 			return i;
 		}
 	}
-	return NULL;
+	return -1;
 }
 
