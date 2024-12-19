@@ -57,7 +57,7 @@ void UpdateAnimation(Animation* _anim, sfSprite** _sprite, float _dt)
 
 			sfIntRect rect = sfSprite_getTextureRect(*_sprite);
 
-			rect.left = _anim->start.x + rect.width * (_anim->currentFrame - 1);
+			rect.left = (int)_anim->start.x + rect.width * (_anim->currentFrame - 1);
 
 			sfSprite_setTextureRect(*_sprite, rect);
 		}
@@ -73,7 +73,7 @@ void ResetAnimation(Animation* _anim, sfSprite** _sprite)
 
 	sfIntRect rect = sfSprite_getTextureRect(*_sprite);
 
-	rect.left = _anim->start.x + rect.width * (_anim->currentFrame - 1);
+	rect.left = (int)_anim->start.x + rect.width * (_anim->currentFrame - 1);
 
 	sfSprite_setTextureRect(*_sprite, rect);
 }
