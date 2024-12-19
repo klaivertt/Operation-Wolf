@@ -143,8 +143,10 @@
     <ClCompile Include="DamageWindow.c" />
     <ClCompile Include="Drop.c" />
     <ClCompile Include="Enemy.c" />
+    <ClCompile Include="EnemySound.c" />
     <ClCompile Include="Game.c" />
     <ClCompile Include="GameOver.c" />
+    <ClCompile Include="GameSound.c" />
     <ClCompile Include="Grenade.c" />
     <ClCompile Include="HealthBar.c" />
     <ClCompile Include="Hostage.c" />
@@ -156,6 +158,7 @@
     <ClCompile Include="MenuMusic.c" />
     <ClCompile Include="ObjectsClickVerif.c" />
     <ClCompile Include="Player.c" />
+    <ClCompile Include="PlayerSound.c" />
     <ClCompile Include="Position.c" />
     <ClCompile Include="Props.c" />
     <ClCompile Include="Score.c" />
@@ -172,6 +175,8 @@
     <ClInclude Include="Collision.h" />
     <ClInclude Include="DamageWindow.h" />
     <ClInclude Include="Drop.h" />
+    <ClInclude Include="EnemySound.h" />
+    <ClInclude Include="GameSound.h" />
     <ClInclude Include="Grenade.h" />
     <ClInclude Include="HealthBar.h" />
     <ClInclude Include="Hostage.h" />
@@ -187,6 +192,7 @@
     <ClInclude Include="MenuMusic.h" />
     <ClInclude Include="ObjectsClickVerif.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="PlayerSound.h" />
     <ClInclude Include="Position.h" />
     <ClInclude Include="Props.h" />
     <ClInclude Include="Score.h" />

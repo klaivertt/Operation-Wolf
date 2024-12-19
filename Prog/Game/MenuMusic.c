@@ -21,10 +21,9 @@ void LoadMenuMusic(void)
 
 void UpdateMenuMusic(float _dt)
 {
-	float volumeSpeed = VOLUME_SPEED;
 	float actualVolume = sfSound_getVolume(music.sound);
 
-	if (actualVolume > music.volume - _dt * volumeSpeed && actualVolume < music.volume + _dt * volumeSpeed)
+	if (actualVolume > music.volume - _dt * VOLUME_SPEED && actualVolume < music.volume + _dt * VOLUME_SPEED)
 	{
 		actualVolume = music.volume;
 	}

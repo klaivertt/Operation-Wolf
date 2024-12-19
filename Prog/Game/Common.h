@@ -19,11 +19,19 @@
 #define GROUND_RIGHT -100
 #define GROUND_LEFT SCREEN_WIDTH + 100
 #pragma endregion
+
 typedef struct Image
 {
 	sfTexture* texture;
 	sfSprite* sprite;
 
 }Image;
+
+typedef struct Buffer
+{
+	sfSoundBuffer* soundBuffer;
+	sfSound* sound;
+	float volume;
+}Buffer;
 
 #endif // !COMMON_H

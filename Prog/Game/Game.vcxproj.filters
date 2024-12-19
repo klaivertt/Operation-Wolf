@@ -67,11 +67,23 @@
     <Filter Include="Fichiers sources\States\Game\HUD">
       <UniqueIdentifier>{a837bdff-7c7f-471b-995e-0457b884183f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Fichiers d%27en-tête\SoundsAndMusics">
+    <Filter Include="Fichiers sources\Musics">
+      <UniqueIdentifier>{785615de-8991-4b90-ab9f-f0fc88ac1706}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Musics">
       <UniqueIdentifier>{9c65c5f7-1ba9-4823-9367-b5ecdcd59071}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Fichiers sources\SoundsAndMusics">
-      <UniqueIdentifier>{785615de-8991-4b90-ab9f-f0fc88ac1706}</UniqueIdentifier>
+    <Filter Include="Fichiers d%27en-tête\Sounds">
+      <UniqueIdentifier>{d6813e90-2e6b-4cd3-b235-b75b3f0426a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Sounds">
+      <UniqueIdentifier>{02e54441-b6ed-425f-87ad-889799221378}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Sounds\GameSounds">
+      <UniqueIdentifier>{fe361f17-a481-4089-8eac-38eda501f6cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Sounds\GameSounds">
+      <UniqueIdentifier>{2a030212-5d82-4210-bbf4-706ab28b18a6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -154,10 +166,19 @@
       <Filter>Fichiers sources\Utilitaires</Filter>
     </ClCompile>
     <ClCompile Include="GameMusic.c">
-      <Filter>Fichiers sources\SoundsAndMusics</Filter>
+      <Filter>Fichiers sources\Musics</Filter>
     </ClCompile>
     <ClCompile Include="MenuMusic.c">
-      <Filter>Fichiers sources\SoundsAndMusics</Filter>
+      <Filter>Fichiers sources\Musics</Filter>
+    </ClCompile>
+    <ClCompile Include="GameSound.c">
+      <Filter>Fichiers sources\Sounds</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemySound.c">
+      <Filter>Fichiers sources\Sounds\GameSounds</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerSound.c">
+      <Filter>Fichiers sources\Sounds\GameSounds</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -240,10 +261,19 @@
       <Filter>Fichiers d%27en-tête\Utilitaires</Filter>
     </ClInclude>
     <ClInclude Include="GameMusic.h">
-      <Filter>Fichiers d%27en-tête\SoundsAndMusics</Filter>
+      <Filter>Fichiers d%27en-tête\Musics</Filter>
     </ClInclude>
     <ClInclude Include="MenuMusic.h">
-      <Filter>Fichiers d%27en-tête\SoundsAndMusics</Filter>
+      <Filter>Fichiers d%27en-tête\Musics</Filter>
+    </ClInclude>
+    <ClInclude Include="GameSound.h">
+      <Filter>Fichiers d%27en-tête\Sounds</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemySound.h">
+      <Filter>Fichiers d%27en-tête\Sounds\GameSounds</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerSound.h">
+      <Filter>Fichiers d%27en-tête\Sounds\GameSounds</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

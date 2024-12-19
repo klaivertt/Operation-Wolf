@@ -5,8 +5,8 @@
 #include "Common.h"
 #include "State.h"
 
-#define MAX_VOLUME 100;
-#define VOLUME_SPEED 10;
+#define MAX_VOLUME 100
+#define VOLUME_SPEED 20
 
 typedef struct MenuMusic
 {

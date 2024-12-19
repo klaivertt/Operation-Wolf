@@ -4,9 +4,10 @@
 
 #include "Common.h"
 #include "State.h"
+#include"EnemySound.h"
 
-#define MAX_VOLUME 200;
-#define VOLUME_SPEED 10;
+#define MAX_VOLUME 100
+#define VOLUME_SPEED 20
 
 typedef enum MusicToPlay
 {
@@ -14,16 +15,16 @@ typedef enum MusicToPlay
 	BOSS,
 }MusicToPlay;
 
-typedef struct Buffer
+typedef struct BufferMusic
 {
 	sfSoundBuffer* waves;
 	sfSoundBuffer* boss;
-}Buffer;
+}BufferMusic;
 
 typedef struct GameMusic
 {
 	
-	Buffer soundBuffer;
+	BufferMusic soundBuffer;
 	sfSound* sound;
 
 	float volume;
