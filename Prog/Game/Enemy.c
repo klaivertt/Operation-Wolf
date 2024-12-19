@@ -23,22 +23,32 @@ EnemyState GetEnemyState(Enemy* _enemy)
 
 void SetEnemyState(Enemy* _enemy, EnemyState _state)
 {
-	_enemy->state = _state;
-
-	switch (_state)
+	
+	if (_state != _enemy->state)
 	{
-	case WALK:
-		ResetAnimation(&_enemy->anim.walk, &_enemy->sprite);
-		break;
-	case SHOOT:
-		ResetAnimation(&_enemy->anim.shoot, &_enemy->sprite);
-		break;
-	case DEAD:
-		ResetAnimation(&_enemy->anim.dead, &_enemy->sprite);
-		break;
-	default:
-		break;
+		switch (_state)
+		{
+		case WALK:
+			ResetAnimation(&_enemy->anim.walk, &_enemy->sprite);
+			break;
+		case SHOOT:
+			ResetAnimation(&_enemy->anim.shoot, &_enemy->sprite);
+			break;
+		case DEAD:
+			ResetAnimation(&_enemy->anim.dead, &_enemy->sprite);
+			sfVector2f pos = sfSprite_getPosition(_enemy->sprite);
+			if (pos.x > 0 && pos.x < SCREEN_WIDTH)
+			{
+				PlaySound_EnemyDie();
+			}
+			
+			break;
+		default:
+			break;
+		}
+		_enemy->state = _state;
 	}
+
 }
 
 sfBool VerifPlayerKillEnemy(sfVector2f _mousePos, short i)
@@ -276,13 +286,16 @@ void Shoot(Enemy* _enemy, float _dt)
 	int actualFrame = GetAnimCurrentFrame(&_enemy->anim.shoot);
 	if (actualFrame == 2 && !_enemy->haveAlreadyShoot)
 	{
-		_enemy->doDamageToPlayer = sfTrue;
-		_enemy->haveAlreadyShoot = sfTrue;
-
 		if (EnemyShootBehindProps(_enemy->sprite))
 		{
 			_enemy->doDamageToPlayer = sfFalse;
 			_enemy->haveAlreadyShoot = sfFalse;
+		}
+		else
+		{
+			_enemy->doDamageToPlayer = sfTrue;
+			_enemy->haveAlreadyShoot = sfTrue;
+			PlaySound_EnemyShoot();
 		}
 	}
 	if (timerEnd)
@@ -294,6 +307,7 @@ void Shoot(Enemy* _enemy, float _dt)
 
 void Dead(Enemy* _enemy, float _dt, short i)
 {
+
 	UpdateAnimation(&_enemy->anim.dead, &_enemy->sprite, _dt);
 	UpdateTimer(_dt, &_enemy->deadTimer);
 	sfBool endDeadAnimation = IsTimerFinished(&_enemy->deadTimer);

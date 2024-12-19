@@ -10,9 +10,11 @@
 #include "Position.h"
 #include "Drop.h"
 
+#include "EnemySound.h"
+
 
 //24 Enemies maximum 
-#define ENEMY_MAX 6
+
 
 #define SHOOT_DELAY 1
 #define MAX_SPAWN_DELAY 4
