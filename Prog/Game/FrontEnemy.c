@@ -1,21 +1,20 @@
-//#include "FrontEnemy.h"
-//
-//FrontEnemyData frontEnemyData;
+#include "FrontEnemy.h"
+
+//FrontEnemyData enemyData;
 //
 ////Return True if is on targeted Position
 //
 //void WaitToSpawnFE(FrontEnemy* _enemy, float _dt);
 //void WalkFE(FrontEnemy* _enemy, float _dt);
 //void ShootFE(FrontEnemy* _enemy, float _dt);
-//void DeadFE(FrontEnemy* _enemy, float _dt, short i);
-//sfBool MoveFE(FrontEnemy* _enemy, sfSprite** _sprite);
+//void DeadFE(FrontEnemy* _enemy, float _dt);
 //
-//sfVector2f RandomPosFE(sfVector2f _pos, sfFloatRect _gb);
-//sfVector2f SetTargetPosition(sfVector2f _pos, sfFloatRect _gb);
+//void WaitToSpawn(FrontEnemy* _enemy, float _dt);
+//
 //
 //FrontEnemy* GetFrontEnemy(void)
 //{
-//	return frontEnemyData.enemy;
+//	return &enemyData.enemy;
 //}
 //
 //FrontEnemyState GetFrontEnemyState(FrontEnemy* _enemy)
@@ -30,13 +29,13 @@
 //	{
 //		switch (_state)
 //		{
-//		case WALK:
+//		case WALK_FE:
 //			ResetAnimation(&_enemy->anim.walk, &_enemy->sprite);
 //			break;
-//		case SHOOT:
+//		case SHOOT_FE:
 //			ResetAnimation(&_enemy->anim.shoot, &_enemy->sprite);
 //			break;
-//		case DEAD:
+//		case DEAD_FE:
 //			ResetAnimation(&_enemy->anim.dead, &_enemy->sprite);
 //			sfVector2f pos = sfSprite_getPosition(_enemy->sprite);
 //			if (pos.x > 0 && pos.x < SCREEN_WIDTH)
@@ -55,95 +54,94 @@
 //
 //sfBool VerifPlayerKillFrontEnemy(sfVector2f _mousePos, short i)
 //{
-//	sfBool click = MouseClickOnSpritePixel(_mousePos, frontEnemyData.enemy[i].sprite);
+//	sfBool click = MouseClickOnSpritePixel(_mousePos, enemyData.enemy.sprite);
 //	if (click)
 //	{
-//		SetEnemyState(&frontEnemyData.enemy[i], DEAD);
+//		SetFrontEnemyState(&enemyData.enemy, DEAD_FE);
 //		return sfTrue;
 //	}
 //
 //	return sfFalse;
 //}
 //
-//int PlayerDamage(void)
+//int PlayerDamageFE(void)
 //{
-//
+//	return 0;
 //}
 //
 //
 //
 //
-//void LoadFrontEnemies(void)
+//void LoadFrontEnemy(void)
 //{
-//	frontEnemyData.enemy->state = WAIT_TO_SPAWN;
-//	frontEnemyData.enemy->life = TOTAL_LIFE_FRONTENEMY;
+//	enemyData.enemy.state = WAIT_TO_SPAWN_FE;
+//	enemyData.enemy.life = TOTAL_LIFE_FRONTENEMY;
 //
 //	float speedMultiplicator = (1 + rand() % 6) / 10.0f;
-//	frontEnemyData.enemy->speed = SPEED_FRONTENEMY;
+//	enemyData.enemy.speed = SPEED_FRONTENEMY;
 //
-//	frontEnemyData.enemy->haveAlreadyShoot = sfFalse;
-//	frontEnemyData.enemy->doDamageToPlayer = sfFalse;
+//	enemyData.enemy.haveAlreadyShoot = sfFalse;
+//	enemyData.enemy.doDamageToPlayer = sfFalse;
 //
 //	//TIMER
 //	float delay = SHOOT_DELAY_FRONTENEMY * 1.5f;
-//	InitTimer(&frontEnemyData.enemy->shootTimer, delay);
+//	InitTimer(&enemyData.enemy.shootTimer, delay);
 //
 //	delay = (float)(rand() % MAX_SPAWN_DELAY_FRONTENEMY);
-//	InitTimer(&frontEnemyData.enemy->waitTimer, delay);
+//	InitTimer(&enemyData.enemy.waitTimer, delay);
 //
 //	delay = DEATH_DELAY_FRONTENEMY;
-//	InitTimer(&frontEnemyData.enemy->deadTimer, delay);
+//	InitTimer(&enemyData.enemy.deadTimer, delay);
 //
-//	if (frontEnemyData.spriteSheet == NULL)
-//	{
-//		frontEnemyData.spriteSheet = sfTexture_createFromFile("Assets/Sprites/Characters/front_enemy.png", NULL);
-//	}
+//
+//	enemyData.spriteSheet = sfTexture_createFromFile("Assets/Sprites/Characters/front_enemy.png", NULL);
+//	
 //
 //	sfVector2f pos = { 0,0 };
 //
 //	sfIntRect rect = { 0,0, 1908 / 4, 489 };
 //	sfVector2f origin = { 0.5,1 };
-//	CreateSprite(&frontEnemyData.enemy->sprite, frontEnemyData.spriteSheet, pos, rect, origin);
+//	CreateSprite(&enemyData.enemy.sprite, enemyData.spriteSheet, pos, rect, origin);
 //
-//	sfFloatRect gb = sfSprite_getGlobalBounds(&frontEnemyData.enemy->sprite);
+//	sfFloatRect gb = sfSprite_getGlobalBounds(enemyData.enemy.sprite);
 //	pos = RandomPosFE(pos, gb);
-//	sfSprite_setPosition(&frontEnemyData.enemy->sprite, pos);
+//	pos = (sfVector2f){ 500,500 };
+//	sfSprite_setPosition(enemyData.enemy.sprite, pos);
 //
-//	frontEnemyData.enemy->targetedPositon = SetTargetedPosition(pos, gb);
-//	
+//	enemyData.enemy.targetedPositon = SetTargetPosition(pos, gb);
+//	enemyData.enemy.spawnPosition = pos;
 //
-//	CreateAnimation(&frontEnemyData.enemy->anim.walk, &frontEnemyData.enemy->sprite, &frontEnemyData.spriteSheet, 4, 1, 1, sfTrue, (sfVector2f) { 2, 0 });
-//	CreateAnimation(&frontEnemyData.enemy->anim.shoot, &frontEnemyData.enemy->sprite, &frontEnemyData.spriteSheet, 4, 2, 2, sfTrue, (sfVector2f) { 0, 0 });
-//	CreateAnimation(&frontEnemyData.enemy->anim.dead, &frontEnemyData.enemy->sprite, &frontEnemyData.spriteSheet, 4, 1, 1, sfTrue, (sfVector2f) { 3, 0 });
-//
+//	//CreateAnimation(&enemyData.enemy.anim.walk, &enemyData.enemy.sprite, &enemyData.spriteSheet, 4, 1, 1, sfTrue, (sfVector2f) { 2, 0 });
+//	//CreateAnimation(&enemyData.enemy.anim.shoot, &enemyData.enemy.sprite, &enemyData.spriteSheet, 4, 2, 2, sfTrue, (sfVector2f) { 0, 0 });
+//	//CreateAnimation(&enemyData.enemy.anim.dead, &enemyData.enemy.sprite, &enemyData.spriteSheet, 4, 1, 1, sfTrue, (sfVector2f) { 3, 0 });
 //}
 //
 //void UpdateFrontEnemy(float _dt)
 //{
-//	switch (frontEnemyData.enemy->state)
+//	/*switch (enemyData.enemy.state)
 //	{
-//	case WAIT_TO_SPAWN:
+//	case WAIT_TO_SPAWN_FE:
 //
-//		//WaitToSpawn(&frontEnemyData.enemy, _dt);
+//		WaitToSpawnFE(&enemyData.enemy, _dt);
 //		break;
-//	case WALK:
+//	case WALK_FE:
 //
-//		//Walk(&frontEnemyData.enemy, _dt);
+//		WalkFE(&enemyData.enemy, _dt);
 //		break;
-//	case SHOOT:
+//	case SHOOT_FE:
 //
-//		//Shoot(&frontEnemyData.enemy, _dt);
+//		ShootFE(&enemyData.enemy, _dt);
 //		break;
 //
-//	case DEAD:
+//	case DEAD_FE:
 //
-//		//Dead(&frontEnemyData.enemy, _dt, );
+//		DeadFE(&enemyData.enemy, _dt);
 //		break;
-//	}
+//	}*/
 //
 //}
 //
-//void DrawFrontEnemy(sfRenderWindow* _renderWindow, int _ground)
+//void DrawFrontEnemy(sfRenderWindow* _renderWindow)
 //{
 //
 //}
@@ -163,7 +161,7 @@
 //	timerEnd = IsTimerFinished(&_enemy->waitTimer);
 //	if (timerEnd)
 //	{
-//		SetFrontEnemyState(_enemy, WALK);
+//		SetFrontEnemyState(_enemy, WALK_FE);
 //	}
 //}
 //
@@ -172,16 +170,16 @@
 //	sfBool notMoving;
 //
 //	UpdateAnimation(&_enemy->anim.walk, &_enemy->sprite, _dt);
-//	notMoving = MoveFrontEnemy(_enemy, &_enemy->sprite);
+//	notMoving = MoveSpriteToTarget(&_enemy->sprite, _enemy->targetedPositon, _enemy->speed, sfFalse);
 //	if (notMoving)
 //	{
 //		if (_enemy->haveAlreadyShoot)
 //		{
-//			SetEnemyState(_enemy, DEAD);
+//			SetFrontEnemyState(_enemy, DEAD_FE);
 //		}
 //		else
 //		{
-//			SetEnemyState(_enemy, SHOOT);
+//			SetFrontEnemyState(_enemy, SHOOT_FE);
 //		}
 //	}
 //}
@@ -210,109 +208,19 @@
 //	}
 //	if (timerEnd)
 //	{
-//		SetFrontEnemyState(_enemy, WALK);
+//		SetFrontEnemyState(_enemy, WALK_FE);
 //	}
 //}
 //
-//void DeadFE(FrontEnemy* _enemy, float _dt, short i)
+//void DeadFE(FrontEnemy* _enemy, float _dt)
 //{
 //
 //}
-//
-//
-//sfBool MoveFE(FrontEnemy* _enemy, sfSprite** _sprite)
-//{
-//	sfVector2f pos = sfSprite_getPosition(*_sprite);
-//
-//	pos.x = (float)_enemy->targetedPositon;
-//
-//	return MoveSpriteToTarget(_sprite, pos, _enemy->speed, sfFalse);
-//}
-//
-//
-//////Verifer position
-////sfVector2f ok = sfSprite_getPosition(frontEnemyData.enemy[temporaire].sprite);
-////printf("\npos origin : %f %f\Bn", ok.x, ok.y);
-//
-//
-//sfVector2f RandomPosFE(sfVector2f _pos, sfFloatRect _gb)
-//{
-//
-//	int random = 1 + rand() % 2;
-//	int posOne, posTwo, screenOne, screenTwo;
-//	float gbOne, gbTwo;
-//	char firstRand;
-//	switch (random)
-//	{
-//	case 1:
-//		screenOne = SCREEN_WIDTH;
-//		screenTwo = SCREEN_HEIGHT;
-//		gbOne = _gb.width;
-//		gbTwo = _gb.height;
-//		firstRand = 1;
-//		break;
-//	case 2:
-//		screenOne = SCREEN_HEIGHT;
-//		screenTwo = SCREEN_WIDTH;
-//		gbOne = _gb.height;
-//		gbTwo = _gb.width;
-//		firstRand = 2;
-//		break;
-//	}
-//
-//	random = 1 + rand() % 2;
-//	switch (random)
-//	{
-//	case 1:
-//		posOne = 0 - gbOne / 2;
-//		break;
-//	case 2:
-//		posOne = screenOne + gbOne / 2;
-//		break;
-//	}
-//
-//	random = rand() % screenTwo;
-//
-//	if (random < 0 + gbTwo / 2)
-//	{
-//		posTwo = gbTwo / 2;
-//	}
-//	else if (random > screenTwo - gbTwo / 2)
-//	{
-//		posTwo = screenTwo - gbTwo / 2;
-//	}
-//
-//	switch (firstRand)
-//	{
-//	case 1:
-//		_pos.x = posOne;
-//		_pos.y = posTwo;
-//		break;
-//	case 2:
-//		_pos.x = posTwo;
-//		_pos.y = posOne;
-//		break;
-//	}
-//
-//	return _pos;
-//}
-//
-//sfVector2f SetTargetPosition(sfVector2f _pos, sfFloatRect _gb)
-//{
-//	if (_pos.x < 0)
-//	{
-//		return (sfVector2f) { 0 + _gb.width / 2, _pos.y };
-//	}
-//	else if (_pos.x > SCREEN_WIDTH)
-//	{
-//		return (sfVector2f) { SCREEN_WIDTH - _gb.width / 2, _pos.y };
-//	}
-//	else if (_pos.y < 0)
-//	{
-//		return (sfVector2f) { _pos.x, 0 + _gb.height / 2 };
-//	}
-//	else if (_pos.y > SCREEN_HEIGHT)
-//	{
-//		return (sfVector2f) { _pos.x, SCREEN_HEIGHT - _gb.height / 2, };
-//	}
-//}
+
+
+
+////Verifer position
+//sfVector2f ok = sfSprite_getPosition(frontEnemyData.enemy[temporaire].sprite);
+//printf("\npos origin : %f %f\Bn", ok.x, ok.y);
+
+

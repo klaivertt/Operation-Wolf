@@ -186,6 +186,9 @@
     <ClCompile Include="FrontEnemy.c">
       <Filter>Fichiers sources\States\Game\Characters\Enemy</Filter>
     </ClCompile>
+    <ClCompile Include="MovingEnemy.c">
+      <Filter>Fichiers sources\States\Game\Characters\Enemy</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Menu.h">
@@ -285,6 +288,9 @@
       <Filter>Fichiers d%27en-tête\Sounds\GameSounds</Filter>
     </ClInclude>
     <ClInclude Include="FrontEnemy.h">
+      <Filter>Fichiers d%27en-tête\States\Game\Characters\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="MovingEnemy.h">
       <Filter>Fichiers d%27en-tête\States\Game\Characters\Enemy</Filter>
     </ClInclude>
   </ItemGroup>

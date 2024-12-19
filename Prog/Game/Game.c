@@ -9,7 +9,7 @@ void LoadGame(void)
 	LoadGameMusic();
 	LoadGameSounds();
 	LoadMap();
-	LoadEnemies(0);
+	LoadEnemy(0, MOVING_ENEMY);
 	LoadHostage(0);
 	LoadPlayer();
 	LoadHUD();
@@ -44,7 +44,7 @@ void MouseMovedGame(sfRenderWindow* const _renderWindow, sfMouseMoveEvent _mouse
 void UpdateGame(float _dt)
 {
 	UpdateGameMusic(_dt);
-	UpdateEnemy(_dt);
+	UpdateEnemy(_dt, MOVING_ENEMY);
 	UpdateHostage(_dt);
 	UpdateMap(_dt);
 	UpdateHUD(_dt);
@@ -57,21 +57,22 @@ void DrawGame(sfRenderWindow* _renderWindow)
 	DrawMap(_renderWindow);
 	DrawThirdPlan(_renderWindow);
 
+	DrawDrop(_renderWindow);
+
 	DrawHostage(_renderWindow, BACKGROUND);
-	DrawEnemy(_renderWindow, BACKGROUND);
+	DrawEnemy(_renderWindow,MOVING_ENEMY, BACKGROUND);
 
 	DrawHostage(_renderWindow, MIDDLEGROUND);
-	DrawEnemy(_renderWindow, MIDDLEGROUND);
+	DrawEnemy(_renderWindow, MOVING_ENEMY, MIDDLEGROUND);
 	
 	DrawProps(_renderWindow);
 
 	DrawHostage(_renderWindow, FORGROUND);
-	DrawEnemy(_renderWindow, FORGROUND);
+	DrawEnemy(_renderWindow, MOVING_ENEMY, FORGROUND);
 	DrawLayer2Props(_renderWindow);
 	DrawSecondPlan(_renderWindow);
 
 	DrawHUD(_renderWindow);
-	DrawDrop(_renderWindow);
 	DrawPlayer(_renderWindow);
 }
 
@@ -80,7 +81,7 @@ void CleanupGame(void)
 	CleanupGameMusic();
 	CleanupGameSound();
 	CleanupPlayer();
-	CleanupEnemy();
+	CleanupEnemy(MOVING_ENEMY);
 	CleanupMap();
 	CleanupHUD();
 	CleanupHostage();

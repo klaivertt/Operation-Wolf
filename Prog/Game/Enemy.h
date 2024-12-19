@@ -12,6 +12,7 @@
 
 #include "EnemySound.h"
 
+#include "MovingEnemy.h"
 
 //24 Enemies maximum 
 
@@ -35,78 +36,35 @@ typedef enum EnemyState
 
 }EnemyState;
 
-//typedef enum EnemyType
-//{
-//	SOLDIER,
-//}EnemyType;
+typedef enum EnemyType
+{
+	MOVING_ENEMY,
+	FRONT_ENEMY
+
+}EnemyType;
 
 
 #pragma endregion
 
 #pragma region struct
-typedef struct Anim
-{
-	Animation walk;
-	Animation waitToShoot;
-	Animation shoot;
-	Animation dead;
-}Anim;
-
-typedef struct Enemy
-{
-	//EnemyType type;
-	EnemyState state;
-	Drop drop;
-
-	int life;
-	float speed;
-
-	int targetedPositon;
-
-	int ground;
-
-	sfBool haveAlreadyShoot;
-
-	sfBool doDamageToPlayer;
-
-	Timer waitToShootTimer;
-	Timer shootTimer;
-	Timer waitTimer;
-	Timer deadTimer;
-
-	Anim anim;
-	sfSprite* sprite;
-
-	
-
-}Enemy;
 
 typedef struct EnemyData
 {
-	Enemy enemy[ENEMY_MAX];
-	sfTexture* spriteSheet;
+	Enemy MovingEnemy[ENEMY_MAX];
+	Enemy frontEnemy;
+	sfTexture* movingEnemySpriteSheet;
 
 }EnemyData;
 #pragma endregion
 
-// NULL for Load Every Enemies
-void LoadEnemies(short _enemyToLoad);
-void KeyPressedEnemy(sfRenderWindow* _renderWindow, sfKeyEvent _key);
-void MouseButtonPressedEnemy(sfRenderWindow* const _renderWindow, sfMouseButtonEvent _mouseButton);
-void MouseMovedEnemy(sfRenderWindow* const _renderWindow, sfMouseMoveEvent _mouseMove);
-void UpdateEnemy(float _dt);
-void DrawEnemy(sfRenderWindow* _renderWindow, int _ground);
-void CleanupEnemy(void);
+// _enemyToLoad : NULL for Load Every Enemies
+// "_enemyToLoad" is deosn't us if you chose FRONT_ENEMY for "_enemyType"
+void LoadEnemy(short _enemyToLoad, EnemyType _enemyType);
+void UpdateEnemy(float _dt, EnemyType _enemyType);
+void DrawEnemy(sfRenderWindow* _renderWindow, EnemyType _enemyType, int _ground);
+void CleanupEnemy(EnemyType _enemyType);
 
-
-Enemy* GetAllEnemy(void);
-sfBool GetEnemyState(Enemy* _enemy);
-void SetEnemyState(Enemy* _enemy, EnemyState _state);
-
-sfBool VerifPlayerKillEnemy(sfVector2f _mousePos, short i);
-
+Enemy* GetAllMovingEnemy(void);
+sfBool VerifPlayerKillEnemy(sfVector2f _mousePos);
 int PlayerDamage(void);
-
-Drop EnemyDrop(void);
-
 #endif

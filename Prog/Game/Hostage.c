@@ -59,13 +59,13 @@ void LoadHostage(short _hostageToLoad)
 		hostageData.hostage[i].life = 1;
 
 		float speedMultiplicator = (1 + rand() % 6) / 10.0f;
-		hostageData.hostage[i].speed = MAX_SPEED * (1 - speedMultiplicator);
+		hostageData.hostage[i].speed = ME_MAX_SPEED * (1 - speedMultiplicator);
 
 		//TIMER
 		float delay = (float)(rand() % MAX_HOSTAGE_SPAWN_DELAY);
 		InitTimer(&hostageData.hostage[i].waitTimer, delay);
 
-		delay = DEATH_DELAY;
+		delay = ME_DEATH_DELAY;
 		InitTimer(&hostageData.hostage[i].deadTimer, delay);
 
 

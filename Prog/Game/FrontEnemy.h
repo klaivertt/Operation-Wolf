@@ -1,88 +1,97 @@
-//#pragma once
-//#ifndef FRONTGENEMY_H
-//#define FRONTENEMY_H
+#pragma once
+#ifndef FRONTGENEMY_H
+#define FRONTENEMY_H
+
+//#include "common.h"
+//#include "sprite.h"
+//#include "timer.h"
 //
-//#include "Common.h"
-//#include "Sprite.h"
-//#include "Timer.h"
+//#include "animations.h"
+//#include "position.h"
+//#include "drop.h"
 //
-//#include "Animations.h"
-//#include "Position.h"
-//#include "Drop.h"
-//
-//#include "EnemySound.h"
+//#include "enemysound.h"
 //
 //
-////24 Enemies maximum 
+////24 enemies maximum 
 //
-//#define SHOOT_DELAY_FRONTENEMY 1
-//#define MAX_SPAWN_DELAY_FRONTENEMY 40
+//#define shoot_delay_frontenemy 1
+//#define max_spawn_delay_frontenemy 40
 //
-//#define DAMAGE_FRONTENEMY 5
-//#define TOTAL_LIFE_FRONTENEMY 1
-//#define SPEED_FRONTENEMY 8
-//#define DEATH_DELAY_FRONTENEMY 0.3f
+//#define damage_frontenemy 5
+//#define total_life_frontenemy 1
+//#define speed_frontenemy 8
+//#define death_delay_frontenemy 0.3f
 //
 //#pragma region enum
 //
-//typedef enum FrontEnemyState
+//typedef enum frontenemystate
 //{
-//	WAIT_TO_SPAWN,
-//	WALK,
-//	SHOOT,
-//	DEAD,
+//	wait_to_spawn_fe,
+//	walk_fe,
+//	shoot_fe,
+//	dead_fe
 //
-//}FrontEnemyState;
+//}frontenemystate;
 //
-////typedef enum EnemyType
+////typedef enum enemytype
 ////{
-////	SOLDIER,
-////}EnemyType;
+////	soldier,
+////}enemytype;
 //
 //
 //#pragma endregion
 //
 //#pragma region struct
-//typedef struct Anim
+//typedef struct animfe
 //{
-//	Animation walk;
-//	Animation waitToShoot;
-//	Animation shoot;
-//	Animation dead;
-//}Anim;
+//	animation walk;
+//	animation waittoshoot;
+//	animation shoot;
+//	animation dead;
+//}animfe;
 //
-//typedef struct FrontEnemy
+//typedef struct frontenemy
 //{
-//	//EnemyType type;
-//	FrontEnemyState state;
+//	//enemytype type;
+//	frontenemystate state;
 //
 //	int life;
 //	float speed;
 //
-//	int targetedPositon;
+//	sfvector2f targetedpositon;
+//	sfvector2f spawnposition;
 //
-//	sfBool haveAlreadyShoot;
+//	sfbool havealreadyshoot;
 //
-//	sfBool doDamageToPlayer;
+//	sfbool dodamagetoplayer;
 //
-//	Timer waitToShootTimer;
-//	Timer shootTimer;
-//	Timer waitTimer;
-//	Timer deadTimer;
+//	timer waittoshoottimer;
+//	timer shoottimer;
+//	timer waittimer;
+//	timer deadtimer;
 //
-//	Anim anim;
-//	sfSprite* sprite;
+//	animfe anim;
+//	sfsprite* sprite;
 //
-//}FrontEnemy;
+//}frontenemy;
 //
-//typedef struct FrontEnemyData
+//typedef struct frontenemydata
 //{
-//	FrontEnemy enemy[ENEMY_MAX];
-//	sfTexture* spriteSheet;
+//	frontenemy enemy;
+//	sftexture* spritesheet;
 //
-//}FrontEnemyData;
+//}frontenemydata;
 //#pragma endregion
 //
+//frontenemy* getfrontenemy(void);
+//frontenemystate getfrontenemystate(frontenemy* _enemy);
+//void setfrontenemystate(frontenemy* _enemy, frontenemystate _state);
+//sfbool verifplayerkillfrontenemy(sfvector2f _mousepos, short i);
+//int playerdamagefe(void);
 //
-//
-//#endif
+//void loadfrontenemy(void);
+//void updatefrontenemy(float _dt);
+//void drawfrontenemy(sfrenderwindow* _renderwindow);
+//void cleanupfrontenemy(void);
+#endif

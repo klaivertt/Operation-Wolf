@@ -3,13 +3,19 @@
 
 #include "Common.h"
 #include "State.h"
+
 #include "Player.h"
+#include "HUD.h"
+
 #include "Enemy.h"
+#include "FrontEnemy.h"
+#include "Drop.h"
+
 #include "Hostage.h"
+
 #include "Map.h"
 #include "Props.h"
-#include "Drop.h"
-#include "HUD.h"
+
 #include "GameMusic.h"
 #include "GameSound.h"
 

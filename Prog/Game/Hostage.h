@@ -15,9 +15,9 @@
 
 #define MAX_HOSTAGE_SPAWN_DELAY 15
 
-#define TOTAL_LIFE 1
-#define MAX_SPEED 8
-#define DEATH_DELAY 0.5f
+#define ME_TOTAL_LIFE 1
+#define ME_MAX_SPEED 8
+#define ME_DEATH_DELAY 0.5f
 
 #pragma region enum
 

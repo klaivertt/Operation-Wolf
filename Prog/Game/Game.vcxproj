@@ -158,6 +158,7 @@
     <ClCompile Include="Map.c" />
     <ClCompile Include="GameMusic.c" />
     <ClCompile Include="MenuMusic.c" />
+    <ClCompile Include="MovingEnemy.c" />
     <ClCompile Include="ObjectsClickVerif.c" />
     <ClCompile Include="Player.c" />
     <ClCompile Include="PlayerSound.c" />
@@ -194,6 +195,7 @@
     <ClInclude Include="Map.h" />
     <ClInclude Include="GameMusic.h" />
     <ClInclude Include="MenuMusic.h" />
+    <ClInclude Include="MovingEnemy.h" />
     <ClInclude Include="ObjectsClickVerif.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerSound.h" />
