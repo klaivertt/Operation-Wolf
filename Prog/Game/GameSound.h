@@ -12,6 +12,6 @@
 
 void LoadGameSounds(void);
 
-void CleanupGameSounds(void);
+void CleanupGameSound(void);
 
 #endif
