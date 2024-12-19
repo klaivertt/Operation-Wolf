@@ -34,7 +34,6 @@ sfBool MouseMoveOnSprite(sfMouseMoveEvent _mouseMove, sfSprite* _sprite)
 
 sfBool MouseClickOnSpritePixel(sfVector2f _mouseButton, sfSprite* _sprite)
 {
-
 	sfFloatRect globalBounds = sfSprite_getGlobalBounds(_sprite);
 
 	if (sfFloatRect_contains(&globalBounds, (float)_mouseButton.x, (float)_mouseButton.y))

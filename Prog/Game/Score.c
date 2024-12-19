@@ -4,7 +4,7 @@ Score score;
 
 void LoadScore()
 {
-	char scoreString = "5";
+	char* scoreString = "5";
 	int fontSize = 30;
 
 	sfVector2f positionScore = { SCREEN_WIDTH / 3 , 30 };

@@ -93,7 +93,7 @@ void MouseButtonPressedPlayer(sfRenderWindow* const _renderWindow, sfMouseButton
 				UpdateScore(1);
 			}
 			int nbDrop = VerifClickOnDrop(_mouseButton);
-			if (nbDrop != NULL)
+			if (nbDrop != -1)
 			{
 				DropItem* drop = GetAllDrop();
 				if (drop[nbDrop].typeDrop == AMMO)

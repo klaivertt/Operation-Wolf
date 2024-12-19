@@ -1,7 +1,7 @@
 #ifndef TEXT_MANAGER_H
 #define TEXT_MANAGER_H
 
-#include <SFML/Graphics.h>
+#include "Common.h"
 
 // Structure pour gérer un texte CSFML
 typedef struct {
