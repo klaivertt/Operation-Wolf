@@ -47,7 +47,7 @@ void MoveDrop()
 	}
 }
 
-void CreateDrop(sfVector2f _vector, DropState _state)
+void CreateDrop(sfVector2f _vector, Drop _state)
 {
 	sfVector2u size = { 0 };
 	sfBool fined = sfFalse;

@@ -96,11 +96,13 @@ void MouseButtonPressedPlayer(sfRenderWindow* const _renderWindow, sfMouseButton
 			if (nbDrop != -1)
 			{
 				DropItem* drop = GetAllDrop();
+				printf("mg : %d\n", player.magazineNumber);
 				if (drop[nbDrop].typeDrop == AMMO)
 				{
 					if (player.magazineNumber < MAGAZINE_NUMBER_MAX)
 					{
 						player.magazineNumber++;
+						
 					}
 				}
 				else

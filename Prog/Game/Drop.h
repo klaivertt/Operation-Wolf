@@ -42,7 +42,7 @@ void DrawDrop(sfRenderWindow* _renderWindow);
 void MoveDrop();
 void CleanupDrop();
 
-void CreateDrop(sfVector2f _vector, DropState _state);
+void CreateDrop(sfVector2f _vector, Drop _state);
 
 void SetDropState(DropItem* _drop, DropState _state);
 sfBool VerifPlayerClickOnDrop(sfVector2f _mousePos, int _dropNB);
