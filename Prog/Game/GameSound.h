@@ -8,9 +8,6 @@
 #include "PlayerSound.h"
 #include "HostageSound.h"
 
-#define MAX_VOLUME 100
-
-
 void LoadGameSounds(void);
 
 void CleanupGameSound(void);

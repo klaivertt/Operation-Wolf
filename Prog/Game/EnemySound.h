@@ -2,8 +2,8 @@
 #ifndef ENEMYSOUNDS_H
 #define ENEMYSOUNDS_H
 
-#define SHOOT_VOLUME 50
-#define DIE_VOLUME 80
+#define SHOOT_VOLUME_ENEMY 50
+#define DIE_VOLUME_ENEMY 80
 
 #include "Common.h"
 

@@ -2,7 +2,7 @@
 #ifndef HOSTAGESOUND_H
 #define HOSTAGESOUND_H
 
-#define DIE_VOLUME 100
+#define DIE_VOLUME_HOSTAGE 100
 
 #include "Common.h"
 

@@ -16,13 +16,13 @@ void LoadEnemySounds(void)
 		enemySound.sound[i].shoot = sfSound_create();
 		sfSound_setBuffer(enemySound.sound[i].shoot, enemySound.bufferShoot);
 		sfSound_setLoop(enemySound.sound[i].shoot, sfFalse);
-		sfSound_setVolume(enemySound.sound[i].shoot, SHOOT_VOLUME);
+		sfSound_setVolume(enemySound.sound[i].shoot, SHOOT_VOLUME_ENEMY);
 
 	
 		enemySound.sound[i].die = sfSound_create();
 		sfSound_setBuffer(enemySound.sound[i].die, enemySound.bufferDie);
 		sfSound_setLoop(enemySound.sound[i].die, sfFalse);
-		sfSound_setVolume(enemySound.sound[i].die, SHOOT_VOLUME);
+		sfSound_setVolume(enemySound.sound[i].die, SHOOT_VOLUME_ENEMY);
 	}
 	
 

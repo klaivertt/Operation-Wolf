@@ -12,7 +12,7 @@ void LoadHostageSound(void)
 	hostageSound.die.sound = sfSound_create();
 	sfSound_setBuffer(hostageSound.die.sound, hostageSound.die.soundBuffer);
 	sfSound_setLoop(hostageSound.die.sound, sfFalse);
-	sfSound_setVolume(hostageSound.die.sound, DIE_VOLUME);
+	sfSound_setVolume(hostageSound.die.sound, DIE_VOLUME_HOSTAGE);
 }
 
 void CleanupHostageSound(void)

@@ -11,8 +11,8 @@ void LoadPlayerSounds(void)
 	sfSound_setBuffer(playerSound.shoot.sound, playerSound.shoot.soundBuffer);
 	sfSound_setLoop(playerSound.shoot.sound, sfFalse);
 
-	sfSound_setVolume(playerSound.shoot.sound, SHOOT_VOLUME);
-	playerSound.shoot.volume = SHOOT_VOLUME;
+	sfSound_setVolume(playerSound.shoot.sound, SHOOT_VOLUME_PLAYER);
+	playerSound.shoot.volume = SHOOT_VOLUME_PLAYER;
 
 	//Die
 	playerSound.ShootWithoutBullet.soundBuffer = sfSoundBuffer_createFromFile("Assets/Sounds/Player/PlayerShootWithoutBullet.ogg");
@@ -21,8 +21,8 @@ void LoadPlayerSounds(void)
 	sfSound_setBuffer(playerSound.ShootWithoutBullet.sound, playerSound.ShootWithoutBullet.soundBuffer);
 	sfSound_setLoop(playerSound.ShootWithoutBullet.sound, sfFalse);
 
-	sfSound_setVolume(playerSound.ShootWithoutBullet.sound, SHOOT_VOLUME);
-	playerSound.ShootWithoutBullet.volume = SHOOT_VOLUME;
+	sfSound_setVolume(playerSound.ShootWithoutBullet.sound, SHOOT_VOLUME_PLAYER);
+	playerSound.ShootWithoutBullet.volume = SHOOT_VOLUME_PLAYER;
 
 	//Reload
 	playerSound.reload.soundBuffer = sfSoundBuffer_createFromFile("Assets/Sounds/Player/PlayerReload.ogg");
@@ -31,8 +31,8 @@ void LoadPlayerSounds(void)
 	sfSound_setBuffer(playerSound.reload.sound, playerSound.reload.soundBuffer);
 	sfSound_setLoop(playerSound.reload.sound, sfFalse);
 
-	sfSound_setVolume(playerSound.reload.sound, SHOOT_VOLUME);
-	playerSound.reload.volume = SHOOT_VOLUME;
+	sfSound_setVolume(playerSound.reload.sound, SHOOT_VOLUME_PLAYER);
+	playerSound.reload.volume = SHOOT_VOLUME_PLAYER;
 }
 
 void CleanupPlayerSound(void)
