@@ -92,17 +92,15 @@ void MouseButtonPressedPlayer(sfRenderWindow* const _renderWindow, sfMouseButton
 			{
 				UpdateScore(1);
 			}
+			//if (VerifyClickOnDrop(_mouseButton, ))
+			//{
+
+			//}
 		}
 		break;
 	case sfMouseRight:
 		ReloadMagazine();
 		break;
-	case sfMouseMiddle:
-		if (player.grenadeNumber == 1)
-		{
-
-			ShootGrenade();
-		}
 	default:
 		break;
 	}

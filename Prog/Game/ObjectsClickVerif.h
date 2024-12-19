@@ -11,3 +11,4 @@
 sfBool VerifClickOnEnemy(sfMouseButtonEvent _mouseButton);
 sfBool VerifClickOnHostage(sfMouseButtonEvent _mouseButton);
 sfBool VerifClickOnProps(sfMouseButtonEvent _mouseButton, int _enemyGround);
+//sfBool VerifClickOnDrop(sfMouseButtonEvent _mouseButton);

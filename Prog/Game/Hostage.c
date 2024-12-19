@@ -28,21 +28,6 @@ void SetHostageState(Hostage* _enemy, HostageState _state)
 	}
 }
 
-sfBool VerifPlayerKillHostage(sfVector2f _mousePos)
-{
-	for (short i = 0; i < HOSTAGE_MAX; i++)
-	{
-		sfBool click = MouseClickOnSpritePixel(_mousePos, hostageData.hostage[i].sprite);
-		if (click)
-		{
-			SetHostageState(&hostageData.hostage[i], H_DEAD);
-			return sfTrue;
-		}
-	}
-	return sfFalse;
-}
-
-
 
 void LoadHostage(short _hostageToLoad)
 {
@@ -178,4 +163,18 @@ sfBool MoveHostage(Hostage* _enemy, sfSprite** _sprite)
 	pos.x = (float)_enemy->targetedPositon;
 
 	return MoveSpriteToTarget(_sprite, pos, _enemy->speed, sfFalse);
+}
+
+sfBool VerifPlayerKillHostage(sfVector2f _mousePos)
+{
+	for (short i = 0; i < HOSTAGE_MAX; i++)
+	{
+		sfBool click = MouseClickOnSpritePixel(_mousePos, hostageData.hostage[i].sprite);
+		if (click)
+		{
+			SetHostageState(&hostageData.hostage[i], H_DEAD);
+			return sfTrue;
+		}
+	}
+	return sfFalse;
 }

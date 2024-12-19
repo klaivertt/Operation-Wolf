@@ -55,3 +55,19 @@ sfBool VerifClickOnProps(sfMouseButtonEvent _mouseButton, int _enemyGround)
 	}
 	return sfFalse;
 }
+
+//sfBool VerifPlayerClickOnDrop(sfMouseButtonEvent _mousePos, int _dropNB)
+//{
+//	sfVector2f pos = { _mousePos.x, _mousePos.y };
+//	sfBool click = MouseClickOnSpritePixel(pos, GetAllDrop());
+//
+//	//DropItem drop = GetAllDrop();
+//	for (int i = 0; i < MAX_DROP; i++)
+//	{
+//		if (click)
+//		{
+//			//SetDropState(&dropData.heal[_dropNB].state, OFF_FIELD);
+//			return sfTrue;
+//		}
+//	}
+

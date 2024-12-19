@@ -4,19 +4,36 @@
 
 #include "Common.h"
 #include "Sprite.h"
-#include "Enemy.h"
+#include "map.h"
 
-typedef struct DropData
-{
-	Image heal;
-
-}DropData;
+#define MAX_DROP 4
 
 typedef enum DropState
 {
 	ON_FIELD,
-	OFF_FIELD,
+	OFF_FIELD
 }DropState;
+
+typedef enum Drop
+{
+	HEALTH,
+	AMMO,
+	NONE
+}Drop;
+
+typedef struct DropItem
+{
+	sfSprite* sprite;
+	DropState state;
+	sfIntRect rect;
+	Drop typeDrop;
+}DropItem;
+
+typedef struct DropData
+{
+	sfTexture* texture;
+	DropItem drop[MAX_DROP];
+}DropData;
 
 void LoadDrop();
 void DrawDrop(sfRenderWindow* _renderWindow);
@@ -24,4 +41,10 @@ void DrawDrop(sfRenderWindow* _renderWindow);
 void MoveDrop();
 void CleanupDrop();
 
+void CreateDrop(sfVector2f _vector, DropState _state);
+
+void SetDropState(DropItem* _drop, DropState _state);
+sfBool VerifPlayerClickOnDrop(sfVector2f _mousePos, int _dropNB);
+
+DropItem* GetAllDrop();
 #endif
