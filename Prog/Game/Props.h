@@ -4,7 +4,7 @@
 #include "Common.h"
 #include "Sprite.h"
 
-#define MAX_PROPS 8
+#define MAX_PROPS 6
 
 #define POS_HIGHT_Y 498
 #define MIDDLEGROUND 850

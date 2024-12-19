@@ -15,7 +15,7 @@ void LoadDrop()
 
 	for (int i = 0; i < MAX_DROP; i++)
 	{
-		CreateSprite(&dropData.drop[i].sprite, dropData.ammoTexture, position, (sfIntRect){0}, origin);
+		CreateSprite(&dropData.drop[i].sprite, dropData.ammoTexture, position, (sfIntRect) { 0 }, origin);
 		dropData.drop[i].state = OFF_FIELD;
 	}
 }
@@ -39,6 +39,7 @@ void MoveDrop()
 void CreateDrop(sfVector2f _vector, DropState _state)
 {
 	sfBool fined = sfFalse;
+	sfVector2u size = { 0 };
 	for (size_t i = 0; i < MAX_DROP; i++)
 	{
 		if (!fined)
@@ -51,14 +52,17 @@ void CreateDrop(sfVector2f _vector, DropState _state)
 				if (_state == HEALTH)
 				{
 					sfSprite_setTexture(dropData.drop[i].sprite, dropData.healthTexture, sfFalse);
+					size = sfTexture_getSize(dropData.healthTexture);
 				}
 				else
 				{
 					sfSprite_setTexture(dropData.drop[i].sprite, dropData.ammoTexture, sfFalse);
+					size = sfTexture_getSize(dropData.healthTexture);
 				}
 				fined = sfTrue;
 			}
-		}		
+		}
+		sfSprite_setTextureRect(dropData.drop[i].sprite, (sfIntRect) { 0, 0, size.x, size.y });
 	}
 }
 
