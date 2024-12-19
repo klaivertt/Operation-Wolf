@@ -7,8 +7,8 @@ void LoadIcon()
 	sfIntRect rectHostage = { 168, 2184, 24 , 48 };
 	sfIntRect rectEnemy = { 216, 2184, 48 , 48 };
 
-	sfVector2f positionHostage = { SCREEN_WIDTH / 2 + rectHostage.width, rectHostage.height };
-	sfVector2f positionEnemy = { SCREEN_WIDTH / 2 - rectEnemy.width, rectEnemy.height };
+	sfVector2f positionHostage = { SCREEN_WIDTH / 2 + (float) rectHostage.width, (float)rectHostage.height };
+	sfVector2f positionEnemy = { SCREEN_WIDTH / 2 - (float)rectEnemy.width, (float)rectEnemy.height };
 
 	sfVector2f origin = { 0.5 , 1 };
 
@@ -24,8 +24,8 @@ void LoadIcon()
 
 void UpdateIconeText()
 {
-	UpdateText(&icone.enemyLeft, 5, 5);
-	UpdateText(&icone.hostageLeft, 5, 5);
+	UpdateText(&icone.enemyLeft, "%d", 5);
+	UpdateText(&icone.hostageLeft, "%d", 5);
 }
 
 void DrawIcon(sfRenderWindow* _renderWindow)
