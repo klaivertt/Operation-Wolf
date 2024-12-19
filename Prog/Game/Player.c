@@ -51,7 +51,7 @@ void VerifGetDamage()
 	UpdateBar();
 	if (totalDamage != 0)
 	{
-		//DisplayDamageWindow();
+		DisplayDamageWindow();
 	}
 }
 
