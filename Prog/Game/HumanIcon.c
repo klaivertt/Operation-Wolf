@@ -9,7 +9,7 @@ void LoadIcon()
 
 	sfVector2f positionHostage = { SCREEN_WIDTH / 2 + rectHostage.width, rectHostage.height };
 	sfVector2f positionEnemy = { SCREEN_WIDTH / 2 - rectEnemy.width, rectEnemy.height };
-	
+
 	sfVector2f origin = { 0.5 , 1 };
 
 	icone.Enemy.texture = sfTexture_createFromFile("Assets/Sprites/SpriteSheet.png", NULL);
@@ -17,12 +17,23 @@ void LoadIcon()
 
 	CreateSprite(&icone.Hostage.sprite, icone.Hostage.texture, positionHostage, rectHostage, origin);
 	CreateSprite(&icone.Enemy.sprite, icone.Enemy.texture, positionEnemy, rectEnemy, origin);
+
+	icone.enemyLeft = InitText("0", 30, (sfVector2f) { positionEnemy.x - rectEnemy.width, 0 });
+	icone.hostageLeft = InitText("0", 30, (sfVector2f) { positionHostage.x + rectHostage.width, 0 });
+}
+
+void UpdateIconeText()
+{
+	UpdateText(&icone.enemyLeft, 5, 5);
+	UpdateText(&icone.hostageLeft, 5, 5);
 }
 
 void DrawIcon(sfRenderWindow* _renderWindow)
 {
 	sfRenderWindow_drawSprite(_renderWindow, icone.Enemy.sprite, sfFalse);
 	sfRenderWindow_drawSprite(_renderWindow, icone.Hostage.sprite, sfFalse);
+	sfRenderWindow_drawText(_renderWindow, icone.enemyLeft, sfFalse);
+	sfRenderWindow_drawText(_renderWindow, icone.hostageLeft, sfFalse);
 }
 
 void CleanupIcon()

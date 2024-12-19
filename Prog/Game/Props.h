@@ -14,6 +14,7 @@
 
 #define PROP_MIN_DISTANCE 120
 
+#define PLACEMENT_CORRECTION 10
 typedef struct Props
 {
 	sfSprite* sprite;
