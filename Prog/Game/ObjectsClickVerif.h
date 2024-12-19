@@ -6,6 +6,7 @@
 #include "Hostage.h"
 #include "Enemy.h"
 #include "Map.h"
+#include "Collision.h"
 
 
 sfBool VerifClickOnEnemy(sfMouseButtonEvent _mouseButton);
