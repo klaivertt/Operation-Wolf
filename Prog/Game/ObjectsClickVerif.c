@@ -5,7 +5,7 @@ sfBool VerifClickOnEnemy(sfMouseButtonEvent _mouseButton)
 {
 	sfBool killEnemy = sfFalse;
 
-	sfVector2f pos = { _mouseButton.x, _mouseButton.y };
+	sfVector2f pos = { (float)_mouseButton.x, (float)_mouseButton.y };
 	Enemy* enemy = GetAllEnemy();
 
 	//Decremente for touch the last enemy draw in first
@@ -25,7 +25,7 @@ sfBool VerifClickOnEnemy(sfMouseButtonEvent _mouseButton)
 
 sfBool VerifClickOnHostage(sfMouseButtonEvent _mouseButton)
 {
-	sfVector2f pos = { _mouseButton.x, _mouseButton.y };
+	sfVector2f pos = { (float)_mouseButton.x, (float)_mouseButton.y };
 
 	sfBool killHostage = VerifPlayerKillHostage(pos);
 	if (killHostage)
@@ -42,7 +42,7 @@ sfBool VerifClickOnProps(sfMouseButtonEvent _mouseButton, int _enemyGround)
 	{
 		Props* props = GetAllProps();
 		sfVector2f pos = sfSprite_getPosition(props[i].sprite);
-		sfVector2f mouse = { _mouseButton.x, _mouseButton.y };
+		sfVector2f mouse = { (float)_mouseButton.x, (float)_mouseButton.y };
 
 		if (pos.y == _enemyGround)
 		{
@@ -59,7 +59,7 @@ sfBool VerifClickOnProps(sfMouseButtonEvent _mouseButton, int _enemyGround)
 
 int VerifClickOnDrop(sfMouseButtonEvent _mousePos)
 {
-	sfVector2f pos = { _mousePos.x, _mousePos.y };
+	sfVector2f pos = { (float)_mousePos.x, (float)_mousePos.y };
 	sfBool click =sfFalse;
 
 	DropItem* drop = GetAllDrop();
