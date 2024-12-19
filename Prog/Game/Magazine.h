@@ -6,7 +6,6 @@
 #include "Sprite.h"
 #include "Player.h"
 
-#define MAGAZINE_NUMBER_MAX 5
 
 typedef struct Magazine
 {

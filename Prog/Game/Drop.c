@@ -87,3 +87,9 @@ DropItem* GetAllDrop()
 {
 	return dropData.drop;
 }
+
+void ResetDrop(int _nb)
+{
+	SetDropState(&dropData.drop[_nb], OFF_FIELD);
+	sfSprite_setPosition(dropData.drop[_nb].sprite, (sfVector2f) { -100, -100 });
+}
