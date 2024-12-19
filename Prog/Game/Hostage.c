@@ -11,24 +11,28 @@ HostageState GetHostageState(Hostage* _enemy)
 	return _enemy->state;
 }
 
-void SetHostageState(Hostage* _enemy, HostageState _state)
+void SetHostageState(Hostage* _hostage, HostageState _state)
 {
 	
-	if (_enemy->state != _state)
+	if (_hostage->state != _state)
 	{
 		switch (_state)
 		{
 		case H_WALK:
-			ResetAnimation(&_enemy->anim.walk, &_enemy->sprite);
+			ResetAnimation(&_hostage->anim.walk, &_hostage->sprite);
 			break;
 		case H_DEAD:
-			ResetAnimation(&_enemy->anim.dead, &_enemy->sprite);
-			PlaySound_HostageDie();
+			ResetAnimation(&_hostage->anim.dead, &_hostage->sprite);
+			sfVector2f pos = sfSprite_getPosition(_hostage->sprite);
+			if (pos.x > 0 && pos.x < SCREEN_WIDTH)
+			{
+				PlaySound_HostageDie();
+			}
 			break;
 		default:
 			break;
 		}
-		_enemy->state = _state;
+		_hostage->state = _state;
 	}
 	
 }

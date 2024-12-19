@@ -11,8 +11,6 @@
 
 #include "HostageSound.h"
 
-//24 Enemies maximum 
-
 #define HOSTAGE_MAX 1
 
 #define MAX_HOSTAGE_SPAWN_DELAY 15
