@@ -8,6 +8,7 @@
 
 #include "Animations.h"
 #include "Position.h"
+#include "Drop.h"
 
 
 //24 Enemies maximum 
@@ -37,12 +38,6 @@ typedef enum EnemyState
 //	SOLDIER,
 //}EnemyType;
 
-typedef enum Drop
-{
-	HEALTH,
-	AMMO,
-	NONE
-}Drop;
 
 #pragma endregion
 

@@ -43,12 +43,12 @@ void SetEnemyState(Enemy* _enemy, EnemyState _state)
 
 sfBool VerifPlayerKillEnemy(sfVector2f _mousePos, short i)
 {
-		sfBool click = MouseClickOnSpritePixel(_mousePos, enemyData.enemy[i].sprite);
-		if (click)
-		{
-			SetEnemyState(&enemyData.enemy[i], DEAD);
-			return sfTrue;
-		}
+	sfBool click = MouseClickOnSpritePixel(_mousePos, enemyData.enemy[i].sprite);
+	if (click)
+	{
+		SetEnemyState(&enemyData.enemy[i], DEAD);
+		return sfTrue;
+	}
 
 	return sfFalse;
 }
@@ -71,17 +71,13 @@ Drop EnemyDrop(void)
 {
 	int dropChance = 1 + rand() % 100;
 
-	if (dropChance <= 15)
+	if (dropChance >= 10 && dropChance <= 20)
 	{
 		return AMMO;
 	}
-	else
+	else if (dropChance <= 10)
 	{
-		dropChance = 1 + rand() % 100;
-		if (dropChance <= 10)
-		{
-			return HEALTH;
-		}
+		return HEALTH;
 	}
 	return NONE;
 }
@@ -306,10 +302,10 @@ void Dead(Enemy* _enemy, float _dt, short i)
 	if (endDeadAnimation)
 	{
 		DecreaseNbCharactersPositionGround(_enemy->sprite);
+		CreateDrop(sfSprite_getPosition(_enemy->sprite), EnemyDrop());
 		LoadEnemies(i + 1);
 	}
 }
-
 
 void Scale(Enemy* _enemy, sfSprite** _sprite)
 {
