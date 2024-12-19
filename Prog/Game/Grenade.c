@@ -5,7 +5,7 @@ Grenade grenade;
 void LoadGrenade()
 {
 	sfIntRect rect = { 24, 2184, 24 , 48 };
-	sfVector2f position = { SCREEN_WIDTH / 4 * 3 + 9.5 * rect.width, rect.height };
+	sfVector2f position = { SCREEN_WIDTH / 4 * 3 + 9.5f * (float)rect.width, (float)rect.height };
 	sfVector2f origin = { 0.5 , 1 };
 	grenade.texture = sfTexture_createFromFile("Assets/Sprites/SpriteSheet.png", NULL);
 
