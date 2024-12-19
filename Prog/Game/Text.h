@@ -5,7 +5,7 @@
 
 // Structure pour gérer un texte CSFML
 typedef struct {
-    sfFont* font;
+	sfFont* font;
 } TextManager;
 
 // *@brief Function to load and initialize the text manager resources

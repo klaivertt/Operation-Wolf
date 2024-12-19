@@ -37,7 +37,7 @@ sfBool MouseClickOnSpritePixel(sfVector2f _mouseButton, sfSprite* _sprite)
 
 	sfFloatRect globalBounds = sfSprite_getGlobalBounds(_sprite);
 
-	if (sfFloatRect_contains(&globalBounds, (float)_mouseButton.x, (float)_mouseButton.y)) 
+	if (sfFloatRect_contains(&globalBounds, (float)_mouseButton.x, (float)_mouseButton.y))
 	{
 		sfVector2u pixelPos = { _mouseButton.x - globalBounds.left,_mouseButton.y - globalBounds.top };
 

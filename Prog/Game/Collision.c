@@ -10,7 +10,7 @@ sfBool CollisionRectRect(sfFloatRect* const _rect1, sfFloatRect* const _rect2)
 	{
 		return sfFalse;
 	}
-    
+
 }
 
 sfBool CollisionPointRect(sfFloatRect* const _rect1, sfVector2i const _point)
@@ -23,5 +23,5 @@ sfBool CollisionPointRect(sfFloatRect* const _rect1, sfVector2i const _point)
 	{
 		return sfFalse;
 	}
-    
+
 }
