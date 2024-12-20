@@ -6,12 +6,18 @@ sfBool VerifClickOnEnemy(sfMouseButtonEvent _mouseButton)
 	sfBool killEnemy = sfFalse;
 
 	sfVector2f pos = { (float)_mouseButton.x, (float)_mouseButton.y };
-	MovingEnemy* enemy = GetAllMovingEnemy();
+	MovingEnemy* moveEnemy = GetAllMovingEnemy();
+	MovingEnemy* frontEnemy = GetAllMovingEnemy();
+
+	for (short i = FRONT_ENEMY_MAX - 1; i >= 0; i--)
+	{
+
+	}
 
 	//Decremente for touch the last enemy draw in first
-	for (short i = ENEMY_MAX - 1; i >= 0; i--)
+	for (short i = MOVING_ENEMY_MAX - 1; i >= 0; i--)
 	{
-		if (!VerifClickOnProps(_mouseButton, enemy[i].ground))
+		if (!VerifClickOnProps(_mouseButton, moveEnemy[i].ground))
 		{
 			killEnemy = VerifPlayerKillEnemy(pos, i);
 		}

@@ -44,21 +44,22 @@ void SetState_FrontEnemy(FrontEnemy* _enemy, FrontEnemyState _state)
 
 }
 
-sfBool VerifPlayerKillFrontEnemy(sfVector2f _mousePos, short i)
-{
-	//sfBool click = MouseClickOnSpritePixel(_mousePos, enemyData.enemy.sprite);
-	//if (click)
-	//{
-	//	SetFrontEnemyState(&enemyData.enemy, DEAD_FE);
-	//	return sfTrue;
-	//}
 
-	//return sfFalse;
+sfBool VerifPlayerKill_FrontEnemy(FrontEnemy* _enemy, sfVector2f _mousePos)
+{
+	sfBool click = MouseClickOnSpritePixel(_mousePos, _enemy->sprite);
+	if (click)
+	{
+		SetState_FrontEnemy(_enemy, FE_DEAD);
+		return sfTrue;
+	}
+
+	return sfFalse;
 }
 
-int PlayerDamageFE(void)
+int DamageToPlayer_FrontEnemy(FrontEnemy* _enemy)
 {
-	
+	return FE_DAMAGE;
 }
 
 
@@ -96,8 +97,8 @@ void LoadFrontEnemy(FrontEnemy* _enemy, sfTexture** _texture)
 	//Position
 	sfFloatRect gb = sfSprite_getGlobalBounds(_enemy->sprite);
 	pos.y = SCREEN_HEIGHT + gb.height;
-	printf("load");
-	pos.x = 1 + rand() % SCREEN_WIDTH;
+
+	pos.x = (float) (1 + rand() % SCREEN_WIDTH);
 	if (pos.x < gb.width / 2)
 	{
 		pos.x = gb.width / 2;
@@ -109,8 +110,8 @@ void LoadFrontEnemy(FrontEnemy* _enemy, sfTexture** _texture)
 
 	sfSprite_setPosition(_enemy->sprite, pos);
 
-	_enemy->targetedPositon = pos.y - gb.height;
-	_enemy->spawnPosition = pos.y;
+	_enemy->targetedPositon = (int)(pos.y - gb.height);
+	_enemy->spawnPosition = (int)pos.y;
 
 	//Animation
 	CreateAnimation(&_enemy->anim.walk, &_enemy->sprite, _texture, 4, 1, 1, sfTrue, (sfVector2f) { 2, 0 });
@@ -212,7 +213,7 @@ void ShootFE(FrontEnemy* _enemy, float _dt)
 	}
 	if (timerEnd)
 	{
-		SetState_MovingEnemy(_enemy, FE_WALK);
+		SetState_FrontEnemy(_enemy, FE_WALK);
 		_enemy->targetedPositon = _enemy->spawnPosition;
 	}
 }
@@ -225,7 +226,6 @@ void DeadFE(FrontEnemy* _enemy,sfTexture** _texture, float _dt)
 	if (endDeadAnimation)
 	{
 		DecreaseNbCharactersPositionGround(_enemy->sprite);
-		CreateDrop(sfSprite_getPosition(_enemy->sprite), Drop_MovingEnemy());
 		LoadFrontEnemy(_enemy, _texture);
 	}
 }

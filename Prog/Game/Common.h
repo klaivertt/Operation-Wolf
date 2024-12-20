@@ -19,7 +19,9 @@
 #define GROUND_RIGHT -100
 #define GROUND_LEFT SCREEN_WIDTH + 100
 
-#define ENEMY_MAX 6
+#define FRONT_ENEMY_MAX 1
+#define MOVING_ENEMY_MAX 6
+
 #pragma endregion
 
 typedef struct Image

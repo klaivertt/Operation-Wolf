@@ -11,7 +11,7 @@ void LoadEnemySounds(void)
 	enemySound.bufferShoot = sfSoundBuffer_createFromFile("Assets/Sounds/Enemy/EnemyShoot.ogg");
 	enemySound.bufferDie = sfSoundBuffer_createFromFile("Assets/Sounds/Enemy/EnemyDie.ogg");
 
-	for (short i = 0; i < ENEMY_MAX; i++)
+	for (short i = 0; i < MOVING_ENEMY_MAX; i++)
 	{
 		enemySound.sound[i].shoot = sfSound_create();
 		sfSound_setBuffer(enemySound.sound[i].shoot, enemySound.bufferShoot);
@@ -30,7 +30,7 @@ void LoadEnemySounds(void)
 
 void CleanupEnemySound(void)
 {
-	for (short i = 0; i < ENEMY_MAX; i++)
+	for (short i = 0; i < MOVING_ENEMY_MAX; i++)
 	{
 		//Shoot
 		sfSound_destroy(enemySound.sound[i].shoot);
@@ -52,12 +52,12 @@ void CleanupEnemySound(void)
 void PlaySound_EnemyShoot(void)
 {
 	short i = 0;
-	while (i < ENEMY_MAX)
+	while (i < MOVING_ENEMY_MAX)
 	{
 		if (GetSoundStatue_EnemyShoot(i) != sfPlaying)
 		{
 			sfSound_play(enemySound.sound[i].shoot);
-			i = ENEMY_MAX;
+			i = MOVING_ENEMY_MAX;
 		}
 		else
 		{
@@ -70,12 +70,12 @@ void PlaySound_EnemyShoot(void)
 void PlaySound_EnemyDie(void)
 {
 	short i = 0;
-	while (i < ENEMY_MAX)
+	while (i < MOVING_ENEMY_MAX)
 	{
 		if (GetSoundStatue_EnemyDie(i) != sfPlaying)
 		{
 			sfSound_play(enemySound.sound[i].die);
-			i = ENEMY_MAX;
+			i = MOVING_ENEMY_MAX;
 		}
 		else
 		{

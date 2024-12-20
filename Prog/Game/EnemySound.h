@@ -18,7 +18,8 @@ typedef struct EnemySound
 	sfSoundBuffer* bufferShoot;
 	sfSoundBuffer* bufferDie;
 
-	Sound sound[ENEMY_MAX];
+	Sound sound[MOVING_ENEMY_MAX];
+
 }EnemySound;
 
 
