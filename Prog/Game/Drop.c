@@ -4,8 +4,6 @@ DropData dropData;
 
 void LoadDrop()
 {
-	sfIntRect rectHeal = { 1079, 1949, 50 , 44 };
-	sfIntRect rectMagazine = { 866, 1964, 47 , 29 };
 	sfVector2f position = { -100, -100 };
 	sfVector2f origin = { 0.5 , 1 };
 
@@ -78,6 +76,7 @@ void CreateDrop(sfVector2f _vector, Drop _state)
 				}
 				fined = sfTrue;
 				sfSprite_setTextureRect(dropData.drop[i].sprite, (sfIntRect) { 0, 0, size.x, size.y });
+				SetSpriteOrigin(&dropData.drop[i].sprite, (sfVector2f) { 0.5, 1 });
 			}
 		}
 

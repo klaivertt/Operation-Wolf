@@ -212,8 +212,8 @@ sfBool MouseClickOnImagePixel(sfMouseButtonEvent _mouseButton, sfSprite* _sprite
 //	return sfTrue;
 //}
 
-void SetSpriteOrigin(sfSprite** _sprite, sfVector2f divide)
+void SetSpriteOrigin(sfSprite** _sprite, sfVector2f _divide)
 {
 	sfVector2u size = sfTexture_getSize(sfSprite_getTexture(*_sprite));
-	sfSprite_setOrigin(*_sprite, (sfVector2f) { size.x / divide.x, size.y / divide.y });
+	sfSprite_setOrigin(*_sprite, (sfVector2f) { size.x / _divide.x, size.y / _divide.y });
 }
