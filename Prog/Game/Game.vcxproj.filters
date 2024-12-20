@@ -85,6 +85,9 @@
     <Filter Include="Fichiers d%27en-tête\Sounds\GameSounds">
       <UniqueIdentifier>{2a030212-5d82-4210-bbf4-706ab28b18a6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fichiers sources\Sounds\NewFilter1">
+      <UniqueIdentifier>{adcb2b7a-aa5f-4c94-9c08-a252bd1c5f25}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.c">

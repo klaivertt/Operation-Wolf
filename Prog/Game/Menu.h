@@ -6,10 +6,12 @@
 #include "Sprite.h"
 #include "MenuMusic.h"
 
+#define NB_BUTTON_IN_SPRITESHEET 2
+
 typedef struct UserInterface
 {
 
-	sfTexture* textureWhiteButton;
+	sfTexture* Button;
 
 	sfSprite* playButtonSprite;
 	sfSprite* exitButtonSprite;

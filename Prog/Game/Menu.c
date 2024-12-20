@@ -35,19 +35,21 @@ void LoadMenu(void)
 	sfVector2f screen = { SCREEN_WIDTH,SCREEN_HEIGHT };
 
 	//BUTTON TEXTURE
-	menuData.userInterface.textureWhiteButton = sfTexture_createFromFile("Assets/Sprites/Menu/Buttons.png", NULL);
+	menuData.userInterface.Button = sfTexture_createFromFile("Assets/Sprites/Menu/Buttons.png", NULL);
 
-	//PlayButton
-	sfIntRect rect = { 0,0,402,134 };
-	sfVector2f origin = (sfVector2f){ 0.5, 1 };
-	position = (sfVector2f){ SCREEN_WIDTH * 0.85f,SCREEN_HEIGHT * 0.2f };
-	CreateSprite(&menuData.userInterface.playButtonSprite, menuData.userInterface.textureWhiteButton, position, rect, origin);
+	sfVector2u size = sfTexture_getSize(menuData.userInterface.Button);
+
+		//PlayButton
+	sfIntRect rect = { 0,0,size.x / NB_BUTTON_IN_SPRITESHEET,size.y };
+	sfVector2f origin = (sfVector2f){ 0, 0 };
+	position = (sfVector2f){ 1551,303 };
+	CreateSprite(&menuData.userInterface.playButtonSprite, menuData.userInterface.Button, position, rect, origin);
 
 	//ExitButton
-	rect = (sfIntRect){ 810,416,400,134 };
-	origin = (sfVector2f){ 0.5, 1 };
-	position = (sfVector2f){ SCREEN_WIDTH * 0.85f ,SCREEN_HEIGHT * 0.4f };
-	CreateSprite(&menuData.userInterface.exitButtonSprite, menuData.userInterface.textureWhiteButton, position, rect, origin);
+	rect = (sfIntRect){ size.x / NB_BUTTON_IN_SPRITESHEET,0,size.x / NB_BUTTON_IN_SPRITESHEET,size.y };
+	origin = (sfVector2f){ 0, 0 };
+	position = (sfVector2f){ 1551 , 555 };
+	CreateSprite(&menuData.userInterface.exitButtonSprite, menuData.userInterface.Button, position, rect, origin);
 
 }
 
@@ -123,8 +125,8 @@ void CleanupMenu(void)
 	sfSprite_destroy(menuData.background.sprite);
 	menuData.background.sprite = NULL;
 	//BUTTON TEXTURE
-	sfTexture_destroy(menuData.userInterface.textureWhiteButton);
-	menuData.userInterface.textureWhiteButton = NULL;
+	sfTexture_destroy(menuData.userInterface.Button);
+	menuData.userInterface.Button = NULL;
 	//PlayButton
 	sfSprite_destroy(menuData.userInterface.playButtonSprite);
 	menuData.userInterface.playButtonSprite = NULL;
