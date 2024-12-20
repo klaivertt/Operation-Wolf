@@ -6,10 +6,6 @@
 
 #define MAX_PROPS 6
 
-#define POS_HIGHT_Y 498
-#define MIDDLEGROUND 850
-#define FORGROUND 1000
-
 #define MAX_PROPS_TEXTURE 3
 
 #define PROP_MIN_DISTANCE 120
