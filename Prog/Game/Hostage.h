@@ -75,5 +75,5 @@ void CleanupHostage(void);
 HostageState GetHostageState(Hostage* _enemy);
 void SetHostageState(Hostage* _enemy, HostageState _state);
 sfBool VerifPlayerKillHostage(sfVector2f _mousePos);
-
+Hostage* GetHostage(void);
 #endif
