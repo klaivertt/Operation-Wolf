@@ -6,7 +6,6 @@ void UpdateMenuVisibility(void);
 
 void LoadMenu(void)
 {
-	//printf("LOAD MENU\n");
 
 	LoadMenuMusic();
 	LoadMenuSounds();

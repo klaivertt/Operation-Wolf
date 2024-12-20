@@ -52,7 +52,6 @@ sfBool VerifClickOnProps(sfMouseButtonEvent _mouseButton, int _enemyGround)
 		Props* props = GetAllProps();
 		sfVector2f pos = sfSprite_getPosition(props[i].sprite);
 		sfVector2f mouse = { (float)_mouseButton.x, (float)_mouseButton.y };
-		printf("%d\nb", _enemyGround);
 		if (pos.y == _enemyGround + PLACEMENT_CORRECTION)
 		{
 			collision = MouseClickOnSpritePixel(mouse,props[i].sprite);

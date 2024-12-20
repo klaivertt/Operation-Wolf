@@ -59,7 +59,12 @@ sfBool VerifPlayerKill_FrontEnemy(FrontEnemy* _enemy, sfVector2f _mousePos)
 
 int DamageToPlayer_FrontEnemy(FrontEnemy* _enemy)
 {
-	return FE_DAMAGE;
+	if (_enemy->doDamageToPlayer)
+	{
+		_enemy->doDamageToPlayer = sfFalse;
+		return FE_DAMAGE;
+	}
+	return 0;
 }
 
 
@@ -209,17 +214,9 @@ void ShootFE(FrontEnemy* _enemy, float _dt)
 	int actualFrame = GetAnimCurrentFrame(&_enemy->anim.shoot);
 	if (actualFrame == 2 && !_enemy->haveAlreadyShoot)
 	{
-		if (EnemyShootBehindProps(_enemy->sprite))
-		{
-			_enemy->doDamageToPlayer = sfFalse;
-			_enemy->haveAlreadyShoot = sfFalse;
-		}
-		else
-		{
-			_enemy->doDamageToPlayer = sfTrue;
-			_enemy->haveAlreadyShoot = sfTrue;
-			PlaySound_EnemyShoot();
-		}
+		_enemy->doDamageToPlayer = sfTrue;
+		_enemy->haveAlreadyShoot = sfTrue;
+		PlaySound_EnemyShoot();
 	}
 	if (timerEnd)
 	{

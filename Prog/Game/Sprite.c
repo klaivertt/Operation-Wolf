@@ -204,14 +204,6 @@ sfBool MouseClickOnImagePixel(sfMouseButtonEvent _mouseButton, sfSprite* _sprite
 
 }
 
-//sfBool Verif
-
-//if (pixelColor.r == 255 && pixelColor.g == 0 && pixelColor.b == 0 && pixelColor.a == 255)
-//{
-//	printf("headshot\n");
-//	return sfTrue;
-//}
-
 void SetSpriteOrigin(sfSprite** _sprite, sfVector2f _divide)
 {
 	sfVector2u size = sfTexture_getSize(sfSprite_getTexture(*_sprite));

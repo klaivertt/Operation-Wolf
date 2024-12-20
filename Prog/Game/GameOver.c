@@ -4,7 +4,6 @@ GameOverData data = { 0 };
 
 void LoadGameOver(void)
 {
-	//printf("LOAD GAME OVER\n");
 	LoadGameOverSounds();
 	PlaySound_PlayerDeath();
 
@@ -32,7 +31,7 @@ void LoadGameOver(void)
 
 	data.text[0] = InitText("Press 'Space' to restart", 35, (sfVector2f) { SCREEN_WIDTH / 2, SCREEN_HEIGHT * 0.4f - 45 });
 	data.text[1] = InitText("or", 35, (sfVector2f) { SCREEN_WIDTH / 2, SCREEN_HEIGHT * 0.4f - 10 });
-	data.text[2] = InitText("'Escape' to quit", 35, (sfVector2f) { SCREEN_WIDTH / 2, SCREEN_HEIGHT * 0.4f + 45 });
+	data.text[2] = InitText("'Escape' to return Menu", 35, (sfVector2f) { SCREEN_WIDTH / 2, SCREEN_HEIGHT * 0.4f + 45 });
 
 	// Centrer chaque ligne horizontalement
 	sfFloatRect bounds1 = sfText_getGlobalBounds(data.text[0]);
