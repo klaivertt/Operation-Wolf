@@ -89,8 +89,13 @@ void MoveBackground(sfSprite* _sprite, float _x)
 void CleanupBackground(void)
 {
 	sfSprite_destroy(map.background);
+	map.background = NULL;
+
 	sfSprite_destroy(map.space);
+	map.space = NULL;
+
 	sfSprite_destroy(map.balcony);
+	map.balcony = NULL;
 }
 
 void DrawThirdPlan(sfRenderWindow* _renderWindow)

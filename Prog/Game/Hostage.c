@@ -160,7 +160,14 @@ void DrawHostage(sfRenderWindow* _renderWindow, int _ground)
 
 void CleanupHostage(void)
 {
+	sfTexture_destroy(hostageData.spriteSheet);
+	hostageData.spriteSheet = NULL;
 
+	for (short i = 0; i < HOSTAGE_MAX; i++)
+	{
+		sfSprite_destroy(hostageData.hostage[i].sprite);
+		hostageData.hostage[i].sprite = NULL;
+	}
 }
 
 //Local Function

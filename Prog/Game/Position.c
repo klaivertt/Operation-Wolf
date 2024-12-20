@@ -89,7 +89,6 @@ void IncreaseNbCharactersPositionGround(sfSprite* _sprite)
 		positionData.charactersInDownground += 1;
 		break;
 	default:
-		printf("\nIncreaseVariablesNbEnemyPos error : problem with enemy position Y : %d", posY);
 		break;
 	}
 }
@@ -110,7 +109,6 @@ void DecreaseNbCharactersPositionGround(sfSprite* _sprite)
 		positionData.charactersInDownground -= 1;
 		break;
 	default:
-		printf("\nDecreaseVariablesNbEnemyPos error : problem with enemy position Y : %d", posY);
 		break;
 	}
 }

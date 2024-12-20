@@ -36,7 +36,7 @@ void UpdatePlayer(float _dt)
 	}
 
 	VerifGetDamage();
-	UpdateGrenadeTimer(_dt);
+	//UpdateGrenadeTimer(_dt);
 
 	if (player.HP <= 0)
 	{

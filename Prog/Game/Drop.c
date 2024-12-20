@@ -51,6 +51,21 @@ void MoveDrop(int _i)
 
 }
 
+void CLeanupDrop()
+{
+	sfTexture_destroy(dropData.ammoTexture);
+	dropData.ammoTexture = NULL;
+
+	sfTexture_destroy(dropData.healthTexture);
+	dropData.healthTexture = NULL;
+
+	for  (short i = 0; i < MAX_DROP; i++)
+	{
+		sfSprite_destroy(dropData.drop[i].sprite);
+		dropData.drop[i].sprite = NULL;
+	}
+}
+
 void CreateDrop(sfVector2f _vector, Drop _state)
 {
 	sfVector2u size = { 0 };
