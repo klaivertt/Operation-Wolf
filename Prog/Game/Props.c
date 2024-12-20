@@ -55,32 +55,33 @@ void UpdateProps(float _dt, float _backgroundSpeed)
 		sfSprite_move(props[i].sprite, (sfVector2f) { move, 0 });
 
 		sfFloatRect rect = sfSprite_getGlobalBounds(props[i].sprite);
-		if (sfSprite_getPosition(props[i].sprite).x < -rect.width/2)
+		if (sfSprite_getPosition(props[i].sprite).x < -rect.width / 2)
 		{
 			NewProps(&props[i]);
 		}
 	}
 }
 
-void DrawProps(sfRenderWindow* _renderWindow)
+void DrawProps(sfRenderWindow* _renderWindow, int _layer)
 {
-	for (size_t i = 0; i < MAX_PROPS; i++)
+	if (_layer == MIDDLEGROUND)
 	{
-		if (props[i].layerY == 0)
+		for (size_t i = 0; i < MAX_PROPS; i++)
 		{
-			sfRenderWindow_drawSprite(_renderWindow, props[i].sprite, NULL);
+			if (props[i].layerY == 0)
+			{
+				sfRenderWindow_drawSprite(_renderWindow, props[i].sprite, NULL);
+			}
 		}
 	}
-	
-}
-
-void DrawLayer2Props(sfRenderWindow* _renderWindow)
-{
-	for (size_t i = 0; i < MAX_PROPS; i++)
+	else if (_layer == FORGROUND)
 	{
-		if (props[i].layerY == 1)
+		for (size_t i = 0; i < MAX_PROPS; i++)
 		{
-			sfRenderWindow_drawSprite(_renderWindow, props[i].sprite, NULL);
+			if (props[i].layerY == 1)
+			{
+				sfRenderWindow_drawSprite(_renderWindow, props[i].sprite, NULL);
+			}
 		}
 	}
 }
@@ -101,7 +102,7 @@ sfBool IsPositionOccupied(sfVector2f position, float minDistance)
 	for (size_t i = 0; i < MAX_PROPS; i++)
 	{
 		sfVector2f existingPos = sfSprite_getPosition(props[i].sprite);
-		float distance = sqrtf(((position.x - existingPos.x) * (position.x - existingPos.x)) + ((position.y - existingPos.y)* (position.y - existingPos.y)));
+		float distance = sqrtf(((position.x - existingPos.x) * (position.x - existingPos.x)) + ((position.y - existingPos.y) * (position.y - existingPos.y)));
 		if (distance < minDistance)
 		{
 			return sfTrue;

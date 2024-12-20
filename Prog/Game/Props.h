@@ -50,9 +50,8 @@ void CleanupProps(void);
 //* Renders the props in the middle background layer, typically used for elements like trees or buildings.
 //*
 //* @param _renderWindow Pointer to the sfRenderWindow where the props will be drawn.
-void DrawProps(sfRenderWindow* _renderWindow);
-
-void DrawLayer2Props(sfRenderWindow* _renderWindow);
+//* @param _layer Defines the layer to be drawn.
+void DrawProps(sfRenderWindow* _renderWindow, int _layer);
 
 //* @brief Gets all the props.
 //*
