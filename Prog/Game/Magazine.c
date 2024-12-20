@@ -9,7 +9,7 @@ void LoadMagazine()
 	sfVector2f origin = { 0.5 , 1 };
 	magazine.texture = sfTexture_createFromFile("Assets/Sprites/HUD/AmmoAndcharger.png", NULL);
 
-	for (int i = 0; i < GetMagazine(); i++)
+	for (int i = 0; i < MAGAZINE_NUMBER_MAX; i++)
 	{
 		CreateSprite(&magazine.sprite[i], magazine.texture, position, rect, origin);
 		position.x += (float)rect.width;
