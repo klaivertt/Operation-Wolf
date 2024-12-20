@@ -95,7 +95,7 @@ void MouseButtonPressedPlayer(sfRenderWindow* const _renderWindow, sfMouseButton
 				}
 				player.HP--;
 			}
-			if (VerifClickOnEnemy(_mouseButton))
+			else if (VerifClickOnEnemy(_mouseButton))
 			{
 				UpdateScore(2);
 			}
