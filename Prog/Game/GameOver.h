@@ -13,6 +13,8 @@ typedef struct GameOverData
 	sfText* maxScore;
 	sfText* score;
 	sfText* text[MAX_TEXT];
+
+	Image background;
 }GameOverData;
 
 

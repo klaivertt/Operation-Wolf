@@ -61,11 +61,17 @@ void LoadMovingEnemy(MovingEnemy* _enemy, sfTexture** _texture)
 	delay = ME_DEATH_DELAY;
 	InitTimer(&_enemy->deadTimer, delay);
 
-	if (*_texture == NULL)
-	{
-		*_texture = sfTexture_createFromFile("Assets/Sprites/Characters/Sprite-MovingSoldier.png", NULL);
-	}
 
+	int random = 1 + rand() % 2;
+	switch (random)
+	{
+	case 1:
+		*_texture = sfTexture_createFromFile("Assets/Sprites/Characters/Sprite-MovingSoldier1.png", NULL);
+		break;
+	case 2:
+		*_texture = sfTexture_createFromFile("Assets/Sprites/Characters/Sprite-MovingSoldier2.png", NULL);
+		break;
+	}
 	sfVector2f pos = RandomSpawn();
 	sfIntRect rect = { 0,0,753 / 5,208 };
 	sfVector2f origin = { 0.5,1 };
@@ -292,8 +298,9 @@ Drop Drop_MovingEnemy(void)
 {
 	int dropChance = 1 + rand() % 100;
 
-	if (dropChance >= 20 && dropChance <= 40)
+	if (dropChance >= 20 && dropChance <= 45)
 	{
+
 		return AMMO;
 	}
 	else if (dropChance <= 20)

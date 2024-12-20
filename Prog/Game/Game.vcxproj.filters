@@ -209,9 +209,6 @@
     <ClInclude Include="State.h">
       <Filter>Fichiers d%27en-tête\States</Filter>
     </ClInclude>
-    <ClInclude Include="GameOver.h">
-      <Filter>Fichiers d%27en-tête\States</Filter>
-    </ClInclude>
     <ClInclude Include="Sprite.h">
       <Filter>Fichiers d%27en-tête\Utilitaires</Filter>
     </ClInclude>
@@ -310,6 +307,9 @@
     </ClInclude>
     <ClInclude Include="MenuSound.h">
       <Filter>Fichiers d%27en-tête\Sounds</Filter>
+    </ClInclude>
+    <ClInclude Include="GameOver.h">
+      <Filter>Fichiers d%27en-tête\States</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

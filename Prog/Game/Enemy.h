@@ -71,6 +71,6 @@ void CleanupEnemy(EnemyType _enemyType);
 MovingEnemy* GetAllMovingEnemy(void);
 FrontEnemy* GetAllFrontEnemy(void);
 
-sfBool VerifPlayerKillEnemy(sfVector2f _mousePos, short _i);
+sfBool VerifPlayerKillEnemy(sfVector2f _mousePos, short _i, EnemyType _enemyType);
 int PlayerDamage(void);
 #endif

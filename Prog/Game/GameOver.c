@@ -6,6 +6,23 @@ void LoadGameOver(void)
 {
 	//printf("LOAD GAME OVER\n");
 
+	//Background
+	data.background.sprite = sfSprite_create();
+
+	data.background.texture = sfTexture_createFromFile("Assets/Sprites/GameOverBackground(prog).png", NULL);
+
+	sfSprite_setTexture(data.background.sprite, data.background.texture, sfTrue);
+
+	sfVector2f position = { 0,SCREEN_HEIGHT };
+	sfFloatRect globalBounds = sfSprite_getGlobalBounds(data.background.sprite);
+
+	sfSprite_setOrigin(data.background.sprite, (sfVector2f) { 0, globalBounds.height });
+	sfSprite_setPosition(data.background.sprite, position);
+
+
+	sfVector2f screen = { SCREEN_WIDTH,SCREEN_HEIGHT };
+
+
 	data.gameOver = InitText("Game Over", 145, (sfVector2f) { SCREEN_WIDTH / 2, SCREEN_HEIGHT * 0.2f });
 
 	sfFloatRect gameOverSize = sfText_getGlobalBounds(data.gameOver);
@@ -65,6 +82,8 @@ void UpdateGameOver(float _dt)
 
 void DrawGameOver(sfRenderWindow* _renderWindow)
 {
+	sfRenderWindow_drawSprite(_renderWindow, data.background.sprite, NULL);
+
 	sfRenderWindow_setMouseCursorVisible(_renderWindow, sfTrue);
 
 	sfRenderWindow_drawText(_renderWindow, data.gameOver, NULL);

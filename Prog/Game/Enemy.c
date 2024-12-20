@@ -107,21 +107,36 @@ FrontEnemy* GetAllFrontEnemy(void)
 	return enemyData.frontEnemy;
 }
 
-sfBool VerifPlayerKillEnemy(sfVector2f _mousePos, short _i)
+sfBool VerifPlayerKillEnemy(sfVector2f _mousePos, short _i, EnemyType _enemyType)
 {
 	//FrontEnemy
-
-	if (VerifPlayerKill_MovingEnemy(&enemyData.movingEnemy[_i], _mousePos))
+	switch (_enemyType)
 	{
-		return sfTrue;
-	}
+	case MOVING_ENEMY:
+		if (VerifPlayerKill_MovingEnemy(&enemyData.movingEnemy[_i], _mousePos))
+		{
+			return sfTrue;
+		}
+		break;
+	case FRONT_ENEMY:
+		if (VerifPlayerKill_FrontEnemy(&enemyData.frontEnemy[_i], _mousePos))
+		{
+			return sfTrue;
+		}
+		break;
 
+	}
 	return sfFalse;
 }
 
 int PlayerDamage(void)
 {
 	int totalDamage = 0;
+	for (short i = 0; i < FRONT_ENEMY_MAX; i++)
+	{
+		totalDamage += DamageToPlayer_FrontEnemy(&enemyData.movingEnemy[i]);
+	}
+
 	for (short i = 0; i < MOVING_ENEMY_MAX; i++)
 	{
 		totalDamage += DamageToPlayer_MovingEnemy(&enemyData.movingEnemy[i]);

@@ -11,15 +11,18 @@ sfBool VerifClickOnEnemy(sfMouseButtonEvent _mouseButton)
 
 	for (short i = FRONT_ENEMY_MAX - 1; i >= 0; i--)
 	{
-
+		if (VerifPlayerKillEnemy(pos, i, FRONT_ENEMY))
+		{
+			return sfTrue;
+		}
 	}
-
 	//Decremente for touch the last enemy draw in first
 	for (short i = MOVING_ENEMY_MAX - 1; i >= 0; i--)
 	{
+		
 		if (!VerifClickOnProps(_mouseButton, moveEnemy[i].ground))
 		{
-			killEnemy = VerifPlayerKillEnemy(pos, i);
+			killEnemy = VerifPlayerKillEnemy(pos, i,MOVING_ENEMY);
 		}
 		if (killEnemy)
 		{

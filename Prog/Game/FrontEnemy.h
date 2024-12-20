@@ -15,7 +15,7 @@
 #define FE_SHOOT_DELAY 1
 #define FE_MAX_SPAWN_DELAY 25
 
-#define FE_DAMAGE 1
+#define FE_DAMAGE 3
 #define FE_TOTAL_LIFE 1
 #define FE_SPEED 20
 #define FE_DEATH_DELAY 0.5f

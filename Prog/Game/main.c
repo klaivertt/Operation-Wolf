@@ -203,7 +203,7 @@ void LoadMainData(MainData* const _mainData)
 {
 	_mainData->clock = sfClock_create();
 	sfVideoMode videoMode = { SCREEN_WIDTH, SCREEN_HEIGHT, BPP };
-	_mainData->renderWindow = sfRenderWindow_create(videoMode, "Game", sfFullscreen, NULL);
+	_mainData->renderWindow = sfRenderWindow_create(videoMode, "Game", sfFullscreen , NULL);
 	sfRenderWindow_setFramerateLimit(_mainData->renderWindow, 60);
 	sfRenderWindow_setKeyRepeatEnabled(_mainData->renderWindow, sfFalse);
 }

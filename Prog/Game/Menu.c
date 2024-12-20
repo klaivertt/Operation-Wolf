@@ -162,7 +162,7 @@ void CleanupMenu(void)
 //Local function
 void UpdateMenuVisibility(void)
 {
-	menuData.backgroundAlpha -= 0.5;
+	menuData.backgroundAlpha -= 1;
 	//BackGround
 	sfColor color = sfSprite_getColor(menuData.background.sprite);
 	color.a = menuData.backgroundAlpha;
