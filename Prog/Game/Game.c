@@ -4,8 +4,6 @@ GameData gameData;
 
 void LoadGame(void)
 {
-	printf("LOAD GAME\n");
-
 	LoadGameMusic();
 	LoadGameSounds();
 	LoadMap();
@@ -54,6 +52,8 @@ void UpdateGame(float _dt)
 
 void DrawGame(sfRenderWindow* _renderWindow)
 {
+	sfRenderWindow_setMouseCursorVisible(_renderWindow, sfFalse);
+
 	DrawMap(_renderWindow);
 	DrawThirdPlan(_renderWindow);
 
@@ -85,6 +85,5 @@ void CleanupGame(void)
 	CleanupMap();
 	CleanupHUD();
 	CleanupHostage();
-	printf("CLEANUP GAME\n");
 }
 

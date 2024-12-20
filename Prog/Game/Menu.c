@@ -105,6 +105,8 @@ void UpdateMenu(float _dt)
 
 void DrawMenu(sfRenderWindow* _renderWindow)
 {
+	sfRenderWindow_setMouseCursorVisible(_renderWindow, sfTrue);
+
 	sfRenderWindow_drawSprite(_renderWindow, menuData.background.sprite, NULL);
 
 	sfRenderWindow_drawSprite(_renderWindow, menuData.userInterface.playButtonSprite, NULL);
@@ -114,8 +116,6 @@ void DrawMenu(sfRenderWindow* _renderWindow)
 
 void CleanupMenu(void)
 {
-	//printf("CLEANUP MENU\n");
-
 	CleanupMenuMusic();
 	//BackGround
 	sfTexture_destroy(menuData.background.texture);

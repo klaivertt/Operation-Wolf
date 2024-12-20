@@ -65,6 +65,8 @@ void UpdateGameOver(float _dt)
 
 void DrawGameOver(sfRenderWindow* _renderWindow)
 {
+	sfRenderWindow_setMouseCursorVisible(_renderWindow, sfTrue);
+
 	sfRenderWindow_drawText(_renderWindow, data.gameOver, NULL);
 	for (size_t i = 0; i < MAX_TEXT; i++)
 	{
@@ -76,5 +78,12 @@ void DrawGameOver(sfRenderWindow* _renderWindow)
 
 void CleanupGameOver(void)
 {
-	//printf("CLEANUP GAME OVER\n");
+	sfText_destroy(data.gameOver);
+	data.gameOver = NULL;
+
+	sfText_destroy(data.maxScore);
+	data.maxScore = NULL;
+
+	sfText_destroy(data.score);
+	data.score = NULL;
 }

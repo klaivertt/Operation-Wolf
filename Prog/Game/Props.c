@@ -91,7 +91,6 @@ void CleanupProps(void)
 	for (size_t i = 0; i < MAX_PROPS; i++)
 	{
 		sfSprite_destroy(props[i].sprite);
-
 		props[i].sprite = NULL;
 	}
 }
