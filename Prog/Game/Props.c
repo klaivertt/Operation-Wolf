@@ -125,10 +125,10 @@ void NewProps(Props* _props)
 		switch (_props->layerY)
 		{
 		case 0:
-			randomY = MIDDLEGROUND;
+			randomY = MIDDLEGROUND + PLACEMENT_CORRECTION;
 			break;
 		case 1:
-			randomY = FORGROUND;
+			randomY = FORGROUND + PLACEMENT_CORRECTION;
 			break;
 		}
 		position = (sfVector2f){ (float)randomX, (float)randomY };

@@ -13,7 +13,7 @@ sfBool VerifClickOnEnemy(sfMouseButtonEvent _mouseButton)
 	{
 		if (!VerifClickOnProps(_mouseButton, enemy[i].ground))
 		{
-			killEnemy = VerifPlayerKillEnemy(pos);
+			killEnemy = VerifPlayerKillEnemy(pos, i);
 		}
 		if (killEnemy)
 		{
@@ -43,7 +43,8 @@ sfBool VerifClickOnProps(sfMouseButtonEvent _mouseButton, int _enemyGround)
 		Props* props = GetAllProps();
 		sfVector2f pos = sfSprite_getPosition(props[i].sprite);
 		sfVector2f mouse = { (float)_mouseButton.x, (float)_mouseButton.y };
-		if (pos.y == _enemyGround + 10)
+		printf("%d\nb", _enemyGround);
+		if (pos.y == _enemyGround + PLACEMENT_CORRECTION)
 		{
 			collision = MouseClickOnSpritePixel(mouse,props[i].sprite);
 		}

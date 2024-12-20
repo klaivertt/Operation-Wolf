@@ -65,6 +65,6 @@ void DrawEnemy(sfRenderWindow* _renderWindow, EnemyType _enemyType, int _ground)
 void CleanupEnemy(EnemyType _enemyType);
 
 Enemy* GetAllMovingEnemy(void);
-sfBool VerifPlayerKillEnemy(sfVector2f _mousePos);
+sfBool VerifPlayerKillEnemy(sfVector2f _mousePos, short _i);
 int PlayerDamage(void);
 #endif

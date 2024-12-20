@@ -93,16 +93,13 @@ Enemy* GetAllMovingEnemy(void)
 	return enemyData.MovingEnemy;
 }
 
-sfBool VerifPlayerKillEnemy(sfVector2f _mousePos)
+sfBool VerifPlayerKillEnemy(sfVector2f _mousePos, short _i)
 {
 	//FrontEnemy
 
-	for (short i = 0; i < ENEMY_MAX; i++)
+	if (VerifPlayerKill_MovingEnemy(&enemyData.MovingEnemy[_i], _mousePos))
 	{
-		if (VerifPlayerKill_MovingEnemy(&enemyData.MovingEnemy[i], _mousePos))
-		{
-			return sfTrue;
-		}
+		return sfTrue;
 	}
 
 	return sfFalse;
