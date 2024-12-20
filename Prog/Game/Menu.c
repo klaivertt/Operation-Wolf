@@ -12,7 +12,7 @@ MenuData menuData;
 
 void LoadMenu(void)
 {
-	printf("LOAD MENU\n");
+	//printf("LOAD MENU\n");
 
 	LoadMenuMusic();
 
@@ -114,7 +114,7 @@ void DrawMenu(sfRenderWindow* _renderWindow)
 
 void CleanupMenu(void)
 {
-	printf("CLEANUP MENU\n");
+	//printf("CLEANUP MENU\n");
 
 	CleanupMenuMusic();
 	//BackGround
