@@ -62,14 +62,14 @@ typedef struct Enemy
 	Anim anim;
 	sfSprite* sprite;
 
-}Enemy;
+}MovingEnemy;
 
-void LoadMovingEnemy(Enemy* _enemy, sfTexture** _texture);
-void UpdateMovingEnemy(Enemy* _enemy, sfTexture** _texture, float _dt);
-void DrawMovingEnemy(Enemy* _enemy, sfRenderWindow* _renderWindow, int _ground);
-void CleanupMovingEnemy(Enemy* _enemy);
+void LoadMovingEnemy(MovingEnemy* _enemy, sfTexture** _texture);
+void UpdateMovingEnemy(MovingEnemy* _enemy, sfTexture** _texture, float _dt);
+void DrawMovingEnemy(MovingEnemy* _enemy, sfRenderWindow* _renderWindow, int _ground);
+void CleanupMovingEnemy(MovingEnemy* _enemy);
 
-int DamageToPlayer_MovingEnemy(Enemy* _enemy);
-sfBool VerifPlayerKill_MovingEnemy(Enemy* _enemy, sfVector2f _mousePos);
+int DamageToPlayer_MovingEnemy(MovingEnemy* _enemy);
+sfBool VerifPlayerKill_MovingEnemy(MovingEnemy* _enemy, sfVector2f _mousePos);
 
 #endif

@@ -1,21 +1,21 @@
 #include "MovingEnemy.h"
 
-void WaitToSpawn(Enemy* _enemy, float _dt);
-void Walk(Enemy* _enemy, float _dt);
-void Shoot(Enemy* _enemy, float _dt);
-void Dead(Enemy* _enemy, sfTexture** _texture, float _dt);
+void WaitToSpawn(MovingEnemy* _enemy, float _dt);
+void Walk(MovingEnemy* _enemy, float _dt);
+void Shoot(MovingEnemy* _enemy, float _dt);
+void Dead(MovingEnemy* _enemy, sfTexture** _texture, float _dt);
 
-void Scale(Enemy* _enemy, sfSprite** _sprite);
-sfBool Move(Enemy* _enemy, sfSprite** _sprite);
+void Scale(MovingEnemy* _enemy, sfSprite** _sprite);
+sfBool Move(MovingEnemy* _enemy, sfSprite** _sprite);
 
-void SetState_MovingEnemy(Enemy* _enemy, MovingEnemyState _enemyState);
-MovingEnemyState GetState_MovingEnemy(Enemy* _enemy);
+void SetState_MovingEnemy(MovingEnemy* _enemy, MovingEnemyState _enemyState);
+MovingEnemyState GetState_MovingEnemy(MovingEnemy* _enemy);
 
 Drop Drop_MovingEnemy(void);
 
 //Imported function
 
-int DamageToPlayer_MovingEnemy(Enemy* _enemy)
+int DamageToPlayer_MovingEnemy(MovingEnemy* _enemy)
 {
 	if (_enemy->doDamageToPlayer)
 	{
@@ -25,7 +25,7 @@ int DamageToPlayer_MovingEnemy(Enemy* _enemy)
 	return 0;
 }
 
-sfBool VerifPlayerKill_MovingEnemy(Enemy* _enemy, sfVector2f _mousePos)
+sfBool VerifPlayerKill_MovingEnemy(MovingEnemy* _enemy, sfVector2f _mousePos)
 {
 	sfBool click = MouseClickOnSpritePixel(_mousePos, _enemy->sprite);
 	if (click)
@@ -38,7 +38,7 @@ sfBool VerifPlayerKill_MovingEnemy(Enemy* _enemy, sfVector2f _mousePos)
 
 //Main Function
 
-void LoadMovingEnemy(Enemy* _enemy, sfTexture** _texture)
+void LoadMovingEnemy(MovingEnemy* _enemy, sfTexture** _texture)
 {
 	_enemy->state = ME_WAIT_TO_SPAWN;
 	_enemy->life = ME_TOTAL_LIFE;
@@ -81,7 +81,7 @@ void LoadMovingEnemy(Enemy* _enemy, sfTexture** _texture)
 	_enemy->ground = (int)pos.y;
 }
 
-void UpdateMovingEnemy(Enemy* _enemy, sfTexture** _texture, float _dt)
+void UpdateMovingEnemy(MovingEnemy* _enemy, sfTexture** _texture, float _dt)
 {
 	switch (_enemy->state)
 	{
@@ -115,7 +115,7 @@ void UpdateMovingEnemy(Enemy* _enemy, sfTexture** _texture, float _dt)
 	}
 }
 
-void DrawMovingEnemy(Enemy* _enemy, sfRenderWindow* _renderWindow, int _ground)
+void DrawMovingEnemy(MovingEnemy* _enemy, sfRenderWindow* _renderWindow, int _ground)
 {
 	int enemyGround = _enemy->ground;
 	if (enemyGround == _ground)
@@ -124,7 +124,7 @@ void DrawMovingEnemy(Enemy* _enemy, sfRenderWindow* _renderWindow, int _ground)
 	}
 }
 
-void CleanupMovingEnemy(Enemy* _enemy)
+void CleanupMovingEnemy(MovingEnemy* _enemy)
 {
 	if (_enemy->sprite != NULL)
 	{
@@ -142,7 +142,7 @@ void CleanupMovingEnemy(Enemy* _enemy)
 
 //Update
 
-void WaitToSpawn(Enemy* _enemy, float _dt)
+void WaitToSpawn(MovingEnemy* _enemy, float _dt)
 {
 	sfBool timerEnd;
 	UpdateTimer(_dt, &_enemy->waitTimer);
@@ -153,7 +153,7 @@ void WaitToSpawn(Enemy* _enemy, float _dt)
 	}
 }
 
-void Walk(Enemy* _enemy, float _dt)
+void Walk(MovingEnemy* _enemy, float _dt)
 {
 	sfBool notMoving;
 
@@ -172,7 +172,7 @@ void Walk(Enemy* _enemy, float _dt)
 	}
 }
 
-void Shoot(Enemy* _enemy, float _dt)
+void Shoot(MovingEnemy* _enemy, float _dt)
 {
 	sfBool timerEnd;
 
@@ -201,7 +201,7 @@ void Shoot(Enemy* _enemy, float _dt)
 	}
 }
 
-void Dead(Enemy* _enemy, sfTexture** _texture, float _dt)
+void Dead(MovingEnemy* _enemy, sfTexture** _texture, float _dt)
 {
 
 	UpdateAnimation(&_enemy->anim.dead, &_enemy->sprite, _dt);
@@ -217,7 +217,7 @@ void Dead(Enemy* _enemy, sfTexture** _texture, float _dt)
 
 //Sprite
 
-void Scale(Enemy* _enemy, sfSprite** _sprite)
+void Scale(MovingEnemy* _enemy, sfSprite** _sprite)
 {
 	sfVector2f pos = sfSprite_getPosition(*_sprite);
 
@@ -240,7 +240,7 @@ void Scale(Enemy* _enemy, sfSprite** _sprite)
 	sfSprite_setScale(*_sprite, scale);
 }
 
-sfBool Move(Enemy* _enemy, sfSprite** _sprite)
+sfBool Move(MovingEnemy* _enemy, sfSprite** _sprite)
 {
 	sfVector2f pos = sfSprite_getPosition(*_sprite);
 
@@ -251,7 +251,7 @@ sfBool Move(Enemy* _enemy, sfSprite** _sprite)
 
 //State
 
-void SetState_MovingEnemy(Enemy* _enemy, MovingEnemyState _enemyState)
+void SetState_MovingEnemy(MovingEnemy* _enemy, MovingEnemyState _enemyState)
 {
 	if (_enemyState != _enemy->state)
 	{
@@ -281,7 +281,7 @@ void SetState_MovingEnemy(Enemy* _enemy, MovingEnemyState _enemyState)
 
 }
 
-MovingEnemyState GetState_MovingEnemy(Enemy* _enemy)
+MovingEnemyState GetState_MovingEnemy(MovingEnemy* _enemy)
 {
 	return _enemy->state;
 }

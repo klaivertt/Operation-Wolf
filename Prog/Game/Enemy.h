@@ -13,6 +13,7 @@
 #include "EnemySound.h"
 
 #include "MovingEnemy.h"
+#include "FrontEnemy.h"
 
 //24 Enemies maximum 
 
@@ -50,9 +51,10 @@ typedef enum EnemyType
 
 typedef struct EnemyData
 {
-	Enemy MovingEnemy[ENEMY_MAX];
-	Enemy frontEnemy;
+	MovingEnemy movingEnemy[ENEMY_MAX];
+	MovingEnemy frontEnemy;
 	sfTexture* movingEnemySpriteSheet;
+	sfTexture* frontEnemySpriteSheet;
 
 }EnemyData;
 #pragma endregion
@@ -64,7 +66,7 @@ void UpdateEnemy(float _dt, EnemyType _enemyType);
 void DrawEnemy(sfRenderWindow* _renderWindow, EnemyType _enemyType, int _ground);
 void CleanupEnemy(EnemyType _enemyType);
 
-Enemy* GetAllMovingEnemy(void);
+MovingEnemy* GetAllMovingEnemy(void);
 sfBool VerifPlayerKillEnemy(sfVector2f _mousePos, short _i);
 int PlayerDamage(void);
 #endif
