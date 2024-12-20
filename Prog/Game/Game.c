@@ -50,6 +50,11 @@ void UpdateGame(float _dt)
 	UpdateHUD(_dt);
 	UpdateDrop(_dt);
 	UpdatePlayer(_dt);
+
+	if (IsPlayerDead())
+	{
+		SetGameState(GAME_OVER);
+	}
 }
 
 void DrawGame(sfRenderWindow* _renderWindow)

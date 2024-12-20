@@ -37,11 +37,15 @@ void UpdatePlayer(float _dt)
 
 	VerifGetDamage();
 	//UpdateGrenadeTimer(_dt);
+}
 
-	if (player.HP <= 0)
+sfBool IsPlayerDead()
+{
+	if (player.HP > 0)
 	{
-		SetGameState(GAME_OVER);
+		return sfFalse;
 	}
+	return sfTrue;
 }
 
 void VerifGetDamage()
