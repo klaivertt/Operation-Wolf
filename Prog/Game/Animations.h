@@ -52,8 +52,34 @@ void UpdateAnimation(Animation* _anim, sfSprite** _sprite, float _dt);
 //* @param _anim Pointer to the Animation structure to reset.
 void ResetAnimation(Animation* _anim, sfSprite** _sprite);
 
+
+ * @brief Vérifie si une animation est terminée.
+ *
+ * @param _anim Pointeur constant vers une structure Animation.
+ *              Représente l'animation à vérifier.
+ * @return sfBool Retourne `sfTrue` si l'animation est terminée, sinon `sfFalse`.
+ *
 sfBool AnimIsFinished(Animation* const _anim);
 
+
+ * @brief Récupère l'index de la frame actuelle d'une animation.
+ *
+ * @param _anim Pointeur vers une structure Animation.
+ *              Représente l'animation en cours.
+ * @return int Index de la frame actuelle dans l'animation.
+
 int GetAnimCurrentFrame(Animation* _anim);
+
+
+ * @brief Libère les ressources liées à une animation, notamment le sprite et la texture.
+ *
+ * @param anim Pointeur vers une structure Animation à nettoyer.
+ * @param sprite Double pointeur vers le sprite associé à l'animation.
+ *               La mémoire sera libérée et le pointeur mis à NULL.
+ * @param texture Double pointeur vers la texture associée à l'animation.
+ *                La mémoire sera libérée et le pointeur mis à NULL.
+ 
+void CleanUpAnimation(Animation* anim, sfSprite** sprite, sfTexture** texture);
+
 
 #endif // !ANIMATIONS_H
