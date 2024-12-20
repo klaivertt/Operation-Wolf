@@ -8,6 +8,7 @@
 #include "Grenade.h"
 #include "score.h"
 #include "HealthBar.h"
+#include "DamageWindow.h"
 #include "ObjectsClickVerif.h"
 
 #include "PlayerSound.h"

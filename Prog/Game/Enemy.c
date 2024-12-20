@@ -10,11 +10,11 @@ void LoadEnemy(short _enemyToLoad, EnemyType _enemyType )
 	case MOVING_ENEMY:
 		for (short i = 0; i < ENEMY_MAX; i++)
 		{
-			LoadMovingEnemy(&enemyData.MovingEnemy[i], &enemyData.movingEnemySpriteSheet);
+			LoadMovingEnemy(&enemyData.movingEnemy[i], &enemyData.movingEnemySpriteSheet);
 		}
 		break;
 	case FRONT_ENEMY:
-		//FrontEnemy
+		LoadFrontEnemy(&enemyData.frontEnemy, &enemyData.frontEnemySpriteSheet);
 		break;
 	default:
 		break;
@@ -29,11 +29,11 @@ void UpdateEnemy(float _dt, EnemyType _enemyType)
 	case MOVING_ENEMY:
 		for (short i = 0; i < ENEMY_MAX; i++)
 		{
-			UpdateMovingEnemy(&enemyData.MovingEnemy[i], &enemyData.movingEnemySpriteSheet, _dt);
+			UpdateMovingEnemy(&enemyData.movingEnemy[i], &enemyData.movingEnemySpriteSheet, _dt);
 		}
 		break;
 	case FRONT_ENEMY:
-		//FrontEnemy
+		UpdateFrontEnemy(&enemyData.frontEnemy, &enemyData.frontEnemySpriteSheet,_dt);
 		break;
 	default:
 		break;
@@ -48,11 +48,11 @@ void DrawEnemy( sfRenderWindow* _renderWindow, EnemyType _enemyType, int _ground
 	case MOVING_ENEMY:
 		for (short i = 0; i < ENEMY_MAX; i++)
 		{
-			DrawMovingEnemy(&enemyData.MovingEnemy[i], _renderWindow, _ground);
+			DrawMovingEnemy(&enemyData.movingEnemy[i], _renderWindow, _ground);
 		}
 		break;
 	case FRONT_ENEMY:
-		//FrontEnemy
+		DrawFrontEnemy(&enemyData.frontEnemy, _renderWindow);
 		break;
 	default:
 		break;
@@ -66,7 +66,7 @@ void CleanupEnemy(EnemyType _enemyType)
 	case MOVING_ENEMY:
 		for (short i = 0; i < ENEMY_MAX; i++)
 		{
-			CleanupMovingEnemy(&enemyData.MovingEnemy[i]);
+			CleanupMovingEnemy(&enemyData.movingEnemy[i]);
 		}
 		break;
 	case FRONT_ENEMY:
@@ -88,16 +88,16 @@ void CleanupEnemy(EnemyType _enemyType)
 
 
 
-Enemy* GetAllMovingEnemy(void)
+MovingEnemy* GetAllMovingEnemy(void)
 {
-	return enemyData.MovingEnemy;
+	return enemyData.movingEnemy;
 }
 
 sfBool VerifPlayerKillEnemy(sfVector2f _mousePos, short _i)
 {
 	//FrontEnemy
 
-	if (VerifPlayerKill_MovingEnemy(&enemyData.MovingEnemy[_i], _mousePos))
+	if (VerifPlayerKill_MovingEnemy(&enemyData.movingEnemy[_i], _mousePos))
 	{
 		return sfTrue;
 	}
@@ -110,7 +110,7 @@ int PlayerDamage(void)
 	int totalDamage = 0;
 	for (short i = 0; i < ENEMY_MAX; i++)
 	{
-		totalDamage += DamageToPlayer_MovingEnemy(&enemyData.MovingEnemy[i]);
+		totalDamage += DamageToPlayer_MovingEnemy(&enemyData.movingEnemy[i]);
 	}
 
 	//FrontEnemy
