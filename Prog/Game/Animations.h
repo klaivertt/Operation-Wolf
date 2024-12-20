@@ -53,32 +53,29 @@ void UpdateAnimation(Animation* _anim, sfSprite** _sprite, float _dt);
 void ResetAnimation(Animation* _anim, sfSprite** _sprite);
 
 
- * @brief Vérifie si une animation est terminée.
- *
- * @param _anim Pointeur constant vers une structure Animation.
- *              Représente l'animation à vérifier.
- * @return sfBool Retourne `sfTrue` si l'animation est terminée, sinon `sfFalse`.
- *
+//* @brief Checks if an animation is complete.
+//*
+//* @param _anim Constant pointer to an Animation structure.
+//* Represents the animation to be checked.
+//* @return sfBool Returns `sfTrue` if the animation is complete, otherwise `sfFalse`.
 sfBool AnimIsFinished(Animation* const _anim);
 
 
- * @brief Récupère l'index de la frame actuelle d'une animation.
- *
- * @param _anim Pointeur vers une structure Animation.
- *              Représente l'animation en cours.
- * @return int Index de la frame actuelle dans l'animation.
-
+//* @brief Retrieves the index of the current frame of an animation.
+//*
+//* @param _anim Pointer to an Animation structure.
+//* Represents the current animation.
+//* @return int Index of the current frame in the animation.
 int GetAnimCurrentFrame(Animation* _anim);
 
 
- * @brief Libère les ressources liées à une animation, notamment le sprite et la texture.
- *
- * @param anim Pointeur vers une structure Animation à nettoyer.
- * @param sprite Double pointeur vers le sprite associé à l'animation.
- *               La mémoire sera libérée et le pointeur mis à NULL.
- * @param texture Double pointeur vers la texture associée à l'animation.
- *                La mémoire sera libérée et le pointeur mis à NULL.
- 
+//*@brief Frees resources linked to an animation, such as sprites and textures.
+//*
+//* @param anim Pointer to an animation structure to be cleaned up.
+//* @param sprite Double pointer to the sprite associated with the animation.
+//* Memory will be freed and pointer set to NULL.
+//* @param texture Double pointer to the texture associated with the animation.
+//* Memory will be freed and pointer set to NULL.
 void CleanUpAnimation(Animation* anim, sfSprite** sprite, sfTexture** texture);
 
 

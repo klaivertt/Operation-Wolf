@@ -87,3 +87,31 @@ int GetAnimCurrentFrame(Animation* _anim)
 {
 	return _anim->currentFrame;
 }
+
+void CleanUpAnimation(Animation* anim, sfSprite** sprite, sfTexture** texture)
+{
+	if (!anim) return;
+
+	// Réinitialisation des données de l'animation
+	anim->size = (sfIntRect){ 0, 0, 0, 0 };
+	anim->timer = 0.0f;
+	anim->currentFrame = 0;
+	anim->frameCount = 0;
+	anim->frameRate = 0;
+	anim->start = (sfVector2f){ 0.0f, 0.0f };
+	anim->isLooping = sfFalse;
+	anim->isFinished = sfFalse;
+
+	// Réinitialisation des pointeurs
+	if (sprite && *sprite)
+	{
+		sfSprite_destroy(*sprite);
+		*sprite = NULL;
+	}
+
+	if (texture && *texture)
+	{
+		sfTexture_destroy(*texture);
+		*texture = NULL;
+	}
+}
