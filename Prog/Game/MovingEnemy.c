@@ -130,7 +130,7 @@ void DrawMovingEnemy(MovingEnemy* _enemy, sfRenderWindow* _renderWindow, int _gr
 	}
 }
 
-void CleanupMovingEnemy(MovingEnemy* _enemy)
+void CleanupMovingEnemy(MovingEnemy* _enemy, sfTexture** _texture)
 {
 	if (_enemy->sprite != NULL)
 	{
@@ -138,9 +138,10 @@ void CleanupMovingEnemy(MovingEnemy* _enemy)
 		_enemy->sprite = NULL;
 	}
 
-	//CleanupAnimation(&_enemy->anim.walk);
-	//CleanupAnimation(&_enemy->enemy.anim.shoot);
-	//CleanupAnimation(&_enemy->enemy.anim.dead);
+	CleanUpAnimation(&_enemy->anim.walk, &_enemy->sprite, _texture);
+	CleanUpAnimation(&_enemy->anim.waitToShoot, &_enemy->sprite, _texture);
+	CleanUpAnimation(&_enemy->anim.shoot, &_enemy->sprite, _texture);
+	CleanUpAnimation(&_enemy->anim.dead, &_enemy->sprite, _texture);
 
 }
 

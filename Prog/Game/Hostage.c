@@ -166,7 +166,12 @@ void CleanupHostage(void)
 	{
 		sfSprite_destroy(hostageData.hostage[i].sprite);
 		hostageData.hostage[i].sprite = NULL;
+
+		CleanUpAnimation(&hostageData.hostage->anim.dead, &hostageData.hostage[i].sprite, &hostageData.spriteSheet);
+		CleanUpAnimation(&hostageData.hostage->anim.walk, &hostageData.hostage[i].sprite, &hostageData.spriteSheet);
 	}
+	
+
 }
 
 //Local Function

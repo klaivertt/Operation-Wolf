@@ -42,6 +42,14 @@ void CleanupButtonSounds(void)
 
 	sfSound_destroy(buttonSound.clickOnButton.sound);
 	buttonSound.clickOnButton.sound = NULL;
+
+	//Reload
+	sfSoundBuffer_destroy(buttonSound.reload.soundBuffer);
+	buttonSound.reload.soundBuffer = NULL;
+
+	sfSound_destroy(buttonSound.reload.sound);
+	buttonSound.reload.sound = NULL;
+
 }
 
 

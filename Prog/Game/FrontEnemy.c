@@ -151,9 +151,19 @@ void DrawFrontEnemy(FrontEnemy* _enemy, sfRenderWindow* _renderWindow)
 	
 }
 
-void CleanupFrontEnemy(FrontEnemy* _enemy)
+void CleanupFrontEnemy(FrontEnemy* _enemy, sfTexture** _texture)
 {
+	
+	if (_enemy->sprite != NULL)
+	{
+		sfSprite_destroy(_enemy->sprite);
+		_enemy->sprite = NULL;
+	}
 
+	CleanUpAnimation(&_enemy->anim.walk, &_enemy->sprite, _texture);
+	CleanUpAnimation(&_enemy->anim.waitToShoot, &_enemy->sprite, _texture);
+	CleanUpAnimation(&_enemy->anim.shoot, &_enemy->sprite, _texture);
+	CleanUpAnimation(&_enemy->anim.dead, &_enemy->sprite, _texture);
 }
 
 

@@ -20,6 +20,9 @@ void CleanupHostageSound(void)
 	//Shoot
 	sfSound_destroy(hostageSound.die.sound);
 	hostageSound.die.sound = NULL;
+
+	sfSoundBuffer_destroy(hostageSound.die.soundBuffer);
+	hostageSound.die.soundBuffer = NULL;
 }
 
 

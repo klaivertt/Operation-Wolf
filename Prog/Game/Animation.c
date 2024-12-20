@@ -88,7 +88,7 @@ int GetAnimCurrentFrame(Animation* _anim)
 	return _anim->currentFrame;
 }
 
-void CleanUpAnimation(Animation* anim, sfSprite** sprite, sfTexture** texture)
+void CleanUpAnimation(Animation* anim, sfSprite** _sprite, sfTexture** _texture)
 {
 	if (!anim) return;
 
@@ -103,15 +103,15 @@ void CleanUpAnimation(Animation* anim, sfSprite** sprite, sfTexture** texture)
 	anim->isFinished = sfFalse;
 
 	// Réinitialisation des pointeurs
-	if (sprite && *sprite)
+	if (_sprite && *_sprite)
 	{
-		sfSprite_destroy(*sprite);
-		*sprite = NULL;
+		sfSprite_destroy(*_sprite);
+		*_sprite = NULL;
 	}
 
-	if (texture && *texture)
+	if (_texture && *_texture)
 	{
-		sfTexture_destroy(*texture);
-		*texture = NULL;
+		sfTexture_destroy(*_texture);
+		*_texture = NULL;
 	}
 }

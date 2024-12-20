@@ -19,12 +19,6 @@
 #include "GameMusic.h"
 #include "GameSound.h"
 
-typedef struct GameData
-{
-	Image background;
-
-}GameData;
-
 
 //* @brief Loads the game resources.
 //*

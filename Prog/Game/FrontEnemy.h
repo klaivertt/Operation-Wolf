@@ -66,7 +66,7 @@ typedef struct FrontEnemy
 void LoadFrontEnemy(FrontEnemy* _enemy, sfTexture** _texture);
 void UpdateFrontEnemy(FrontEnemy* _enemy, sfTexture** _texture, float _dt);
 void DrawFrontEnemy(FrontEnemy* _enemy, sfRenderWindow* _renderWindow);
-void CleanupFrontEnemy(FrontEnemy* _enemy);
+void CleanupFrontEnemy(FrontEnemy* _enemy, sfTexture** _texture);
 
 int DamageToPlayer_FrontEnemy(FrontEnemy* _enemy);
 sfBool VerifPlayerKill_FrontEnemy(FrontEnemy* _enemy, sfVector2f _mousePos);

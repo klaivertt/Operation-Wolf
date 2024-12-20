@@ -145,6 +145,7 @@ void CleanupMenu(void)
 	//BackGround
 	sfTexture_destroy(menuData.background.texture);
 	menuData.background.texture = NULL;
+
 	sfSprite_destroy(menuData.background.sprite);
 	menuData.background.sprite = NULL;
 	//BUTTON TEXTURE

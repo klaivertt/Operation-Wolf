@@ -75,11 +75,14 @@ void CleanupEnemy(EnemyType _enemyType)
 	case MOVING_ENEMY:
 		for (short i = 0; i < MOVING_ENEMY_MAX; i++)
 		{
-			CleanupMovingEnemy(&enemyData.movingEnemy[i]);
+			CleanupMovingEnemy(&enemyData.movingEnemy[i],&enemyData.movingEnemySpriteSheet);
 		}
 		break;
 	case FRONT_ENEMY:
-		//FrontEnemy
+		for (short i = 0; i < FRONT_ENEMY_MAX; i++)
+		{
+			CleanupFrontEnemy(&enemyData.frontEnemy[i], &enemyData.frontEnemySpriteSheet);
+		}
 		break;
 	default:
 		break;
@@ -89,6 +92,12 @@ void CleanupEnemy(EnemyType _enemyType)
 	{
 		sfTexture_destroy(enemyData.movingEnemySpriteSheet);
 		enemyData.movingEnemySpriteSheet = NULL;
+	}
+
+	if (enemyData.frontEnemySpriteSheet != NULL)
+	{
+		sfTexture_destroy(enemyData.frontEnemySpriteSheet);
+		enemyData.frontEnemySpriteSheet = NULL;
 	}
 
 	//FrontEnemy
@@ -134,7 +143,7 @@ int PlayerDamage(void)
 	int totalDamage = 0;
 	for (short i = 0; i < FRONT_ENEMY_MAX; i++)
 	{
-		totalDamage += DamageToPlayer_FrontEnemy(&enemyData.movingEnemy[i]);
+		//totalDamage += DamageToPlayer_FrontEnemy(&enemyData.movingEnemy[i]);
 	}
 
 	for (short i = 0; i < MOVING_ENEMY_MAX; i++)

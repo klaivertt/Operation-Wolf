@@ -1,5 +1,4 @@
 #include "Props.h"
-#include <math.h>
 
 Props props[MAX_PROPS] = { 0 };
 sfTexture* texture[MAX_PROPS_TEXTURE] = { 0 };

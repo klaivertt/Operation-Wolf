@@ -44,8 +44,10 @@ void UpdateMenuMusic(float _dt)
 void CleanupMenuMusic(void)
 {
 	sfSound_destroy(music.sound);
+	music.sound == NULL;
+
 	sfSoundBuffer_destroy(music.soundBuffer);
-	music.sound = NULL;
+	music.soundBuffer == NULL;
 }
 
 

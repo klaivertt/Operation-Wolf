@@ -105,4 +105,17 @@ void CleanupGameOver(void)
 
 	sfText_destroy(data.score);
 	data.score = NULL;
+
+	for (short i = 0; i < MAX_TEXT; i++)
+	{
+		sfText_destroy(data.text[i]);
+		data.text[i] = NULL;
+	}
+
+	//Background
+	sfSprite_destroy(data.background.sprite);
+	data.background.sprite == NULL;
+
+	sfTexture_destroy(data.background.texture);
+	data.background.texture == NULL;
 }

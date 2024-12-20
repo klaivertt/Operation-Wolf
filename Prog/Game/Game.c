@@ -1,7 +1,5 @@
 #include "Game.h"
 
-GameData gameData;
-
 void LoadGame(void)
 {
 	LoadGameMusic();
