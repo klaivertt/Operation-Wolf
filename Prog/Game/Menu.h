@@ -5,6 +5,8 @@
 #include "State.h"
 #include "Sprite.h"
 #include "MenuMusic.h"
+#include "MenuSound.h"
+
 
 #define NB_BUTTON_IN_SPRITESHEET 2
 
@@ -22,6 +24,9 @@ typedef struct MenuData
 {
 	Image background;
 	UserInterface userInterface;
+
+	int backgroundAlpha;
+	sfBool backgroundDisapear;
 
 }MenuData;
 

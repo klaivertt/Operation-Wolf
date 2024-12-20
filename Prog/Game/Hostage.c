@@ -153,7 +153,6 @@ void DrawHostage(sfRenderWindow* _renderWindow, int _ground)
 		{
 			sfRenderWindow_drawSprite(_renderWindow, hostageData.hostage[i].sprite, NULL);
 		}
-		sfRenderWindow_drawSprite(_renderWindow, hostageData.hostage[i].sprite, NULL);
 	}
 
 }

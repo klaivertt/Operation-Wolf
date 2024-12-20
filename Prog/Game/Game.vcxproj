@@ -139,6 +139,7 @@
   <ItemGroup>
     <ClCompile Include="Animation.c" />
     <ClCompile Include="Bullet.c" />
+    <ClCompile Include="Button.c" />
     <ClCompile Include="Collision.c" />
     <ClCompile Include="DamageWindow.c" />
     <ClCompile Include="Drop.c" />
@@ -158,6 +159,7 @@
     <ClCompile Include="Map.c" />
     <ClCompile Include="GameMusic.c" />
     <ClCompile Include="MenuMusic.c" />
+    <ClCompile Include="MenuSound.c" />
     <ClCompile Include="MovingEnemy.c" />
     <ClCompile Include="ObjectsClickVerif.c" />
     <ClCompile Include="Player.c" />
@@ -175,6 +177,7 @@
   <ItemGroup>
     <ClInclude Include="Animations.h" />
     <ClInclude Include="Bullet.h" />
+    <ClInclude Include="Button.h" />
     <ClInclude Include="Collision.h" />
     <ClInclude Include="DamageWindow.h" />
     <ClInclude Include="Drop.h" />
@@ -195,6 +198,7 @@
     <ClInclude Include="Map.h" />
     <ClInclude Include="GameMusic.h" />
     <ClInclude Include="MenuMusic.h" />
+    <ClInclude Include="MenuSound.h" />
     <ClInclude Include="MovingEnemy.h" />
     <ClInclude Include="ObjectsClickVerif.h" />
     <ClInclude Include="Player.h" />

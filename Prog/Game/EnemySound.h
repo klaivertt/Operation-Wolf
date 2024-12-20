@@ -9,7 +9,7 @@
 
 typedef struct Sound
 {
-	sfSound* shoot;
+	sfSound* mouseOnButton;
 	sfSound* die;
 }Sound;
 
