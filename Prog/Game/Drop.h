@@ -38,8 +38,8 @@ typedef struct DropData
 
 void LoadDrop();
 void DrawDrop(sfRenderWindow* _renderWindow);
-
-void MoveDrop();
+void UpdateDrop(float _dt);
+void MoveDrop(int _i);
 void CleanupDrop();
 
 void CreateDrop(sfVector2f _vector, Drop _state);
