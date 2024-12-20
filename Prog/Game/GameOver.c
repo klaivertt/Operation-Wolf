@@ -4,7 +4,7 @@ GameOverData data = { 0 };
 
 void LoadGameOver(void)
 {
-	printf("LOAD GAME OVER\n");
+	//printf("LOAD GAME OVER\n");
 
 	data.gameOver = InitText("Game Over", 145, (sfVector2f) { SCREEN_WIDTH / 2, SCREEN_HEIGHT * 0.2f });
 
@@ -76,5 +76,5 @@ void DrawGameOver(sfRenderWindow* _renderWindow)
 
 void CleanupGameOver(void)
 {
-	printf("CLEANUP GAME OVER\n");
+	//printf("CLEANUP GAME OVER\n");
 }
