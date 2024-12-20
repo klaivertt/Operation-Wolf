@@ -1,0 +1,321 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Fichiers sources">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Fichiers de ressources">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Utilitaires">
+      <UniqueIdentifier>{0ac5b026-68fb-4e6e-a19d-eb0798529bd6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Utilitaires">
+      <UniqueIdentifier>{cefb5449-e3f7-495c-a504-dae049c1f127}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\States">
+      <UniqueIdentifier>{07a2f4be-de71-4009-a60c-16bfab538fbe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\States">
+      <UniqueIdentifier>{e436b0e6-9339-4525-86e6-926ffb3c1e60}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\States\Game">
+      <UniqueIdentifier>{2664b8cf-4d09-4095-8afe-f717310e78cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\States\Game\Characters">
+      <UniqueIdentifier>{fd57e698-f349-4e47-8a33-ee8131fb8ff6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\States\Game\Map">
+      <UniqueIdentifier>{850e843b-0c34-4b7b-9d3e-1978177e5992}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\States\Game">
+      <UniqueIdentifier>{8fb0422a-1bbe-408f-ae28-a1f00badcc71}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\States\Game\Characters">
+      <UniqueIdentifier>{f3ca5748-730d-48de-a6e1-ed9f3f308144}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\States\Game\Map">
+      <UniqueIdentifier>{5c3f5a3f-5946-4838-9d02-3e3e7d6005df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\States\Game\Characters\Player">
+      <UniqueIdentifier>{fea292d7-1dc7-41f8-877a-a0ca163bb368}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\States\Game\Characters\Player">
+      <UniqueIdentifier>{564a8d39-1fc7-4297-a78c-f3dde7a6a2c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\States\Game\Characters\Enemy">
+      <UniqueIdentifier>{473f5f5a-5d04-4bec-b301-462fda9743a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\States\Game\Characters\Enemy">
+      <UniqueIdentifier>{ad7f7fbe-bc1f-42a9-a546-f34a77a95fa7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\States\Game\Characters\Hostage">
+      <UniqueIdentifier>{ea8010a7-61cc-4ac7-8279-42553b9b27c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\States\Game\Characters\Hostage">
+      <UniqueIdentifier>{26406c10-2e40-4b69-8004-47a1107d398c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\States\Game\HUD">
+      <UniqueIdentifier>{94b25208-bcff-4384-9e39-6de3b2f8bc15}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\States\Game\HUD">
+      <UniqueIdentifier>{a837bdff-7c7f-471b-995e-0457b884183f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Musics">
+      <UniqueIdentifier>{785615de-8991-4b90-ab9f-f0fc88ac1706}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Musics">
+      <UniqueIdentifier>{9c65c5f7-1ba9-4823-9367-b5ecdcd59071}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Sounds">
+      <UniqueIdentifier>{d6813e90-2e6b-4cd3-b235-b75b3f0426a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Sounds">
+      <UniqueIdentifier>{02e54441-b6ed-425f-87ad-889799221378}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Sounds\GameSounds">
+      <UniqueIdentifier>{fe361f17-a481-4089-8eac-38eda501f6cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Sounds\GameSounds">
+      <UniqueIdentifier>{2a030212-5d82-4210-bbf4-706ab28b18a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Sounds\MenuSounds">
+      <UniqueIdentifier>{adcb2b7a-aa5f-4c94-9c08-a252bd1c5f25}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Sounds\MenuSounds">
+      <UniqueIdentifier>{8041a63f-9884-4b67-8bb2-5e62268a2206}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Sounds\GameOverSound.c">
+      <UniqueIdentifier>{8c86930e-af27-4fd7-8fa3-846c77b964ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Sounds\GameOverSounds">
+      <UniqueIdentifier>{dd43d73a-4687-4dba-bf61-d5dc014e894d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.c">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="GameOver.c">
+      <Filter>Fichiers sources\States</Filter>
+    </ClCompile>
+    <ClCompile Include="State.c">
+      <Filter>Fichiers sources\States</Filter>
+    </ClCompile>
+    <ClCompile Include="Menu.c">
+      <Filter>Fichiers sources\States</Filter>
+    </ClCompile>
+    <ClCompile Include="Sprite.c">
+      <Filter>Fichiers sources\Utilitaires</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.c">
+      <Filter>Fichiers sources\States\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Map.c">
+      <Filter>Fichiers sources\States\Game\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.c">
+      <Filter>Fichiers sources\States\Game\Characters\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="HUD.c">
+      <Filter>Fichiers sources\States\Game\HUD</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet.c">
+      <Filter>Fichiers sources\States\Game\HUD</Filter>
+    </ClCompile>
+    <ClCompile Include="Magazine.c">
+      <Filter>Fichiers sources\States\Game\HUD</Filter>
+    </ClCompile>
+    <ClCompile Include="Score.c">
+      <Filter>Fichiers sources\States\Game\HUD</Filter>
+    </ClCompile>
+    <ClCompile Include="Props.c">
+      <Filter>Fichiers sources\States\Game\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.c">
+      <Filter>Fichiers sources\States\Game\Characters\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Timer.c">
+      <Filter>Fichiers sources\Utilitaires</Filter>
+    </ClCompile>
+    <ClCompile Include="Animation.c">
+      <Filter>Fichiers sources\Utilitaires</Filter>
+    </ClCompile>
+    <ClCompile Include="Hostage.c">
+      <Filter>Fichiers sources\States\Game\Characters\Hostage</Filter>
+    </ClCompile>
+    <ClCompile Include="Position.c">
+      <Filter>Fichiers sources\States\Game\Characters\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="HealthBar.c">
+      <Filter>Fichiers sources\States\Game\HUD</Filter>
+    </ClCompile>
+    <ClCompile Include="Text.c">
+      <Filter>Fichiers sources\Utilitaires</Filter>
+    </ClCompile>
+    <ClCompile Include="Collision.c">
+      <Filter>Fichiers sources\Utilitaires</Filter>
+    </ClCompile>
+    <ClCompile Include="Drop.c">
+      <Filter>Fichiers sources\States\Game\Characters\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="DamageWindow.c">
+      <Filter>Fichiers sources\States\Game\HUD</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectsClickVerif.c">
+      <Filter>Fichiers sources\Utilitaires</Filter>
+    </ClCompile>
+    <ClCompile Include="GameMusic.c">
+      <Filter>Fichiers sources\Musics</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuMusic.c">
+      <Filter>Fichiers sources\Musics</Filter>
+    </ClCompile>
+    <ClCompile Include="GameSound.c">
+      <Filter>Fichiers sources\Sounds</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemySound.c">
+      <Filter>Fichiers sources\Sounds\GameSounds</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerSound.c">
+      <Filter>Fichiers sources\Sounds\GameSounds</Filter>
+    </ClCompile>
+    <ClCompile Include="HostageSound.c">
+      <Filter>Fichiers sources\Sounds\GameSounds</Filter>
+    </ClCompile>
+    <ClCompile Include="FrontEnemy.c">
+      <Filter>Fichiers sources\States\Game\Characters\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="MovingEnemy.c">
+      <Filter>Fichiers sources\States\Game\Characters\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="ButtonSound.c">
+      <Filter>Fichiers sources\Sounds\MenuSounds</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuSound.c">
+      <Filter>Fichiers sources\Sounds</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerDeathSound.c">
+      <Filter>Fichiers sources\Sounds\GameOverSound.c</Filter>
+    </ClCompile>
+    <ClCompile Include="GameOverSound.c">
+      <Filter>Fichiers sources\Sounds</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Menu.h">
+      <Filter>Fichiers d%27en-tête\States</Filter>
+    </ClInclude>
+    <ClInclude Include="State.h">
+      <Filter>Fichiers d%27en-tête\States</Filter>
+    </ClInclude>
+    <ClInclude Include="Sprite.h">
+      <Filter>Fichiers d%27en-tête\Utilitaires</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Fichiers d%27en-tête\States\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Map.h">
+      <Filter>Fichiers d%27en-tête\States\Game\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Fichiers d%27en-tête\States\Game\Characters\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="HUD.h">
+      <Filter>Fichiers d%27en-tête\States\Game\HUD</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet.h">
+      <Filter>Fichiers d%27en-tête\States\Game\HUD</Filter>
+    </ClInclude>
+    <ClInclude Include="Magazine.h">
+      <Filter>Fichiers d%27en-tête\States\Game\HUD</Filter>
+    </ClInclude>
+    <ClInclude Include="Props.h">
+      <Filter>Fichiers d%27en-tête\States\Game\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Timer.h">
+      <Filter>Fichiers d%27en-tête\Utilitaires</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Fichiers d%27en-tête\States\Game\Characters\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Animations.h">
+      <Filter>Fichiers d%27en-tête\Utilitaires</Filter>
+    </ClInclude>
+    <ClInclude Include="Hostage.h">
+      <Filter>Fichiers d%27en-tête\States\Game\Characters\Hostage</Filter>
+    </ClInclude>
+    <ClInclude Include="Position.h">
+      <Filter>Fichiers d%27en-tête\States\Game\Characters\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="HealthBar.h">
+      <Filter>Fichiers d%27en-tête\States\Game\HUD</Filter>
+    </ClInclude>
+    <ClInclude Include="Common.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="Text.h">
+      <Filter>Fichiers d%27en-tête\Utilitaires</Filter>
+    </ClInclude>
+    <ClInclude Include="Score.h">
+      <Filter>Fichiers d%27en-tête\States\Game\HUD</Filter>
+    </ClInclude>
+    <ClInclude Include="Collision.h">
+      <Filter>Fichiers d%27en-tête\Utilitaires</Filter>
+    </ClInclude>
+    <ClInclude Include="Drop.h">
+      <Filter>Fichiers d%27en-tête\States\Game\Characters\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="DamageWindow.h">
+      <Filter>Fichiers d%27en-tête\States\Game\HUD</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectsClickVerif.h">
+      <Filter>Fichiers d%27en-tête\Utilitaires</Filter>
+    </ClInclude>
+    <ClInclude Include="GameMusic.h">
+      <Filter>Fichiers d%27en-tête\Musics</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuMusic.h">
+      <Filter>Fichiers d%27en-tête\Musics</Filter>
+    </ClInclude>
+    <ClInclude Include="GameSound.h">
+      <Filter>Fichiers d%27en-tête\Sounds</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemySound.h">
+      <Filter>Fichiers d%27en-tête\Sounds\GameSounds</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerSound.h">
+      <Filter>Fichiers d%27en-tête\Sounds\GameSounds</Filter>
+    </ClInclude>
+    <ClInclude Include="HostageSound.h">
+      <Filter>Fichiers d%27en-tête\Sounds\GameSounds</Filter>
+    </ClInclude>
+    <ClInclude Include="FrontEnemy.h">
+      <Filter>Fichiers d%27en-tête\States\Game\Characters\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="MovingEnemy.h">
+      <Filter>Fichiers d%27en-tête\States\Game\Characters\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="ButtonSound.h">
+      <Filter>Fichiers d%27en-tête\Sounds\MenuSounds</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuSound.h">
+      <Filter>Fichiers d%27en-tête\Sounds</Filter>
+    </ClInclude>
+    <ClInclude Include="GameOver.h">
+      <Filter>Fichiers d%27en-tête\States</Filter>
+    </ClInclude>
+    <ClInclude Include="GameOverSound.h">
+      <Filter>Fichiers d%27en-tête\Sounds</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerDeathSound.h">
+      <Filter>Fichiers d%27en-tête\Sounds\GameOverSounds</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
