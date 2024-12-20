@@ -15,7 +15,7 @@ void LoadDamageWindow()
 	sfIntRect rect = { 0 };
 	sfVector2f position = { 0.0 };
 	sfVector2f origin = { 0 , 0 };
-	damageWindow.texture = sfTexture_createFromFile("Assets/Sprites/HUD/Damage.png", NULL);
+	damageWindow.texture = sfTexture_createFromFile("Assets/Sprites/Game/HUD/Damage.png", NULL);
 
 	CreateSprite(&damageWindow.sprite, damageWindow.texture, position, rect, origin);
 

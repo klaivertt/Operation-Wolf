@@ -8,14 +8,13 @@ void ReloadBullet();
 
 void LoadPlayer()
 {
-	sfIntRect rect = { 1223, 1946, 47 , 47 };
+	sfIntRect rect = { 0, 0, 64 , 64 };
 	sfVector2f position = { SCREEN_WIDTH / 2 , SCREEN_HEIGHT / 2 };
 	sfVector2f origin = { 0.5 , 0.5 };
-	player.cursor.texture = sfTexture_createFromFile("Assets/Sprites/SpriteSheet.png", NULL);
+	player.cursor.texture = sfTexture_createFromFile("Assets/Sprites/Game/HUD/crossHair(prog).png", NULL);
 	player.HP = MAX_HP;
 	player.magazineNumber = 3;
 	player.bulletNumber = BULLET_NUMBER_MAX;
-	//player.grenadeNumber = 1;
 	player.state = ALIVE;
 
 	CreateSprite(&player.cursor.sprite, player.cursor.texture, position, rect, origin);
@@ -34,8 +33,13 @@ void UpdatePlayer(float _dt)
 	{
 		sfSprite_setPosition(player.cursor.sprite, (sfVector2f) { player.mousePosition.x, player.mousePosition.y });
 	}
-
+	
 	VerifGetDamage();
+	
+	if (HostageHasLeaveArea())
+	{
+		UpdateScore(2);
+	}
 }
 
 sfBool IsPlayerDead()
@@ -87,13 +91,13 @@ void MouseButtonPressedPlayer(sfRenderWindow* const _renderWindow, sfMouseButton
 
 				if (score > 0)
 				{
-					UpdateScore(-1);
+					UpdateScore(-3);
 				}
 				player.HP--;
 			}
 			if (VerifClickOnEnemy(_mouseButton))
 			{
-				UpdateScore(1);
+				UpdateScore(2);
 			}
 			int nbDrop = VerifClickOnDrop(_mouseButton);
 			if (nbDrop != -1)
@@ -104,15 +108,26 @@ void MouseButtonPressedPlayer(sfRenderWindow* const _renderWindow, sfMouseButton
 					if (player.magazineNumber < MAGAZINE_NUMBER_MAX)
 					{
 						player.magazineNumber++;
-						
+						UpdateScore(1);
 					}
+					else
+					{ 
+						UpdateScore(2);
+					}
+					
 				}
 				else
 				{
 					if (player.HP < MAX_HP)
 					{
 						player.HP++;
+						UpdateScore(1);
 					}
+					else
+					{
+						UpdateScore(2);
+					}
+					
 				}
 				ResetDrop(nbDrop);
 			}
@@ -136,11 +151,6 @@ void ShootBullet()
 	PlaySound_PlayerShoot();
 }
 
-void ShootGrenade()
-{
-	player.grenadeNumber--;
-}
-
 //make the player use 1 magazine and reload bullets
 void ReloadMagazine()
 {
@@ -158,11 +168,6 @@ void ReloadBullet()
 	PlaySound_PlayerReload();
 }
 
-void ReloadGrenade()
-{
-	player.grenadeNumber++;
-}
-
 //return magazine amount
 int GetMagazine()
 {
@@ -173,11 +178,6 @@ int GetMagazine()
 int GetBullet()
 {
 	return player.bulletNumber;
-}
-
-int GetGrenade()
-{
-	return player.grenadeNumber;
 }
 
 int GetPlayerHP()

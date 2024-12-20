@@ -63,50 +63,56 @@ void KeyPressedMenu(sfRenderWindow* _renderWindow, sfKeyEvent _key)
 
 void MouseButtonPressedMenu(sfRenderWindow* const _renderWindow, sfMouseButtonEvent _mouseButton)
 {
-
-	if (MouseClickOnSprite(_mouseButton, menuData.userInterface.playButtonSprite))
+	if (!menuData.backgroundDisapear)
 	{
-		if (menuData.backgroundDisapear == sfFalse)
+		if (MouseClickOnSprite(_mouseButton, menuData.userInterface.playButtonSprite))
 		{
-			PlaySound_ClickOnButton();
+			if (menuData.backgroundDisapear == sfFalse)
+			{
+				PlaySound_ClickOnButton();
+			}
+			menuData.backgroundDisapear = sfTrue;
+			ChangeMenuMusicVolume(0, sfTrue);
 		}
-		menuData.backgroundDisapear = sfTrue;
-		ChangeMenuMusicVolume(0, sfTrue);
-	}
-	else if (MouseClickOnSprite(_mouseButton, menuData.userInterface.exitButtonSprite))
-	{
-		sfRenderWindow_close(_renderWindow);
+		else if (MouseClickOnSprite(_mouseButton, menuData.userInterface.exitButtonSprite))
+		{
+			sfRenderWindow_close(_renderWindow);
+		}
 	}
 
 }
 
 void MouseMovedMenu(sfRenderWindow* const _renderWindow, sfMouseMoveEvent _mouseMove)
 {
-	sfColor startColorPlay = sfSprite_getColor(menuData.userInterface.playButtonSprite);
-	sfColor startColorExit = sfSprite_getColor(menuData.userInterface.exitButtonSprite);
-
-	sfColor red = { 219,  24,  24, 255 };
-	sfColor white = { 255, 255, 255, 255 };
-
-	sfSprite_setColor(menuData.userInterface.playButtonSprite, white);
-	sfSprite_setColor(menuData.userInterface.exitButtonSprite, white);
-
-	if (MouseMoveOnSprite(_mouseMove, menuData.userInterface.playButtonSprite))
+	if (!menuData.backgroundDisapear)
 	{
-		sfSprite_setColor(menuData.userInterface.playButtonSprite, red);
-		if (startColorPlay.r != red.r && startColorPlay.g != red.g && startColorPlay.b != red.b)
+		sfColor startColorPlay = sfSprite_getColor(menuData.userInterface.playButtonSprite);
+		sfColor startColorExit = sfSprite_getColor(menuData.userInterface.exitButtonSprite);
+
+		sfColor red = { 219,  24,  24, 255 };
+		sfColor white = { 255, 255, 255, 255 };
+
+		sfSprite_setColor(menuData.userInterface.playButtonSprite, white);
+		sfSprite_setColor(menuData.userInterface.exitButtonSprite, white);
+
+		if (MouseMoveOnSprite(_mouseMove, menuData.userInterface.playButtonSprite))
 		{
-			PlaySound_MouseOnButton();
+			sfSprite_setColor(menuData.userInterface.playButtonSprite, red);
+			if (startColorPlay.r != red.r && startColorPlay.g != red.g && startColorPlay.b != red.b)
+			{
+				PlaySound_MouseOnButton();
+			}
+		}
+		else if (MouseMoveOnSprite(_mouseMove, menuData.userInterface.exitButtonSprite))
+		{
+			sfSprite_setColor(menuData.userInterface.exitButtonSprite, red);
+			if (startColorExit.r != red.r && startColorExit.g != red.g && startColorExit.b != red.b)
+			{
+				PlaySound_MouseOnButton();
+			}
 		}
 	}
-	else if (MouseMoveOnSprite(_mouseMove, menuData.userInterface.exitButtonSprite))
-	{
-		sfSprite_setColor(menuData.userInterface.exitButtonSprite, red);
-		if (startColorExit.r != red.r && startColorExit.g != red.g && startColorExit.b != red.b)
-		{
-			PlaySound_MouseOnButton();
-		}
-	}
+	
 }
 
 void UpdateMenu(float _dt)

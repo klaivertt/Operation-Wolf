@@ -1,4 +1,4 @@
-#include "GameSound.h"
+#include "GameOverSound.h"
 
 
 void LoadGameOverSounds(void)

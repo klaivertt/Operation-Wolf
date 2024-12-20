@@ -54,7 +54,7 @@ typedef struct Hostage
 	HostageAnim anim;
 	sfSprite* sprite;
 
-
+	sfBool hasLeaveArea;
 
 }Hostage;
 
@@ -75,5 +75,6 @@ void CleanupHostage(void);
 HostageState GetHostageState(Hostage* _enemy);
 void SetHostageState(Hostage* _enemy, HostageState _state);
 sfBool VerifPlayerKillHostage(sfVector2f _mousePos);
+sfBool HostageHasLeaveArea(void);
 Hostage* GetHostage(void);
 #endif

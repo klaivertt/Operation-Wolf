@@ -7,7 +7,7 @@ void LoadMagazine()
 	sfIntRect rect = { 0, 0, 30 , 54 };
 	sfVector2f position = { SCREEN_WIDTH / 4 * 3 + (float)rect.width * 3, (float)rect.height };
 	sfVector2f origin = { 0.5 , 1 };
-	magazine.texture = sfTexture_createFromFile("Assets/Sprites/HUD/AmmoAndcharger.png", NULL);
+	magazine.texture = sfTexture_createFromFile("Assets/Sprites/Game/HUD/AmmoAndcharger.png", NULL);
 
 	for (int i = 0; i < MAGAZINE_NUMBER_MAX; i++)
 	{

@@ -8,7 +8,7 @@ void LoadBullet()
 	sfVector2f position = { SCREEN_WIDTH - BULLET_NUMBER_MAX/2.f * rect.width , (float)rect.height };
 	sfVector2f originalPosition = position;
 	sfVector2f origin = { 0.5 , 1 };
-	bullet.texture = sfTexture_createFromFile("Assets/Sprites/HUD/AmmoAndCharger.png", NULL);
+	bullet.texture = sfTexture_createFromFile("Assets/Sprites/Game/HUD/AmmoAndCharger.png", NULL);
 
 	for (int i = 0; i < BULLET_NUMBER_MAX; i++)
 	{

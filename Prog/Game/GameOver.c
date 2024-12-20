@@ -10,7 +10,7 @@ void LoadGameOver(void)
 	//Background
 	data.background.sprite = sfSprite_create();
 
-	data.background.texture = sfTexture_createFromFile("Assets/Sprites/GameOverBackground(prog).png", NULL);
+	data.background.texture = sfTexture_createFromFile("Assets/Sprites/GameOver/Background(prog).png", NULL);
 
 	sfSprite_setTexture(data.background.sprite, data.background.texture, sfTrue);
 

@@ -7,9 +7,9 @@ void LoadDrop()
 	sfVector2f position = { -100, -100 };
 	sfVector2f origin = { 0.5 , 1 };
 
-	dropData.ammoTexture = sfTexture_createFromFile("Assets/Sprites/Magazin.png", NULL);
+	dropData.ammoTexture = sfTexture_createFromFile("Assets/Sprites/Game/Drops/Magazin.png", NULL);
 
-	dropData.healthTexture = sfTexture_createFromFile("Assets/Sprites/Health.png", NULL);
+	dropData.healthTexture = sfTexture_createFromFile("Assets/Sprites/Game/Drops/Health.png", NULL);
 
 	for (int i = 0; i < MAX_DROP; i++)
 	{

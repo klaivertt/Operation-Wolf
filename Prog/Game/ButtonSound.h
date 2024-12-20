@@ -1,6 +1,6 @@
 #pragma once
-#ifndef BUTTON_H
-#define BUTTON_H
+#ifndef BUTTONSOUND_H
+#define BUTTONSOUND_H
 
 #define MOUSEONBUTTON_VOLUME 100
 #define CLICKONBUTTON_VOLUME 100

@@ -91,7 +91,7 @@ void LoadFrontEnemy(FrontEnemy* _enemy, sfTexture** _texture)
 	InitTimer(&_enemy->deadTimer, delay);
 
 
-	*_texture = sfTexture_createFromFile("Assets/Sprites/Characters/front_enemy.png", NULL);
+	*_texture = sfTexture_createFromFile("Assets/Sprites/Game/Characters/front_enemy.png", NULL);
 
 
 	sfVector2f pos = { 0,0 };

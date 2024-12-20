@@ -156,9 +156,6 @@
     <ClCompile Include="HealthBar.c">
       <Filter>Fichiers sources\States\Game\HUD</Filter>
     </ClCompile>
-    <ClCompile Include="HumanIcon.c">
-      <Filter>Fichiers sources\States\Game\HUD</Filter>
-    </ClCompile>
     <ClCompile Include="Text.c">
       <Filter>Fichiers sources\Utilitaires</Filter>
     </ClCompile>
@@ -198,7 +195,7 @@
     <ClCompile Include="MovingEnemy.c">
       <Filter>Fichiers sources\States\Game\Characters\Enemy</Filter>
     </ClCompile>
-    <ClCompile Include="Button.c">
+    <ClCompile Include="ButtonSound.c">
       <Filter>Fichiers sources\Sounds\MenuSounds</Filter>
     </ClCompile>
     <ClCompile Include="MenuSound.c">
@@ -260,9 +257,6 @@
     <ClInclude Include="HealthBar.h">
       <Filter>Fichiers d%27en-tête\States\Game\HUD</Filter>
     </ClInclude>
-    <ClInclude Include="HumanIcon.h">
-      <Filter>Fichiers d%27en-tête\States\Game\HUD</Filter>
-    </ClInclude>
     <ClInclude Include="Common.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
@@ -308,7 +302,7 @@
     <ClInclude Include="MovingEnemy.h">
       <Filter>Fichiers d%27en-tête\States\Game\Characters\Enemy</Filter>
     </ClInclude>
-    <ClInclude Include="Button.h">
+    <ClInclude Include="ButtonSound.h">
       <Filter>Fichiers d%27en-tête\Sounds\MenuSounds</Filter>
     </ClInclude>
     <ClInclude Include="MenuSound.h">

@@ -28,6 +28,10 @@ void SetHostageState(Hostage* _hostage, HostageState _state)
 			{
 				PlaySound_HostageDie();
 			}
+			else
+			{
+				_hostage->hasLeaveArea = sfTrue;
+			}
 			break;
 		default:
 			break;
@@ -37,6 +41,18 @@ void SetHostageState(Hostage* _hostage, HostageState _state)
 	
 }
 
+sfBool HostageHasLeaveArea(void)
+{
+	for (short i = 0; i < HOSTAGE_MAX; i++)
+	{
+		if (hostageData.hostage[i].hasLeaveArea)
+		{
+			hostageData.hostage[i].hasLeaveArea = sfFalse;
+			return sfTrue;
+		}
+	}
+	return sfFalse;
+}
 
 void LoadHostage(short _hostageToLoad)
 {
@@ -61,6 +77,8 @@ void LoadHostage(short _hostageToLoad)
 		float speedMultiplicator = (1 + rand() % 6) / 10.0f;
 		hostageData.hostage[i].speed = ME_MAX_SPEED * (1 - speedMultiplicator);
 
+		hostageData.hostage[i].hasLeaveArea = sfFalse;
+
 		//TIMER
 		float delay = (float)(rand() % MAX_HOSTAGE_SPAWN_DELAY);
 		InitTimer(&hostageData.hostage[i].waitTimer, delay);
@@ -71,7 +89,7 @@ void LoadHostage(short _hostageToLoad)
 
 		if (hostageData.spriteSheet == NULL)
 		{
-			hostageData.spriteSheet = sfTexture_createFromFile("Assets/Sprites/Characters/Hostage.png", NULL);
+			hostageData.spriteSheet = sfTexture_createFromFile("Assets/Sprites/Game/Characters/Hostage.png", NULL);
 		}
 
 		sfVector2f pos = RandomSpawn();
@@ -139,6 +157,11 @@ void UpdateHostage(float _dt)
 			}
 			break;
 		};
+	}
+
+	if (hostageData.hostage->state != H_WAIT)
+	{
+		sfSprite_move(hostageData.hostage->sprite, GetBackGroundSpeed());
 	}
 }
 

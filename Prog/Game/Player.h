@@ -13,7 +13,6 @@
 #include "PlayerSound.h"
 
 #define BULLET_NUMBER_MAX 16
-#define GRENADE_NUMBER_MAX 1
 #define MAX_HP 15
 #define MAGAZINE_NUMBER_MAX 5
 
@@ -34,7 +33,6 @@ typedef struct PlayerData
 	int HP;
 	int magazineNumber;
 	int bulletNumber;
-	int grenadeNumber;
 }PlayerData;
 
 void LoadPlayer();
@@ -47,15 +45,12 @@ void CleanupPlayer();
 void MouseButtonPressedPlayer(sfRenderWindow* const _renderWindow, sfMouseButtonEvent _mouseButton);
 int GetMagazine();
 int GetBullet();
-int GetGrenade();
 
 int GetPlayerHP();
 
-void ReloadGrenade();
 
 sfBool IsPlayerDead();
 
-void ShootGrenade();
 
 void ResetPlayer();
 
