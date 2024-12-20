@@ -9,12 +9,6 @@ void DeadFE(FrontEnemy* _enemy, sfTexture** _texture, float _dt);
 
 sfBool MoveFE(FrontEnemy* _enemy, sfSprite** _sprite);
 
-
-FrontEnemy* GetFrontEnemy(void)
-{
-	//return &enemyData.enemy;
-}
-
 FrontEnemyState GetState_FrontEnemy(FrontEnemy* _enemy)
 {
 	return _enemy->state;
@@ -23,7 +17,7 @@ FrontEnemyState GetState_FrontEnemy(FrontEnemy* _enemy)
 void SetState_FrontEnemy(FrontEnemy* _enemy, FrontEnemyState _state)
 {
 
-	if (_state != _enemy->state)
+	if (_state != GetState_FrontEnemy(_enemy))
 	{
 		switch (_state)
 		{
@@ -72,7 +66,8 @@ int PlayerDamageFE(void)
 
 void LoadFrontEnemy(FrontEnemy* _enemy, sfTexture** _texture)
 {
-	_enemy->state = FE_WAIT_TO_SPAWN;
+	//Variable
+	SetState_FrontEnemy(_enemy, FE_WAIT_TO_SPAWN);
 	_enemy->life = FE_TOTAL_LIFE;
 	_enemy->speed = FE_SPEED;
 
@@ -93,18 +88,31 @@ void LoadFrontEnemy(FrontEnemy* _enemy, sfTexture** _texture)
 	*_texture = sfTexture_createFromFile("Assets/Sprites/Characters/front_enemy.png", NULL);
 
 
-	sfVector2f pos = { SCREEN_WIDTH / 2,SCREEN_HEIGHT };
+	sfVector2f pos = { 0,0 };
 	sfIntRect rect = { 0,0, 1908 / 4, 489 };
 	sfVector2f origin = { 0.5,1 };
 	CreateSprite(&_enemy->sprite, *_texture, pos, rect, origin);
 
+	//Position
 	sfFloatRect gb = sfSprite_getGlobalBounds(_enemy->sprite);
-	pos.y += gb.height;
+	pos.y = SCREEN_HEIGHT + gb.height;
+	printf("load");
+	pos.x = 1 + rand() % SCREEN_WIDTH;
+	if (pos.x < gb.width / 2)
+	{
+		pos.x = gb.width / 2;
+	}
+	else if (pos.x > SCREEN_WIDTH - gb.width / 2)
+	{
+		pos.x = SCREEN_WIDTH - gb.width / 2;
+	}
+
 	sfSprite_setPosition(_enemy->sprite, pos);
 
 	_enemy->targetedPositon = pos.y - gb.height;
 	_enemy->spawnPosition = pos.y;
 
+	//Animation
 	CreateAnimation(&_enemy->anim.walk, &_enemy->sprite, _texture, 4, 1, 1, sfTrue, (sfVector2f) { 2, 0 });
 	CreateAnimation(&_enemy->anim.shoot, &_enemy->sprite, _texture, 4, 2, 2, sfTrue, (sfVector2f) { 0, 0 });
 	CreateAnimation(&_enemy->anim.dead, &_enemy->sprite, _texture, 4, 1, 1, sfTrue, (sfVector2f) { 3, 0 });
@@ -112,10 +120,7 @@ void LoadFrontEnemy(FrontEnemy* _enemy, sfTexture** _texture)
 
 void UpdateFrontEnemy(FrontEnemy* _enemy, sfTexture** _texture, float _dt)
 {
-	//sfVector2f ok = sfSprite_getPosition(_enemy->sprite);
-	//printf("x : %f  y : %f\n", ok.x, ok.y);
-	printf("ok");
-	switch (_enemy->state)
+	switch (GetState_FrontEnemy(_enemy))
 	{
 	case FE_WAIT_TO_SPAWN:
 

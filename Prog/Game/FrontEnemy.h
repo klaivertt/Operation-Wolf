@@ -13,7 +13,7 @@
 #include "EnemySound.h"
 
 #define FE_SHOOT_DELAY 1
-#define FE_MAX_SPAWN_DELAY 4
+#define FE_MAX_SPAWN_DELAY 25
 
 #define FE_DAMAGE 1
 #define FE_TOTAL_LIFE 1
