@@ -54,6 +54,7 @@ int GetPlayerHP();
 
 void ReloadGrenade();
 
+sfBool IsPlayerDead();
 
 void ShootGrenade();
 
