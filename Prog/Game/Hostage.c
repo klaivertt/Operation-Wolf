@@ -191,4 +191,4 @@ sfBool VerifPlayerKillHostage(sfVector2f _mousePos)
 Hostage* GetHostage(void)
 {
 	return hostageData.hostage;
-}
+}	
