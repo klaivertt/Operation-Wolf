@@ -79,7 +79,6 @@ void CreateDrop(sfVector2f _vector, Drop _state)
 				SetSpriteOrigin(&dropData.drop[i].sprite, (sfVector2f) { 0.5, 1 });
 			}
 		}
-
 	}
 }
 

@@ -13,9 +13,9 @@ void LoadPlayer()
 	sfVector2f origin = { 0.5 , 0.5 };
 	player.cursor.texture = sfTexture_createFromFile("Assets/Sprites/SpriteSheet.png", NULL);
 	player.HP = MAX_HP;
-	player.magazineNumber = 5;
+	player.magazineNumber = 3;
 	player.bulletNumber = BULLET_NUMBER_MAX;
-	player.grenadeNumber = 1;
+	//player.grenadeNumber = 1;
 	player.state = ALIVE;
 
 	CreateSprite(&player.cursor.sprite, player.cursor.texture, position, rect, origin);
@@ -186,7 +186,6 @@ int GetPlayerHP()
 {
 	return player.HP;
 }
-
 
 void ResetPlayer()
 {
