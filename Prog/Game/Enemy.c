@@ -14,7 +14,10 @@ void LoadEnemy(short _enemyToLoad, EnemyType _enemyType )
 		}
 		break;
 	case FRONT_ENEMY:
-		LoadFrontEnemy(&enemyData.frontEnemy, &enemyData.frontEnemySpriteSheet);
+		for (short i = 0; i < FRONT_ENEMY_MAX; i++)
+		{
+			LoadFrontEnemy(&enemyData.frontEnemy[i], &enemyData.frontEnemySpriteSheet);
+		}
 		break;
 	default:
 		break;
@@ -33,7 +36,10 @@ void UpdateEnemy(float _dt, EnemyType _enemyType)
 		}
 		break;
 	case FRONT_ENEMY:
-		UpdateFrontEnemy(&enemyData.frontEnemy, &enemyData.frontEnemySpriteSheet,_dt);
+		for (short i = 0; i < FRONT_ENEMY_MAX; i++)
+		{
+			UpdateFrontEnemy(&enemyData.frontEnemy[i], &enemyData.frontEnemySpriteSheet, _dt);
+		}
 		break;
 	default:
 		break;
@@ -52,7 +58,10 @@ void DrawEnemy( sfRenderWindow* _renderWindow, EnemyType _enemyType, int _ground
 		}
 		break;
 	case FRONT_ENEMY:
-		DrawFrontEnemy(&enemyData.frontEnemy, _renderWindow);
+		for (short i = 0; i < FRONT_ENEMY_MAX; i++)
+		{
+			DrawFrontEnemy(&enemyData.frontEnemy[i], _renderWindow);
+		}
 		break;
 	default:
 		break;

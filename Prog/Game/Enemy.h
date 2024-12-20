@@ -26,6 +26,8 @@
 #define MAX_SPEED 8
 #define DEATH_DELAY 0.5f
 
+#define FRONT_ENEMY_MAX 1
+
 #pragma region enum
 
 typedef enum EnemyState
@@ -52,7 +54,7 @@ typedef enum EnemyType
 typedef struct EnemyData
 {
 	MovingEnemy movingEnemy[ENEMY_MAX];
-	MovingEnemy frontEnemy;
+	FrontEnemy frontEnemy[FRONT_ENEMY_MAX];
 	sfTexture* movingEnemySpriteSheet;
 	sfTexture* frontEnemySpriteSheet;
 
