@@ -91,6 +91,12 @@
     <Filter Include="Fichiers d%27en-tête\Sounds\MenuSounds">
       <UniqueIdentifier>{8041a63f-9884-4b67-8bb2-5e62268a2206}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fichiers sources\Sounds\GameOverSound.c">
+      <UniqueIdentifier>{8c86930e-af27-4fd7-8fa3-846c77b964ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Sounds\GameOverSounds">
+      <UniqueIdentifier>{dd43d73a-4687-4dba-bf61-d5dc014e894d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.c">
@@ -140,9 +146,6 @@
     </ClCompile>
     <ClCompile Include="Animation.c">
       <Filter>Fichiers sources\Utilitaires</Filter>
-    </ClCompile>
-    <ClCompile Include="Grenade.c">
-      <Filter>Fichiers sources\States\Game\HUD</Filter>
     </ClCompile>
     <ClCompile Include="Hostage.c">
       <Filter>Fichiers sources\States\Game\Characters\Hostage</Filter>
@@ -201,6 +204,12 @@
     <ClCompile Include="MenuSound.c">
       <Filter>Fichiers sources\Sounds</Filter>
     </ClCompile>
+    <ClCompile Include="PlayerDeathSound.c">
+      <Filter>Fichiers sources\Sounds\GameOverSound.c</Filter>
+    </ClCompile>
+    <ClCompile Include="GameOverSound.c">
+      <Filter>Fichiers sources\Sounds</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Menu.h">
@@ -241,9 +250,6 @@
     </ClInclude>
     <ClInclude Include="Animations.h">
       <Filter>Fichiers d%27en-tête\Utilitaires</Filter>
-    </ClInclude>
-    <ClInclude Include="Grenade.h">
-      <Filter>Fichiers d%27en-tête\States\Game\HUD</Filter>
     </ClInclude>
     <ClInclude Include="Hostage.h">
       <Filter>Fichiers d%27en-tête\States\Game\Characters\Hostage</Filter>
@@ -310,6 +316,12 @@
     </ClInclude>
     <ClInclude Include="GameOver.h">
       <Filter>Fichiers d%27en-tête\States</Filter>
+    </ClInclude>
+    <ClInclude Include="GameOverSound.h">
+      <Filter>Fichiers d%27en-tête\Sounds</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerDeathSound.h">
+      <Filter>Fichiers d%27en-tête\Sounds\GameOverSounds</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -7,7 +7,6 @@
 #include "Bullet.h"
 #include "Magazine.h"
 #include "Score.h"
-#include "Grenade.h"
 #include "HumanIcon.h"
 #include "HealthBar.h"
 #include "DamageWindow.h"

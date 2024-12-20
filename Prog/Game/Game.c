@@ -20,9 +20,6 @@ void KeyPressedGame(sfRenderWindow* _renderWindow, sfKeyEvent _key)
 	case sfKeyEscape:
 		SetGameState(MENU);
 		break;
-	case sfKeySpace:
-		SetGameState(GAME_OVER);
-		break;
 	default:
 		break;
 	}

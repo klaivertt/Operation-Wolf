@@ -45,13 +45,13 @@ void UpdateGameMusic(float _dt)
 void CleanupGameMusic()
 {
 	sfSound_destroy(music.sound);
-	music.sound == NULL;
+	music.sound = NULL;
 
 	sfSoundBuffer_destroy(music.soundBuffer.waves);
-	music.soundBuffer.waves == NULL;
+	music.soundBuffer.waves = NULL;
 
 	sfSoundBuffer_destroy(music.soundBuffer.boss);
-	music.soundBuffer.boss == NULL;
+	music.soundBuffer.boss = NULL;
 }
 
 

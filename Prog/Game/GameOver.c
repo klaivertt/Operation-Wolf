@@ -5,6 +5,8 @@ GameOverData data = { 0 };
 void LoadGameOver(void)
 {
 	//printf("LOAD GAME OVER\n");
+	LoadGameOverSounds();
+	PlaySound_PlayerDeath();
 
 	//Background
 	data.background.sprite = sfSprite_create();
@@ -114,8 +116,8 @@ void CleanupGameOver(void)
 
 	//Background
 	sfSprite_destroy(data.background.sprite);
-	data.background.sprite == NULL;
+	data.background.sprite = NULL;
 
 	sfTexture_destroy(data.background.texture);
-	data.background.texture == NULL;
+	data.background.texture = NULL;
 }

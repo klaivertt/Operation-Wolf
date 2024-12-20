@@ -5,7 +5,6 @@
 #include "Common.h"
 #include "Sprite.h"
 #include "State.h"
-#include "Grenade.h"
 #include "score.h"
 #include "HealthBar.h"
 #include "DamageWindow.h"

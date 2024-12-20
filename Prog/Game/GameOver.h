@@ -6,6 +6,8 @@
 #include "Score.h"
 #include "Text.h"
 
+#include "GameOverSound.h"
+
 #define MAX_TEXT 3
 typedef struct GameOverData
 {

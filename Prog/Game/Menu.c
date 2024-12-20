@@ -57,9 +57,6 @@ void KeyPressedMenu(sfRenderWindow* _renderWindow, sfKeyEvent _key)
 	case sfKeyEscape:
 		sfRenderWindow_close(_renderWindow);
 		break;
-	case sfKeySpace:
-		SetGameState(GAME);
-		break;
 	default:
 		break;
 	}
@@ -142,6 +139,8 @@ void DrawMenu(sfRenderWindow* _renderWindow)
 void CleanupMenu(void)
 {
 	CleanupMenuMusic();
+	CleanupMenuSound();
+
 	//BackGround
 	sfTexture_destroy(menuData.background.texture);
 	menuData.background.texture = NULL;
