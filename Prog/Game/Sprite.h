@@ -59,6 +59,7 @@ sfBool MouseClickOnSpritePixel(sfVector2f _mouseButton, sfSprite* _sprite);
 //* @return sfBool Returns `sfTrue` if the mouse is over a specific pixel of the sprite, otherwise `sfFalse`.
 sfBool MouseMoveOnSpritePixel(sfMouseMoveEvent _mouseMove, sfSprite* _sprite);
 
+
 //* @brief Checks if a mouse click occurred on a specific pixel of an image.
 //*
 //* @param _mouseButton Mouse button event containing click position.
@@ -67,6 +68,7 @@ sfBool MouseMoveOnSpritePixel(sfMouseMoveEvent _mouseMove, sfSprite* _sprite);
 //* @param _pixelColor Pointer to a color value that will store the clicked pixel's color (if applicable).
 //* @return sfBool Returns `sfTrue` if the click is on a specific pixel of the image, otherwise `sfFalse`.
 sfBool MouseClickOnImagePixel(sfMouseButtonEvent _mouseButton, sfSprite* _sprite, sfImage* _image, sfColor* _pixelColor);
+
 
 //@brief Sets the origin of a sprite based on its texture size divided by a factor.
 //@param _sprite Pointer to the sprite (must have a valid texture).
