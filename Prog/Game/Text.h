@@ -3,7 +3,7 @@
 
 #include "Common.h"
 
-// Structure pour gérer un texte CSFML
+//Structure for managing CSFML text
 typedef struct {
 	sfFont* font;
 } TextManager;
