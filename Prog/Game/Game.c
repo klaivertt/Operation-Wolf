@@ -48,7 +48,7 @@ void UpdateGame(float _dt)
 	UpdateHostage(_dt);
 	UpdateMap(_dt);
 	UpdateHUD(_dt);
-	MoveDrop();
+	UpdateDrop(_dt);
 	UpdatePlayer(_dt);
 }
 

@@ -28,23 +28,29 @@ void DrawDrop(sfRenderWindow* _renderWindow)
 	}
 }
 
-void MoveDrop()
+void UpdateDrop(float _dt)
 {
 	for (int i = 0; i < MAX_DROP; i++)
 	{
 		if (dropData.drop[i].state == ON_FIELD)
 		{
-			sfSprite_move(dropData.drop[i].sprite, GetBackGroundSpeed());
-			sfVector2f dropPosition = sfSprite_getPosition(dropData.drop[i].sprite);
-
-			// Vérifier si le drop est hors de l'écran
-			if (dropPosition.x < -100)
-			{
-				SetDropState(&dropData.drop[i], OFF_FIELD);
-				sfSprite_setPosition(dropData.drop[i].sprite, (sfVector2f) { -100, -100 });
-			}
+			MoveDrop(i);
 		}
 	}
+}
+
+void MoveDrop(int _i)
+{
+	sfSprite_move(dropData.drop[_i].sprite, GetBackGroundSpeed());
+	sfVector2f dropPosition = sfSprite_getPosition(dropData.drop[_i].sprite);
+
+	// Vérifier si le drop est hors de l'écran
+	if (dropPosition.x < -100 || dropPosition.x > SCREEN_WIDTH)
+	{
+		SetDropState(&dropData.drop[_i], OFF_FIELD);
+		sfSprite_setPosition(dropData.drop[_i].sprite, (sfVector2f) { -100, -100 });
+	}
+
 }
 
 void CreateDrop(sfVector2f _vector, Drop _state)
@@ -65,7 +71,7 @@ void CreateDrop(sfVector2f _vector, Drop _state)
 					sfSprite_setTexture(dropData.drop[i].sprite, dropData.healthTexture, sfFalse);
 					size = sfTexture_getSize(dropData.healthTexture);
 				}
-				else
+				else if (_state == AMMO)
 				{
 					sfSprite_setTexture(dropData.drop[i].sprite, dropData.ammoTexture, sfFalse);
 					size = sfTexture_getSize(dropData.ammoTexture);
