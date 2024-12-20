@@ -50,5 +50,9 @@ void DrawDamageWindow(sfRenderWindow* _renderWindow)
 
 void CleanupDamageWindow()
 {
+	sfSprite_destroy(damageWindow.sprite);
+	damageWindow.sprite = NULL;
 
+	sfTexture_destroy(damageWindow.texture);
+	damageWindow.texture = NULL;
 }

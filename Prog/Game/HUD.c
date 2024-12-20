@@ -31,4 +31,6 @@ void CleanupHUD(void)
 	CleanupMagazine();
 	CleanupIcon();
 	CleanupDamageWindow();
+	CleanupHealthBar();
+	CleanupScore();
 }
