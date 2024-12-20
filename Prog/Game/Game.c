@@ -94,5 +94,6 @@ void CleanupGame(void)
 	CleanupMap();
 	CleanupHUD();
 	CleanupHostage();
+	CleanupDrop();
 }
 

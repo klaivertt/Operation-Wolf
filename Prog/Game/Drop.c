@@ -51,20 +51,7 @@ void MoveDrop(int _i)
 
 }
 
-void CLeanupDrop()
-{
-	sfTexture_destroy(dropData.ammoTexture);
-	dropData.ammoTexture = NULL;
 
-	sfTexture_destroy(dropData.healthTexture);
-	dropData.healthTexture = NULL;
-
-	for  (short i = 0; i < MAX_DROP; i++)
-	{
-		sfSprite_destroy(dropData.drop[i].sprite);
-		dropData.drop[i].sprite = NULL;
-	}
-}
 
 void CreateDrop(sfVector2f _vector, Drop _state)
 {
@@ -100,12 +87,16 @@ void CreateDrop(sfVector2f _vector, Drop _state)
 
 void CleanupDrop()
 {
-	if (dropData.ammoTexture) sfTexture_destroy(dropData.ammoTexture);
-	if (dropData.healthTexture) sfTexture_destroy(dropData.healthTexture);
+	sfTexture_destroy(dropData.ammoTexture);
+	dropData.ammoTexture = NULL;
 
-	for (int i = 0; i < MAX_DROP; i++)
+	sfTexture_destroy(dropData.healthTexture);
+	dropData.healthTexture = NULL;
+
+	for (short i = 0; i < MAX_DROP; i++)
 	{
-		if (dropData.drop[i].sprite) sfSprite_destroy(dropData.drop[i].sprite);
+		sfSprite_destroy(dropData.drop[i].sprite);
+		dropData.drop[i].sprite = NULL;
 	}
 }
 
