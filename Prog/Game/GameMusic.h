@@ -23,7 +23,7 @@ typedef struct BufferMusic
 
 typedef struct GameMusic
 {
-	
+
 	BufferMusic soundBuffer;
 	sfSound* sound;
 
@@ -31,12 +31,43 @@ typedef struct GameMusic
 
 }GameMusic;
 
+
+//* @brief Loads the music resources for the game.
+//*
+//* This function initializes and prepares the background music or other audio tracks
+//* associated with the game, loading them into memory for playback
 void LoadGameMusic(void);
+
+
+//* @brief Updates the game music based on the delta time.
+//*
+//* @param _dt The time elapsed (delta time) since the last frame. This can be used to
+//*            control the music's playback or manage transitions (e.g., fading).
 void UpdateGameMusic(float _dt);
+
+//* @brief Frees the memory and resources associated with game music.
+//*
+//* This function ensures proper cleanup by deallocating any music resources (e.g.,
+//* sound buffers or music instances) used in the game to prevent memory leaks.
 void CleanupGameMusic(void);
 
-// restart music if it's the same then before
+
+//* @brief Changes the current game music track.
+//*
+//* This function restarts the music if the requested track is the same as the previous one.
+//* It selects a new music track to be played based on the provided identifier.
+//*
+//* @param _mtp Enum or identifier representing the music track to be played.
 void ChangeGameMusic(MusicToPlay _mtp);
-sfBool ChangeGameMusicVolume(float _volume, sfBool  _instantaneous);
+
+
+//* @brief Changes the volume of the game music.
+//*
+//* @param _volume The desired volume level (a float value, typically between 0.0 and 1.0).
+//* @param _instantaneous Boolean indicating whether the volume change should be immediate
+//*                       (`sfTrue`) or gradually adjusted over time (`sfFalse`).
+//* @return sfBool Returns `sfTrue` if the volume change was successfully applied, otherwise `sfFalse`.
+sfBool ChangeGameMusicVolume(float _volume, sfBool _instantaneous);
+
 
 #endif
