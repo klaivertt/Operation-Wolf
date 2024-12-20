@@ -17,7 +17,7 @@
 
 #define FE_DAMAGE 1
 #define FE_TOTAL_LIFE 1
-#define FE_SPEED 8
+#define FE_SPEED 20
 #define FE_DEATH_DELAY 0.5f
 
 typedef enum FrontEnemyState
@@ -46,8 +46,8 @@ typedef struct FrontEnemy
 	int life;
 	float speed;
 
-	sfVector2f targetedPositon;
-	sfVector2f spawnPosition;
+	int targetedPositon;
+	int spawnPosition;
 
 	sfBool haveAlreadyShoot;
 

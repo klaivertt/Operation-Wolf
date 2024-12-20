@@ -5,9 +5,9 @@
 void WaitToSpawnFE(FrontEnemy* _enemy, float _dt);
 void WalkFE(FrontEnemy* _enemy, float _dt);
 void ShootFE(FrontEnemy* _enemy, float _dt);
-void DeadFE(FrontEnemy* _enemy, float _dt);
+void DeadFE(FrontEnemy* _enemy, sfTexture** _texture, float _dt);
 
-void WaitToSpawnFE(FrontEnemy* _enemy, float _dt);
+sfBool MoveFE(FrontEnemy* _enemy, sfSprite** _sprite);
 
 
 FrontEnemy* GetFrontEnemy(void)
@@ -15,38 +15,38 @@ FrontEnemy* GetFrontEnemy(void)
 	//return &enemyData.enemy;
 }
 
-FrontEnemyState GetFrontEnemyState(FrontEnemy* _enemy)
+FrontEnemyState GetState_FrontEnemy(FrontEnemy* _enemy)
 {
-	//return _enemy->state;
+	return _enemy->state;
 }
 
-void SetFrontEnemyState(FrontEnemy* _enemy, FrontEnemyState _state)
+void SetState_FrontEnemy(FrontEnemy* _enemy, FrontEnemyState _state)
 {
 
-	//if (_state != _enemy->state)
-	//{
-	//	switch (_state)
-	//	{
-	//	case WALK_FE:
-	//		ResetAnimation(&_enemy->anim.walk, &_enemy->sprite);
-	//		break;
-	//	case SHOOT_FE:
-	//		ResetAnimation(&_enemy->anim.shoot, &_enemy->sprite);
-	//		break;
-	//	case DEAD_FE:
-	//		ResetAnimation(&_enemy->anim.dead, &_enemy->sprite);
-	//		sfVector2f pos = sfSprite_getPosition(_enemy->sprite);
-	//		if (pos.x > 0 && pos.x < SCREEN_WIDTH)
-	//		{
-	//			PlaySound_EnemyDie();
-	//		}
+	if (_state != _enemy->state)
+	{
+		switch (_state)
+		{
+		case FE_WALK:
+			ResetAnimation(&_enemy->anim.walk, &_enemy->sprite);
+			break;
+		case FE_SHOOT:
+			ResetAnimation(&_enemy->anim.shoot, &_enemy->sprite);
+			break;
+		case FE_DEAD:
+			ResetAnimation(&_enemy->anim.dead, &_enemy->sprite);
+			sfFloatRect gb = sfSprite_getGlobalBounds(_enemy->sprite);
+			if (gb.top < SCREEN_WIDTH)
+			{
+				PlaySound_EnemyDie();
+			}
 
-	//		break;
-	//	default:
-	//		break;
-	//	}
-	//	_enemy->state = _state;
-	//}
+			break;
+		default:
+			break;
+		}
+		_enemy->state = _state;
+	}
 
 }
 
@@ -99,45 +99,50 @@ void LoadFrontEnemy(FrontEnemy* _enemy, sfTexture** _texture)
 	CreateSprite(&_enemy->sprite, *_texture, pos, rect, origin);
 
 	sfFloatRect gb = sfSprite_getGlobalBounds(_enemy->sprite);
-	//pos.y += gb.height;
+	pos.y += gb.height;
 	sfSprite_setPosition(_enemy->sprite, pos);
 
-	_enemy->targetedPositon = (sfVector2f){ pos.x, pos.y - gb.height };
-	_enemy->spawnPosition = pos;
+	_enemy->targetedPositon = pos.y - gb.height;
+	_enemy->spawnPosition = pos.y;
 
-	//CreateAnimation(&enemyData.enemy.anim.walk, &enemyData.enemy.sprite, &enemyData.spriteSheet, 4, 1, 1, sfTrue, (sfVector2f) { 2, 0 });
-	//CreateAnimation(&enemyData.enemy.anim.shoot, &enemyData.enemy.sprite, &enemyData.spriteSheet, 4, 2, 2, sfTrue, (sfVector2f) { 0, 0 });
-	//CreateAnimation(&enemyData.enemy.anim.dead, &enemyData.enemy.sprite, &enemyData.spriteSheet, 4, 1, 1, sfTrue, (sfVector2f) { 3, 0 });
+	CreateAnimation(&_enemy->anim.walk, &_enemy->sprite, _texture, 4, 1, 1, sfTrue, (sfVector2f) { 2, 0 });
+	CreateAnimation(&_enemy->anim.shoot, &_enemy->sprite, _texture, 4, 2, 2, sfTrue, (sfVector2f) { 0, 0 });
+	CreateAnimation(&_enemy->anim.dead, &_enemy->sprite, _texture, 4, 1, 1, sfTrue, (sfVector2f) { 3, 0 });
 }
 
 void UpdateFrontEnemy(FrontEnemy* _enemy, sfTexture** _texture, float _dt)
 {
-	/*switch (enemyData.enemy.state)
+	//sfVector2f ok = sfSprite_getPosition(_enemy->sprite);
+	//printf("x : %f  y : %f\n", ok.x, ok.y);
+	printf("ok");
+	switch (_enemy->state)
 	{
-	case WAIT_TO_SPAWN_FE:
+	case FE_WAIT_TO_SPAWN:
 
-		WaitToSpawnFE(&enemyData.enemy, _dt);
+		WaitToSpawnFE(_enemy, _dt);
 		break;
-	case WALK_FE:
+	case FE_WALK:
 
-		WalkFE(&enemyData.enemy, _dt);
+		WalkFE(_enemy, _dt);
 		break;
-	case SHOOT_FE:
+	case FE_SHOOT:
 
-		ShootFE(&enemyData.enemy, _dt);
+		ShootFE(_enemy, _dt);
 		break;
 
-	case DEAD_FE:
+	case FE_DEAD:
 
-		DeadFE(&enemyData.enemy, _dt);
+		DeadFE(_enemy, _texture, _dt);
 		break;
-	}*/
+	}
 
 }
 
 void DrawFrontEnemy(FrontEnemy* _enemy, sfRenderWindow* _renderWindow)
 {
-	sfRenderWindow_drawSprite(_renderWindow,&_enemy->sprite,NULL );
+
+	sfRenderWindow_drawSprite(_renderWindow, _enemy->sprite, NULL);
+	
 }
 
 void CleanupFrontEnemy(FrontEnemy* _enemy)
@@ -150,22 +155,82 @@ void CleanupFrontEnemy(FrontEnemy* _enemy)
 
 void WaitToSpawnFE(FrontEnemy* _enemy, float _dt)
 {
-
+	sfBool timerEnd;
+	UpdateTimer(_dt, &_enemy->waitTimer);
+	timerEnd = IsTimerFinished(&_enemy->waitTimer);
+	if (timerEnd)
+	{
+		SetState_FrontEnemy(_enemy, FE_WALK);
+	}
 }
 
 void WalkFE(FrontEnemy* _enemy, float _dt)
 {
+	sfBool notMoving;
 
+	UpdateAnimation(&_enemy->anim.walk, &_enemy->sprite, _dt);
+	notMoving = MoveFE(_enemy, &_enemy->sprite);
+	if (notMoving)
+	{
+		if (_enemy->haveAlreadyShoot)
+		{
+			SetState_FrontEnemy(_enemy, FE_DEAD);
+		}
+		else
+		{
+			SetState_FrontEnemy(_enemy, FE_SHOOT);
+		}
+	}
 }
 
 void ShootFE(FrontEnemy* _enemy, float _dt)
 {
-	
+	sfBool timerEnd;
+
+	UpdateAnimation(&_enemy->anim.shoot, &_enemy->sprite, _dt);
+	UpdateTimer(_dt, &_enemy->shootTimer);
+	timerEnd = IsTimerFinished(&_enemy->shootTimer);
+	int actualFrame = GetAnimCurrentFrame(&_enemy->anim.shoot);
+	if (actualFrame == 2 && !_enemy->haveAlreadyShoot)
+	{
+		if (EnemyShootBehindProps(_enemy->sprite))
+		{
+			_enemy->doDamageToPlayer = sfFalse;
+			_enemy->haveAlreadyShoot = sfFalse;
+		}
+		else
+		{
+			_enemy->doDamageToPlayer = sfTrue;
+			_enemy->haveAlreadyShoot = sfTrue;
+			PlaySound_EnemyShoot();
+		}
+	}
+	if (timerEnd)
+	{
+		SetState_MovingEnemy(_enemy, FE_WALK);
+		_enemy->targetedPositon = _enemy->spawnPosition;
+	}
 }
 
-void DeadFE(FrontEnemy* _enemy, float _dt)
+void DeadFE(FrontEnemy* _enemy,sfTexture** _texture, float _dt)
 {
-
+	UpdateAnimation(&_enemy->anim.dead, &_enemy->sprite, _dt);
+	UpdateTimer(_dt, &_enemy->deadTimer);
+	sfBool endDeadAnimation = IsTimerFinished(&_enemy->deadTimer);
+	if (endDeadAnimation)
+	{
+		DecreaseNbCharactersPositionGround(_enemy->sprite);
+		CreateDrop(sfSprite_getPosition(_enemy->sprite), Drop_MovingEnemy());
+		LoadFrontEnemy(_enemy, _texture);
+	}
 }
 
 
+sfBool MoveFE(FrontEnemy* _enemy, sfSprite** _sprite)
+{
+	sfVector2f pos = sfSprite_getPosition(*_sprite);
+
+	pos.y = (float)_enemy->targetedPositon;
+
+	return MoveSpriteToTarget(_sprite, pos, _enemy->speed, sfFalse);
+}

@@ -13,7 +13,7 @@
 #include "EnemySound.h"
 
 #define ME_SHOOT_DELAY 1
-#define ME_MAX_SPAWN_DELAY 4
+#define ME_MAX_SPAWN_DELAY 10
 
 #define ME_DAMAGE 1
 #define ME_TOTAL_LIFE 1

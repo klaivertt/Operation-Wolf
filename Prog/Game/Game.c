@@ -8,6 +8,7 @@ void LoadGame(void)
 	LoadGameSounds();
 	LoadMap();
 	LoadEnemy(0, MOVING_ENEMY);
+	LoadEnemy(0, FRONT_ENEMY);
 	LoadHostage(0);
 	LoadPlayer();
 	LoadHUD();
@@ -43,6 +44,7 @@ void UpdateGame(float _dt)
 {
 	UpdateGameMusic(_dt);
 	UpdateEnemy(_dt, MOVING_ENEMY);
+	UpdateEnemy(_dt, FRONT_ENEMY);
 	UpdateHostage(_dt);
 	UpdateMap(_dt);
 	UpdateHUD(_dt);
@@ -71,6 +73,8 @@ void DrawGame(sfRenderWindow* _renderWindow)
 	DrawEnemy(_renderWindow, MOVING_ENEMY, FORGROUND);
 	DrawProps(_renderWindow, FORGROUND);
 	DrawSecondPlan(_renderWindow);
+	
+	DrawEnemy(_renderWindow, FRONT_ENEMY, 0);
 
 	DrawHUD(_renderWindow);
 	DrawPlayer(_renderWindow);
@@ -82,6 +86,7 @@ void CleanupGame(void)
 	CleanupGameSound();
 	CleanupPlayer();
 	CleanupEnemy(MOVING_ENEMY);
+	CleanupEnemy(FRONT_ENEMY);
 	CleanupMap();
 	CleanupHUD();
 	CleanupHostage();
