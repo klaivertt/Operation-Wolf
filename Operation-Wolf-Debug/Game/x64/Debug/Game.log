@@ -1,0 +1,13 @@
+﻿  Bullet.c
+  Enemy.c
+  Game.c
+  HUD.c
+  HealthBar.c
+  Magazine.c
+  MovingEnemy.c
+  ObjectsClickVerif.c
+  Player.c
+  State.c
+  main.c
+  Génération de code en cours...
+  Game.vcxproj -> C:\Users\maxim\Desktop\Eleve\Année 1\Projets\Creajeux\Operation-Wolf\Operation-Wolf-Debug\x64\Debug\Game.exe
